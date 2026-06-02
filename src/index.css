@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body text-gray-700 antialiased;
+    margin: 0;
+  }
+
+  #root {
+    width: 100%;
+    max-width: 100%;
+    text-align: left;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-[#E8842B] hover:bg-[#C4651A] text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#E8842B] focus:ring-offset-2;
+    min-height: 44px;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 border-2 border-white text-white hover:bg-white hover:text-[#0B1F3A] font-semibold px-6 py-3 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2;
+    min-height: 44px;
+  }
+
+  .btn-outline-dark {
+    @apply inline-flex items-center gap-2 border-2 border-[#0B1F3A] text-[#0B1F3A] hover:bg-[#0B1F3A] hover:text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#0B1F3A] focus:ring-offset-2;
+    min-height: 44px;
+  }
+
+  .section-eyebrow {
+    @apply inline-block text-[#E8842B] font-semibold text-sm uppercase tracking-widest mb-3;
+  }
+
+  .section-title {
+    @apply font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#0B1F3A] leading-tight;
+  }
+
+  .section-title-light {
+    @apply font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight;
+  }
+
+  .accent-line {
+    width: 48px;
+    height: 4px;
+    background: #E8842B;
+    border-radius: 9999px;
+  }
+
+  .card-service {
+    @apply bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:-translate-y-1;
+  }
+}
+
+/* Animate on scroll */
+.aos-hidden {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.aos-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aos-hidden {
+    opacity: 1;
+    transform: none;
+  }
+  .aos-visible {
+    transition: none;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
