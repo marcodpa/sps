@@ -20,7 +20,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#060F1D] text-gray-300">
       {/* Top accent line */}
-      <div className="h-1 bg-gradient-to-r from-[#E8842B] via-[#1C3D5A] to-[#0B1F3A]" />
+      <div className="h-1 bg-gradient-to-r from-[#C8102E] via-[#1C3D5A] to-[#0B1F3A]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -28,11 +28,10 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="mb-4">
               <span className="font-display text-2xl font-bold text-white">
-                SP<span className="text-[#E8842B]">SOIL</span>
+                SP<span className="text-[#0057B8]">SOIL</span>
               </span>
-              <p className="text-xs text-gray-500 uppercase tracking-widest mt-0.5">
-                Service Petroleum &amp; Supply C.A.
-              </p>
+              <img src="/assets/sps-oil-logo.png" alt="SPSOIL" className="h-8 w-auto" />
+                  &amp; Supply               </p>
             </div>
             <p className="text-sm text-gray-400 leading-relaxed mb-6">
               Empresa venezolana especializada en servicios petroleros, automatización industrial y telecomunicaciones de alta calidad.
@@ -41,21 +40,21 @@ export default function Footer() {
               <a
                 href="#"
                 aria-label="LinkedIn"
-                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-[#E8842B] flex items-center justify-center transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#E8842B]"
+                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-[#0057B8] flex items-center justify-center transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#0057B8]"
               >
                 <Share2 size={16} />
               </a>
               <a
                 href="#"
                 aria-label="Sitio web"
-                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-[#E8842B] flex items-center justify-center transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#E8842B]"
+                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-[#0057B8] flex items-center justify-center transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#0057B8]"
               >
                 <Globe size={16} />
               </a>
             </div>
           </div>
 
-          {/* Services */}
+          {/* s */}
           <div>
             <h3 className="text-white font-semibold text-sm uppercase tracking-widest mb-5 pb-2 border-b border-white/10">
               Servicios
@@ -65,9 +64,9 @@ export default function Footer() {
                 <li key={s}>
                   <Link
                     to="/servicios"
-                    className="text-sm text-gray-400 hover:text-[#E8842B] transition-colors flex items-center gap-2 focus:outline-none focus:text-[#E8842B]"
+                    className="text-sm text-gray-400 hover:text-[#0057B8] transition-colors flex items-center gap-2 focus:outline-none focus:text-[#0057B8]"
                   >
-                    <ArrowRight size={14} className="text-[#E8842B]" />
+                    <ArrowRight size={14} className="text-[#0057B8]" />
                     {s}
                   </Link>
                 </li>
@@ -85,9 +84,9 @@ export default function Footer() {
                 <li key={to}>
                   <Link
                     to={to}
-                    className="text-sm text-gray-400 hover:text-[#E8842B] transition-colors flex items-center gap-2 focus:outline-none focus:text-[#E8842B]"
+                    className="text-sm text-gray-400 hover:text-[#0057B8] transition-colors flex items-center gap-2 focus:outline-none focus:text-[#0057B8]"
                   >
-                    <ArrowRight size={14} className="text-[#E8842B]" />
+                    <ArrowRight size={14} className="text-[#0057B8]" />
                     {label}
                   </Link>
                 </li>
@@ -102,7 +101,7 @@ export default function Footer() {
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin size={16} className="text-[#E8842B] mt-0.5 shrink-0" />
+                <MapPin size={16} className="text-[#0057B8] mt-0.5 shrink-0" />
                 <span className="text-sm text-gray-400 leading-relaxed">
                   Av. 5, Calle 13, Nº 26A-162<br />
                   San Francisco, Maracaibo<br />
@@ -110,14 +109,14 @@ export default function Footer() {
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone size={16} className="text-[#E8842B] shrink-0" />
-                <a href="tel:+582613226494" className="text-sm text-gray-400 hover:text-[#E8842B] transition-colors focus:outline-none focus:text-[#E8842B]">
+                <Phone size={16} className="text-[#0057B8] shrink-0" />
+                <a href="tel:+582613226494" className="text-sm text-gray-400 hover:text-[#0057B8] transition-colors focus:outline-none focus:text-[#0057B8]">
                   0261 322 6494
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Phone size={16} className="text-[#E8842B] shrink-0" />
-                <a href="tel:+584146361373" className="text-sm text-gray-400 hover:text-[#E8842B] transition-colors focus:outline-none focus:text-[#E8842B]">
+                <Phone size={16} className="text-[#0057B8] shrink-0" />
+                <a href="tel:+584146361373" className="text-sm text-gray-400 hover:text-[#0057B8] transition-colors focus:outline-none focus:text-[#0057B8]">
                   +58 414 636 1373
                 </a>
               </li>
@@ -130,10 +129,10 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-gray-500">
-            SPSOIL © {new Date().getFullYear()} — Todos los derechos reservados.
+            SPSOIL © {new Date().getFullYear()} - Todos los derechos reservados.
           </p>
           <p className="text-xs text-gray-600">
-            Service Petroleum and Supply C.A. · RIF: J-XXXXXXXXX-X
+              and Supply C.A. · RIF: J-XXXXXXXXX-X
           </p>
         </div>
       </div>

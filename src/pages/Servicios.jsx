@@ -166,7 +166,7 @@ export default function Servicios() {
         </div>
       </section>
 
-      {/* Services — alternating layout */}
+      {/* Services - alternating layout */}
       {services.map(({ id, icon, title, subtitle, img, color, bgColor, items }, idx) => (
         <section
           key={id}
@@ -255,7 +255,7 @@ export default function Servicios() {
             {brands.map((b, i) => (
               <div
                 key={b}
-                className="bg-white/10 hover:bg-[#E8842B] rounded-xl px-4 py-5 text-center text-white font-display font-bold text-sm transition-all duration-200 hover:scale-105 cursor-default aos-hidden"
+                className="bg-white/10 hover:bg-[#0057B8] rounded-xl px-4 py-5 text-center text-white font-display font-bold text-sm transition-all duration-200 hover:scale-105 cursor-default aos-hidden"
                 style={{ transitionDelay: `${i * 0.06}s` }}
               >
                 {b}
@@ -266,7 +266,7 @@ export default function Servicios() {
       </section>
 
       {/* CTA */}
-      <section className="bg-[#E8842B] py-16">
+      <section className="bg-[#0057B8] py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-3xl font-bold text-white mb-4">
             ¿Necesitas alguno de estos servicios?
@@ -276,7 +276,7 @@ export default function Servicios() {
           </p>
           <Link
             to="/contacto"
-            className="inline-flex items-center gap-2 bg-white text-[#E8842B] hover:bg-gray-100 font-bold px-8 py-4 rounded-lg transition-colors text-base"
+            className="inline-flex items-center gap-2 bg-white text-[#0057B8] hover:bg-gray-100 font-bold px-8 py-4 rounded-lg transition-colors text-base"
           >
             Solicitar información <ArrowRight size={18} />
           </Link>

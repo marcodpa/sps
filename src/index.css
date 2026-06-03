@@ -32,7 +32,7 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center gap-2 bg-[#E8842B] hover:bg-[#C4651A] text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#E8842B] focus:ring-offset-2;
+    @apply inline-flex items-center gap-2 bg-[#0057B8] hover:bg-[#003B72] hover:-translate-y-0.5 active:scale-[0.985] text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#0057B8] focus:ring-offset-2;
     min-height: 44px;
   }
 
@@ -47,7 +47,7 @@
   }
 
   .section-eyebrow {
-    @apply inline-block text-[#E8842B] font-semibold text-sm uppercase tracking-widest mb-3;
+    @apply inline-block text-[#0057B8] font-semibold text-sm uppercase tracking-widest mb-3;
   }
 
   .section-title {
@@ -61,7 +61,7 @@
   .accent-line {
     width: 48px;
     height: 4px;
-    background: #E8842B;
+    background: #0057B8;
     border-radius: 9999px;
   }
 

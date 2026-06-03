@@ -127,9 +127,12 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-32">
           <div className="max-w-3xl">
             <span className="section-eyebrow">Maracaibo, Venezuela</span>
+            <div className="mb-4">
+              <img src="/assets/sps-oil-logo.png" alt="SPSOIL logo" className="h-14 w-auto mb-2" />
+            </div>
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.1] mb-6">
               Servicios petroleros e industriales de{' '}
-              <span className="text-[#E8842B]">alta calidad</span>
+              <span className="text-[#0057B8]">alta calidad</span>
             </h1>
             <p className="text-lg text-gray-300 leading-relaxed mb-10 max-w-2xl">
               Especialistas en inyección de vapor, automatización, SCADA, PLC, telecomunicaciones y conectividad para la industria petrolera venezolana y latinoamericana.
@@ -153,7 +156,7 @@ export default function Home() {
             {stats.map(({ value, label, icon }) => (
               <div key={label} className="text-center group">
                 <div className="flex justify-center mb-3">
-                  <div className="text-[#E8842B]">{icon}</div>
+                  <div className="text-[#0057B8]">{icon}</div>
                 </div>
                 <div className="font-display text-4xl font-bold text-white mb-1">{value}</div>
                 <div className="text-sm text-gray-400 uppercase tracking-wide">{label}</div>
@@ -203,7 +206,7 @@ export default function Home() {
               </Link>
             </div>
             <div className="relative aos-hidden" style={{ transitionDelay: '0.15s' }}>
-              <div className="absolute -top-6 -left-6 w-48 h-48 bg-[#E8842B]/10 rounded-3xl" />
+              <div className="absolute -top-6 -left-6 w-48 h-48 bg-[#0057B8]/10 rounded-3xl" />
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#1C3D5A]/10 rounded-3xl" />
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
@@ -214,7 +217,7 @@ export default function Home() {
                   width="900"
                   height="600"
                 />
-                <div className="absolute bottom-4 left-4 bg-[#E8842B] text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg">
+                <div className="absolute bottom-4 left-4 bg-[#0057B8] text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg">
                   Respuesta inmediata
                 </div>
               </div>
@@ -248,7 +251,7 @@ export default function Home() {
                 <p className="text-sm text-gray-500 leading-relaxed mb-5">{desc}</p>
                 <Link
                   to="/servicios"
-                  className="inline-flex items-center text-[#E8842B] text-sm font-semibold hover:gap-2 gap-1 transition-all"
+                  className="inline-flex items-center text-[#0057B8] text-sm font-semibold hover:gap-2 gap-1 transition-all"
                 >
                   Ver más <ArrowRight size={14} />
                 </Link>
@@ -270,7 +273,7 @@ export default function Home() {
           className="absolute inset-0 opacity-5"
           style={{
             backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E8842B' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+              "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230057B8' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
           }}
         />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -297,14 +300,14 @@ export default function Home() {
                     height="400"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F3A]/70 to-transparent" />
-                  <span className="absolute top-3 left-3 bg-[#E8842B] text-white text-xs font-semibold px-3 py-1 rounded-full">
+                  <span className="absolute top-3 left-3 bg-[#0057B8] text-white text-xs font-semibold px-3 py-1 rounded-full">
                     {tag}
                   </span>
                 </div>
                 <div className="p-6">
                   <h3 className="font-display font-bold text-white text-lg mb-2">{client}</h3>
                   <p className="text-gray-400 text-sm leading-relaxed mb-4">{desc}</p>
-                  <span className="inline-flex items-center text-[#E8842B] text-sm font-semibold gap-1">
+                  <span className="inline-flex items-center text-[#0057B8] text-sm font-semibold gap-1">
                     100% ejecutado <Award size={14} />
                   </span>
                 </div>
@@ -329,7 +332,7 @@ export default function Home() {
             {brands.map((b) => (
               <div
                 key={b}
-                className="px-6 py-3 border-2 border-gray-100 rounded-xl text-gray-600 font-semibold font-display hover:border-[#E8842B] hover:text-[#0B1F3A] transition-all duration-200 text-sm"
+                className="px-6 py-3 border-2 border-gray-100 rounded-xl text-gray-600 font-semibold font-display hover:border-[#0057B8] hover:text-[#0B1F3A] transition-all duration-200 text-sm"
               >
                 {b}
               </div>
@@ -350,15 +353,15 @@ export default function Home() {
               <div className="accent-line mb-6" />
               <div className="space-y-4 mb-8 text-gray-600">
                 <p className="flex items-start gap-3">
-                  <span className="text-[#E8842B] font-bold mt-0.5">📍</span>
+                  <span className="text-[#0057B8] font-bold mt-0.5">📍</span>
                   Av. 5, Calle 13, Nº 26A-162, San Francisco, Maracaibo, Zulia, Venezuela.
                 </p>
                 <p className="flex items-center gap-3">
-                  <span className="text-[#E8842B] font-bold">📞</span>
+                  <span className="text-[#0057B8] font-bold">📞</span>
                   Oficina: 0261 322 6494
                 </p>
                 <p className="flex items-center gap-3">
-                  <span className="text-[#E8842B] font-bold">📱</span>
+                  <span className="text-[#0057B8] font-bold">📱</span>
                   Móvil: +58 414 636 1373
                 </p>
               </div>

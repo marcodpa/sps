@@ -29,15 +29,9 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 focus:outline-none focus:ring-2 focus:ring-[#E8842B] focus:ring-offset-2 focus:ring-offset-[#0B1F3A] rounded-lg">
-            <div className="flex flex-col leading-none">
-              <span className="font-display font-800 text-xl text-white tracking-wide">
-                SP<span className="text-[#E8842B]">SOIL</span>
-              </span>
-              <span className="text-[10px] text-gray-400 uppercase tracking-widest font-medium">
-                Service Petroleum &amp; Supply
-              </span>
-            </div>
+          <Link to="/" className="flex items-center gap-3 focus:outline-none focus:ring-2 focus:ring-[#0057B8] focus:ring-offset-2 focus:ring-offset-[#0B1F3A] rounded-lg">
+            <img src="/assets/sps-oil-logo.png" alt="SPSOIL -  and Supply C.A." className="h-8 md:h-10 w-auto" />
+                 &amp; Supply
           </Link>
 
           {/* Desktop nav */}
@@ -48,9 +42,9 @@ export default function Header() {
                 to={to}
                 end={to === '/'}
                 className={({ isActive }) =>
-                  `px-4 py-2 rounded-lg text-sm font-medium transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#E8842B] focus:ring-offset-2 focus:ring-offset-[#0B1F3A] ${
+                  `px-4 py-2 rounded-lg text-sm font-medium transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#0057B8] focus:ring-offset-2 focus:ring-offset-[#0B1F3A] ${
                     isActive
-                      ? 'text-[#E8842B] bg-white/10'
+                      ? 'text-[#0057B8] bg-white/10'
                       : 'text-gray-300 hover:text-white hover:bg-white/10'
                   }`
                 }
@@ -65,7 +59,7 @@ export default function Header() {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden text-white p-2 rounded-lg hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#E8842B] transition-colors"
+            className="md:hidden text-white p-2 rounded-lg hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#0057B8] transition-colors"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-expanded={menuOpen}
             aria-label="Abrir menú"
@@ -88,7 +82,7 @@ export default function Header() {
                 className={({ isActive }) =>
                   `px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
                     isActive
-                      ? 'text-[#E8842B] bg-white/10'
+                      ? 'text-[#0057B8] bg-white/10'
                       : 'text-gray-300 hover:text-white hover:bg-white/10'
                   }`
                 }

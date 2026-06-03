@@ -83,8 +83,8 @@ export default function Contacto() {
 
               <div className="space-y-6 mb-10">
                 <div className="flex items-start gap-4 group">
-                  <div className="w-12 h-12 bg-[#0B1F3A] rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#E8842B] transition-colors duration-200">
-                    <MapPin size={20} className="text-[#E8842B] group-hover:text-white transition-colors" />
+                  <div className="w-12 h-12 bg-[#0B1F3A] rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#0057B8] transition-colors duration-200">
+                    <MapPin size={20} className="text-[#0057B8] group-hover:text-white transition-colors" />
                   </div>
                   <div>
                     <p className="font-semibold text-[#0B1F3A] text-sm mb-1">Dirección fiscal</p>
@@ -97,20 +97,20 @@ export default function Contacto() {
                 </div>
 
                 <div className="flex items-start gap-4 group">
-                  <div className="w-12 h-12 bg-[#0B1F3A] rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#E8842B] transition-colors duration-200">
-                    <Phone size={20} className="text-[#E8842B] group-hover:text-white transition-colors" />
+                  <div className="w-12 h-12 bg-[#0B1F3A] rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#0057B8] transition-colors duration-200">
+                    <Phone size={20} className="text-[#0057B8] group-hover:text-white transition-colors" />
                   </div>
                   <div>
                     <p className="font-semibold text-[#0B1F3A] text-sm mb-1">Teléfonos</p>
                     <a
                       href="tel:+582613226494"
-                      className="block text-gray-600 text-sm hover:text-[#E8842B] transition-colors focus:outline-none focus:text-[#E8842B]"
+                      className="block text-gray-600 text-sm hover:text-[#0057B8] transition-colors focus:outline-none focus:text-[#0057B8]"
                     >
                       Oficina: 0261 322 6494
                     </a>
                     <a
                       href="tel:+584146361373"
-                      className="block text-gray-600 text-sm hover:text-[#E8842B] transition-colors focus:outline-none focus:text-[#E8842B]"
+                      className="block text-gray-600 text-sm hover:text-[#0057B8] transition-colors focus:outline-none focus:text-[#0057B8]"
                     >
                       Móvil: +58 414 636 1373
                     </a>
@@ -118,8 +118,8 @@ export default function Contacto() {
                 </div>
 
                 <div className="flex items-start gap-4 group">
-                  <div className="w-12 h-12 bg-[#0B1F3A] rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#E8842B] transition-colors duration-200">
-                    <Mail size={20} className="text-[#E8842B] group-hover:text-white transition-colors" />
+                  <div className="w-12 h-12 bg-[#0B1F3A] rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#0057B8] transition-colors duration-200">
+                    <Mail size={20} className="text-[#0057B8] group-hover:text-white transition-colors" />
                   </div>
                   <div>
                     <p className="font-semibold text-[#0B1F3A] text-sm mb-1">Correo electrónico</p>
@@ -189,10 +189,10 @@ export default function Contacto() {
                             placeholder="Juan Pérez"
                             aria-describedby={errors.name ? 'name-error' : undefined}
                             aria-invalid={!!errors.name}
-                            className={`w-full px-4 py-3 rounded-xl border text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-[#E8842B] ${
+                            className={`w-full px-4 py-3 rounded-xl border text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-[#0057B8] ${
                               errors.name
                                 ? 'border-red-400 bg-red-50'
-                                : 'border-gray-200 bg-gray-50 focus:border-[#E8842B]'
+                                : 'border-gray-200 bg-gray-50 focus:border-[#0057B8]'
                             }`}
                           />
                           {errors.name && (
@@ -220,10 +220,10 @@ export default function Contacto() {
                             placeholder="juan@empresa.com"
                             aria-describedby={errors.email ? 'email-error' : undefined}
                             aria-invalid={!!errors.email}
-                            className={`w-full px-4 py-3 rounded-xl border text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-[#E8842B] ${
+                            className={`w-full px-4 py-3 rounded-xl border text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-[#0057B8] ${
                               errors.email
                                 ? 'border-red-400 bg-red-50'
-                                : 'border-gray-200 bg-gray-50 focus:border-[#E8842B]'
+                                : 'border-gray-200 bg-gray-50 focus:border-[#0057B8]'
                             }`}
                           />
                           {errors.email && (
@@ -250,7 +250,7 @@ export default function Contacto() {
                           value={form.company}
                           onChange={handleChange}
                           placeholder="Mi Empresa C.A."
-                          className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-[#E8842B] focus:border-[#E8842B] transition-colors"
+                          className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-[#0057B8] focus:border-[#0057B8] transition-colors"
                         />
                       </div>
 
@@ -271,10 +271,10 @@ export default function Contacto() {
                           placeholder="Cuéntanos sobre tu proyecto o consulta..."
                           aria-describedby={errors.message ? 'message-error' : undefined}
                           aria-invalid={!!errors.message}
-                          className={`w-full px-4 py-3 rounded-xl border text-sm resize-none transition-colors focus:outline-none focus:ring-2 focus:ring-[#E8842B] ${
+                          className={`w-full px-4 py-3 rounded-xl border text-sm resize-none transition-colors focus:outline-none focus:ring-2 focus:ring-[#0057B8] ${
                             errors.message
                               ? 'border-red-400 bg-red-50'
-                              : 'border-gray-200 bg-gray-50 focus:border-[#E8842B]'
+                              : 'border-gray-200 bg-gray-50 focus:border-[#0057B8]'
                           }`}
                         />
                         {errors.message && (
