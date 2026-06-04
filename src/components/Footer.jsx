@@ -122,7 +122,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-gray-600">
-            SPSOIL &copy; {new Date().getFullYear()} — Todos los derechos reservados.
+            SPSOIL &copy; {new Date().getFullYear()} - Todos los derechos reservados.
           </p>
           <p className="text-xs text-gray-600/60">
             Service Petroleum and Supply C.A.

@@ -5,8 +5,8 @@ import {
   WifiHigh,
   Broadcast,
   Cpu,
-  Drop,
-  Award,
+  DropHalf,
+  Medal,
   Users,
   Lightning,
   Globe,
@@ -44,7 +44,7 @@ const services = [
     tag: 'Control',
   },
   {
-    icon: Drop,
+    icon: DropHalf,
     title: 'Servicios Petroleros',
     desc: 'Inyeccion de vapor para recuperacion de crudo con altos estandares.',
     tag: 'Petroleo',
@@ -53,7 +53,7 @@ const services = [
 
 const stats = [
   { value: '7+', label: 'Clientes estrategicos', icon: Users },
-  { value: '100%', label: 'Ejecucion comprobada', icon: Award },
+  { value: '100%', label: 'Ejecucion comprobada', icon: Medal },
   { value: '4', label: 'Lineas de servicio', icon: Lightning },
   { value: '5+', label: 'Paises atendidos', icon: Globe },
 ]

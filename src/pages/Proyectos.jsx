@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Award, ArrowRight, CheckCircle, Globe, Factory, Cpu } from '@phosphor-icons/react'
+import { Medal, ArrowRight, CheckCircle, Globe, Factory, Cpu } from '@phosphor-icons/react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 const HERO_IMG =
@@ -166,7 +166,7 @@ export default function Proyectos() {
                   <div className="flex items-start justify-between mb-4">
                     <h3 className="font-display font-bold text-[#0B1F3A] text-base leading-tight">{client}</h3>
                     <span className="shrink-0 ml-3 inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded-md border border-emerald-200">
-                      <Award size={10} weight="fill" />
+                      <Medal size={10} weight="fill" />
                       100%
                     </span>
                   </div>
