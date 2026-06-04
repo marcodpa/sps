@@ -38,7 +38,6 @@ export default function Contacto() {
       return
     }
     setLoading(true)
-    // Simulate submission
     setTimeout(() => {
       setLoading(false)
       setSubmitted(true)
@@ -48,47 +47,50 @@ export default function Contacto() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-32 pb-20 flex items-center min-h-[60vh]" aria-label="Contacto">
-        <div className="absolute inset-0 overflow-hidden">
+      <section className="relative pt-32 pb-24 flex items-center min-h-[55vh] overflow-hidden" aria-label="Contacto">
+        <div className="absolute inset-0">
           <img
             src={HERO_IMG}
-            alt="Equipo de trabajo SPSOIL"
+            alt=""
             className="w-full h-full object-cover"
             loading="eager"
-            width="1920"
-            height="800"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0B1F3A]/90 via-[#0B1F3A]/80 to-[#1C3D5A]/60" />
+          <div className="absolute inset-0 hero-gradient opacity-95" />
+          <div className="absolute inset-0 dot-pattern opacity-20" />
         </div>
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#F8FAFC] to-transparent" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <span className="section-eyebrow">Estamos para ayudarte</span>
-          <h1 className="section-title-light mb-4">Contáctanos</h1>
-          <p className="text-gray-300 text-lg max-w-2xl leading-relaxed">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#0057B8] animate-pulse" />
+            <span className="text-gray-400 text-xs font-medium uppercase tracking-wider">Estamos para ayudarte</span>
+          </div>
+          <h1 className="section-title-light text-5xl lg:text-6xl mb-4">Contáctanos</h1>
+          <p className="text-gray-400 text-base max-w-2xl leading-relaxed">
             Escríbenos sobre tu proyecto. Nuestro equipo te responderá a la brevedad posible.
           </p>
         </div>
       </section>
 
       {/* Contact section */}
-      <section className="bg-[#F4F6F8] py-24" aria-labelledby="contacto-heading">
+      <section className="bg-[#F8FAFC] py-24 lg:py-28" aria-labelledby="contacto-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-            {/* Contact info */}
+            {/* Left: Contact info */}
             <div className="lg:col-span-2 aos-hidden">
               <span className="section-eyebrow">Información de contacto</span>
-              <h2 id="contacto-heading" className="section-title mb-4">
-                Hablemos
-              </h2>
-              <div className="accent-line mb-8" />
+              <h2 id="contacto-heading" className="section-title mb-2">Hablemos</h2>
+              <p className="text-gray-500 text-sm mb-8 max-w-sm">
+                Estamos ubicados en Maracaibo, Venezuela. Contáctanos por cualquiera de nuestros canales.
+              </p>
 
-              <div className="space-y-6 mb-10">
-                <div className="flex items-start gap-4 group">
-                  <div className="w-12 h-12 bg-[#0B1F3A] rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#0057B8] transition-colors duration-200">
-                    <MapPin size={20} className="text-[#0057B8] group-hover:text-white transition-colors" />
+              <div className="space-y-5 mb-10">
+                <div className="flex items-start gap-4 p-4 rounded-xl bg-white border border-gray-100">
+                  <div className="w-10 h-10 rounded-xl bg-[#0057B8]/10 flex items-center justify-center shrink-0">
+                    <MapPin size={18} className="text-[#0057B8]" />
                   </div>
                   <div>
                     <p className="font-semibold text-[#0B1F3A] text-sm mb-1">Dirección fiscal</p>
-                    <address className="not-italic text-gray-600 text-sm leading-relaxed">
+                    <address className="not-italic text-gray-500 text-sm leading-relaxed">
                       Av. 5, Calle 13, Nº 26A-162<br />
                       San Francisco, Maracaibo<br />
                       Zulia, Venezuela
@@ -96,42 +98,34 @@ export default function Contacto() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4 group">
-                  <div className="w-12 h-12 bg-[#0B1F3A] rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#0057B8] transition-colors duration-200">
-                    <Phone size={20} className="text-[#0057B8] group-hover:text-white transition-colors" />
+                <div className="flex items-start gap-4 p-4 rounded-xl bg-white border border-gray-100">
+                  <div className="w-10 h-10 rounded-xl bg-[#0057B8]/10 flex items-center justify-center shrink-0">
+                    <Phone size={18} className="text-[#0057B8]" />
                   </div>
                   <div>
                     <p className="font-semibold text-[#0B1F3A] text-sm mb-1">Teléfonos</p>
-                    <a
-                      href="tel:+582613226494"
-                      className="block text-gray-600 text-sm hover:text-[#0057B8] transition-colors focus:outline-none focus:text-[#0057B8]"
-                    >
+                    <a href="tel:+582613226494" className="block text-gray-500 text-sm hover:text-[#0057B8] transition-colors">
                       Oficina: 0261 322 6494
                     </a>
-                    <a
-                      href="tel:+584146361373"
-                      className="block text-gray-600 text-sm hover:text-[#0057B8] transition-colors focus:outline-none focus:text-[#0057B8]"
-                    >
+                    <a href="tel:+584146361373" className="block text-gray-500 text-sm hover:text-[#0057B8] transition-colors">
                       Móvil: +58 414 636 1373
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4 group">
-                  <div className="w-12 h-12 bg-[#0B1F3A] rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#0057B8] transition-colors duration-200">
-                    <Mail size={20} className="text-[#0057B8] group-hover:text-white transition-colors" />
+                <div className="flex items-start gap-4 p-4 rounded-xl bg-white border border-gray-100">
+                  <div className="w-10 h-10 rounded-xl bg-[#0057B8]/10 flex items-center justify-center shrink-0">
+                    <Mail size={18} className="text-[#0057B8]" />
                   </div>
                   <div>
                     <p className="font-semibold text-[#0B1F3A] text-sm mb-1">Correo electrónico</p>
-                    <span className="text-gray-600 text-sm">
-                      Usa el formulario de contacto
-                    </span>
+                    <span className="text-gray-500 text-sm">Usa el formulario de contacto</span>
                   </div>
                 </div>
               </div>
 
-              {/* Map */}
-              <div className="rounded-2xl overflow-hidden shadow-lg h-52">
+              {/* Mini map */}
+              <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-sm h-44">
                 <iframe
                   title="Mapa de ubicación SPSOIL Maracaibo"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3891.9327657204856!2d-72.2131!3d10.6290!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e8999000000001%3A0x0!2sCalle+13+%26+Avenida+5%2C+Maracaibo+4004%2C+Zulia!5e0!3m2!1ses!2sve!4v1620000000000!5m2!1ses!2sve"
@@ -145,39 +139,33 @@ export default function Contacto() {
               </div>
             </div>
 
-            {/* Form */}
-            <div className="lg:col-span-3 aos-hidden" style={{ transitionDelay: '0.15s' }}>
-              <div className="bg-white rounded-3xl shadow-xl p-8 md:p-10">
+            {/* Right: Form */}
+            <div className="lg:col-span-3 aos-hidden" style={{ transitionDelay: '0.12s' }}>
+              <div className="bg-white rounded-2xl border border-gray-100 shadow-xl shadow-black/5 p-8 md:p-10">
                 {submitted ? (
                   <div className="text-center py-12">
-                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <CheckCircle size={32} className="text-green-600" />
+                    <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-5">
+                      <CheckCircle size={32} className="text-emerald-600" />
                     </div>
-                    <h3 className="font-display text-2xl font-bold text-[#0B1F3A] mb-2">
-                      ¡Mensaje enviado!
-                    </h3>
-                    <p className="text-gray-500">
+                    <h3 className="font-display text-2xl font-bold text-[#0B1F3A] mb-2">Mensaje enviado</h3>
+                    <p className="text-gray-500 text-sm">
                       Gracias por contactarnos. Nuestro equipo te responderá a la brevedad.
                     </p>
                   </div>
                 ) : (
                   <>
-                    <h3 className="font-display text-2xl font-bold text-[#0B1F3A] mb-2">
-                      Envíanos un mensaje
-                    </h3>
-                    <p className="text-gray-500 text-sm mb-8">
-                      Todos los campos marcados con <span className="text-red-500">*</span> son obligatorios.
-                    </p>
+                    <div className="mb-8">
+                      <h3 className="font-display text-xl font-bold text-[#0B1F3A]">Envíanos un mensaje</h3>
+                      <p className="text-gray-400 text-sm mt-1">
+                        Campos marcados con <span className="text-red-400">*</span> son obligatorios
+                      </p>
+                    </div>
 
-                    <form onSubmit={handleSubmit} noValidate className="space-y-6">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        {/* Name */}
+                    <form onSubmit={handleSubmit} noValidate className="space-y-5">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div>
-                          <label
-                            htmlFor="name"
-                            className="block text-sm font-semibold text-[#0B1F3A] mb-2"
-                          >
-                            Nombre completo <span className="text-red-500">*</span>
+                          <label htmlFor="name" className="block text-sm font-semibold text-[#0B1F3A] mb-1.5">
+                            Nombre completo <span className="text-red-400">*</span>
                           </label>
                           <input
                             id="name"
@@ -187,28 +175,23 @@ export default function Contacto() {
                             value={form.name}
                             onChange={handleChange}
                             placeholder="Juan Pérez"
-                            aria-describedby={errors.name ? 'name-error' : undefined}
                             aria-invalid={!!errors.name}
-                            className={`w-full px-4 py-3 rounded-xl border text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-[#0057B8] ${
+                            className={`w-full px-4 py-3 rounded-xl border text-sm transition-all duration-200 focus:outline-none focus:ring-2 ${
                               errors.name
-                                ? 'border-red-400 bg-red-50'
-                                : 'border-gray-200 bg-gray-50 focus:border-[#0057B8]'
+                                ? 'border-red-300 bg-red-50 focus:ring-red-400'
+                                : 'border-gray-200 bg-white focus:ring-[#0057B8] hover:border-gray-300'
                             }`}
                           />
                           {errors.name && (
-                            <p id="name-error" className="mt-1.5 text-xs text-red-600 flex items-center gap-1">
-                              <AlertCircle size={12} /> {errors.name}
+                            <p className="mt-1 text-xs text-red-500 flex items-center gap-1">
+                              <AlertCircle size={11} /> {errors.name}
                             </p>
                           )}
                         </div>
 
-                        {/* Email */}
                         <div>
-                          <label
-                            htmlFor="email"
-                            className="block text-sm font-semibold text-[#0B1F3A] mb-2"
-                          >
-                            Correo electrónico <span className="text-red-500">*</span>
+                          <label htmlFor="email" className="block text-sm font-semibold text-[#0B1F3A] mb-1.5">
+                            Correo electrónico <span className="text-red-400">*</span>
                           </label>
                           <input
                             id="email"
@@ -218,29 +201,24 @@ export default function Contacto() {
                             value={form.email}
                             onChange={handleChange}
                             placeholder="juan@empresa.com"
-                            aria-describedby={errors.email ? 'email-error' : undefined}
                             aria-invalid={!!errors.email}
-                            className={`w-full px-4 py-3 rounded-xl border text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-[#0057B8] ${
+                            className={`w-full px-4 py-3 rounded-xl border text-sm transition-all duration-200 focus:outline-none focus:ring-2 ${
                               errors.email
-                                ? 'border-red-400 bg-red-50'
-                                : 'border-gray-200 bg-gray-50 focus:border-[#0057B8]'
+                                ? 'border-red-300 bg-red-50 focus:ring-red-400'
+                                : 'border-gray-200 bg-white focus:ring-[#0057B8] hover:border-gray-300'
                             }`}
                           />
                           {errors.email && (
-                            <p id="email-error" className="mt-1.5 text-xs text-red-600 flex items-center gap-1">
-                              <AlertCircle size={12} /> {errors.email}
+                            <p className="mt-1 text-xs text-red-500 flex items-center gap-1">
+                              <AlertCircle size={11} /> {errors.email}
                             </p>
                           )}
                         </div>
                       </div>
 
-                      {/* Company */}
                       <div>
-                        <label
-                          htmlFor="company"
-                          className="block text-sm font-semibold text-[#0B1F3A] mb-2"
-                        >
-                          Empresa (opcional)
+                        <label htmlFor="company" className="block text-sm font-semibold text-[#0B1F3A] mb-1.5">
+                          Empresa <span className="text-gray-300 font-normal">(opcional)</span>
                         </label>
                         <input
                           id="company"
@@ -250,17 +228,13 @@ export default function Contacto() {
                           value={form.company}
                           onChange={handleChange}
                           placeholder="Mi Empresa C.A."
-                          className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-[#0057B8] focus:border-[#0057B8] transition-colors"
+                          className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#0057B8] hover:border-gray-300 transition-all duration-200"
                         />
                       </div>
 
-                      {/* Message */}
                       <div>
-                        <label
-                          htmlFor="message"
-                          className="block text-sm font-semibold text-[#0B1F3A] mb-2"
-                        >
-                          Mensaje <span className="text-red-500">*</span>
+                        <label htmlFor="message" className="block text-sm font-semibold text-[#0B1F3A] mb-1.5">
+                          Mensaje <span className="text-red-400">*</span>
                         </label>
                         <textarea
                           id="message"
@@ -269,17 +243,16 @@ export default function Contacto() {
                           value={form.message}
                           onChange={handleChange}
                           placeholder="Cuéntanos sobre tu proyecto o consulta..."
-                          aria-describedby={errors.message ? 'message-error' : undefined}
                           aria-invalid={!!errors.message}
-                          className={`w-full px-4 py-3 rounded-xl border text-sm resize-none transition-colors focus:outline-none focus:ring-2 focus:ring-[#0057B8] ${
+                          className={`w-full px-4 py-3 rounded-xl border text-sm resize-none transition-all duration-200 focus:outline-none focus:ring-2 ${
                             errors.message
-                              ? 'border-red-400 bg-red-50'
-                              : 'border-gray-200 bg-gray-50 focus:border-[#0057B8]'
+                              ? 'border-red-300 bg-red-50 focus:ring-red-400'
+                              : 'border-gray-200 bg-white focus:ring-[#0057B8] hover:border-gray-300'
                           }`}
                         />
                         {errors.message && (
-                          <p id="message-error" className="mt-1.5 text-xs text-red-600 flex items-center gap-1">
-                            <AlertCircle size={12} /> {errors.message}
+                          <p className="mt-1 text-xs text-red-500 flex items-center gap-1">
+                            <AlertCircle size={11} /> {errors.message}
                           </p>
                         )}
                       </div>
@@ -287,7 +260,7 @@ export default function Contacto() {
                       <button
                         type="submit"
                         disabled={loading}
-                        className="w-full btn-primary justify-center text-base py-4 disabled:opacity-60 disabled:cursor-not-allowed"
+                        className="w-full btn-primary justify-center text-base py-3.5 disabled:opacity-60 disabled:cursor-not-allowed"
                       >
                         {loading ? (
                           <>
