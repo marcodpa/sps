@@ -30,8 +30,7 @@ export default function Footer() {
               <span className="font-display text-2xl font-bold text-white">
                 SP<span className="text-[#0057B8]">SOIL</span>
               </span>
-              <img src="/assets/sps-oil-logo.png" alt="SPSOIL" className="h-8 w-auto" />
-                  &amp; Supply               </p>
+              <p className="text-xs text-gray-400 mt-1">SP Soil &amp; Supply, C.A.</p>
             </div>
             <p className="text-sm text-gray-400 leading-relaxed mb-6">
               Empresa venezolana especializada en servicios petroleros, automatización industrial y telecomunicaciones de alta calidad.
