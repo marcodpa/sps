@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { MapPin, Phone, Mail, Send, CheckCircle, AlertCircle } from 'lucide-react'
+import { MapPin, Phone, Envelope, PaperPlaneTilt, CheckCircle, WarningCircle } from '@phosphor-icons/react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 const HERO_IMG =
@@ -115,7 +115,7 @@ export default function Contacto() {
 
                 <div className="flex items-start gap-4 p-4 rounded-xl bg-white border border-gray-100">
                   <div className="w-10 h-10 rounded-xl bg-[#0057B8]/10 flex items-center justify-center shrink-0">
-                    <Mail size={18} className="text-[#0057B8]" />
+                    <Envelope size={18} className="text-[#0057B8]" />
                   </div>
                   <div>
                     <p className="font-semibold text-[#0B1F3A] text-sm mb-1">Correo electrónico</p>
@@ -184,7 +184,7 @@ export default function Contacto() {
                           />
                           {errors.name && (
                             <p className="mt-1 text-xs text-red-500 flex items-center gap-1">
-                              <AlertCircle size={11} /> {errors.name}
+                              <WarningCircle size={11} /> {errors.name}
                             </p>
                           )}
                         </div>
@@ -210,7 +210,7 @@ export default function Contacto() {
                           />
                           {errors.email && (
                             <p className="mt-1 text-xs text-red-500 flex items-center gap-1">
-                              <AlertCircle size={11} /> {errors.email}
+                              <WarningCircle size={11} /> {errors.email}
                             </p>
                           )}
                         </div>
@@ -252,7 +252,7 @@ export default function Contacto() {
                         />
                         {errors.message && (
                           <p className="mt-1 text-xs text-red-500 flex items-center gap-1">
-                            <AlertCircle size={11} /> {errors.message}
+                            <WarningCircle size={11} /> {errors.message}
                           </p>
                         )}
                       </div>
@@ -272,7 +272,7 @@ export default function Contacto() {
                           </>
                         ) : (
                           <>
-                            Enviar mensaje <Send size={18} />
+                            Enviar mensaje <PaperPlaneTilt size={18} />
                           </>
                         )}
                       </button>

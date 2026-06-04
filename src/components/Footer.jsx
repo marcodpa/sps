@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { MapPin, Phone, ArrowRight, ChevronUp } from 'lucide-react'
+import { MapPin, Phone } from '@phosphor-icons/react'
 
 const services = [
   'Conectividad',
