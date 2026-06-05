@@ -4,7 +4,7 @@ import { MapPin, Phone } from '@phosphor-icons/react'
 const services = [
   'Conectividad',
   'Telecomunicaciones',
-  'Automatización e Instrumentación',
+  'Automatizacion e Instrumentacion',
   'Servicios Petroleros',
 ]
 
@@ -18,39 +18,29 @@ const pages = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#060F1D] text-gray-400 relative">
-      {/* Top accent line */}
-      <div className="h-[2px] bg-gradient-to-r from-[#0057B8] via-[#1C3D5A] to-transparent" />
-
-      {/* Grid pattern overlay */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
-        style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
-          backgroundSize: '24px 24px',
-        }}
-      />
-
+    <footer className="bg-white text-gray-500 relative border-t border-gray-100">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
           {/* Brand column */}
           <div className="lg:col-span-4">
             <div className="mb-5">
-              <span className="font-display text-2xl font-bold text-white tracking-tight">
-                SP<span className="text-[#0057B8]">SOIL</span>
-              </span>
-              <p className="text-xs text-gray-500 mt-1 font-medium tracking-wide">
+              <img
+                src="/sps-logo.png"
+                alt="SPS - Service Petroleum and Supply"
+                className="h-12 w-auto object-contain"
+              />
+              <p className="text-xs text-gray-400 mt-2 font-medium tracking-wide">
                 Service Petroleum &amp; Supply, C.A.
               </p>
             </div>
-            <p className="text-sm text-gray-500 leading-relaxed mb-6 max-w-xs">
-              Empresa venezolana especializada en servicios petroleros, automatización industrial y telecomunicaciones de alta calidad.
+            <p className="text-sm text-gray-400 leading-relaxed mb-6 max-w-xs">
+              Empresa venezolana especializada en servicios petroleros, automatizacion industrial y telecomunicaciones de alta calidad.
             </p>
           </div>
 
           {/* Servicios */}
           <div className="lg:col-span-2">
-            <h3 className="text-white font-display font-semibold text-sm mb-5 tracking-wide">
+            <h3 className="text-[#0B1F3A] font-display font-semibold text-sm mb-5 tracking-wide">
               Servicios
             </h3>
             <ul className="space-y-2.5">
@@ -58,7 +48,7 @@ export default function Footer() {
                 <li key={s}>
                   <Link
                     to="/servicios"
-                    className="text-sm text-gray-500 hover:text-[#0057B8] transition-colors duration-200 focus:outline-none focus:text-[#0057B8]"
+                    className="text-sm text-gray-400 hover:text-[#0057B8] transition-colors duration-200"
                   >
                     {s}
                   </Link>
@@ -69,7 +59,7 @@ export default function Footer() {
 
           {/* Empresa */}
           <div className="lg:col-span-2">
-            <h3 className="text-white font-display font-semibold text-sm mb-5 tracking-wide">
+            <h3 className="text-[#0B1F3A] font-display font-semibold text-sm mb-5 tracking-wide">
               Empresa
             </h3>
             <ul className="space-y-2.5">
@@ -77,7 +67,7 @@ export default function Footer() {
                 <li key={to}>
                   <Link
                     to={to}
-                    className="text-sm text-gray-500 hover:text-[#0057B8] transition-colors duration-200 focus:outline-none focus:text-[#0057B8]"
+                    className="text-sm text-gray-400 hover:text-[#0057B8] transition-colors duration-200"
                   >
                     {label}
                   </Link>
@@ -88,7 +78,7 @@ export default function Footer() {
 
           {/* Contacto */}
           <div className="lg:col-span-4">
-            <h3 className="text-white font-display font-semibold text-sm mb-5 tracking-wide">
+            <h3 className="text-[#0B1F3A] font-display font-semibold text-sm mb-5 tracking-wide">
               Contacto
             </h3>
             <ul className="space-y-3.5">
@@ -96,8 +86,8 @@ export default function Footer() {
                 <div className="w-8 h-8 rounded-lg bg-[#0057B8]/10 flex items-center justify-center shrink-0 mt-0.5">
                   <MapPin size={14} className="text-[#0057B8]" />
                 </div>
-                <span className="text-sm text-gray-500 leading-relaxed">
-                  Av. 5, Calle 13, Nº 26A-162<br />
+                <span className="text-sm text-gray-400 leading-relaxed">
+                  Av. 5, Calle 13, N 26A-162<br />
                   San Francisco, Maracaibo<br />
                   Zulia, Venezuela
                 </span>
@@ -107,10 +97,10 @@ export default function Footer() {
                   <Phone size={14} className="text-[#0057B8]" />
                 </div>
                 <div className="flex flex-col gap-0.5">
-                  <a href="tel:+582613226494" className="text-sm text-gray-500 hover:text-[#0057B8] transition-colors duration-200 focus:outline-none focus:text-[#0057B8]">
+                  <a href="tel:+582613226494" className="text-sm text-gray-400 hover:text-[#0057B8] transition-colors duration-200">
                     0261 322 6494
                   </a>
-                  <a href="tel:+584146361373" className="text-sm text-gray-500 hover:text-[#0057B8] transition-colors duration-200 focus:outline-none focus:text-[#0057B8]">
+                  <a href="tel:+584146361373" className="text-sm text-gray-400 hover:text-[#0057B8] transition-colors duration-200">
                     +58 414 636 1373
                   </a>
                 </div>
@@ -119,12 +109,15 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Red swoosh line */}
+        <div className="mt-12 mb-6 h-[2px] bg-gradient-to-r from-[#C5192D] via-[#0057B8] to-transparent rounded-full" />
+
         {/* Bottom bar */}
-        <div className="mt-12 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-gray-600">
-            SPSOIL &copy; {new Date().getFullYear()} - Todos los derechos reservados.
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-xs text-gray-400">
+            SPS &copy; {new Date().getFullYear()} - Todos los derechos reservados.
           </p>
-          <p className="text-xs text-gray-600/60">
+          <p className="text-xs text-gray-400/60">
             Service Petroleum and Supply C.A.
           </p>
         </div>

@@ -24,32 +24,22 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-[#060F1D]/90 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.3)] border-b border-white/5'
-          : 'bg-transparent'
+          ? 'bg-white shadow-[0_1px_3px_rgba(0,0,0,0.08)] border-b border-gray-100'
+          : 'bg-white/95 backdrop-blur-sm'
       }`}
     >
-      {/* Red swoosh accent line */}
-      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#C5192D] via-[#0057B8] to-transparent opacity-60" />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link
             to="/"
-            className="relative flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-[#0057B8] focus:ring-offset-2 focus:ring-offset-[#060F1D] rounded-xl px-2 py-1"
+            className="relative flex items-center gap-3 group focus:outline-none rounded-xl"
           >
-            <div className="relative flex items-center gap-2">
-              <div className="absolute -inset-2 bg-gradient-to-r from-[#0057B8]/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              {/* Brand mark inspired by logo: S in blue, P in white, S in blue with red dot */}
-              <span className="relative font-display text-xl font-bold tracking-tight">
-                <span className="text-[#0057B8]">S</span>
-                <span className="text-white">P</span>
-                <span className="text-[#0057B8]">S</span>
-              </span>
-              <div className="h-5 w-px bg-white/10" />
-              <div className="flex flex-col leading-none">
-                <span className="text-[10px] font-bold text-white/80 tracking-wide">SERVICE PETROLEUM</span>
-                <span className="text-[10px] font-bold text-white/50 tracking-wide">&amp; SUPPLY C.A.</span>
-              </div>
+            <div className="flex items-center gap-3">
+              <img
+                src="/sps-logo.png"
+                alt="SPS - Service Petroleum and Supply"
+                className="h-10 md:h-11 w-auto object-contain"
+              />
             </div>
           </Link>
 
@@ -60,17 +50,17 @@ export default function Header() {
                 to={to}
                 end={to === '/'}
                 className={({ isActive }) =>
-                  `relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#0057B8] focus:ring-offset-2 focus:ring-offset-[#060F1D] ${
+                  `relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     isActive
-                      ? 'text-white'
-                      : 'text-gray-400 hover:text-white'
+                      ? 'text-[#0B1F3A]'
+                      : 'text-gray-500 hover:text-[#0B1F3A]'
                   }`
                 }
               >
                 {({ isActive }) => (
                   <>
                     {isActive && (
-                      <span className="absolute inset-0 bg-[#0057B8]/10 rounded-lg border border-[#0057B8]/20" />
+                      <span className="absolute inset-0 bg-[#0057B8]/5 rounded-lg" />
                     )}
                     <span className="relative z-10">{label}</span>
                   </>
@@ -79,14 +69,14 @@ export default function Header() {
             ))}
             <Link
               to="/contacto"
-              className="ml-4 inline-flex items-center gap-2 bg-[#C5192D] hover:bg-[#A01424] text-white font-semibold px-5 py-2.5 rounded-xl transition-all duration-200 text-sm shadow-lg shadow-red-500/20 hover:shadow-xl hover:shadow-red-500/30 hover:-translate-y-0.5 active:scale-[0.97] focus:outline-none focus:ring-2 focus:ring-[#C5192D] focus:ring-offset-2 focus:ring-offset-[#060F1D]"
+              className="ml-4 inline-flex items-center gap-2 bg-[#C5192D] hover:bg-[#A01424] text-white font-semibold px-5 py-2.5 rounded-xl transition-all duration-200 text-sm shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-[0.97]"
             >
               Contactanos
             </Link>
           </nav>
 
           <button
-            className="md:hidden text-white p-2 rounded-lg hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#0057B8] transition-all duration-200"
+            className="md:hidden text-[#0B1F3A] p-2 rounded-lg hover:bg-gray-100 transition-all duration-200"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-expanded={menuOpen}
             aria-label={menuOpen ? 'Cerrar menu' : 'Abrir menu'}
@@ -97,7 +87,7 @@ export default function Header() {
       </div>
 
       {menuOpen && (
-        <div className="md:hidden bg-[#060F1D]/95 backdrop-blur-xl border-t border-white/5 shadow-2xl">
+        <div className="md:hidden bg-white border-t border-gray-100 shadow-xl">
           <nav className="px-4 py-5 flex flex-col gap-1" aria-label="Menu movil">
             {navLinks.map(({ to, label }) => (
               <NavLink
@@ -108,15 +98,15 @@ export default function Header() {
                 className={({ isActive }) =>
                   `px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
                     isActive
-                      ? 'text-white bg-[#0057B8]/10 border border-[#0057B8]/20'
-                      : 'text-gray-400 hover:text-white hover:bg-white/5'
+                      ? 'text-[#0B1F3A] bg-[#0057B8]/5 border border-[#0057B8]/10'
+                      : 'text-gray-500 hover:text-[#0B1F3A] hover:bg-gray-50'
                   }`
                 }
               >
                 {label}
               </NavLink>
             ))}
-            <div className="mt-3 pt-3 border-t border-white/10">
+            <div className="mt-3 pt-3 border-t border-gray-100">
               <Link
                 to="/contacto"
                 onClick={() => setMenuOpen(false)}
