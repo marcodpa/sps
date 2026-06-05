@@ -11,23 +11,10 @@ const navLinks = [
 ]
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 30)
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'bg-white shadow-[0_1px_3px_rgba(0,0,0,0.08)] border-b border-gray-100'
-          : 'bg-white/95 backdrop-blur-sm'
-      }`}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#060F1D] border-b border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link
@@ -35,11 +22,13 @@ export default function Header() {
             className="relative flex items-center gap-3 group focus:outline-none rounded-xl"
           >
             <div className="flex items-center gap-3">
-              <img
-                src="/sps-logo.png"
-                alt="SPS - Service Petroleum and Supply"
-                className="h-10 md:h-11 w-auto object-contain"
-              />
+              <div className="bg-white rounded-lg p-1">
+                <img
+                  src="/sps-logo.png"
+                  alt="SPS - Service Petroleum and Supply"
+                  className="h-9 md:h-10 w-auto object-contain"
+                />
+              </div>
             </div>
           </Link>
 
@@ -52,15 +41,15 @@ export default function Header() {
                 className={({ isActive }) =>
                   `relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     isActive
-                      ? 'text-[#0B1F3A]'
-                      : 'text-gray-500 hover:text-[#0B1F3A]'
+                      ? 'text-white'
+                      : 'text-gray-400 hover:text-white'
                   }`
                 }
               >
                 {({ isActive }) => (
                   <>
                     {isActive && (
-                      <span className="absolute inset-0 bg-[#0057B8]/5 rounded-lg" />
+                      <span className="absolute inset-0 bg-white/5 rounded-lg" />
                     )}
                     <span className="relative z-10">{label}</span>
                   </>
@@ -76,7 +65,7 @@ export default function Header() {
           </nav>
 
           <button
-            className="md:hidden text-[#0B1F3A] p-2 rounded-lg hover:bg-gray-100 transition-all duration-200"
+            className="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-all duration-200"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-expanded={menuOpen}
             aria-label={menuOpen ? 'Cerrar menu' : 'Abrir menu'}
@@ -87,7 +76,7 @@ export default function Header() {
       </div>
 
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 shadow-xl">
+        <div className="md:hidden bg-[#060F1D] border-t border-white/5 shadow-xl">
           <nav className="px-4 py-5 flex flex-col gap-1" aria-label="Menu movil">
             {navLinks.map(({ to, label }) => (
               <NavLink
@@ -98,15 +87,15 @@ export default function Header() {
                 className={({ isActive }) =>
                   `px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
                     isActive
-                      ? 'text-[#0B1F3A] bg-[#0057B8]/5 border border-[#0057B8]/10'
-                      : 'text-gray-500 hover:text-[#0B1F3A] hover:bg-gray-50'
+                      ? 'text-white bg-white/5 border border-white/10'
+                      : 'text-gray-400 hover:text-white hover:bg-white/5'
                   }`
                 }
               >
                 {label}
               </NavLink>
             ))}
-            <div className="mt-3 pt-3 border-t border-gray-100">
+            <div className="mt-3 pt-3 border-t border-white/10">
               <Link
                 to="/contacto"
                 onClick={() => setMenuOpen(false)}
