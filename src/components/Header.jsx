@@ -22,13 +22,11 @@ export default function Header() {
             className="relative flex items-center gap-3 group focus:outline-none rounded-xl"
           >
             <div className="flex items-center gap-3">
-              <div className="bg-white rounded-lg p-1">
-                <img
-                  src="/sps-logo.png"
-                  alt="SPS - Service Petroleum and Supply"
-                  className="h-9 md:h-10 w-auto object-contain"
-                />
-              </div>
+              <img
+                src="/sps-logo.png"
+                alt="SPS - Service Petroleum and Supply"
+                className="h-10 md:h-11 w-auto object-contain"
+              />
             </div>
           </Link>
 

@@ -36,13 +36,11 @@ export default function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-4">
             <div className="mb-5">
-              <div className="bg-white rounded-lg p-1 inline-block">
-                <img
-                  src="/sps-logo.png"
-                  alt="SPS - Service Petroleum and Supply"
-                  className="h-12 w-auto object-contain"
-                />
-              </div>
+              <img
+                src="/sps-logo.png"
+                alt="SPS - Service Petroleum and Supply"
+                className="h-14 w-auto object-contain"
+              />
               <p className="text-xs text-gray-500 mt-2 font-medium tracking-wide">
                 Service Petroleum &amp; Supply, C.A.
               </p>
