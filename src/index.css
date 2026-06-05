@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --sps-blue: #0057B8;
+  --sps-red: #C5192D;
+  --sps-navy: #0B1F3A;
+  --sps-dark: #060F1D;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -28,7 +35,7 @@
   }
 
   ::selection {
-    background: #0057B8;
+    background: var(--sps-blue);
     color: white;
   }
 }
@@ -36,6 +43,11 @@
 @layer components {
   .btn-primary {
     @apply inline-flex items-center gap-2 bg-[#0057B8] hover:bg-[#003B72] hover:-translate-y-0.5 active:scale-[0.97] text-white font-semibold px-7 py-3.5 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#0057B8] focus:ring-offset-2 shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30;
+    min-height: 48px;
+  }
+
+  .btn-primary-red {
+    @apply inline-flex items-center gap-2 bg-[#C5192D] hover:bg-[#A01424] hover:-translate-y-0.5 active:scale-[0.97] text-white font-semibold px-7 py-3.5 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#C5192D] focus:ring-offset-2 shadow-lg shadow-red-500/20 hover:shadow-xl hover:shadow-red-500/30;
     min-height: 48px;
   }
 
@@ -58,6 +70,15 @@
     @apply block w-5 h-px bg-[#0057B8];
   }
 
+  .section-eyebrow-red {
+    @apply inline-flex items-center gap-2 text-[#C5192D] font-semibold text-xs uppercase tracking-[0.18em] mb-4;
+  }
+
+  .section-eyebrow-red::before {
+    content: '';
+    @apply block w-5 h-px bg-[#C5192D];
+  }
+
   .section-title {
     @apply font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#0B1F3A] leading-[1.08] tracking-tight;
   }
@@ -68,6 +89,25 @@
 
   .hero-gradient {
     background: linear-gradient(135deg, #060F1D 0%, #0B1F3A 50%, #1C3D5A 100%);
+  }
+
+  .hero-gradient-red {
+    background: linear-gradient(135deg, #060F1D 0%, #0B1F3A 40%, #1C3D5A 100%);
+  }
+
+  .sps-swoosh {
+    position: relative;
+  }
+
+  .sps-swoosh::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--sps-red), var(--sps-blue), transparent);
+    border-radius: 2px;
   }
 
   .section-divider {
