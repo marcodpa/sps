@@ -3,6 +3,7 @@ import {
   WifiHigh,
   Broadcast,
   Cpu,
+  Drop,
   DropHalf,
   ArrowRight,
   CheckCircle,
