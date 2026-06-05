@@ -25,7 +25,7 @@ export default function Header() {
               <img
                 src="/sps-logo.png"
                 alt="SPS - Service Petroleum and Supply"
-                className="h-10 md:h-11 w-auto object-contain"
+                className="h-14 md:h-16 w-auto object-contain"
               />
             </div>
           </Link>
