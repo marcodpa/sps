@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
-import { MapPin, Phone } from '@phosphor-icons/react'
+import { MapPin, Phone, ArrowUpRight } from '@phosphor-icons/react'
 
 const services = [
-  'Conectividad',
-  'Telecomunicaciones',
-  'Automatizacion e Instrumentacion',
-  'Servicios Petroleros',
+  { label: 'Conectividad', hash: '#conectividad' },
+  { label: 'Telecomunicaciones', hash: '#telecomunicaciones' },
+  { label: 'Automatizacion', hash: '#automatizacion' },
+  { label: 'Servicios petroleros', hash: '#petroleros' },
 ]
 
 const pages = [
@@ -18,117 +18,97 @@ const pages = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#060F1D] text-gray-400 relative">
-      {/* Top accent swoosh */}
-      <div className="h-[2px] bg-gradient-to-r from-[#C5192D] via-[#0057B8] to-transparent" />
+    <footer className="relative bg-ink-950 text-steel-400 overflow-hidden">
+      <div className="h-0.5 bg-gradient-to-r from-brand-red via-brand-blue to-transparent" />
+      <div className="absolute inset-0 bp-grid bp-grid-fade opacity-40" />
 
-      {/* Grid pattern */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
-        style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
-          backgroundSize: '24px 24px',
-        }}
-      />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
-          {/* Brand column */}
+      <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-4">
-            <div className="mb-5">
-              <img
-                src="/sps-logo.png"
-                alt="SPS - Service Petroleum and Supply"
-                className="h-20 w-auto object-contain"
-              />
-              <p className="text-xs text-gray-500 mt-2 font-medium tracking-wide">
-                Service Petroleum &amp; Supply, C.A.
-              </p>
-            </div>
-            <p className="text-sm text-gray-500 leading-relaxed mb-6 max-w-xs">
-              Empresa venezolana especializada en servicios petroleros, automatizacion industrial y telecomunicaciones de alta calidad.
+            <img
+              src="/sps-logo.png"
+              alt="SPS - Service Petroleum and Supply"
+              className="h-16 w-auto object-contain"
+            />
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-steel-500">
+              Empresa venezolana especializada en servicios petroleros, automatizacion
+              industrial y telecomunicaciones de alta calidad.
             </p>
           </div>
 
-          {/* Servicios */}
-          <div className="lg:col-span-2">
-            <h3 className="text-white font-display font-semibold text-sm mb-5 tracking-wide">
-              Servicios
-            </h3>
+          <nav className="lg:col-span-2" aria-label="Servicios">
+            <h3 className="mb-5 font-display text-sm font-semibold text-white">Servicios</h3>
             <ul className="space-y-2.5">
-              {services.map((s) => (
-                <li key={s}>
+              {services.map(({ label, hash }) => (
+                <li key={label}>
                   <Link
-                    to="/servicios"
-                    className="text-sm text-gray-500 hover:text-[#0057B8] transition-colors duration-200"
-                  >
-                    {s}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Empresa */}
-          <div className="lg:col-span-2">
-            <h3 className="text-white font-display font-semibold text-sm mb-5 tracking-wide">
-              Empresa
-            </h3>
-            <ul className="space-y-2.5">
-              {pages.map(({ to, label }) => (
-                <li key={to}>
-                  <Link
-                    to={to}
-                    className="text-sm text-gray-500 hover:text-[#0057B8] transition-colors duration-200"
+                    to={`/servicios${hash}`}
+                    className="text-sm text-steel-500 transition-colors hover:text-brand-blueLight"
                   >
                     {label}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Contacto */}
+          <nav className="lg:col-span-2" aria-label="Empresa">
+            <h3 className="mb-5 font-display text-sm font-semibold text-white">Empresa</h3>
+            <ul className="space-y-2.5">
+              {pages.map(({ to, label }) => (
+                <li key={to}>
+                  <Link
+                    to={to}
+                    className="text-sm text-steel-500 transition-colors hover:text-brand-blueLight"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
           <div className="lg:col-span-4">
-            <h3 className="text-white font-display font-semibold text-sm mb-5 tracking-wide">
-              Contacto
-            </h3>
+            <h3 className="mb-5 font-display text-sm font-semibold text-white">Contacto</h3>
             <ul className="space-y-3.5">
               <li className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-lg bg-[#0057B8]/10 flex items-center justify-center shrink-0 mt-0.5">
-                  <MapPin size={14} className="text-[#0057B8]" />
-                </div>
-                <span className="text-sm text-gray-500 leading-relaxed">
+                <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-blue/10">
+                  <MapPin size={14} className="text-brand-blueLight" />
+                </span>
+                <span className="text-sm leading-relaxed text-steel-500">
                   Av. 5, Calle 13, N 26A-162<br />
                   San Francisco, Maracaibo<br />
                   Zulia, Venezuela
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-[#0057B8]/10 flex items-center justify-center shrink-0">
-                  <Phone size={14} className="text-[#0057B8]" />
-                </div>
-                <div className="flex flex-col gap-0.5">
-                  <a href="tel:+582613226494" className="text-sm text-gray-500 hover:text-[#0057B8] transition-colors duration-200">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-blue/10">
+                  <Phone size={14} className="text-brand-blueLight" />
+                </span>
+                <span className="flex flex-col gap-0.5">
+                  <a href="tel:+582613226494" className="text-sm text-steel-500 transition-colors hover:text-brand-blueLight">
                     0261 322 6494
                   </a>
-                  <a href="tel:+584146361373" className="text-sm text-gray-500 hover:text-[#0057B8] transition-colors duration-200">
+                  <a href="tel:+584146361373" className="text-sm text-steel-500 transition-colors hover:text-brand-blueLight">
                     +58 414 636 1373
                   </a>
-                </div>
+                </span>
               </li>
             </ul>
+            <Link
+              to="/contacto"
+              className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-white transition-colors hover:text-brand-blueLight"
+            >
+              Solicitar cotizacion <ArrowUpRight size={15} weight="bold" />
+            </Link>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="mt-12 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-gray-600">
-            SPS &copy; {new Date().getFullYear()} - Todos los derechos reservados.
+        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 sm:flex-row">
+          <p className="font-mono text-xs text-steel-600">
+            SPS &copy; {new Date().getFullYear()}. Todos los derechos reservados.
           </p>
-          <p className="text-xs text-gray-600/60">
-            Service Petroleum and Supply C.A.
-          </p>
+          <p className="text-xs text-steel-600">Service Petroleum and Supply C.A.</p>
         </div>
       </div>
     </footer>
