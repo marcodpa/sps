@@ -282,19 +282,33 @@ export default function Home() {
       </section>
 
       {/* ═══════════════ SERVICES (bento) ═══════════════ */}
-      <section className="bg-steel-50 py-24 lg:py-28" aria-labelledby="services-h">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="max-w-2xl mb-12">
-            <h2 id="services-h" className="h-section mb-4">
-              Cuatro lineas de servicio para la industria.
-            </h2>
-            <p className="text-steel-500 leading-relaxed">
-              Del pozo a la sala de control: cubrimos recuperacion de crudo, automatizacion,
-              redes y telecomunicaciones bajo un solo equipo de ingenieria.
-            </p>
-          </Reveal>
+      <section aria-labelledby="services-h">
+        {/* ── Blue header ── */}
+        <div className="bg-brand-blue py-24 lg:py-28">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <Reveal className="max-w-2xl">
+              <p className="text-white/70 text-sm font-semibold tracking-[0.15em] uppercase mb-3">
+                Lo que ofrecemos
+              </p>
+              <h2
+                id="services-h"
+                className="font-display font-bold text-white leading-[1.05] tracking-tightest mb-4"
+                style={{ fontSize: 'clamp(1.75rem, 1.1rem + 2.4vw, 2.9rem)' }}
+              >
+                Cuatro lineas de servicio para la industria.
+              </h2>
+              <p className="text-white/80 leading-relaxed">
+                Del pozo a la sala de control: cubrimos recuperacion de crudo, automatizacion,
+                redes y telecomunicaciones bajo un solo equipo de ingenieria.
+              </p>
+            </Reveal>
+          </div>
+        </div>
 
-          <Stagger className="grid md:grid-cols-6 gap-4 lg:gap-5">
+        {/* ── White cards ── */}
+        <div className="bg-white py-24 lg:py-28">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <Stagger className="grid md:grid-cols-6 gap-4 lg:gap-5">
             {/* Flagship — wide, image, red accent */}
             <StaggerItem className="md:col-span-4">
               <Link to="/servicios#petroleros" className="block h-full">
@@ -378,6 +392,7 @@ export default function Home() {
               </Link>
             </StaggerItem>
           </Stagger>
+        </div>
         </div>
       </section>
 
