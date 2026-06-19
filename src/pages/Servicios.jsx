@@ -1,68 +1,316 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   Flame, Cpu, WifiHigh, Broadcast,
   Drop, Thermometer, GasPump, Ruler, Trash, Truck, Wrench,
-  Lightning, ArrowRight, ShieldCheck, Headphones, Gauge,
+  Lightning, ArrowRight, ShieldCheck, Headphones, Gauge, X,
   Cloud, Fan, BatteryCharging, Plug, Radio, Circuitry, SolarRoof,
   GearSix, Wind, FireExtinguisher, Monitor,
 } from '@phosphor-icons/react'
 
-/* ── Imágenes de alta calidad ── */
+/* ── Imágenes ── */
 const IMG = {
   calderas: 'https://images.unsplash.com/photo-1581092335901-5e50b5e8f3c0?auto=format&fit=crop&w=1400&q=80',
   petroleros: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1400&q=80',
   automatizacion: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80',
   pozo: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1000&q=80',
   tanques: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1000&q=80',
-  scada: 'https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit-crop&w=1000&q=80',
 }
 
-/* ── Datos de servicios petroleros ── */
+/* ── Datos completos de servicios petroleros ── */
 const serviciosPetroleros = [
-  { icon: Drop, title: 'Inyección de vapor a pozos',
-    desc: 'Servicio de inyección de vapor para recuperación mejorada de crudo en pozos petroleros. Equipos de alta capacidad y personal especializado.' },
-  { icon: Tank, title: 'Inyección de vapor para patio de tanques',
-    desc: 'Vapor para calentamiento y mantenimiento de tanques de almacenamiento en patios y estaciones de flujo.' },
-  { icon: Tank, title: 'Alquiler de Frac Tank 500 bls',
-    desc: 'Frac tanks con capacidad de 500 barriles para almacenamiento temporal de crudo, agua y fluidos de proceso.' },
-  { icon: GasPump, title: 'Bombeo de crudo',
-    desc: 'Servicio de bombeo de crudo para transferencia, carga y descarga en patios de tanques y estaciones.' },
-  { icon: Drop, title: 'Saneamiento con hidrojet',
-    desc: 'Limpieza y saneamiento de áreas contaminadas con petróleo mediante equipo hidrojet de alta presión.' },
-  { icon: Truck, title: 'Trasegado con vacuum 160 bls',
-    desc: 'Servicio de trasegado de crudo y fluidos con unidad vacuum de 160 barriles para operaciones de campo.' },
-  { icon: Wrench, title: 'Camiones con equipos de soldadura',
-    desc: 'Unidades móviles con equipos de soldadura para reparaciones y trabajos en campo, listas para despliegue inmediato.' },
-  { icon: Wind, title: 'Vapor para calentamiento de sellos',
-    desc: 'Vapor para calentamiento de sellos de bomba en operaciones de carga de buques en terminales marítimos.' },
-  { icon: Recycle, title: 'Recuperación de crudo en fosas',
-    desc: 'Recuperación de crudo en fosas de pasivos ambientales, cumpliendo normas ambientales y de seguridad.' },
-  { icon: Wrench, title: 'Reparación y mantenimiento a calentadores',
-    desc: 'Mantenimiento preventivo y correctivo de calentadores industriales utilizados en procesos de producción.' },
-  { icon: Tool, title: 'Reparación y mantenimiento a calderas',
-    desc: 'Servicio integral de reparación y mantenimiento de calderas portátiles y estacionarias. Certificación y pruebas.' },
+  {
+    icon: Drop, title: 'Inyección de vapor a pozos',
+    desc: 'Servicio de inyección de vapor para recuperación mejorada de crudo en pozos petroleros.',
+    detail: {
+      fullDesc: 'Servicio especializado de inyección de vapor a pozos petroleros para recuperación térmica de crudo pesado y extrapesado. Utilizamos calderas portátiles de alta capacidad con operadores capacitados y supervisión continua de parámetros críticos.',
+      equipos: ['Calderas portátiles hasta 50 MMBTU/h', 'Cabezales de inyección', 'Manifolds de distribución', 'Sistemas de monitoreo de presión y temperatura'],
+      aplicaciones: ['Recuperación mejorada de crudo pesado', 'Inyección cíclica de vapor (CSS)', 'Inyección continua (steam flooding)', 'Campos de crudo extrapesado'],
+      beneficios: ['Incremento de producción hasta 70%', 'Reducción de viscosidad del crudo', 'Operación 24/7 con personal calificado', 'Monitoreo remoto de parámetros'],
+    },
+  },
+  {
+    icon: Tank, title: 'Inyección de vapor para patio de tanques',
+    desc: 'Vapor para calentamiento de tanques de almacenamiento en patios y estaciones de flujo.',
+    detail: {
+      fullDesc: 'Suministro de vapor para calentamiento indirecto de tanques de almacenamiento en patios de tanques y estaciones de flujo. Mantenemos la temperatura óptima del crudo para facilitar su manejo, bombeo y transferencia.',
+      equipos: ['Calderas portátiles', 'Serpentines de calentamiento', 'Trazas de vapor', 'Sistemas de control de temperatura'],
+      aplicaciones: ['Calentamiento de tanques de almacenamiento', 'Mantenimiento de temperatura de crudo', 'Calentamiento de líneas de transferencia', 'Estaciones de flujo y patios de tanques'],
+      beneficios: ['Optimización de bombeo', 'Reducción de tiempos de transferencia', 'Prevención de solidificación del crudo', 'Eficiencia energética'],
+    },
+  },
+  {
+    icon: Tank, title: 'Alquiler de Frac Tank 500 bls',
+    desc: 'Frac tanks con capacidad de 500 barriles para almacenamiento temporal de fluidos.',
+    detail: {
+      fullDesc: 'Alquiler de tanques fractura (Frac Tanks) con capacidad de 500 barriles para almacenamiento temporal de crudo, agua de producción, lodos y otros fluidos de proceso. Equipos en óptimas condiciones, listos para despacho inmediato.',
+      equipos: ['Frac Tank 500 barriles', 'Válvulas de alivio calibradas', 'Medidores de nivel', 'Sistemas de venteo'],
+      aplicaciones: ['Almacenamiento temporal de crudo', 'Contención de aguas de producción', 'Almacenamiento de lodos petrolizados', 'Operaciones de fractura y estimulación'],
+      beneficios: ['Disponibilidad inmediata', 'Capacidad certificada', 'Movilización rápida', 'Mantenimiento preventivo incluido'],
+    },
+  },
+  {
+    icon: GasPump, title: 'Bombeo de crudo',
+    desc: 'Bombeo de crudo para transferencia, carga y descarga en patios de tanques y estaciones.',
+    detail: {
+      fullDesc: 'Servicio de bombeo de crudo para operaciones de transferencia, carga y descarga en patios de tanques, estaciones de flujo y terminales. Contamos con bombas de diferentes capacidades y configuraciones para adaptarnos a cada necesidad operativa.',
+      equipos: ['Bombas centrífugas', 'Bombas de desplazamiento positivo', 'Motores eléctricos y diésel', 'Mangueras y conexiones'],
+      aplicaciones: ['Transferencia entre tanques', 'Carga de buques y gandolas', 'Descarga de unidades de transporte', 'Respaldo de bombas fijas'],
+      beneficios: ['Movilización rápida', 'Equipos de respaldo en sitio', 'Operadores capacitados', 'Conexión rápida'],
+    },
+  },
+  {
+    icon: Drop, title: 'Saneamiento con hidrojet',
+    desc: 'Limpieza de áreas contaminadas con petróleo mediante equipo hidrojet de alta presión.',
+    detail: {
+      fullDesc: 'Servicio de saneamiento ambiental mediante sistema hidrojet de alta presión para limpieza de áreas contaminadas con petróleo, crudo y derivados. Removemos hidrocarburos adheridos a superficies, suelos y estructuras, cumpliendo con normativas ambientales.',
+      equipos: ['Unidad hidrojet de alta presión', 'Boquillas rotativas y de chorro plano', 'Tanques de recuperación de residuos', 'Equipos de protección personal'],
+      aplicaciones: ['Limpieza de losas y patios', 'Descontaminación de suelos', 'Limpieza de estructuras metálicas', 'Saneamiento de fosas y diques'],
+      beneficios: ['Alta eficiencia de limpieza', 'Mínimo uso de químicos', 'Recuperación de residuos', 'Cumplimiento ambiental'],
+    },
+  },
+  {
+    icon: Truck, title: 'Trasegado con vacuum 160 bls',
+    desc: 'Trasegado de crudo y fluidos con unidad vacuum de 160 barriles para operaciones de campo.',
+    detail: {
+      fullDesc: 'Servicio de trasegado de crudo, agua y fluidos de proceso utilizando unidades vacuum con capacidad de 160 barriles. Ideales para operaciones de recolección, limpieza y transferencia en locaciones de difícil acceso o sin infraestructura fija.',
+      equipos: ['Unidad vacuum 160 barriles', 'Mangueras de succión y descarga', 'Sistema de vacío de alto caudal', 'Válvulas y acoples rápidos'],
+      aplicaciones: ['Recolección de crudo en pozos', 'Extracción de fluidos de fosas', 'Limpieza de tanques API', 'Trasiego de emergencia'],
+      beneficios: ['Alta capacidad de succión', 'Movilización autónoma', 'Operación en zonas remotas', 'Respuesta inmediata'],
+    },
+  },
+  {
+    icon: Wrench, title: 'Camiones con equipos de soldadura',
+    desc: 'Unidades móviles con equipos de soldadura para reparaciones en campo.',
+    detail: {
+      fullDesc: 'Unidades móviles equipadas con soldadoras y equipos de corte para trabajos de reparación, mantenimiento y fabricación en campo. Despliegue inmediato a locaciones remotas con personal calificado en soldadura certificada.',
+      equipos: ['Soldadoras inverter y convencionales', 'Equipos de corte por plasma', 'Equipos de oxicorte', 'Generadores eléctricos'],
+      aplicaciones: ['Reparación de tuberías', 'Fabricación de estructuras metálicas', 'Mantenimiento de tanques', 'Trabajos en plataformas y locaciones'],
+      beneficios: ['Movilización inmediata', 'Personal certificado', 'Equipos autónomos', 'Cobertura nacional'],
+    },
+  },
+  {
+    icon: Wind, title: 'Vapor para calentamiento de sellos',
+    desc: 'Vapor para calentamiento de sellos de bomba en carga de buques en terminales marítimos.',
+    detail: {
+      fullDesc: 'Suministro de vapor para calentamiento de sellos mecánicos de bombas durante operaciones de carga y descarga de buques en terminales marítimos y fluviales. Garantizamos la temperatura adecuada para evitar daños en los sellos y asegurar la continuidad operativa.',
+      equipos: ['Calderas portátiles', 'Mangueras de vapor aisladas', 'Reguladores de presión y temperatura', 'Trazas de vapor flexibles'],
+      aplicaciones: ['Terminales marítimos de carga', 'Muelles de descarga de crudo', 'Sellos de bombas de gran tamaño', 'Calentamiento previo a arranque'],
+      beneficios: ['Prevención de daños en sellos', 'Continuidad operativa', 'Reducción de paradas no planificadas', 'Personal especializado'],
+    },
+  },
+  {
+    icon: Recycle, title: 'Recuperación de crudo en fosas',
+    desc: 'Recuperación de crudo en fosas de pasivos ambientales.',
+    detail: {
+      fullDesc: 'Servicio de recuperación de crudo en fosas de pasivos ambientales, pozos abandonados y áreas de derrames. Utilizamos equipos especializados para extraer, separar y recuperar el hidrocarburo, minimizando el impacto ambiental y generando valor del crudo recuperado.',
+      equipos: ['Unidades vacuum', 'Separadores gas-líquido', 'Bombas neumáticas e hidráulicas', 'Equipos de contención'],
+      aplicaciones: ['Fosas de pasivos ambientales', 'Derrames de crudo', 'Pozos abandonados', 'Áreas de antigua producción'],
+      beneficios: ['Recuperación de crudo aprovechable', 'Saneamiento ambiental', 'Cumplimiento de normativas', 'Reducción de pasivos'],
+    },
+  },
+  {
+    icon: Wrench, title: 'Reparación y mantenimiento a calentadores',
+    desc: 'Mantenimiento preventivo y correctivo de calentadores industriales.',
+    detail: {
+      fullDesc: 'Servicio integral de reparación y mantenimiento de calentadores industriales utilizados en procesos de producción petrolera. Incluye diagnóstico, limpieza, reparación de componentes y pruebas de funcionamiento para asegurar la operación óptima del equipo.',
+      equipos: ['Herramientas de diagnóstico', 'Equipos de limpieza de tubos', 'Equipos de pruebas hidrostáticas', 'Instrumentos de medición calibrados'],
+      aplicaciones: ['Calentadores de crudo directos e indirectos', 'Intercambiadores de calor', 'Calentadores de tanques', 'Sistemas de calentamiento de procesos'],
+      beneficios: ['Extensión de vida útil del equipo', 'Eficiencia térmica mejorada', 'Reducción de paradas', 'Programas de mantenimiento preventivo'],
+    },
+  },
+  {
+    icon: Tool, title: 'Reparación y mantenimiento a calderas',
+    desc: 'Mantenimiento de calderas portátiles y estacionarias con certificación.',
+    detail: {
+      fullDesc: 'Mantenimiento preventivo, correctivo y predictivo de calderas portátiles y estacionarias. Realizamos inspección de tubos, pruebas hidrostáticas, calibración de quemadores, revisión de sistemas de seguridad y certificación de equipos según normativa aplicable.',
+      equipos: ['Equipos de ultrasonido', 'Cámaras de inspección', 'Equipos de limpieza química', 'Herramientas de calibración'],
+      aplicaciones: ['Calderas portátiles de inyección', 'Calderas estacionarias', 'Generadores de vapor', 'Calderas de recuperación de calor'],
+      beneficios: ['Certificación de equipos', 'Operación segura y confiable', 'Optimización de consumo de combustible', 'Programas de mantenimiento a medida'],
+    },
+  },
 ]
 
+/* ── Datos completos de automatización ── */
 const serviciosAutomatizacion = [
-  { icon: Radio, title: 'Rehabilitación de telemetría',
-    desc: 'Rehabilitación de sistemas de telemetría en pozos y estaciones de producción para monitoreo remoto en tiempo real.' },
-  { icon: Circuitry, title: 'Programación de PLC',
-    desc: 'Programación, configuración y puesta en marcha de controladores lógicos programables (PLC) en estaciones de producción.' },
-  { icon: Cpu, title: 'Programación de RTU',
-    desc: 'Programación de unidades remotas (RTU) para pozos de producción e inyección de agua, con enlace a SCADA.' },
-  { icon: Monitor, title: 'Servicio SCADA Wonderware',
-    desc: 'Implementación y soporte del sistema SCADA Wonderware CIBO para supervisión y control de procesos industriales.' },
-  { icon: Gauge, title: 'Variadores y bombas BCP',
-    desc: 'Instalación y programación de variadores de frecuencia en pozos con bombas BCP, integrados con RTU.' },
-  { icon: Ruler, title: 'Instrumentación de campo',
-    desc: 'Instrumentación de pozos y estaciones: sensores de presión, temperatura, flujo y nivel para monitoreo continuo.' },
-  { icon: Plug, title: 'Sistemas de puesta a tierra',
-    desc: 'Cableado e instalación de sistemas de puesta a tierra y protección contra pararrayos para infraestructura crítica.' },
-  { icon: SolarRoof, title: 'Paneles solares para telemetría',
-    desc: 'Instalación de paneles solares para alimentar sistemas de telemetría en pozos de inyección de agua sin electrificación.' },
+  {
+    icon: Radio, title: 'Rehabilitación de telemetría',
+    desc: 'Rehabilitación de sistemas de telemetría en pozos y estaciones de producción.',
+    detail: {
+      fullDesc: 'Diagnóstico, reparación y puesta en marcha de sistemas de telemetría en pozos y estaciones de producción. Restauramos la comunicación remota entre los equipos de campo y la sala de control, permitiendo el monitoreo continuo de variables críticas en tiempo real.',
+      equipos: ['RTU', 'Radios UHF/VHF', 'Sensores y transmisores', 'Sistemas de alimentación solar'],
+      aplicaciones: ['Pozos de producción', 'Estaciones de flujo', 'Patios de tanques', 'Áreas remotas sin electricidad'],
+      beneficios: ['Monitoreo remoto en tiempo real', 'Detección temprana de fallas', 'Reducción de visitas a campo', 'Optimización de producción'],
+    },
+  },
+  {
+    icon: Circuitry, title: 'Programación de PLC',
+    desc: 'Programación y puesta en marcha de PLC en estaciones de producción.',
+    detail: {
+      fullDesc: 'Programación, configuración y puesta en marcha de controladores lógicos programables (PLC) para automatización de procesos en estaciones de producción, patios de tanques y plantas de tratamiento.',
+      equipos: ['PLC Allen Bradley (ControlLogix, CompactLogix)', 'PLC Siemens (S7-1200, S7-1500)', 'PLC Modicon', 'HMI PanelView, WinCC'],
+      aplicaciones: ['Control de estaciones de flujo', 'Automatización de patios de tanques', 'Sistemas de seguridad (ESD)', 'Control de procesos continuos'],
+      beneficios: ['Automatización completa de procesos', 'Integración con SCADA', 'Mayor confiabilidad operativa', 'Soporte y actualizaciones'],
+    },
+  },
+  {
+    icon: Cpu, title: 'Programación de RTU',
+    desc: 'Programación de RTU para pozos de producción e inyección de agua.',
+    detail: {
+      fullDesc: 'Programación y configuración de Unidades Remotas (RTU) para pozos de producción e inyección de agua. Integramos sensores de campo, actuadores y sistemas de comunicación para el monitoreo y control remoto de pozos.',
+      equipos: ['RTU Allen Bradley', 'RTU Siemens', 'RTU Bristol/Emerson', 'Sensores de presión, temperatura y nivel'],
+      aplicaciones: ['Pozos de producción de crudo', 'Pozos de inyección de agua', 'Pozos de inyección de vapor', 'Baterías de pozos'],
+      beneficios: ['Control remoto de pozos', 'Optimización de producción', 'Reducción de intervenciones', 'Datos en tiempo real al SCADA'],
+    },
+  },
+  {
+    icon: Monitor, title: 'Servicio SCADA Wonderware',
+    desc: 'Implementación y soporte del sistema SCADA Wonderware CIBO.',
+    detail: {
+      fullDesc: 'Implementación, configuración y soporte técnico del sistema SCADA Wonderware CIBO para supervisión, control y optimización de procesos industriales. Incluye desarrollo de pantallas, históricos, alarmas y reportes personalizados.',
+      equipos: ['Wonderware System Platform', 'Wonderware InTouch', 'Wonderware Historian', 'Servidores de comunicación OPC'],
+      aplicaciones: ['Supervisión de estaciones de producción', 'Control de procesos industriales', 'Gestión de alarmas y eventos', 'Reportes de producción diarios'],
+      beneficios: ['Visualización centralizada de procesos', 'Históricos de producción', 'Gestión de alarmas inteligente', 'Acceso remoto seguro'],
+    },
+  },
+  {
+    icon: Gauge, title: 'Variadores y bombas BCP',
+    desc: 'Instalación y programación de variadores en pozos con bombas BCP.',
+    detail: {
+      fullDesc: 'Instalación, programación y puesta en marcha de variadores de frecuencia (VFD) en pozos equipados con bombas de cavidades progresivas (BCP). Optimizamos la velocidad de la bomba según las condiciones del pozo, maximizando la producción y extendiendo la vida útil del equipo.',
+      equipos: ['Variadores Allen Bradley PowerFlex', 'Variadores Siemens Sinamics', 'Bombas BCP', 'RTU integradas'],
+      aplicaciones: ['Pozos de crudo pesado con BCP', 'Optimización de producción', 'Control de velocidad variable', 'Protección de equipos de fondo'],
+      beneficios: ['Ahorro energético significativo', 'Mayor vida útil de la bomba', 'Optimización de producción', 'Monitoreo remoto del variador'],
+    },
+  },
+  {
+    icon: Ruler, title: 'Instrumentación de campo',
+    desc: 'Instrumentación de pozos y estaciones: sensores y monitoreo continuo.',
+    detail: {
+      fullDesc: 'Suministro, instalación y calibración de instrumentos de medición para pozos y estaciones de producción. Incluye sensores de presión, temperatura, flujo y nivel, así como transmisores y sistemas de adquisición de datos.',
+      equipos: ['Transmisores de presión Rosemount', 'Sensores de temperatura RTD/termocupla', 'Medidores de flujo másico', 'Sensores de nivel ultrasónicos y radar'],
+      aplicaciones: ['Cabezales de pozos', 'Líneas de producción', 'Separadores gas-líquido', 'Tanques de almacenamiento'],
+      beneficios: ['Mediciones precisas y confiables', 'Calibración certificada', 'Integración con PLC/SCADA', 'Reducción de incertidumbre operativa'],
+    },
+  },
+  {
+    icon: Plug, title: 'Sistemas de puesta a tierra',
+    desc: 'Cableado e instalación de sistemas de puesta a tierra y pararrayos.',
+    detail: {
+      fullDesc: 'Diseño e instalación de sistemas de puesta a tierra y protección contra pararrayos para infraestructura crítica. Garantizamos la protección de equipos electrónicos, seguridad del personal y cumplimiento de normativas eléctricas y de seguridad industrial.',
+      equipos: ['Varillas copperweld', 'Cable de cobre desnudo', 'Pararrayos tipo PDC', 'Medidores de resistencia de tierra'],
+      aplicaciones: ['Estaciones de producción', 'Patios de tanques', 'Salas de control y equipos electrónicos', 'Torres de telecomunicaciones'],
+      beneficios: ['Protección de equipos electrónicos', 'Seguridad del personal', 'Cumplimiento de normativas', 'Reducción de daños por descargas'],
+    },
+  },
+  {
+    icon: SolarRoof, title: 'Paneles solares para telemetría',
+    desc: 'Instalación de paneles solares para telemetría en pozos sin electricidad.',
+    detail: {
+      fullDesc: 'Instalación de sistemas de paneles solares para alimentar equipos de telemetría en pozos de inyección de agua y producción que no cuentan con electrificación. Diseñamos sistemas autónomos con baterías y reguladores para operación continua 24/7.',
+      equipos: ['Paneles solares fotovoltaicos', 'Reguladores de carga MPPT', 'Baterías de ciclo profundo', 'Gabinete hermético para equipos'],
+      aplicaciones: ['Pozos de inyección de agua remotos', 'Telemetría de pozos de producción', 'RTU alimentadas con energía solar', 'Áreas sin tendido eléctrico'],
+      beneficios: ['Operación autónoma sin red eléctrica', 'Cero emisiones', 'Mantenimiento mínimo', 'Instalación rápida y modular'],
+    },
+  },
 ]
 
 export default function Servicios() {
+  const [selected, setSelected] = useState(null)
+
+  const close = () => setSelected(null)
+
+  /* ── Detail panel ── */
+  const renderDetail = (s) => {
+    if (!s) return null
+    return (
+      <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-ink-950/80 backdrop-blur-sm py-10 px-4"
+        onClick={close}>
+        <div className="relative w-full max-w-4xl rounded-2xl border border-white/10 bg-ink-900 shadow-2xl"
+          onClick={(e) => e.stopPropagation()}>
+          {/* Header */}
+          <div className="flex items-center justify-between border-b border-white/10 px-6 py-5 sm:px-8">
+            <div className="flex items-center gap-4">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue/15 text-brand-blueLight">
+                <s.icon size={24} weight="bold" />
+              </div>
+              <div>
+                <h3 className="font-display text-xl font-bold text-white">{s.title}</h3>
+                <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-steel-500">Detalle del servicio</span>
+              </div>
+            </div>
+            <button onClick={close}
+              className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-steel-400 transition-all duration-200 hover:border-white/30 hover:text-white">
+              <X size={18} />
+            </button>
+          </div>
+
+          <div className="px-6 py-6 sm:px-8 sm:py-8">
+            <p className="text-steel-300 leading-relaxed mb-8">{s.detail.fullDesc}</p>
+
+            <div className="grid sm:grid-cols-2 gap-6">
+              {/* Equipos */}
+              <div className="rounded-xl border border-white/10 bg-ink-950/50 p-5">
+                <h4 className="flex items-center gap-2 font-display text-sm font-bold text-white mb-4">
+                  <span className="flex h-6 w-6 items-center justify-center rounded bg-brand-blue/20 text-brand-blueLight text-xs">E</span>
+                  Equipos utilizados
+                </h4>
+                <ul className="space-y-2">
+                  {s.detail.equipos.map((item) => (
+                    <li key={item} className="flex items-start gap-2.5 text-sm text-steel-400">
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand-blue" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Aplicaciones */}
+              <div className="rounded-xl border border-white/10 bg-ink-950/50 p-5">
+                <h4 className="flex items-center gap-2 font-display text-sm font-bold text-white mb-4">
+                  <span className="flex h-6 w-6 items-center justify-center rounded bg-brand-blue/20 text-brand-blueLight text-xs">A</span>
+                  Aplicaciones
+                </h4>
+                <ul className="space-y-2">
+                  {s.detail.aplicaciones.map((item) => (
+                    <li key={item} className="flex items-start gap-2.5 text-sm text-steel-400">
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-emerald-400" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Beneficios */}
+              <div className="sm:col-span-2 rounded-xl border border-white/10 bg-ink-950/50 p-5">
+                <h4 className="flex items-center gap-2 font-display text-sm font-bold text-white mb-4">
+                  <span className="flex h-6 w-6 items-center justify-center rounded bg-emerald-500/20 text-emerald-400 text-xs">B</span>
+                  Beneficios
+                </h4>
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {s.detail.beneficios.map((item) => (
+                    <div key={item} className="flex items-center gap-3 rounded-lg border border-white/5 bg-white/[0.03] p-3">
+                      <ShieldCheck size={16} className="text-emerald-400 shrink-0" />
+                      <span className="text-sm text-steel-300">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div className="mt-8 flex justify-center">
+              <Link to="/contacto"
+                className="inline-flex items-center gap-2 rounded-xl bg-brand-blue px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-blue/90">
+                Solicitar este servicio <ArrowRight size={18} weight="bold" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <>
       {/* ═══════════════ HERO ─────────────────── */}
@@ -90,8 +338,8 @@ export default function Servicios() {
             </h1>
 
             <p className="text-steel-300 text-base sm:text-lg leading-relaxed max-w-2xl mb-8">
-              Desde inyección de vapor y alquiler de calderas hasta automatización SCADA y
-              telecomunicaciones — ofrecemos soluciones integrales para la industria petrolera y manufacturera.
+              Desde inyección de vapor y alquiler de calderas hasta automatización SCADA —
+              ofrecemos soluciones integrales con más de 7 años de experiencia en campo.
             </p>
 
             <div className="flex flex-wrap gap-2.5">
@@ -110,7 +358,7 @@ export default function Servicios() {
         </div>
       </section>
 
-      {/* ═══════════════ CALDERAS PORTÁTILES ──── */}
+      {/* ═══════════════ CALDERAS ─────────────── */}
       <section id="calderas" className="scroll-mt-20 relative overflow-hidden bg-ink-950" aria-labelledby="calderas-h">
         <div className="absolute inset-0">
           <img src={IMG.calderas} alt="" className="h-full w-full object-cover" loading="lazy" />
@@ -129,8 +377,8 @@ export default function Servicios() {
               </h2>
               <p className="text-steel-300 leading-relaxed max-w-xl mb-8">
                 Contamos con calderas portátiles de alta capacidad para proyectos de inyección
-                de vapor, calentamiento de procesos y aplicaciones industriales.
-                Equipos certificados, con mantenimiento preventivo incluido y operadores capacitados.
+                de vapor y calentamiento de procesos. Equipos certificados, con mantenimiento
+                preventivo incluido y operadores capacitados.
               </p>
               <div className="grid grid-cols-2 gap-4">
                 {[
@@ -173,24 +421,25 @@ export default function Servicios() {
               Servicios petroleros
             </h2>
             <p className="text-steel-500 leading-relaxed max-w-2xl">
-              Soluciones integrales para la industria petrolera: desde inyección de vapor para
-              recuperación de crudo hasta saneamiento ambiental y mantenimiento de equipos.
-              Más de 7 años de experiencia en Campo Boscán y otros yacimientos del occidente del país.
+              Soluciones integrales para la industria petrolera. Haz clic en cada servicio
+              para ver su información detallada.
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {serviciosPetroleros.map((s, i) => (
-              <div key={i}
-                className="group relative rounded-2xl border border-steel-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-brand-blue/20">
+              <button key={i} onClick={() => setSelected(s)}
+                className="group relative flex flex-col rounded-2xl border border-steel-200 bg-white p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-brand-blue/20 cursor-pointer">
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue mb-4 transition-all duration-200 group-hover:bg-brand-blue group-hover:text-white">
                   <s.icon size={22} weight="bold" />
                 </div>
                 <h3 className="font-display text-base font-bold text-ink-900 mb-2">{s.title}</h3>
-                <p className="text-sm text-steel-500 leading-relaxed">{s.desc}</p>
-                {/* Hover indicator line */}
+                <p className="text-sm text-steel-500 leading-relaxed flex-1">{s.desc}</p>
+                <div className="mt-4 flex items-center gap-1.5 text-sm font-semibold text-brand-blue opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  Ver detalle <ArrowRight size={14} weight="bold" />
+                </div>
                 <div className="absolute bottom-0 left-0 right-0 h-0.5 rounded-b-2xl bg-brand-blue scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -215,26 +464,27 @@ export default function Servicios() {
               Automatización industrial
             </h2>
             <p className="text-steel-300 leading-relaxed max-w-2xl">
-              Soluciones de automatización, control y telemetría para pozos, estaciones y plantas.
-              Desde programación de PLC y RTU hasta sistemas SCADA Wonderware y paneles solares para
-              telemetría remota.
+              Soluciones de automatización, telemetría y control para pozos, estaciones y plantas.
+              Haz clic en cada servicio para ver su información detallada.
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {serviciosAutomatizacion.map((s, i) => (
-              <div key={i}
-                className="group relative rounded-2xl border border-white/10 bg-ink-900/70 backdrop-blur-sm p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/30 hover:shadow-2xl hover:shadow-brand-blue/5">
+              <button key={i} onClick={() => setSelected(s)}
+                className="group relative flex flex-col rounded-2xl border border-white/10 bg-ink-900/70 backdrop-blur-sm p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/30 hover:shadow-2xl hover:shadow-brand-blue/5 cursor-pointer">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-blue/15 text-brand-blueLight mb-4 transition-all duration-200 group-hover:bg-brand-blue group-hover:text-white">
                   <s.icon size={20} weight="bold" />
                 </div>
                 <h3 className="font-display text-base font-bold text-white mb-2">{s.title}</h3>
-                <p className="text-sm text-steel-400 leading-relaxed">{s.desc}</p>
-              </div>
+                <p className="text-sm text-steel-400 leading-relaxed flex-1">{s.desc}</p>
+                <div className="mt-4 flex items-center gap-1.5 text-sm font-semibold text-brand-blueLight opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  Ver detalle <ArrowRight size={14} weight="bold" />
+                </div>
+              </button>
             ))}
           </div>
 
-          {/* Tech stack */}
           <div className="mt-10 flex flex-wrap gap-3">
             {['Allen Bradley', 'Wonderware', 'Siemens', 'Modicon', 'Omron', 'Fanuc'].map((t) => (
               <span key={t}
@@ -285,7 +535,6 @@ export default function Servicios() {
             </h2>
             <p className="text-steel-300 leading-relaxed mb-9 max-w-xl mx-auto">
               Analizamos tu proyecto y te proponemos la solución más adecuada para tu industria.
-              Solicita una cotización sin compromiso.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <Link to="/contacto"
@@ -300,11 +549,14 @@ export default function Servicios() {
           </div>
         </div>
       </section>
+
+      {/* ═══════════════ MODAL DE DETALLE ─────── */}
+      {selected && renderDetail(selected)}
     </>
   )
 }
 
-/* ── Iconos auxiliares no disponibles en @phosphor-icons ── */
+/* ── SVG custom ── */
 function Tank({ size, weight, className, style }) {
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" fill="none" className={className} style={style} xmlns="http://www.w3.org/2000/svg">
