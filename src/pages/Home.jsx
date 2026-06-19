@@ -1,6 +1,11 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, useScroll, useTransform, useReducedMotion } from 'motion/react'
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useReducedMotion,
+} from 'motion/react'
 import {
   ArrowRight,
   ArrowUpRight,
@@ -10,17 +15,21 @@ import {
   Broadcast,
   ShieldCheck,
   Headphones,
-  CheckCircle,
   Gauge,
+  CheckCircle,
 } from '@phosphor-icons/react'
 import { Reveal, Stagger, StaggerItem, EASE } from '../lib/motion'
-import AnimatedCounter from '../components/AnimatedCounter'
-import SpotlightCard from '../components/SpotlightCard'
+import IndustrialGauge from '../components/IndustrialGauge'
+import ProcessFlow from '../components/ProcessFlow'
+import HUDTelemetry from '../components/HUDTelemetry'
+import SCADAPanel from '../components/SCADAPanel'
+import PLCModule from '../components/PLCModule'
+import { IndustrialHeroDiagram, OscilloWave, RadarSweep } from '../components/IndustrialHero'
 import MagneticButton from '../components/MagneticButton'
 import Marquee from '../components/Marquee'
+import SpotlightCard from '../components/SpotlightCard'
+import AnimatedCounter from '../components/AnimatedCounter'
 
-const HERO_IMG =
-  'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1400&q=80'
 const ABOUT_IMG =
   'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&w=1000&q=80'
 
@@ -66,35 +75,40 @@ export default function Home() {
   const heroRef = useRef(null)
   const reduce = useReducedMotion()
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
-  const imgY = useTransform(scrollYProgress, [0, 1], ['0%', reduce ? '0%' : '14%'])
   const heroFade = useTransform(scrollYProgress, [0, 0.9], [1, 0])
 
   return (
     <>
-      {/* ═══════════════ HERO ═══════════════ */}
+      {/* ═══════════════ HERO — INDUSTRIAL CONTROL ROOM ═══════════════ */}
       <section
         ref={heroRef}
         className="relative min-h-[100dvh] flex items-center overflow-hidden bg-ink-950"
         aria-label="Portada"
       >
-        {/* Blueprint texture + scan line */}
-        <div className="absolute inset-0 bp-grid bp-grid-fade opacity-70" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-blue/60 to-transparent animate-scanline" />
-        <div className="pointer-events-none absolute -right-40 top-1/4 h-[34rem] w-[34rem] rounded-full bg-brand-blue/10 blur-[150px]" />
+        {/* Blueprint + CRT scan texture */}
+        <div className="absolute inset-0 bp-grid bp-grid-fade opacity-60" />
+        <div className="pointer-events-none absolute inset-0 crt-scan" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-blue/40 to-transparent animate-scanline" />
+        <div className="pointer-events-none absolute -right-40 top-1/4 h-[34rem] w-[34rem] rounded-full bg-brand-blue/8 blur-[150px]" />
 
         <div className="relative w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
-          <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-14 items-center">
+          <div className="grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-14 items-center">
             {/* Copy */}
             <motion.div style={{ opacity: reduce ? 1 : heroFade }}>
+              {/* Status badge */}
               <motion.div
                 initial={reduce ? false : { opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: EASE }}
                 className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 mb-7"
               >
-                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse-dot" />
-                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-steel-300">
-                  Disponible para nuevos proyectos
+                <motion.span
+                  animate={reduce ? false : { opacity: [1, 0.3, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.5)]"
+                />
+                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-steel-300">
+                  Sistema operativo — Disponible para nuevos proyectos
                 </span>
               </motion.div>
 
@@ -105,19 +119,29 @@ export default function Home() {
                 className="font-display font-bold text-white leading-[1.0] tracking-tightest mb-6"
                 style={{ fontSize: 'clamp(2.5rem, 1.4rem + 4.6vw, 4.6rem)' }}
               >
-                Servicios petroleros
+                Servicios petroleros{' '}
+                <span className="text-brand-blueLight tracking-tight">e industriales</span>
                 <br />
-                e <span className="text-brand-blueLight">industriales</span> de precision.
+                <span className="relative inline-block">
+                  de precision.
+                  <motion.span
+                    className="absolute -bottom-1 left-0 right-0 h-1 rounded-full bg-gradient-to-r from-brand-blue via-brand-blueLight to-transparent"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 1, delay: 0.8, ease: EASE }}
+                    style={{ transformOrigin: 'left' }}
+                  />
+                </span>
               </motion.h1>
 
               <motion.p
                 initial={reduce ? false : { opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.14, ease: EASE }}
-                className="text-steel-300 text-base sm:text-lg leading-relaxed max-w-xl mb-9"
+                className="text-steel-300 text-base sm:text-lg leading-relaxed max-w-xl mb-9 font-mono text-sm tracking-wide"
               >
-                Inyeccion de vapor, automatizacion, SCADA y telecomunicaciones para
-                la industria petrolera y manufacturera.
+                <span className="text-brand-blueLight">&gt;</span> Inyeccion de vapor, automatizacion, SCADA
+                y telecomunicaciones para la industria petrolera y manufacturera.
               </motion.p>
 
               <motion.div
@@ -133,46 +157,29 @@ export default function Home() {
                   Ver proyectos
                 </Link>
               </motion.div>
+
+              {/* Oscilloscope wave */}
+              <motion.div
+                initial={reduce ? false : { opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.6 }}
+                className="mt-8 h-6 sm:h-8 max-w-xs"
+              >
+                <OscilloWave color="#3D8BE8" />
+              </motion.div>
             </motion.div>
 
-            {/* Engineered photo frame */}
+            {/* Right: Industrial diagram panel */}
             <motion.div
               initial={reduce ? false : { opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.9, delay: 0.1, ease: EASE }}
               className="relative hidden lg:block"
             >
-              <div className="relative clip-corner overflow-hidden rounded-2xl border border-white/10 shadow-lift">
-                <motion.img
-                  src={HERO_IMG}
-                  alt="Operacion de inyeccion de vapor en campo petrolero"
-                  style={{ y: imgY }}
-                  className="h-[32rem] w-full object-cover scale-110"
-                  loading="eager"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-ink-950/10 to-transparent" />
-                {/* corner ticks */}
-                <div className="absolute left-4 top-4 h-5 w-5 border-l-2 border-t-2 border-white/40" />
-                <div className="absolute right-4 top-4 h-5 w-5 border-r-2 border-t-2 border-white/40" />
-              </div>
-
-              {/* Floating data card */}
-              <div className="absolute -bottom-6 -left-6 rounded-2xl border border-white/10 bg-ink-900/90 backdrop-blur-xl p-5 shadow-lift w-60">
-                <div className="flex items-center gap-2 mb-3">
-                  <Flame size={16} className="text-brand-red" weight="fill" />
-                  <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-steel-400">
-                    Capacidad de inyeccion
-                  </span>
-                </div>
-                <div className="flex items-baseline gap-1.5">
-                  <span className="font-display text-3xl font-bold text-white">1.500</span>
-                  <span className="text-steel-400 text-sm">bbl/dia</span>
-                </div>
-                <div className="mt-3 h-px w-full bg-white/10" />
-                <div className="mt-3 flex items-center gap-2 text-[12px] text-emerald-400">
-                  <CheckCircle size={14} weight="fill" />
-                  100% de ejecucion en contratos
-                </div>
+              <IndustrialHeroDiagram />
+              {/* Floating radar */}
+              <div className="absolute -bottom-4 -left-4 w-16 h-16">
+                <RadarSweep />
               </div>
             </motion.div>
           </div>
@@ -180,17 +187,17 @@ export default function Home() {
       </section>
 
       {/* ═══════════════ CLIENTS ═══════════════ */}
-      <section className="bg-white border-b border-steel-100" aria-label="Clientes">
+      <section className="bg-ink-950 border-b border-white/5" aria-label="Clientes">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <Reveal className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-12">
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-steel-400 shrink-0 max-w-[10rem]">
-              Empresas que confian en SPS
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-steel-500 shrink-0">
+              &lt; Empresas que confian en SPS /&gt;
             </p>
             <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
               {clients.map((c) => (
                 <span
                   key={c}
-                  className="font-display text-base font-semibold text-steel-400 transition-colors duration-200 hover:text-ink-800"
+                  className="font-display text-base font-semibold text-steel-500 transition-colors duration-200 hover:text-steel-300"
                 >
                   {c}
                 </span>
@@ -200,27 +207,30 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══════════════ STATS ═══════════════ */}
-      <section className="bg-steel-50 py-20 lg:py-24" aria-label="Metricas">
+      {/* ═══════════════ STATS — SCADA PANEL ═══════════════ */}
+      <section className="bg-ink-950 py-20 lg:py-24" aria-label="Metricas">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <Stagger className="grid grid-cols-2 lg:grid-cols-4 rounded-2xl border border-steel-200 bg-white overflow-hidden">
-            {stats.map(({ value, suffix, label, sub }, i) => (
-              <StaggerItem
-                key={label}
-                className={`relative p-7 lg:p-8 ${
-                  i !== 0 ? 'border-t lg:border-t-0 lg:border-l border-steel-200' : ''
-                } ${i === 2 ? 'border-t lg:border-t-0' : ''} ${i % 2 !== 0 ? 'border-l' : ''} lg:[&]:border-steel-200`}
-              >
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-blue">
-                  {sub}
-                </span>
-                <div className="mt-3 font-display text-4xl lg:text-5xl font-bold text-ink-900 tabular-nums">
-                  <AnimatedCounter value={value} suffix={suffix} />
-                </div>
-                <p className="mt-2 text-sm text-steel-500 leading-snug">{label}</p>
-              </StaggerItem>
-            ))}
-          </Stagger>
+          <Reveal className="max-w-2xl mb-10">
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-blueLight mb-3">
+              PANEL DE CONTROL
+            </p>
+            <h2
+              className="font-display font-bold text-white leading-[1.05] tracking-tightest"
+              style={{ fontSize: 'clamp(1.75rem, 1.1rem + 2.4vw, 2.9rem)' }}
+            >
+              Operaciones en tiempo real.
+            </h2>
+          </Reveal>
+
+          <SCADAPanel />
+
+          {/* Small gauge row */}
+          <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 justify-items-center">
+            <IndustrialGauge value={78} max={100} label="PRESIÓN" unit="PSI" subtitle="LÍNEA PRINCIPAL" size={180} />
+            <IndustrialGauge value={328} max={500} label="TEMP" unit="°C" subtitle="VAPOR" thresholds={{ warning: 350, danger: 420 }} size={180} />
+            <IndustrialGauge value={62} max={100} label="CAUDAL" unit="BPM" subtitle="INYECCIÓN" size={180} />
+            <IndustrialGauge value={97} max={100} label="SCADA" unit="%" subtitle="DISPONIBILIDAD" size={180} />
+          </div>
         </div>
       </section>
 
@@ -229,29 +239,40 @@ export default function Home() {
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
             <Reveal className="relative order-2 lg:order-1">
-              <div className="relative clip-corner overflow-hidden rounded-2xl">
+              <div className="relative rounded-2xl overflow-hidden border border-steel-200">
                 <img
                   src={ABOUT_IMG}
                   alt="Tecnicos especialistas de SPS en planta"
                   className="h-[28rem] w-full object-cover"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink-950/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 via-transparent to-transparent" />
+                {/* Technical overlay */}
+                <div className="absolute bottom-0 left-0 right-0 p-5">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                    <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-emerald-400/70">
+                      PERSONAL TÉCNICO
+                    </span>
+                  </div>
+                  <p className="font-mono text-[11px] text-white/60">SPS — Operaciones de campo</p>
+                </div>
               </div>
-              <div className="absolute -bottom-5 -right-5 flex items-center gap-4 rounded-2xl border border-steel-100 bg-white px-6 py-4 shadow-lift">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-red text-white">
+              {/* Floating data card */}
+              <div className="absolute -bottom-5 -right-5 flex items-center gap-4 rounded-xl border border-steel-100 bg-white px-6 py-4 shadow-lift">
+                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-red text-white">
                   <Headphones size={20} weight="fill" />
                 </div>
                 <div>
                   <p className="font-display text-sm font-bold text-ink-900">Respuesta inmediata</p>
-                  <p className="text-xs text-steel-400">Soporte tecnico 24/7</p>
+                  <p className="font-mono text-[10px] text-steel-400">Soporte tecnico 24/7</p>
                 </div>
               </div>
             </Reveal>
 
             <Reveal delay={0.1} className="order-1 lg:order-2">
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-brand-blue mb-4">
-                Sobre nosotros
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-blue mb-4">
+                &lt; Sobre nosotros /&gt;
               </p>
               <h2 id="about-h" className="h-section mb-6">
                 Ingenieria petrolera e industrial, ejecutada en campo.
@@ -281,134 +302,134 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══════════════ SERVICES (bento) ═══════════════ */}
-      <section aria-labelledby="services-h">
-        {/* ── Blue header ── */}
-        <div className="bg-brand-blue py-24 lg:py-28">
-          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <Reveal className="max-w-2xl">
-              <p className="text-white/70 text-sm font-semibold tracking-[0.15em] uppercase mb-3">
-                Lo que ofrecemos
-              </p>
-              <h2
-                id="services-h"
-                className="font-display font-bold text-white leading-[1.05] tracking-tightest mb-4"
-                style={{ fontSize: 'clamp(1.75rem, 1.1rem + 2.4vw, 2.9rem)' }}
-              >
-                Cuatro lineas de servicio para la industria.
-              </h2>
-              <p className="text-white/80 leading-relaxed">
-                Del pozo a la sala de control: cubrimos recuperacion de crudo, automatizacion,
-                redes y telecomunicaciones bajo un solo equipo de ingenieria.
-              </p>
-            </Reveal>
-          </div>
-        </div>
+      {/* ═══════════════ SERVICES — PLC MODULES ═══════════════ */}
+      <section className="bg-ink-950 py-24 lg:py-28" aria-labelledby="services-h">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal className="max-w-2xl mb-14">
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-blueLight mb-3">
+              &lt; MODULOS DE SERVICIO /&gt;
+            </p>
+            <h2
+              id="services-h"
+              className="font-display font-bold text-white leading-[1.05] tracking-tightest mb-4"
+              style={{ fontSize: 'clamp(1.75rem, 1.1rem + 2.4vw, 2.9rem)' }}
+            >
+              Cuatro lineas de servicio para la industria.
+            </h2>
+            <p className="text-steel-400 leading-relaxed font-mono text-sm tracking-wide">
+              Del pozo a la sala de control: cubrimos recuperacion de crudo, automatizacion,
+              redes y telecomunicaciones bajo un solo equipo de ingenieria.
+            </p>
+          </Reveal>
 
-        {/* ── White cards ── */}
-        <div className="bg-white py-24 lg:py-28">
-          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <Stagger className="grid md:grid-cols-6 gap-4 lg:gap-5">
-            {/* Flagship — wide, image, red accent */}
-            <StaggerItem className="md:col-span-4">
-              <Link to="/servicios#petroleros" className="block h-full">
-                <SpotlightCard className="group relative h-full min-h-[19rem] overflow-hidden rounded-2xl border border-steel-200">
-                  <img
-                    src="https://images.unsplash.com/photo-1623227413711-25ee4388dae3?auto=format&fit=crop&w=1000&q=80"
-                    alt=""
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-ink-950 via-ink-950/80 to-ink-900/30" />
-                  <div className="relative flex h-full flex-col justify-between p-7 lg:p-9">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-red text-white">
-                      <Flame size={24} weight="fill" />
-                    </div>
-                    <div>
-                      <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-redLight">
-                        Linea principal
-                      </span>
-                      <h3 className="mt-2 font-display text-2xl font-bold text-white">
-                        Servicios petroleros
-                      </h3>
-                      <p className="mt-2 max-w-md text-sm text-steel-300 leading-relaxed">
-                        Inyeccion de vapor para recuperacion de crudo en fosas y pozos, con
-                        altos estandares de seguridad.
-                      </p>
-                      <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-white">
-                        Ver detalle <ArrowUpRight size={15} weight="bold" />
-                      </span>
-                    </div>
-                  </div>
-                </SpotlightCard>
-              </Link>
+          <Stagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+            <StaggerItem>
+              <PLCModule
+                icon={Flame}
+                title="Servicios petroleros"
+                desc="Inyeccion de vapor para recuperacion de crudo en fosas y pozos."
+                tag="Linea principal"
+                to="/servicios#petroleros"
+                moduleId="SPS-001"
+                color="red"
+                features={['Inyección de vapor', 'Recuperación de crudo', 'Campo Boscán']}
+              />
             </StaggerItem>
-
-            {/* Automatizacion — small */}
-            <StaggerItem className="md:col-span-2">
-              <ServiceTile
+            <StaggerItem>
+              <PLCModule
                 icon={Cpu}
                 title="Automatizacion"
                 desc="PLC, SCADA, HMI, RTU e instrumentacion industrial."
                 tag="Control"
                 to="/servicios#automatizacion"
+                moduleId="SPS-002"
+                color="blue"
+                features={['PLC Allen Bradley', 'SCADA Wonderware', 'Diseño de tableros']}
               />
             </StaggerItem>
-
-            {/* Conectividad — small */}
-            <StaggerItem className="md:col-span-2">
-              <ServiceTile
+            <StaggerItem>
+              <PLCModule
                 icon={WifiHigh}
                 title="Conectividad"
                 desc="Redes LAN/WAN, voz, datos y video para empresas."
                 tag="Redes"
                 to="/servicios#conectividad"
+                moduleId="SPS-003"
+                color="blue"
+                features={['Fibra óptica', 'Redes empresariales', 'Enlaces dedicados']}
               />
             </StaggerItem>
-
-            {/* Telecom — wide, tinted */}
-            <StaggerItem className="md:col-span-4">
-              <Link to="/servicios#telecomunicaciones" className="block h-full">
-                <SpotlightCard className="group relative h-full min-h-[15rem] overflow-hidden rounded-2xl border border-ink-700 bg-ink-900">
-                  <div className="absolute inset-0 bp-grid opacity-40" />
-                  <div className="pointer-events-none absolute -left-10 -top-10 h-48 w-48 rounded-full bg-brand-blue/15 blur-3xl" />
-                  <div className="relative flex h-full flex-col justify-between p-7 lg:p-9">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue/15 text-brand-blueLight">
-                      <Broadcast size={24} />
-                    </div>
-                    <div>
-                      <h3 className="font-display text-2xl font-bold text-white">
-                        Telecomunicaciones
-                      </h3>
-                      <p className="mt-2 max-w-md text-sm text-steel-300 leading-relaxed">
-                        Fibra optica, canalizaciones telefonicas y enlaces dedicados de radio.
-                      </p>
-                      <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blueLight">
-                        Ver detalle <ArrowUpRight size={15} weight="bold" />
-                      </span>
-                    </div>
-                  </div>
-                </SpotlightCard>
-              </Link>
+            <StaggerItem>
+              <PLCModule
+                icon={Broadcast}
+                title="Telecomunicaciones"
+                desc="Fibra optica, canalizaciones telefonicas y enlaces de radio."
+                tag="Telecom"
+                to="/servicios#telecomunicaciones"
+                moduleId="SPS-004"
+                color="blue"
+                features={['Radio enlaces', 'Canalizaciones', 'Monitoreo remoto']}
+              />
             </StaggerItem>
           </Stagger>
         </div>
+      </section>
+
+      {/* ═══════════════ PROCESS FLOW — P&amp;ID DIAGRAM ═══════════════ */}
+      <section className="bg-ink-950 pb-24 lg:pb-28" aria-labelledby="flow-h">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal className="max-w-2xl mb-10">
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-blueLight mb-3">
+              DIAGRAMA DE PROCESO
+            </p>
+            <h2
+              id="flow-h"
+              className="font-display font-bold text-white leading-[1.05] tracking-tightest mb-4"
+              style={{ fontSize: 'clamp(1.75rem, 1.1rem + 2.4vw, 2.9rem)' }}
+            >
+              Del pozo al almacenamiento, integrado via SCADA.
+            </h2>
+            <p className="text-steel-400 leading-relaxed font-mono text-sm tracking-wide">
+              Diagrama P&amp;ID del proceso completo de SPS, desde la extraccion hasta el monitoreo remoto.
+            </p>
+          </Reveal>
+
+          <ProcessFlow />
+        </div>
+      </section>
+
+      {/* ═══════════════ HUD TELEMETRY ═══════════════ */}
+      <section className="bg-steel-50 py-20 lg:py-24" aria-label="Telemetria">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal className="max-w-2xl mb-10">
+            <h2 className="h-section mb-4">Monitoreo en tiempo real.</h2>
+            <p className="text-steel-500 leading-relaxed">
+              Parametros criticos supervisados 24/7 desde nuestra sala de control.
+            </p>
+          </Reveal>
+          <HUDTelemetry />
         </div>
       </section>
 
       {/* ═══════════════ PROJECTS (editorial list) ═══════════════ */}
       <section className="bg-ink-950 py-24 lg:py-28 relative overflow-hidden" aria-labelledby="projects-h">
         <div className="absolute inset-0 bp-grid bp-grid-fade opacity-50" />
+        <div className="absolute inset-0 crt-scan opacity-20" />
         <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
-            <h2 id="projects-h" className="h-section text-white">
-              Proyectos destacados.
-            </h2>
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-blueLight mb-3">
+                &lt; PROYECTOS EJECUTADOS /&gt;
+              </p>
+              <h2 id="projects-h" className="h-section text-white">
+                Proyectos destacados.
+              </h2>
+            </div>
             <Link
               to="/proyectos"
-              className="group inline-flex items-center gap-2 text-sm font-medium text-steel-300 hover:text-white transition-colors shrink-0"
+              className="group inline-flex items-center gap-2 text-sm font-medium text-steel-300 hover:text-white transition-colors shrink-0 font-mono text-[11px] tracking-wide"
             >
-              Ver todos
+              Ver todos los proyectos
               <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" weight="bold" />
             </Link>
           </Reveal>
@@ -420,7 +441,7 @@ export default function Home() {
                   to="/proyectos"
                   className="group grid grid-cols-[auto_1fr] sm:grid-cols-[auto_5rem_1fr_auto] items-center gap-4 sm:gap-6 py-6"
                 >
-                  <span className="font-mono text-sm text-steel-500">{n}</span>
+                  <span className="font-mono text-sm text-steel-500 font-mono">{n}</span>
                   <div className="hidden sm:block h-16 w-20 overflow-hidden rounded-lg border border-white/10">
                     <img
                       src={img}
@@ -434,7 +455,7 @@ export default function Home() {
                       <h3 className="font-display text-lg sm:text-xl font-bold text-white transition-colors group-hover:text-brand-blueLight">
                         {client}
                       </h3>
-                      <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-steel-500 border border-white/10 rounded px-2 py-0.5">
+                      <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-steel-500 border border-white/10 rounded px-2 py-0.5">
                         {tag}
                       </span>
                     </div>
@@ -466,49 +487,51 @@ export default function Home() {
       {/* ═══════════════ CTA ═══════════════ */}
       <section className="relative overflow-hidden bg-ink-950 py-24 lg:py-28" aria-labelledby="cta-h">
         <div className="absolute inset-0 bp-grid bp-grid-fade opacity-60" />
+        <div className="absolute inset-0 crt-scan opacity-30" />
         <div className="pointer-events-none absolute left-1/2 top-1/2 h-[30rem] w-[30rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-blue/10 blur-[140px]" />
         <Reveal className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 id="cta-h" className="font-display text-3xl md:text-5xl font-bold text-white tracking-tightest leading-[1.05] mb-5">
-            Listo para tu proximo proyecto?
-          </h2>
-          <p className="text-steel-300 leading-relaxed mb-9 max-w-xl mx-auto">
-            Nuestro equipo de ingenieros analiza tu proyecto y te propone la solucion mas
-            adecuada para tu industria.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <MagneticButton to="/contacto" className="btn-red">
-              Solicitar cotizacion <ArrowRight size={18} weight="bold" />
-            </MagneticButton>
-            <Link to="/servicios" className="btn-ghost-light">
-              Ver servicios
-            </Link>
-          </div>
-          <div className="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-steel-400">
-            <span className="inline-flex items-center gap-2"><ShieldCheck size={16} className="text-brand-blueLight" /> Seguridad industrial</span>
-            <span className="inline-flex items-center gap-2"><Gauge size={16} className="text-brand-blueLight" /> Excelencia operacional</span>
-            <span className="inline-flex items-center gap-2"><Headphones size={16} className="text-brand-blueLight" /> Respuesta 24/7</span>
+          {/* Panel frame */}
+          <div className="relative rounded-2xl border border-white/10 bg-ink-900/40 backdrop-blur-sm p-8 sm:p-12 lg:p-14">
+            {/* Corner LED */}
+            <div className="absolute left-4 top-4 flex gap-2">
+              <motion.span
+                animate={reduce ? false : { opacity: [1, 0.3, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="h-2 w-2 rounded-full bg-brand-red shadow-[0_0_8px_rgba(197,25,45,0.6)]"
+              />
+              <span className="h-2 w-2 rounded-full bg-steel-700" />
+              <span className="h-2 w-2 rounded-full bg-steel-700" />
+            </div>
+
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-blueLight mb-4">
+              &lt; CONTACTANOS /&gt;
+            </p>
+            <h2
+              id="cta-h"
+              className="font-display text-3xl md:text-5xl font-bold text-white tracking-tightest leading-[1.05] mb-5"
+            >
+              Listo para tu proximo proyecto?
+            </h2>
+            <p className="text-steel-400 leading-relaxed mb-9 max-w-xl mx-auto font-mono text-sm">
+              Nuestro equipo de ingenieros analiza tu proyecto y te propone la solucion mas
+              adecuada para tu industria.
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <MagneticButton to="/contacto" className="btn-red">
+                Solicitar cotizacion <ArrowRight size={18} weight="bold" />
+              </MagneticButton>
+              <Link to="/servicios" className="btn-ghost-light">
+                Ver servicios
+              </Link>
+            </div>
+            <div className="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-steel-500 font-mono text-[11px]">
+              <span className="inline-flex items-center gap-2"><ShieldCheck size={15} className="text-brand-blueLight" /> Seguridad industrial</span>
+              <span className="inline-flex items-center gap-2"><Gauge size={15} className="text-brand-blueLight" /> Excelencia operacional</span>
+              <span className="inline-flex items-center gap-2"><Headphones size={15} className="text-brand-blueLight" /> Respuesta 24/7</span>
+            </div>
           </div>
         </Reveal>
       </section>
     </>
-  )
-}
-
-function ServiceTile({ icon: Icon, title, desc, tag, to }) {
-  return (
-    <Link to={to} className="block h-full">
-      <SpotlightCard className="group flex h-full min-h-[14rem] flex-col justify-between rounded-2xl border border-steel-200 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
-        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue">
-          <Icon size={22} />
-        </div>
-        <div>
-          <h3 className="font-display text-lg font-bold text-ink-900">{title}</h3>
-          <p className="mt-1.5 text-sm text-steel-500 leading-relaxed">{desc}</p>
-          <span className="mt-3 inline-block font-mono text-[10px] uppercase tracking-[0.18em] text-steel-400">
-            {tag}
-          </span>
-        </div>
-      </SpotlightCard>
-    </Link>
   )
 }
