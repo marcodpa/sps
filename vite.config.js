@@ -8,8 +8,6 @@ export default defineConfig({
     allowedHosts: true,
   },
   build: {
-    rolldownOptions: {
-      treeshake: false,
-    },
+    sourcemap: false,
   },
 })

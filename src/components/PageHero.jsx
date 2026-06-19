@@ -1,4 +1,5 @@
-import { motion, useReducedMotion } from 'motion/react'
+import { useState, useEffect } from 'react'
+import { useReducedMotion } from '../lib/animations'
 import { EASE } from '../lib/motion'
 
 /**
@@ -7,6 +8,11 @@ import { EASE } from '../lib/motion'
  */
 export default function PageHero({ kicker, title, accent, subtitle, children }) {
   const reduce = useReducedMotion()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => { setMounted(true) }, [])
+
+  const show = mounted || reduce
+
   return (
     <section className="relative overflow-hidden bg-ink-950 pt-32 pb-20 lg:pt-40 lg:pb-24">
       <div className="absolute inset-0 bp-grid bp-grid-fade opacity-70" />
@@ -14,11 +20,13 @@ export default function PageHero({ kicker, title, accent, subtitle, children }) 
       <div className="pointer-events-none absolute -right-32 top-0 h-[26rem] w-[26rem] rounded-full bg-brand-blue/10 blur-[140px]" />
 
       <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={reduce ? false : { opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: EASE }}
+        <div
           className="max-w-3xl"
+          style={{
+            opacity: show ? 1 : 0,
+            transform: show ? 'translateY(0)' : 'translateY(20px)',
+            transition: `opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)`,
+          }}
         >
           {kicker && (
             <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.22em] text-brand-blueLight">
@@ -35,7 +43,7 @@ export default function PageHero({ kicker, title, accent, subtitle, children }) 
             </p>
           )}
           {children}
-        </motion.div>
+        </div>
       </div>
     </section>
   )

@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { MapPin, Phone, Envelope, PaperPlaneTilt, CheckCircle, WarningCircle, Clock } from '@phosphor-icons/react'
-import { motion, AnimatePresence, useReducedMotion } from 'motion/react'
+import { useReducedMotion } from '../lib/animations'
 import { Reveal, EASE } from '../lib/motion'
 import PageHero from '../components/PageHero'
 
@@ -13,6 +13,9 @@ const infoCards = [
 
 export default function Contacto() {
   const reduce = useReducedMotion()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => { setMounted(true) }, [])
+
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '' })
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
@@ -44,6 +47,8 @@ export default function Contacto() {
     'w-full rounded-xl border px-4 py-3 text-sm text-ink-900 placeholder:text-steel-400 transition-all duration-200 focus:outline-none focus:ring-2'
   const ok = 'border-steel-200 bg-white focus:ring-brand-blue hover:border-steel-300'
   const bad = 'border-brand-red/40 bg-brand-red/5 focus:ring-brand-red'
+
+  const showForm = !submitted
 
   return (
     <>
@@ -114,94 +119,95 @@ export default function Contacto() {
             {/* Form */}
             <Reveal delay={0.1} className="lg:col-span-3">
               <div className="rounded-2xl border border-steel-200 bg-white p-8 shadow-lift md:p-10">
-                <AnimatePresence mode="wait">
-                  {submitted ? (
-                    <motion.div
-                      key="done"
-                      initial={reduce ? false : { opacity: 0, scale: 0.96 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.4, ease: EASE }}
-                      className="py-12 text-center"
-                    >
-                      <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100">
-                        <CheckCircle size={32} className="text-emerald-600" weight="fill" />
-                      </div>
-                      <h3 className="font-display text-2xl font-bold text-ink-900 mb-2">Mensaje enviado</h3>
-                      <p className="text-sm text-steel-500">
-                        Gracias por contactarnos. Nuestro equipo te respondera a la brevedad.
+                {submitted ? (
+                  <div
+                    className="py-12 text-center"
+                    style={{
+                      opacity: mounted ? 1 : 0,
+                      transform: mounted ? 'scale(1)' : 'scale(0.96)',
+                      transition: `opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)`,
+                    }}
+                  >
+                    <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100">
+                      <CheckCircle size={32} className="text-emerald-600" weight="fill" />
+                    </div>
+                    <h3 className="font-display text-2xl font-bold text-ink-900 mb-2">Mensaje enviado</h3>
+                    <p className="text-sm text-steel-500">
+                      Gracias por contactarnos. Nuestro equipo te respondera a la brevedad.
+                    </p>
+                  </div>
+                ) : (
+                  <div
+                    style={{
+                      opacity: showForm ? 1 : 0,
+                      transform: showForm ? 'translateY(0)' : 'translateY(-8px)',
+                      transition: `opacity 0.3s ease, transform 0.3s ease`,
+                    }}
+                  >
+                    <div className="mb-8">
+                      <h3 className="font-display text-xl font-bold text-ink-900">Envianos un mensaje</h3>
+                      <p className="mt-1 text-sm text-steel-400">
+                        Campos con <span className="text-brand-red">*</span> son obligatorios
                       </p>
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="form"
-                      initial={false}
-                      exit={reduce ? {} : { opacity: 0, y: -8 }}
-                    >
-                      <div className="mb-8">
-                        <h3 className="font-display text-xl font-bold text-ink-900">Envianos un mensaje</h3>
-                        <p className="mt-1 text-sm text-steel-400">
-                          Campos con <span className="text-brand-red">*</span> son obligatorios
-                        </p>
+                    </div>
+
+                    <form onSubmit={handleSubmit} noValidate className="space-y-5">
+                      <div className="grid gap-5 sm:grid-cols-2">
+                        <div>
+                          <label htmlFor="name" className="mb-1.5 block text-sm font-semibold text-ink-900">
+                            Nombre completo <span className="text-brand-red">*</span>
+                          </label>
+                          <input id="name" name="name" type="text" autoComplete="name" value={form.name}
+                            onChange={handleChange} placeholder="Maria Gutierrez" aria-invalid={!!errors.name}
+                            className={`${inputBase} ${errors.name ? bad : ok}`} />
+                          {errors.name && <p className="mt-1 flex items-center gap-1 text-xs text-brand-red"><WarningCircle size={12} /> {errors.name}</p>}
+                        </div>
+                        <div>
+                          <label htmlFor="email" className="mb-1.5 block text-sm font-semibold text-ink-900">
+                            Correo electronico <span className="text-brand-red">*</span>
+                          </label>
+                          <input id="email" name="email" type="email" autoComplete="email" value={form.email}
+                            onChange={handleChange} placeholder="maria@empresa.com" aria-invalid={!!errors.email}
+                            className={`${inputBase} ${errors.email ? bad : ok}`} />
+                          {errors.email && <p className="mt-1 flex items-center gap-1 text-xs text-brand-red"><WarningCircle size={12} /> {errors.email}</p>}
+                        </div>
                       </div>
 
-                      <form onSubmit={handleSubmit} noValidate className="space-y-5">
-                        <div className="grid gap-5 sm:grid-cols-2">
-                          <div>
-                            <label htmlFor="name" className="mb-1.5 block text-sm font-semibold text-ink-900">
-                              Nombre completo <span className="text-brand-red">*</span>
-                            </label>
-                            <input id="name" name="name" type="text" autoComplete="name" value={form.name}
-                              onChange={handleChange} placeholder="Maria Gutierrez" aria-invalid={!!errors.name}
-                              className={`${inputBase} ${errors.name ? bad : ok}`} />
-                            {errors.name && <p className="mt-1 flex items-center gap-1 text-xs text-brand-red"><WarningCircle size={12} /> {errors.name}</p>}
-                          </div>
-                          <div>
-                            <label htmlFor="email" className="mb-1.5 block text-sm font-semibold text-ink-900">
-                              Correo electronico <span className="text-brand-red">*</span>
-                            </label>
-                            <input id="email" name="email" type="email" autoComplete="email" value={form.email}
-                              onChange={handleChange} placeholder="maria@empresa.com" aria-invalid={!!errors.email}
-                              className={`${inputBase} ${errors.email ? bad : ok}`} />
-                            {errors.email && <p className="mt-1 flex items-center gap-1 text-xs text-brand-red"><WarningCircle size={12} /> {errors.email}</p>}
-                          </div>
-                        </div>
+                      <div>
+                        <label htmlFor="company" className="mb-1.5 block text-sm font-semibold text-ink-900">
+                          Empresa <span className="font-normal text-steel-400">(opcional)</span>
+                        </label>
+                        <input id="company" name="company" type="text" autoComplete="organization" value={form.company}
+                          onChange={handleChange} placeholder="Mi Empresa C.A." className={`${inputBase} ${ok}`} />
+                      </div>
 
-                        <div>
-                          <label htmlFor="company" className="mb-1.5 block text-sm font-semibold text-ink-900">
-                            Empresa <span className="font-normal text-steel-400">(opcional)</span>
-                          </label>
-                          <input id="company" name="company" type="text" autoComplete="organization" value={form.company}
-                            onChange={handleChange} placeholder="Mi Empresa C.A." className={`${inputBase} ${ok}`} />
-                        </div>
+                      <div>
+                        <label htmlFor="message" className="mb-1.5 block text-sm font-semibold text-ink-900">
+                          Mensaje <span className="text-brand-red">*</span>
+                        </label>
+                        <textarea id="message" name="message" rows={5} value={form.message} onChange={handleChange}
+                          placeholder="Cuentanos sobre tu proyecto o consulta..." aria-invalid={!!errors.message}
+                          className={`${inputBase} resize-none ${errors.message ? bad : ok}`} />
+                        {errors.message && <p className="mt-1 flex items-center gap-1 text-xs text-brand-red"><WarningCircle size={12} /> {errors.message}</p>}
+                      </div>
 
-                        <div>
-                          <label htmlFor="message" className="mb-1.5 block text-sm font-semibold text-ink-900">
-                            Mensaje <span className="text-brand-red">*</span>
-                          </label>
-                          <textarea id="message" name="message" rows={5} value={form.message} onChange={handleChange}
-                            placeholder="Cuentanos sobre tu proyecto o consulta..." aria-invalid={!!errors.message}
-                            className={`${inputBase} resize-none ${errors.message ? bad : ok}`} />
-                          {errors.message && <p className="mt-1 flex items-center gap-1 text-xs text-brand-red"><WarningCircle size={12} /> {errors.message}</p>}
-                        </div>
-
-                        <button type="submit" disabled={loading}
-                          className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60">
-                          {loading ? (
-                            <>
-                              <svg className="h-5 w-5 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
-                              </svg>
-                              Enviando...
-                            </>
-                          ) : (
-                            <>Enviar mensaje <PaperPlaneTilt size={18} weight="fill" /></>
-                          )}
-                        </button>
-                      </form>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                      <button type="submit" disabled={loading}
+                        className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60">
+                        {loading ? (
+                          <>
+                            <svg className="h-5 w-5 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                            </svg>
+                            Enviando...
+                          </>
+                        ) : (
+                          <>Enviar mensaje <PaperPlaneTilt size={18} weight="fill" /></>
+                        )}
+                      </button>
+                    </form>
+                  </div>
+                )}
               </div>
             </Reveal>
           </div>

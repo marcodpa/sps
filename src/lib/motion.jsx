@@ -1,6 +1,9 @@
-import { motion, useReducedMotion } from 'motion/react'
+import { useRef, createContext, useContext } from 'react'
+import { useInView, useReducedMotion } from '../lib/animations'
 
 export const EASE = [0.16, 1, 0.3, 1]
+
+const StaggerCtx = createContext({ inView: false, reduce: false, gap: 0.08, indexRef: null })
 
 /**
  * Reveal — fades + slides content in as it enters the viewport.
@@ -15,18 +18,24 @@ export function Reveal({
   amount = 0.25,
   once = true,
 }) {
+  const [ref, inView] = useInView({ once, amount })
   const reduce = useReducedMotion()
-  const Comp = motion[as] || motion.div
+  const Tag = as
+  const d = reduce ? 0 : delay
+  const show = inView || reduce
+
   return (
-    <Comp
+    <Tag
+      ref={ref}
       className={className}
-      initial={reduce ? false : { opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once, amount }}
-      transition={{ duration: 0.7, delay, ease: EASE }}
+      style={{
+        opacity: show ? 1 : 0,
+        transform: show ? 'translateY(0)' : `translateY(${y}px)`,
+        transition: `opacity 0.7s ease ${d}s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) ${d}s`,
+      }}
     >
       {children}
-    </Comp>
+    </Tag>
   )
 }
 
@@ -42,35 +51,38 @@ export function Stagger({
   once = true,
   as = 'div',
 }) {
-  const Comp = motion[as] || motion.div
+  const [ref, inView] = useInView({ once, amount })
+  const reduce = useReducedMotion()
+  const Tag = as
+  const indexRef = useRef(0)
+  indexRef.current = 0
+
   return (
-    <Comp
-      className={className}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once, amount }}
-      variants={{
-        hidden: {},
-        show: { transition: { staggerChildren: gap } },
-      }}
-    >
-      {children}
-    </Comp>
+    <StaggerCtx.Provider value={{ inView, reduce, gap, indexRef }}>
+      <Tag ref={ref} className={className}>
+        {children}
+      </Tag>
+    </StaggerCtx.Provider>
   )
 }
 
 export function StaggerItem({ children, className = '', y = 24, as = 'div' }) {
-  const reduce = useReducedMotion()
-  const Comp = motion[as] || motion.div
+  const { inView, reduce, gap, indexRef } = useContext(StaggerCtx)
+  const Tag = as
+  const i = indexRef.current++
+  const delay = i * gap
+  const show = inView || reduce
+
   return (
-    <Comp
+    <Tag
       className={className}
-      variants={{
-        hidden: reduce ? {} : { opacity: 0, y },
-        show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
+      style={{
+        opacity: show ? 1 : 0,
+        transform: show ? 'translateY(0)' : `translateY(${y}px)`,
+        transition: `opacity 0.6s ease ${delay}s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s`,
       }}
     >
       {children}
-    </Comp>
+    </Tag>
   )
 }

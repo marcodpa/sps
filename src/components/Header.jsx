@@ -1,8 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { List, X, ArrowUpRight } from '@phosphor-icons/react'
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'motion/react'
-import { EASE } from '../lib/motion'
 
 const navLinks = [
   { to: '/', label: 'Inicio' },
@@ -15,13 +13,13 @@ const navLinks = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const { scrollY } = useScroll()
 
-  // State flips only when crossing the threshold, not every frame.
-  useMotionValueEvent(scrollY, 'change', (v) => {
-    const next = v > 24
-    setScrolled((prev) => (prev !== next ? next : prev))
-  })
+  /* ── Scroll listener (replaces useScroll + useMotionValueEvent) ── */
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
     <header
@@ -54,11 +52,7 @@ export default function Header() {
                       {label}
                     </span>
                     {isActive && (
-                      <motion.span
-                        layoutId="nav-active"
-                        transition={{ type: 'spring', stiffness: 420, damping: 34 }}
-                        className="absolute left-3 right-3 -bottom-0.5 h-0.5 rounded-full bg-brand-blue"
-                      />
+                      <span className="absolute left-3 right-3 -bottom-0.5 h-0.5 rounded-full bg-brand-blue" />
                     )}
                   </>
                 )}
@@ -84,54 +78,52 @@ export default function Header() {
         </div>
       </div>
 
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            key="mobile"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.35, ease: EASE }}
-            className="md:hidden overflow-hidden bg-ink-950/95 backdrop-blur-xl border-t border-white/10"
-          >
-            <nav className="px-4 py-5 flex flex-col gap-1" aria-label="Menu movil">
-              {navLinks.map(({ to, label }, i) => (
-                <motion.div
-                  key={to}
-                  initial={{ opacity: 0, x: -12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.05 + i * 0.05, ease: EASE }}
-                >
-                  <NavLink
-                    to={to}
-                    end={to === '/'}
-                    onClick={() => setMenuOpen(false)}
-                    className={({ isActive }) =>
-                      `block px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
-                        isActive
-                          ? 'text-white bg-white/[0.06] border border-white/10'
-                          : 'text-steel-300 hover:text-white hover:bg-white/5'
-                      }`
-                    }
-                  >
-                    {label}
-                  </NavLink>
-                </motion.div>
-              ))}
-              <div className="mt-3 pt-3 border-t border-white/10">
-                <Link
-                  to="/contacto"
-                  onClick={() => setMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 bg-brand-red text-white font-semibold px-5 py-3 rounded-xl text-sm"
-                >
-                  Solicitar cotizacion
-                  <ArrowUpRight size={16} weight="bold" />
-                </Link>
-              </div>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Mobile menu — CSS transition instead of AnimatePresence */}
+      <div
+        className="md:hidden overflow-hidden bg-ink-950/95 backdrop-blur-xl border-t border-white/10 transition-all duration-300 ease-in-out"
+        style={{
+          maxHeight: menuOpen ? '400px' : '0px',
+          opacity: menuOpen ? 1 : 0,
+        }}
+      >
+        <nav className="px-4 py-5 flex flex-col gap-1" aria-label="Menu movil">
+          {navLinks.map(({ to, label }, i) => (
+            <div
+              key={to}
+              style={{
+                opacity: menuOpen ? 1 : 0,
+                transform: menuOpen ? 'translateX(0)' : 'translateX(-12px)',
+                transition: `opacity 0.3s ease ${0.05 + i * 0.05}s, transform 0.3s ease ${0.05 + i * 0.05}s`,
+              }}
+            >
+              <NavLink
+                to={to}
+                end={to === '/'}
+                onClick={() => setMenuOpen(false)}
+                className={({ isActive }) =>
+                  `block px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
+                    isActive
+                      ? 'text-white bg-white/[0.06] border border-white/10'
+                      : 'text-steel-300 hover:text-white hover:bg-white/5'
+                  }`
+                }
+              >
+                {label}
+              </NavLink>
+            </div>
+          ))}
+          <div className="mt-3 pt-3 border-t border-white/10">
+            <Link
+              to="/contacto"
+              onClick={() => setMenuOpen(false)}
+              className="flex items-center justify-center gap-2 bg-brand-red text-white font-semibold px-5 py-3 rounded-xl text-sm"
+            >
+              Solicitar cotizacion
+              <ArrowUpRight size={16} weight="bold" />
+            </Link>
+          </div>
+        </nav>
+      </div>
     </header>
   )
 }

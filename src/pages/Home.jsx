@@ -1,11 +1,6 @@
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useReducedMotion,
-} from 'motion/react'
+import { useReducedMotion } from '../lib/animations'
 import {
   ArrowRight,
   ArrowUpRight,
@@ -16,7 +11,6 @@ import {
   ShieldCheck,
   Headphones,
   Gauge,
-  CheckCircle,
 } from '@phosphor-icons/react'
 import { Reveal, Stagger, StaggerItem, EASE } from '../lib/motion'
 import IndustrialGauge from '../components/IndustrialGauge'
@@ -27,18 +21,9 @@ import PLCModule from '../components/PLCModule'
 import { IndustrialHeroDiagram, OscilloWave, RadarSweep } from '../components/IndustrialHero'
 import MagneticButton from '../components/MagneticButton'
 import Marquee from '../components/Marquee'
-import SpotlightCard from '../components/SpotlightCard'
-import AnimatedCounter from '../components/AnimatedCounter'
 
 const ABOUT_IMG =
   'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&w=1000&q=80'
-
-const stats = [
-  { value: '1.500', suffix: '', label: 'Barriles diarios de inyeccion', sub: 'Campo Boscan' },
-  { value: '100', suffix: '%', label: 'Tasa de ejecucion en contratos', sub: 'Historico' },
-  { value: '5', suffix: '', label: 'Paises con proyectos ejecutados', sub: 'Operaciones' },
-  { value: '7', suffix: '+', label: 'Anos en el sector petrolero', sub: 'Trayectoria' },
-]
 
 const clients = [
   'Petroboscan', 'Chevron', 'PDVSA GIV', 'Produsal',
@@ -74,8 +59,33 @@ const featuredProjects = [
 export default function Home() {
   const heroRef = useRef(null)
   const reduce = useReducedMotion()
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
-  const heroFade = useTransform(scrollYProgress, [0, 0.9], [1, 0])
+  const [mounted, setMounted] = useState(false)
+  const [heroOpacity, setHeroOpacity] = useState(1)
+
+  /* ── Mount trigger for entrance animations ── */
+  useEffect(() => { setMounted(true) }, [])
+
+  /* ── Scroll-driven hero fade (replaces useScroll/useTransform) ── */
+  useEffect(() => {
+    if (reduce) return
+    const handleScroll = () => {
+      const el = heroRef.current
+      if (!el) return
+      const rect = el.getBoundingClientRect()
+      const h = rect.height
+      const progress = Math.max(0, Math.min(1, -rect.top / h))
+      setHeroOpacity(1 - progress)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [reduce])
+
+  /* ── Reusable transition helper ── */
+  const fadeSlide = (show, delay = 0, y = 18) => ({
+    opacity: show ? 1 : 0,
+    transform: show ? 'translateY(0)' : `translateY(${y}px)`,
+    transition: `opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s`,
+  })
 
   return (
     <>
@@ -94,60 +104,51 @@ export default function Home() {
         <div className="relative w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
           <div className="grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-14 items-center">
             {/* Copy */}
-            <motion.div style={{ opacity: reduce ? 1 : heroFade }}>
+            <div style={{ opacity: reduce ? 1 : heroOpacity }}>
               {/* Status badge */}
-              <motion.div
-                initial={reduce ? false : { opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: EASE }}
-                className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 mb-7"
+              <div
+                style={fadeSlide(mounted || reduce, 0, 16)}
               >
-                <motion.span
-                  animate={reduce ? false : { opacity: [1, 0.3, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.5)]"
-                />
-                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-steel-300">
-                  Sistema operativo — Disponible para nuevos proyectos
-                </span>
-              </motion.div>
+                <div className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5">
+                  <span
+                    className={`h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.5)] ${mounted && !reduce ? 'animate-pulse' : ''}`}
+                  />
+                  <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-steel-300">
+                    Sistema operativo — Disponible para nuevos proyectos
+                  </span>
+                </div>
+              </div>
 
-              <motion.h1
-                initial={reduce ? false : { opacity: 0, y: 22 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.06, ease: EASE }}
+              <h1
+                style={fadeSlide(mounted || reduce, 0.06, 22)}
                 className="font-display font-bold text-white leading-[1.0] tracking-tightest mb-6"
-                style={{ fontSize: 'clamp(2.5rem, 1.4rem + 4.6vw, 4.6rem)' }}
               >
                 Servicios petroleros{' '}
                 <span className="text-brand-blueLight tracking-tight">e industriales</span>
                 <br />
                 <span className="relative inline-block">
                   de precision.
-                  <motion.span
+                  <span
                     className="absolute -bottom-1 left-0 right-0 h-1 rounded-full bg-gradient-to-r from-brand-blue via-brand-blueLight to-transparent"
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ duration: 1, delay: 0.8, ease: EASE }}
-                    style={{ transformOrigin: 'left' }}
+                    style={{
+                      transform: mounted || reduce ? 'scaleX(1)' : 'scaleX(0)',
+                      transformOrigin: 'left',
+                      transition: `transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.8s`,
+                    }}
                   />
                 </span>
-              </motion.h1>
+              </h1>
 
-              <motion.p
-                initial={reduce ? false : { opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.14, ease: EASE }}
+              <p
+                style={fadeSlide(mounted || reduce, 0.14, 18)}
                 className="text-steel-300 text-base sm:text-lg leading-relaxed max-w-xl mb-9 font-mono text-sm tracking-wide"
               >
                 <span className="text-brand-blueLight">&gt;</span> Inyeccion de vapor, automatizacion, SCADA
                 y telecomunicaciones para la industria petrolera y manufacturera.
-              </motion.p>
+              </p>
 
-              <motion.div
-                initial={reduce ? false : { opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.22, ease: EASE }}
+              <div
+                style={fadeSlide(mounted || reduce, 0.22, 18)}
                 className="flex flex-wrap gap-3"
               >
                 <MagneticButton to="/servicios" className="btn-primary">
@@ -156,32 +157,32 @@ export default function Home() {
                 <Link to="/proyectos" className="btn-ghost-light">
                   Ver proyectos
                 </Link>
-              </motion.div>
+              </div>
 
               {/* Oscilloscope wave */}
-              <motion.div
-                initial={reduce ? false : { opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.6 }}
+              <div
+                style={fadeSlide(mounted || reduce, 0.6, 0)}
                 className="mt-8 h-6 sm:h-8 max-w-xs"
               >
                 <OscilloWave color="#3D8BE8" />
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
             {/* Right: Industrial diagram panel */}
-            <motion.div
-              initial={reduce ? false : { opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.9, delay: 0.1, ease: EASE }}
+            <div
               className="relative hidden lg:block"
+              style={{
+                opacity: mounted || reduce ? 1 : 0,
+                transform: mounted || reduce ? 'scale(1)' : 'scale(0.96)',
+                transition: `opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s`,
+              }}
             >
               <IndustrialHeroDiagram />
               {/* Floating radar */}
               <div className="absolute -bottom-4 -left-4 w-16 h-16">
                 <RadarSweep />
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -441,7 +442,7 @@ export default function Home() {
                   to="/proyectos"
                   className="group grid grid-cols-[auto_1fr] sm:grid-cols-[auto_5rem_1fr_auto] items-center gap-4 sm:gap-6 py-6"
                 >
-                  <span className="font-mono text-sm text-steel-500 font-mono">{n}</span>
+                  <span className="font-mono text-sm text-steel-500">{n}</span>
                   <div className="hidden sm:block h-16 w-20 overflow-hidden rounded-lg border border-white/10">
                     <img
                       src={img}
@@ -494,10 +495,8 @@ export default function Home() {
           <div className="relative rounded-2xl border border-white/10 bg-ink-900/40 backdrop-blur-sm p-8 sm:p-12 lg:p-14">
             {/* Corner LED */}
             <div className="absolute left-4 top-4 flex gap-2">
-              <motion.span
-                animate={reduce ? false : { opacity: [1, 0.3, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="h-2 w-2 rounded-full bg-brand-red shadow-[0_0_8px_rgba(197,25,45,0.6)]"
+              <span
+                className={`h-2 w-2 rounded-full bg-brand-red shadow-[0_0_8px_rgba(197,25,45,0.6)] ${!reduce ? 'animate-pulse' : ''}`}
               />
               <span className="h-2 w-2 rounded-full bg-steel-700" />
               <span className="h-2 w-2 rounded-full bg-steel-700" />

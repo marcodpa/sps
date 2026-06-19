@@ -1,4 +1,4 @@
-import { useReducedMotion } from 'motion/react'
+import { useReducedMotion } from '../lib/animations'
 
 /**
  * Marquee — endless horizontal logo/word strip. CSS-driven, GPU-friendly.

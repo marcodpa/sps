@@ -1,5 +1,5 @@
-import { useRef } from 'react'
-import { useInView, useReducedMotion, motion } from 'framer-motion'
+import { useRef, useState, useEffect } from 'react'
+import { useInView, useReducedMotion } from '../lib/animations'
 
 /**
  * SCADAPanel — Replaces the simple stats grid with an industrial
@@ -46,11 +46,21 @@ const telemetryData = [
 
 export default function SCADAPanel({ className = '' }) {
   const ref = useRef(null)
+  const [refObs, inView] = useInView({ once: true, amount: 0.2 })
   const reduce = useReducedMotion()
-  const inView = useInView(ref, { once: true, amount: 0.2 })
+  const [visible, setVisible] = useState(false)
+  const [animateBars, setAnimateBars] = useState(false)
+
+  useEffect(() => {
+    if (inView) {
+      setVisible(true)
+      const t = setTimeout(() => setAnimateBars(true), 300)
+      return () => clearTimeout(t)
+    }
+  }, [inView])
 
   return (
-    <div ref={ref} className={className}>
+    <div ref={(el) => { ref.current = el; refObs.current = el }} className={className}>
       <div className="relative rounded-2xl border border-white/10 bg-ink-900/60 backdrop-blur-sm overflow-hidden">
         {/* Scanline overlay */}
         <div
@@ -69,10 +79,8 @@ export default function SCADAPanel({ className = '' }) {
             </span>
           </div>
           <div className="flex items-center gap-2">
-            <motion.span
-              animate={inView && !reduce ? { opacity: [1, 0.3, 1] } : {}}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="h-1.5 w-1.5 rounded-full bg-emerald-400"
+            <span
+              className={`h-1.5 w-1.5 rounded-full bg-emerald-400 ${visible && !reduce ? 'animate-pulse' : ''}`}
             />
             <span className="font-mono text-[9px] text-emerald-400/70 tracking-wider uppercase">
               Sistema operativo
@@ -98,14 +106,16 @@ export default function SCADAPanel({ className = '' }) {
 
               {/* Value display */}
               <div className="flex items-baseline gap-1.5 mb-1">
-                <motion.span
+                <span
                   className="font-mono text-3xl sm:text-4xl font-bold text-white tabular-nums tracking-tight"
-                  initial={false}
-                  animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -8 }}
-                  transition={{ duration: 0.5, delay: 0.1 * i }}
+                  style={{
+                    opacity: visible ? 1 : 0,
+                    transform: visible ? 'translateX(0)' : 'translateX(-8px)',
+                    transition: `opacity 0.5s ease ${0.1 * i}s, transform 0.5s ease ${0.1 * i}s`,
+                  }}
                 >
                   {d.value}
-                </motion.span>
+                </span>
                 {d.unit && (
                   <span className="font-mono text-sm text-steel-400">{d.unit}</span>
                 )}
@@ -113,16 +123,15 @@ export default function SCADAPanel({ className = '' }) {
 
               {/* Progress bar */}
               <div className="mt-3 h-1.5 w-full rounded-full bg-white/5 overflow-hidden">
-                <motion.div
+                <div
                   className="h-full rounded-full"
                   style={{
                     background: d.status === 'growing'
                       ? 'linear-gradient(90deg, #0057B8, #3D8BE8)'
                       : 'linear-gradient(90deg, #C5192D, #E23B4E)',
+                    width: animateBars ? `${d.barPct}%` : '0%',
+                    transition: `width 1.2s ease ${0.3 + 0.1 * i}s`,
                   }}
-                  initial={{ width: '0%' }}
-                  animate={inView ? { width: `${d.barPct}%` } : {}}
-                  transition={{ duration: 1.2, delay: 0.3 + 0.1 * i, ease: 'easeOut' }}
                 />
               </div>
 
@@ -133,13 +142,11 @@ export default function SCADAPanel({ className = '' }) {
                   <span className="font-mono text-[8px] text-emerald-400/60">● NOMINAL</span>
                 )}
                 {d.status === 'growing' && (
-                  <motion.span
-                    animate={inView && !reduce ? { opacity: [1, 0.4, 1] } : {}}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                    className="font-mono text-[8px] text-amber-400/60"
+                  <span
+                    className={`font-mono text-[8px] text-amber-400/60 ${visible && !reduce ? 'animate-pulse' : ''}`}
                   >
                     ● EN CRECIMIENTO
-                  </motion.span>
+                  </span>
                 )}
               </div>
 

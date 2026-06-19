@@ -1,12 +1,7 @@
-import { useRef } from 'react'
-import { motion, useInView, useReducedMotion } from 'framer-motion'
+import { useRef, useEffect, useState } from 'react'
+import { useInView, useReducedMotion } from '../lib/animations'
 import { Gauge, WifiHigh, Thermometer, DropHalf } from '@phosphor-icons/react'
 
-/**
- * HUDTelemetry — A SCADA/HMI-style panel that displays real-time-ish
- * telemetry data with blinking indicators, progress bars, and a
- * technical aesthetic. Triggered on scroll.
- */
 const metrics = [
   { icon: Thermometer, label: 'TEMP VAPOR', value: '328', unit: '°C', status: 'ok' },
   { icon: Gauge, label: 'PRESIÓN LÍNEA', value: '1,840', unit: 'PSI', status: 'ok' },
@@ -17,20 +12,21 @@ const metrics = [
 export default function HUDTelemetry({ className = '' }) {
   const ref = useRef(null)
   const reduce = useReducedMotion()
-  const inView = useInView(ref, { once: true, amount: 0.3 })
+  const [refObs, inView] = useInView({ once: true, amount: 0.3 })
+  const [visible, setVisible] = useState(false)
+  const [animateBars, setAnimateBars] = useState(false)
+
+  useEffect(() => { if (inView) { setVisible(true); setTimeout(() => setAnimateBars(true), 300) } }, [inView])
 
   return (
-    <div ref={ref} className={`relative ${className}`}>
-      {/* Panel frame */}
+    <div ref={(el) => { ref.current = el; refObs.current = el }} className={`relative ${className}`}>
       <div className="relative rounded-xl border border-white/10 bg-ink-900/80 backdrop-blur-sm overflow-hidden">
-        {/* Scan line overlay */}
-        <motion.div
-          className="pointer-events-none absolute inset-0 z-10"
-          animate={inView && !reduce ? { backgroundPosition: ['0 0', '0 100%'] } : {}}
-          transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+        {/* Scan line overlay — pure CSS */}
+        <div className="pointer-events-none absolute inset-0 z-10 opacity-30"
           style={{
             background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,87,184,0.03) 2px, rgba(0,87,184,0.03) 4px)',
             backgroundSize: '100% 4px',
+            animation: inView && !reduce ? 'scanline 4s linear infinite' : 'none',
           }}
         />
 
@@ -38,41 +34,30 @@ export default function HUDTelemetry({ className = '' }) {
         <div className="flex items-center justify-between border-b border-white/5 px-4 py-2.5 bg-ink-950/60">
           <div className="flex items-center gap-2.5">
             <span className="flex h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.5)]" />
-            <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-emerald-400/80">
-              SCADA — MONITOREO EN VIVO
-            </span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-emerald-400/80">SCADA — MONITOREO EN VIVO</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <motion.span
-              animate={inView && !reduce ? { opacity: [1, 0.3, 1] } : {}}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="font-mono text-[9px] text-steel-500"
-            >
+            <span className={`font-mono text-[9px] text-steel-500 ${visible && !reduce ? 'animate-pulse' : ''}`}>
               ● EN LÍNEA
-            </motion.span>
+            </span>
           </div>
         </div>
 
         {/* Metrics grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-white/5">
           {metrics.map(({ icon: Icon, label, value, unit, status }, i) => (
-            <motion.div
-              key={label}
-              initial={reduce ? false : { opacity: 0, y: 12 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 * i, ease: 'easeOut' }}
+            <div key={label}
               className="relative p-4 sm:p-5"
+              style={{
+                opacity: visible ? 1 : 0,
+                transform: visible ? 'translateY(0)' : 'translateY(12px)',
+                transition: `opacity 0.5s ease ${i * 0.1}s, transform 0.5s ease ${i * 0.1}s`,
+              }}
             >
               {/* Status dot */}
               <div className="absolute right-3 top-3 flex items-center gap-1.5">
-                <span
-                  className={`h-1.5 w-1.5 rounded-full ${
-                    status === 'warning' ? 'bg-amber-400 animate-pulse' : 'bg-emerald-400'
-                  }`}
-                />
-                <span className="font-mono text-[8px] uppercase text-steale-600">
-                  {status === 'warning' ? 'ALERTA' : 'OK'}
-                </span>
+                <span className={`h-1.5 w-1.5 rounded-full ${status === 'warning' ? 'bg-amber-400 animate-pulse' : 'bg-emerald-400'}`} />
+                <span className="font-mono text-[8px] uppercase text-steel-600">{status === 'warning' ? 'ALERTA' : 'OK'}</span>
               </div>
 
               {/* Icon */}
@@ -87,22 +72,19 @@ export default function HUDTelemetry({ className = '' }) {
               </div>
 
               {/* Label */}
-              <div className="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-steel-500">
-                {label}
-              </div>
+              <div className="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-steel-500">{label}</div>
 
               {/* Mini progress bar */}
               <div className="mt-2 h-0.5 w-full rounded-full bg-white/5 overflow-hidden">
-                <motion.div
-                  className={`h-full rounded-full ${
-                    status === 'warning' ? 'bg-amber-400' : 'bg-emerald-400/60'
-                  }`}
-                  initial={{ width: '0%' }}
-                  animate={inView ? { width: status === 'warning' ? '76%' : ['0%', '92%', '88%'] } : {}}
-                  transition={{ duration: 1.5, delay: 0.3 + 0.1 * i, ease: 'easeOut' }}
+                <div
+                  className={`h-full rounded-full ${status === 'warning' ? 'bg-amber-400' : 'bg-emerald-400/60'}`}
+                  style={{
+                    width: animateBars ? (status === 'warning' ? '76%' : '92%') : '0%',
+                    transition: `width 1.5s ease ${0.3 + i * 0.1}s`,
+                  }}
                 />
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
@@ -111,9 +93,7 @@ export default function HUDTelemetry({ className = '' }) {
           <span className="font-mono text-[8px] text-steel-600 tracking-wider">
             ULTIMA ACTUALIZACIÓN: {new Date().toLocaleTimeString('es-VE', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
           </span>
-          <span className="font-mono text-[8px] text-steel-600 tracking-wider">
-            SPS-CONTROL-001
-          </span>
+          <span className="font-mono text-[8px] text-steel-600 tracking-wider">SPS-CONTROL-001</span>
         </div>
       </div>
     </div>

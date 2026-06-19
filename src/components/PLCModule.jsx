@@ -1,6 +1,6 @@
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { useInView, useReducedMotion, motion } from 'framer-motion'
+import { useInView, useReducedMotion } from '../lib/animations'
 import { ArrowUpRight } from '@phosphor-icons/react'
 
 /**
@@ -20,8 +20,11 @@ export default function PLCModule({
   className = '',
 }) {
   const ref = useRef(null)
+  const [refObs, inView] = useInView({ once: true, amount: 0.3 })
   const reduce = useReducedMotion()
-  const inView = useInView(ref, { once: true, amount: 0.3 })
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => { if (inView) setVisible(true) }, [inView])
 
   const isRed = color === 'red'
   const accentColor = isRed ? '#C5192D' : '#0057B8'
@@ -30,12 +33,14 @@ export default function PLCModule({
 
   return (
     <Link to={to} className={`block h-full ${className}`}>
-      <motion.div
-        ref={ref}
-        initial={reduce ? false : { opacity: 0, y: 20 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
+      <div
+        ref={(el) => { ref.current = el; refObs.current = el }}
         className="group relative h-full rounded-xl border border-white/10 bg-ink-900/70 backdrop-blur-sm overflow-hidden hover:-translate-y-0.5 transition-all duration-300"
+        style={{
+          opacity: visible ? 1 : 0,
+          transform: visible ? 'translateY(0)' : 'translateY(20px)',
+          transition: 'opacity 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+        }}
       >
         {/* DIN-rail top strip */}
         <div className="flex items-center gap-2 border-b border-white/5 bg-ink-950/60 px-3 py-2">
@@ -46,11 +51,9 @@ export default function PLCModule({
           <span className="h-px flex-1 bg-white/5" />
           {/* Status LEDs */}
           <div className="flex items-center gap-1.5">
-            <motion.span
-              className="h-1.5 w-1.5 rounded-full"
+            <span
+              className={`h-1.5 w-1.5 rounded-full ${visible && !reduce ? 'animate-pulse' : ''}`}
               style={{ background: accentColor, boxShadow: `0 0 4px ${accentColor}` }}
-              animate={!reduce ? { opacity: [1, 0.3, 1] } : {}}
-              transition={{ duration: 2, repeat: Infinity }}
             />
             <span className="font-mono text-[8px] uppercase text-steel-500 tracking-wider">
               {status}
@@ -114,7 +117,7 @@ export default function PLCModule({
             ))}
           </div>
         </div>
-      </motion.div>
+      </div>
     </Link>
   )
 }
