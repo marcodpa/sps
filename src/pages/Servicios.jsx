@@ -4,7 +4,7 @@ import {
   Drop, Thermometer, GasPump, Ruler, Trash, Truck, Wrench,
   Lightning, ArrowRight, ShieldCheck, Headphones, Gauge,
   Cloud, Fan, BatteryCharging, Plug, Radio, Circuitry, SolarRoof,
-  GearSix, Wind, FireExtinguisher,
+  GearSix, Wind, FireExtinguisher, Monitor,
 } from '@phosphor-icons/react'
 
 /* ── Imágenes de alta calidad ── */
