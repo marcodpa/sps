@@ -1,281 +1,171 @@
-import { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { useReducedMotion } from '../lib/animations'
 import {
   ArrowRight,
-  ArrowUpRight,
-  Flame,
   Cpu,
   WifiHigh,
   Broadcast,
-  ShieldCheck,
+  Flame,
+  GearSix,
   Headphones,
+  ShieldCheck,
   Gauge,
 } from '@phosphor-icons/react'
-import { Reveal, Stagger, StaggerItem, EASE } from '../lib/motion'
-import IndustrialGauge from '../components/IndustrialGauge'
-import ProcessFlow from '../components/ProcessFlow'
-import HUDTelemetry from '../components/HUDTelemetry'
-import SCADAPanel from '../components/SCADAPanel'
-import PLCModule from '../components/PLCModule'
-import { IndustrialHeroDiagram, OscilloWave, RadarSweep } from '../components/IndustrialHero'
-import MagneticButton from '../components/MagneticButton'
-import Marquee from '../components/Marquee'
 
-const ABOUT_IMG =
-  'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&w=1000&q=80'
+/* ── High-quality industrial / oil & gas images ── */
+const IMG = {
+  hero: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80',
+  about: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&w=1000&q=80',
+  service1: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80',
+  service2: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80',
+  service3: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=800&q=80',
+  service4: 'https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&w=800&q=80',
+  project1: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=80',
+  project2: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=900&q=80',
+  project3: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80',
+}
 
+/* ── Data ── */
 const clients = [
   'Petroboscan', 'Chevron', 'PDVSA GIV', 'Produsal',
   'Petroquiriquire', 'Cargill', 'HPI LLC',
 ]
 
-const brands = ['Cisco', 'Siemens', 'Rockwell', 'Fanuc', 'Modicon', 'Omron', 'Wonderware']
-
-const featuredProjects = [
+const services = [
   {
-    n: '01',
-    client: 'Petroboscan / Chevron',
-    result: 'Inyeccion de vapor en Campo Boscan, 1.500 barriles diarios.',
-    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&q=80',
-    tag: 'Petrolero',
+    icon: Flame, title: 'Servicios petroleros',
+    desc: 'Inyeccion de vapor para recuperacion mejorada de crudo en pozos y fosas. Mas de 7 anos de experiencia en Campo Boscan.',
+    img: IMG.service1, to: '/servicios#petroleros',
   },
   {
-    n: '02',
-    client: 'Cargill de Venezuela',
-    result: 'Automatizacion de lineas con PLC Allen Bradley y robot paletizador.',
-    img: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&w=700&q=80',
-    tag: 'Automatizacion',
+    icon: Cpu, title: 'Automatizacion industrial',
+    desc: 'PLC, SCADA, HMI, RTU e instrumentacion. Programacion Allen Bradley, Wonderware y diseno de tableros de control.',
+    img: IMG.service2, to: '/servicios#automatizacion',
   },
   {
-    n: '03',
-    client: 'HPI LLC, Houston',
-    result: 'Programacion PLC/HMI y fibra optica en plantas de 5 paises.',
-    img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=700&q=80',
-    tag: 'Internacional',
+    icon: WifiHigh, title: 'Conectividad y redes',
+    desc: 'Redes LAN/WAN, fibra optica, voz sobre IP y videovigilancia para empresas y plantas industriales.',
+    img: IMG.service3, to: '/servicios#conectividad',
+  },
+  {
+    icon: Broadcast, title: 'Telecomunicaciones',
+    desc: 'Radio enlaces digitales, canalizaciones telefonicas y monitoreo remoto de instalaciones a nivel nacional.',
+    img: IMG.service4, to: '/servicios#telecomunicaciones',
   },
 ]
 
+const projects = [
+  { n: '01', client: 'Petroboscan / Chevron', tag: 'Petrolero', img: IMG.project1,
+    result: 'Inyeccion de vapor en Campo Boscan con capacidad de 1.500 barriles diarios.' },
+  { n: '02', client: 'Cargill de Venezuela', tag: 'Automatizacion', img: IMG.project2,
+    result: 'Automatizacion de lineas de produccion con PLC Allen Bradley y robot paletizador.' },
+  { n: '03', client: 'HPI LLC, Houston', tag: 'Internacional', img: IMG.project3,
+    result: 'Programacion PLC/HMI y fibra optica en plantas ubicadas en 5 paises.' },
+]
+
+const stats = [
+  { value: '1.500+', label: 'Barriles diarios' },
+  { value: '100%', label: 'Ejecucion de contratos' },
+  { value: '5', label: 'Paises operando' },
+  { value: '7+', label: 'Anos de trayectoria' },
+]
+
 export default function Home() {
-  const heroRef = useRef(null)
-  const reduce = useReducedMotion()
-  const [mounted, setMounted] = useState(false)
-  const [heroOpacity, setHeroOpacity] = useState(1)
-
-  /* ── Mount trigger for entrance animations ── */
-  useEffect(() => { setMounted(true) }, [])
-
-  /* ── Scroll-driven hero fade (replaces useScroll/useTransform) ── */
-  useEffect(() => {
-    if (reduce) return
-    const handleScroll = () => {
-      const el = heroRef.current
-      if (!el) return
-      const rect = el.getBoundingClientRect()
-      const h = rect.height
-      const progress = Math.max(0, Math.min(1, -rect.top / h))
-      setHeroOpacity(1 - progress)
-    }
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [reduce])
-
-  /* ── Reusable transition helper ── */
-  const fadeSlide = (show, delay = 0, y = 18) => ({
-    opacity: show ? 1 : 0,
-    transform: show ? 'translateY(0)' : `translateY(${y}px)`,
-    transition: `opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s`,
-  })
-
   return (
     <>
-      {/* ═══════════════ HERO — INDUSTRIAL CONTROL ROOM ═══════════════ */}
-      <section
-        ref={heroRef}
-        className="relative min-h-[100dvh] flex items-center overflow-hidden bg-ink-950"
-        aria-label="Portada"
-      >
-        {/* Blueprint + CRT scan texture */}
-        <div className="absolute inset-0 bp-grid bp-grid-fade opacity-60" />
-        <div className="pointer-events-none absolute inset-0 crt-scan" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-blue/40 to-transparent animate-scanline" />
-        <div className="pointer-events-none absolute -right-40 top-1/4 h-[34rem] w-[34rem] rounded-full bg-brand-blue/8 blur-[150px]" />
+      {/* ═══════════════ HERO ─────────────────── */}
+      <section className="relative min-h-[90dvh] flex items-center overflow-hidden bg-ink-950" aria-label="Portada">
+        {/* Imagen de fondo con overlay */}
+        <div className="absolute inset-0">
+          <img src={IMG.hero} alt="" className="h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-ink-950/90 via-ink-950/60 to-ink-950/70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 via-transparent to-transparent" />
+        </div>
 
-        <div className="relative w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
-          <div className="grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-14 items-center">
-            {/* Copy */}
-            <div style={{ opacity: reduce ? 1 : heroOpacity }}>
-              {/* Status badge */}
-              <div
-                style={fadeSlide(mounted || reduce, 0, 16)}
-              >
-                <div className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5">
-                  <span
-                    className={`h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.5)] ${mounted && !reduce ? 'animate-pulse' : ''}`}
-                  />
-                  <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-steel-300">
-                    Sistema operativo — Disponible para nuevos proyectos
-                  </span>
-                </div>
-              </div>
-
-              <h1
-                style={fadeSlide(mounted || reduce, 0.06, 22)}
-                className="font-display font-bold text-white leading-[1.0] tracking-tightest mb-6"
-              >
-                Servicios petroleros{' '}
-                <span className="text-brand-blueLight tracking-tight">e industriales</span>
-                <br />
-                <span className="relative inline-block">
-                  de precision.
-                  <span
-                    className="absolute -bottom-1 left-0 right-0 h-1 rounded-full bg-gradient-to-r from-brand-blue via-brand-blueLight to-transparent"
-                    style={{
-                      transform: mounted || reduce ? 'scaleX(1)' : 'scaleX(0)',
-                      transformOrigin: 'left',
-                      transition: `transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.8s`,
-                    }}
-                  />
-                </span>
-              </h1>
-
-              <p
-                style={fadeSlide(mounted || reduce, 0.14, 18)}
-                className="text-steel-300 text-base sm:text-lg leading-relaxed max-w-xl mb-9 font-mono text-sm tracking-wide"
-              >
-                <span className="text-brand-blueLight">&gt;</span> Inyeccion de vapor, automatizacion, SCADA
-                y telecomunicaciones para la industria petrolera y manufacturera.
-              </p>
-
-              <div
-                style={fadeSlide(mounted || reduce, 0.22, 18)}
-                className="flex flex-wrap gap-3"
-              >
-                <MagneticButton to="/servicios" className="btn-primary">
-                  Explorar servicios <ArrowRight size={18} weight="bold" />
-                </MagneticButton>
-                <Link to="/proyectos" className="btn-ghost-light">
-                  Ver proyectos
-                </Link>
-              </div>
-
-              {/* Oscilloscope wave */}
-              <div
-                style={fadeSlide(mounted || reduce, 0.6, 0)}
-                className="mt-8 h-6 sm:h-8 max-w-xs"
-              >
-                <OscilloWave color="#3D8BE8" />
-              </div>
+        <div className="relative w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-4 py-1.5 mb-6">
+              <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.5)]" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-steel-300">
+                Ingenieria petrolera e industrial
+              </span>
             </div>
 
-            {/* Right: Industrial diagram panel */}
-            <div
-              className="relative hidden lg:block"
-              style={{
-                opacity: mounted || reduce ? 1 : 0,
-                transform: mounted || reduce ? 'scale(1)' : 'scale(0.96)',
-                transition: `opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s`,
-              }}
-            >
-              <IndustrialHeroDiagram />
-              {/* Floating radar */}
-              <div className="absolute -bottom-4 -left-4 w-16 h-16">
-                <RadarSweep />
-              </div>
+            <h1 className="font-display font-bold text-white leading-[1.05] mb-6"
+              style={{ fontSize: 'clamp(2.5rem, 1.5rem + 4.5vw, 5rem)' }}>
+              Servicios petroleros{' '}
+              <span className="text-brand-blueLight">e industriales</span>
+              <br />de precision.
+            </h1>
+
+            <p className="text-steel-300 text-base sm:text-lg leading-relaxed max-w-xl mb-10">
+              Inyeccion de vapor, automatizacion, SCADA y telecomunicaciones
+              para la industria petrolera y manufacturera en Venezuela y el exterior.
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              <Link to="/servicios" className="inline-flex items-center gap-2 rounded-xl bg-brand-blue px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-blue/90 hover:-translate-y-0.5">
+                Explorar servicios <ArrowRight size={18} weight="bold" />
+              </Link>
+              <Link to="/contacto" className="inline-flex items-center gap-2 rounded-xl border border-white/20 px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white/10 hover:-translate-y-0.5">
+                Contactar ahora
+              </Link>
             </div>
           </div>
         </div>
+
+        {/* Indicador inferior */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+          <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/30">Desplazar</span>
+          <div className="h-10 w-[1px] bg-gradient-to-b from-white/30 to-transparent" />
+        </div>
       </section>
 
-      {/* ═══════════════ CLIENTS ═══════════════ */}
-      <section className="bg-ink-950 border-b border-white/5" aria-label="Clientes">
+      {/* ═══════════════ CLIENTS ─────────────── */}
+      <section className="bg-white border-b border-steel-100" aria-label="Clientes">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <Reveal className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-12">
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-steel-500 shrink-0">
-              &lt; Empresas que confian en SPS /&gt;
+          <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-12">
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-steel-400 shrink-0">
+              Empresas que confian en SPS
             </p>
-            <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+            <div className="h-px w-12 bg-steel-200 hidden lg:block" />
+            <div className="flex flex-wrap items-center gap-x-10 gap-y-3">
               {clients.map((c) => (
-                <span
-                  key={c}
-                  className="font-display text-base font-semibold text-steel-500 transition-colors duration-200 hover:text-steel-300"
-                >
+                <span key={c} className="font-display text-base font-semibold text-steel-400 transition-colors duration-200 hover:text-ink-900">
                   {c}
                 </span>
               ))}
             </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ═══════════════ STATS — SCADA PANEL ═══════════════ */}
-      <section className="bg-ink-950 py-20 lg:py-24" aria-label="Metricas">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="max-w-2xl mb-10">
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-blueLight mb-3">
-              PANEL DE CONTROL
-            </p>
-            <h2
-              className="font-display font-bold text-white leading-[1.05] tracking-tightest"
-              style={{ fontSize: 'clamp(1.75rem, 1.1rem + 2.4vw, 2.9rem)' }}
-            >
-              Operaciones en tiempo real.
-            </h2>
-          </Reveal>
-
-          <SCADAPanel />
-
-          {/* Small gauge row */}
-          <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 justify-items-center">
-            <IndustrialGauge value={78} max={100} label="PRESIÓN" unit="PSI" subtitle="LÍNEA PRINCIPAL" size={180} />
-            <IndustrialGauge value={328} max={500} label="TEMP" unit="°C" subtitle="VAPOR" thresholds={{ warning: 350, danger: 420 }} size={180} />
-            <IndustrialGauge value={62} max={100} label="CAUDAL" unit="BPM" subtitle="INYECCIÓN" size={180} />
-            <IndustrialGauge value={97} max={100} label="SCADA" unit="%" subtitle="DISPONIBILIDAD" size={180} />
           </div>
         </div>
       </section>
 
-      {/* ═══════════════ ABOUT ═══════════════ */}
+      {/* ═══════════════ ABOUT ───────────────── */}
       <section className="bg-white py-24 lg:py-28" aria-labelledby="about-h">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
-            <Reveal className="relative order-2 lg:order-1">
-              <div className="relative rounded-2xl overflow-hidden border border-steel-200">
-                <img
-                  src={ABOUT_IMG}
-                  alt="Tecnicos especialistas de SPS en planta"
-                  className="h-[28rem] w-full object-cover"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 via-transparent to-transparent" />
-                {/* Technical overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-5">
+            {/* Imagen */}
+            <div className="relative">
+              <div className="relative rounded-2xl overflow-hidden">
+                <img src={IMG.about} alt="Tecnicos especialistas de SPS en planta"
+                  className="h-[32rem] w-full object-cover" loading="lazy" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink-950/40 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                    <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-emerald-400/70">
-                      PERSONAL TÉCNICO
-                    </span>
+                    <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-emerald-400/70">PERSONAL TÉCNICO</span>
                   </div>
                   <p className="font-mono text-[11px] text-white/60">SPS — Operaciones de campo</p>
                 </div>
               </div>
-              {/* Floating data card */}
-              <div className="absolute -bottom-5 -right-5 flex items-center gap-4 rounded-xl border border-steel-100 bg-white px-6 py-4 shadow-lift">
-                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-red text-white">
-                  <Headphones size={20} weight="fill" />
-                </div>
-                <div>
-                  <p className="font-display text-sm font-bold text-ink-900">Respuesta inmediata</p>
-                  <p className="font-mono text-[10px] text-steel-400">Soporte tecnico 24/7</p>
-                </div>
-              </div>
-            </Reveal>
+            </div>
 
-            <Reveal delay={0.1} className="order-1 lg:order-2">
+            {/* Texto */}
+            <div>
               <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-blue mb-4">
                 &lt; Sobre nosotros /&gt;
               </p>
-              <h2 id="about-h" className="h-section mb-6">
+              <h2 id="about-h" className="font-display font-bold text-ink-900 leading-[1.05] tracking-tightest mb-6"
+                style={{ fontSize: 'clamp(1.75rem, 1.1rem + 2.4vw, 2.9rem)' }}>
                 Ingenieria petrolera e industrial, ejecutada en campo.
               </h2>
               <div className="space-y-4 text-steel-600 leading-relaxed max-w-xl">
@@ -286,240 +176,167 @@ export default function Home() {
                 </p>
                 <p>
                   Nuestros tecnicos especialistas se desplazan con rapidez al terreno para
-                  atender emergencias, trabajando en coordinacion con empresas aliadas.
+                  atender emergencias, trabajando en coordinacion con empresas aliadas en
+                  cada uno de los proyectos que ejecutamos.
                 </p>
               </div>
-              <Link
-                to="/nosotros"
-                className="group mt-8 inline-flex items-center gap-2 font-semibold text-sm text-brand-blue"
-              >
-                Conocer mas
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-blue/10 transition-all duration-200 group-hover:bg-brand-blue group-hover:text-white">
-                  <ArrowRight size={13} weight="bold" />
-                </span>
+
+              {/* Stats inline */}
+              <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-6">
+                {stats.map((s) => (
+                  <div key={s.label}>
+                    <p className="font-display text-2xl sm:text-3xl font-bold text-brand-blue">{s.value}</p>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.1em] text-steel-400 mt-1">{s.label}</p>
+                  </div>
+                ))}
+              </div>
+
+              <Link to="/nosotros"
+                className="group mt-8 inline-flex items-center gap-2 font-semibold text-sm text-brand-blue transition-all duration-200 hover:gap-3">
+                Conocer mas <ArrowRight size={15} weight="bold" />
               </Link>
-            </Reveal>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ═══════════════ SERVICES — PLC MODULES ═══════════════ */}
-      <section className="bg-ink-950 py-24 lg:py-28" aria-labelledby="services-h">
+      {/* ═══════════════ SERVICES ────────────── */}
+      <section className="bg-steel-50 py-24 lg:py-28" aria-labelledby="services-h">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="max-w-2xl mb-14">
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-blueLight mb-3">
-              &lt; MODULOS DE SERVICIO /&gt;
+          <div className="max-w-2xl mb-14">
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-blue mb-3">
+              &lt; Nuestros servicios /&gt;
             </p>
-            <h2
-              id="services-h"
-              className="font-display font-bold text-white leading-[1.05] tracking-tightest mb-4"
-              style={{ fontSize: 'clamp(1.75rem, 1.1rem + 2.4vw, 2.9rem)' }}
-            >
+            <h2 id="services-h"
+              className="font-display font-bold text-ink-900 leading-[1.05] tracking-tightest mb-4"
+              style={{ fontSize: 'clamp(1.75rem, 1.1rem + 2.4vw, 2.9rem)' }}>
               Cuatro lineas de servicio para la industria.
             </h2>
-            <p className="text-steel-400 leading-relaxed font-mono text-sm tracking-wide">
+            <p className="text-steel-500 leading-relaxed max-w-xl">
               Del pozo a la sala de control: cubrimos recuperacion de crudo, automatizacion,
               redes y telecomunicaciones bajo un solo equipo de ingenieria.
             </p>
-          </Reveal>
+          </div>
 
-          <Stagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
-            <StaggerItem>
-              <PLCModule
-                icon={Flame}
-                title="Servicios petroleros"
-                desc="Inyeccion de vapor para recuperacion de crudo en fosas y pozos."
-                tag="Linea principal"
-                to="/servicios#petroleros"
-                moduleId="SPS-001"
-                color="red"
-                features={['Inyección de vapor', 'Recuperación de crudo', 'Campo Boscán']}
-              />
-            </StaggerItem>
-            <StaggerItem>
-              <PLCModule
-                icon={Cpu}
-                title="Automatizacion"
-                desc="PLC, SCADA, HMI, RTU e instrumentacion industrial."
-                tag="Control"
-                to="/servicios#automatizacion"
-                moduleId="SPS-002"
-                color="blue"
-                features={['PLC Allen Bradley', 'SCADA Wonderware', 'Diseño de tableros']}
-              />
-            </StaggerItem>
-            <StaggerItem>
-              <PLCModule
-                icon={WifiHigh}
-                title="Conectividad"
-                desc="Redes LAN/WAN, voz, datos y video para empresas."
-                tag="Redes"
-                to="/servicios#conectividad"
-                moduleId="SPS-003"
-                color="blue"
-                features={['Fibra óptica', 'Redes empresariales', 'Enlaces dedicados']}
-              />
-            </StaggerItem>
-            <StaggerItem>
-              <PLCModule
-                icon={Broadcast}
-                title="Telecomunicaciones"
-                desc="Fibra optica, canalizaciones telefonicas y enlaces de radio."
-                tag="Telecom"
-                to="/servicios#telecomunicaciones"
-                moduleId="SPS-004"
-                color="blue"
-                features={['Radio enlaces', 'Canalizaciones', 'Monitoreo remoto']}
-              />
-            </StaggerItem>
-          </Stagger>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {services.map((s) => (
+              <Link key={s.title} to={s.to}
+                className="group relative flex flex-col rounded-2xl overflow-hidden bg-white border border-steel-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                {/* Imagen */}
+                <div className="relative h-44 overflow-hidden">
+                  <img src={s.img} alt=""
+                    className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/50 via-transparent to-transparent" />
+                  <div className="absolute top-3 left-3 flex h-10 w-10 items-center justify-center rounded-xl bg-white/90 backdrop-blur-sm shadow-sm">
+                    <s.icon size={20} className="text-brand-blue" />
+                  </div>
+                </div>
+                {/* Contenido */}
+                <div className="flex flex-col flex-1 p-5">
+                  <h3 className="font-display text-lg font-bold text-ink-900 mb-2">{s.title}</h3>
+                  <p className="text-sm text-steel-500 leading-relaxed flex-1">{s.desc}</p>
+                  <div className="mt-4 flex items-center gap-1.5 text-sm font-semibold text-brand-blue group-hover:gap-2 transition-all duration-200">
+                    Ver mas <ArrowRight size={14} weight="bold" />
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ═══════════════ PROCESS FLOW — P&amp;ID DIAGRAM ═══════════════ */}
-      <section className="bg-ink-950 pb-24 lg:pb-28" aria-labelledby="flow-h">
+      {/* ═══════════════ PROJECTS ────────────── */}
+      <section className="bg-ink-950 py-24 lg:py-28" aria-labelledby="projects-h">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="max-w-2xl mb-10">
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-blueLight mb-3">
-              DIAGRAMA DE PROCESO
-            </p>
-            <h2
-              id="flow-h"
-              className="font-display font-bold text-white leading-[1.05] tracking-tightest mb-4"
-              style={{ fontSize: 'clamp(1.75rem, 1.1rem + 2.4vw, 2.9rem)' }}
-            >
-              Del pozo al almacenamiento, integrado via SCADA.
-            </h2>
-            <p className="text-steel-400 leading-relaxed font-mono text-sm tracking-wide">
-              Diagrama P&amp;ID del proceso completo de SPS, desde la extraccion hasta el monitoreo remoto.
-            </p>
-          </Reveal>
-
-          <ProcessFlow />
-        </div>
-      </section>
-
-      {/* ═══════════════ HUD TELEMETRY ═══════════════ */}
-      <section className="bg-steel-50 py-20 lg:py-24" aria-label="Telemetria">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="max-w-2xl mb-10">
-            <h2 className="h-section mb-4">Monitoreo en tiempo real.</h2>
-            <p className="text-steel-500 leading-relaxed">
-              Parametros criticos supervisados 24/7 desde nuestra sala de control.
-            </p>
-          </Reveal>
-          <HUDTelemetry />
-        </div>
-      </section>
-
-      {/* ═══════════════ PROJECTS (editorial list) ═══════════════ */}
-      <section className="bg-ink-950 py-24 lg:py-28 relative overflow-hidden" aria-labelledby="projects-h">
-        <div className="absolute inset-0 bp-grid bp-grid-fade opacity-50" />
-        <div className="absolute inset-0 crt-scan opacity-20" />
-        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
             <div>
               <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-blueLight mb-3">
-                &lt; PROYECTOS EJECUTADOS /&gt;
+                &lt; Proyectos ejecutados /&gt;
               </p>
-              <h2 id="projects-h" className="h-section text-white">
+              <h2 id="projects-h"
+                className="font-display font-bold text-white leading-[1.05] tracking-tightest"
+                style={{ fontSize: 'clamp(1.75rem, 1.1rem + 2.4vw, 2.9rem)' }}>
                 Proyectos destacados.
               </h2>
             </div>
-            <Link
-              to="/proyectos"
-              className="group inline-flex items-center gap-2 text-sm font-medium text-steel-300 hover:text-white transition-colors shrink-0 font-mono text-[11px] tracking-wide"
-            >
+            <Link to="/proyectos"
+              className="group inline-flex items-center gap-2 text-sm font-medium text-steel-300 hover:text-white transition-colors shrink-0 font-mono text-[11px] tracking-wide">
               Ver todos los proyectos
               <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" weight="bold" />
             </Link>
-          </Reveal>
+          </div>
 
-          <Stagger className="divide-y divide-white/10 border-y border-white/10">
-            {featuredProjects.map(({ n, client, result, img, tag }) => (
-              <StaggerItem key={n}>
-                <Link
-                  to="/proyectos"
-                  className="group grid grid-cols-[auto_1fr] sm:grid-cols-[auto_5rem_1fr_auto] items-center gap-4 sm:gap-6 py-6"
-                >
-                  <span className="font-mono text-sm text-steel-500">{n}</span>
-                  <div className="hidden sm:block h-16 w-20 overflow-hidden rounded-lg border border-white/10">
-                    <img
-                      src={img}
-                      alt=""
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      loading="lazy"
-                    />
+          <div className="grid md:grid-cols-3 gap-6">
+            {projects.map((p) => (
+              <Link key={p.n} to="/proyectos"
+                className="group relative rounded-2xl overflow-hidden border border-white/10 bg-ink-900 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+                <div className="relative h-64 overflow-hidden">
+                  <img src={p.img} alt=""
+                    className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-ink-950/10 to-transparent" />
+                  <div className="absolute top-3 left-3">
+                    <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-white/70 border border-white/20 rounded-full px-3 py-1 bg-ink-950/40 backdrop-blur-sm">
+                      {p.tag}
+                    </span>
                   </div>
-                  <div>
-                    <div className="flex items-center gap-3">
-                      <h3 className="font-display text-lg sm:text-xl font-bold text-white transition-colors group-hover:text-brand-blueLight">
-                        {client}
-                      </h3>
-                      <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-steel-500 border border-white/10 rounded px-2 py-0.5">
-                        {tag}
-                      </span>
-                    </div>
-                    <p className="mt-1 text-sm text-steel-400 leading-relaxed">{result}</p>
-                  </div>
-                  <ArrowUpRight
-                    size={22}
-                    className="hidden sm:block text-steel-500 transition-all duration-200 group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                  />
-                </Link>
-              </StaggerItem>
+                </div>
+                <div className="p-5">
+                  <p className="font-mono text-xs text-steel-500 mb-1">{p.n}</p>
+                  <h3 className="font-display text-lg font-bold text-white transition-colors group-hover:text-brand-blueLight">{p.client}</h3>
+                  <p className="mt-2 text-sm text-steel-400 leading-relaxed">{p.result}</p>
+                </div>
+              </Link>
             ))}
-          </Stagger>
+          </div>
         </div>
       </section>
 
-      {/* ═══════════════ BRANDS (marquee) ═══════════════ */}
+      {/* ═══════════════ BRANDS ──────────────── */}
       <section className="bg-white py-20" aria-label="Marcas aliadas">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="text-center mb-9">
-            <h2 className="h-section">Tecnologia de marcas lideres.</h2>
-          </Reveal>
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 text-center mb-10">
+          <h2 className="font-display font-bold text-ink-900 leading-[1.05] tracking-tightest mb-4"
+            style={{ fontSize: 'clamp(1.5rem, 1rem + 2vw, 2.5rem)' }}>
+            Tecnologia de marcas lideres.
+          </h2>
+          <p className="text-steel-500 max-w-lg mx-auto">
+            Trabajamos con equipos y software de los fabricantes mas reconocidos de la industria.
+          </p>
         </div>
-        <Reveal>
-          <Marquee items={brands} />
-        </Reveal>
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-6">
+            {['Cisco', 'Siemens', 'Rockwell', 'Fanuc', 'Modicon', 'Omron', 'Wonderware'].map((b) => (
+              <span key={b} className="font-display text-lg sm:text-xl font-bold text-steel-300 transition-colors duration-200 hover:text-ink-900">
+                {b}
+              </span>
+            ))}
+          </div>
+        </div>
       </section>
 
-      {/* ═══════════════ CTA ═══════════════ */}
+      {/* ═══════════════ CTA ─────────────────── */}
       <section className="relative overflow-hidden bg-ink-950 py-24 lg:py-28" aria-labelledby="cta-h">
-        <div className="absolute inset-0 bp-grid bp-grid-fade opacity-60" />
-        <div className="absolute inset-0 crt-scan opacity-30" />
-        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[30rem] w-[30rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-blue/10 blur-[140px]" />
-        <Reveal className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          {/* Panel frame */}
-          <div className="relative rounded-2xl border border-white/10 bg-ink-900/40 backdrop-blur-sm p-8 sm:p-12 lg:p-14">
-            {/* Corner LED */}
-            <div className="absolute left-4 top-4 flex gap-2">
-              <span
-                className={`h-2 w-2 rounded-full bg-brand-red shadow-[0_0_8px_rgba(197,25,45,0.6)] ${!reduce ? 'animate-pulse' : ''}`}
-              />
-              <span className="h-2 w-2 rounded-full bg-steel-700" />
-              <span className="h-2 w-2 rounded-full bg-steel-700" />
-            </div>
-
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/5 via-transparent to-transparent" />
+        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[30rem] w-[30rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-blue/8 blur-[140px]" />
+        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="relative rounded-2xl border border-white/10 bg-ink-900/50 backdrop-blur-sm p-8 sm:p-12 lg:p-14">
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-blueLight mb-4">
-              &lt; CONTACTANOS /&gt;
+              &lt; Contactanos /&gt;
             </p>
-            <h2
-              id="cta-h"
-              className="font-display text-3xl md:text-5xl font-bold text-white tracking-tightest leading-[1.05] mb-5"
-            >
+            <h2 id="cta-h"
+              className="font-display text-3xl md:text-5xl font-bold text-white tracking-tightest leading-[1.05] mb-5">
               Listo para tu proximo proyecto?
             </h2>
-            <p className="text-steel-400 leading-relaxed mb-9 max-w-xl mx-auto font-mono text-sm">
+            <p className="text-steel-400 leading-relaxed mb-9 max-w-xl mx-auto">
               Nuestro equipo de ingenieros analiza tu proyecto y te propone la solucion mas
               adecuada para tu industria.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
-              <MagneticButton to="/contacto" className="btn-red">
+              <Link to="/contacto"
+                className="inline-flex items-center gap-2 rounded-xl bg-brand-red px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-red/90 hover:-translate-y-0.5">
                 Solicitar cotizacion <ArrowRight size={18} weight="bold" />
-              </MagneticButton>
-              <Link to="/servicios" className="btn-ghost-light">
+              </Link>
+              <Link to="/servicios"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/20 px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white/10 hover:-translate-y-0.5">
                 Ver servicios
               </Link>
             </div>
@@ -529,7 +346,7 @@ export default function Home() {
               <span className="inline-flex items-center gap-2"><Headphones size={15} className="text-brand-blueLight" /> Respuesta 24/7</span>
             </div>
           </div>
-        </Reveal>
+        </div>
       </section>
     </>
   )
