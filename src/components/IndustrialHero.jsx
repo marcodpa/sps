@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { motion, useInView, useReducedMotion } from 'motion/react'
+import { motion, useInView, useReducedMotion } from 'framer-motion'
 
 /**
  * OscilloWave — Animated SVG oscilloscope-style wave that runs

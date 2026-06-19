@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useInView, useReducedMotion } from 'motion/react'
+import { motion, useInView, useReducedMotion } from 'framer-motion'
 import { EASE } from '../lib/motion'
 
 /**

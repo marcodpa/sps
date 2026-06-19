@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { useInView, useReducedMotion, motion } from 'motion/react'
+import { useInView, useReducedMotion, motion } from 'framer-motion'
 import { ArrowUpRight } from '@phosphor-icons/react'
 
 /**

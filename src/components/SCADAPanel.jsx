@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { useInView, useReducedMotion, motion } from 'motion/react'
+import { useInView, useReducedMotion, motion } from 'framer-motion'
 
 /**
  * SCADAPanel — Replaces the simple stats grid with an industrial

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { useInView, useMotionValue, useSpring, useTransform, useReducedMotion } from 'motion/react'
+import { useInView, useMotionValue, useSpring, useTransform, useReducedMotion } from 'framer-motion'
 
 /**
  * IndustrialGauge — SVG arc gauge with animated needle, tick marks,
