@@ -1,44 +1,36 @@
-import { useState, useEffect } from 'react'
-import { useReducedMotion } from '../lib/animations'
-import { EASE } from '../lib/motion'
+import FieldImage from './FieldImage'
 
-/**
- * PageHero — consistent engineered hero band for inner pages.
- * Dark ink, blueprint texture, scan line, kicker + title + subtitle.
- */
-export default function PageHero({ kicker, title, accent, subtitle, children }) {
-  const reduce = useReducedMotion()
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => { setMounted(true) }, [])
-
-  const show = mounted || reduce
+export default function PageHero({ kicker, title, accent, subtitle, image, children, align = 'left' }) {
+  const centered = align === 'center'
 
   return (
-    <section className="relative overflow-hidden bg-ink-950 pt-32 pb-20 lg:pt-40 lg:pb-24">
-      <div className="absolute inset-0 bp-grid bp-grid-fade opacity-70" />
-      <div className="pointer-events-none absolute inset-x-0 top-16 h-px bg-gradient-to-r from-transparent via-brand-blue/50 to-transparent animate-scanline" />
-      <div className="pointer-events-none absolute -right-32 top-0 h-[26rem] w-[26rem] rounded-full bg-brand-blue/10 blur-[140px]" />
+    <section className="relative min-h-[64dvh] overflow-hidden bg-ink-950 pt-36 pb-16 text-white lg:pt-48 lg:pb-24">
+      {image && (
+        <FieldImage
+          src={image}
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="eager"
+        />
+      )}
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,13,24,.94)_0%,rgba(7,13,24,.78)_42%,rgba(7,13,24,.42)_100%)]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-ink-950/30" />
+      <div className="absolute inset-0 bp-grid opacity-30" />
 
-      <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          className="max-w-3xl"
-          style={{
-            opacity: show ? 1 : 0,
-            transform: show ? 'translateY(0)' : 'translateY(20px)',
-            transition: `opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)`,
-          }}
-        >
+      <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
+        <div className={`${centered ? 'mx-auto text-center' : ''} max-w-4xl`}>
           {kicker && (
-            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.22em] text-brand-blueLight">
+            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.2em] text-brand-blueLight">
               {kicker}
             </p>
           )}
-          <h1 className="font-display font-bold text-white tracking-tightest leading-[1.02]"
-            style={{ fontSize: 'clamp(2.4rem, 1.4rem + 4vw, 4rem)' }}>
+          <h1
+            className="max-w-[21.5rem] break-words font-display font-bold leading-[0.98] tracking-tight text-white [overflow-wrap:anywhere] sm:max-w-4xl sm:leading-[0.95]"
+            style={{ fontSize: 'clamp(2rem, 5.2vw, 4rem)', textWrap: 'wrap' }}
+          >
             {title} {accent && <span className="text-brand-blueLight">{accent}</span>}
           </h1>
           {subtitle && (
-            <p className="mt-5 max-w-2xl text-base sm:text-lg leading-relaxed text-steel-300">
+            <p className={`${centered ? 'mx-auto' : ''} mt-6 max-w-[21.5rem] text-sm leading-relaxed text-steel-100 sm:max-w-2xl sm:text-sm`}>
               {subtitle}
             </p>
           )}

@@ -1,218 +1,178 @@
-import { useState, useEffect } from 'react'
-import { MapPin, Phone, Envelope, PaperPlaneTilt, CheckCircle, WarningCircle, Clock } from '@phosphor-icons/react'
-import { useReducedMotion } from '../lib/animations'
-import { Reveal, EASE } from '../lib/motion'
+import { useState } from 'react'
+import { CheckCircle, Clock, MapPin, PaperPlaneTilt, Phone, WarningCircle } from '@phosphor-icons/react'
 import PageHero from '../components/PageHero'
+import { Reveal } from '../lib/motion'
+import { media, serviceGroups } from '../data/spsContent'
 
-const infoCards = [
-  {
-    icon: MapPin, title: 'Direccion fiscal',
-    lines: ['Av. 5, Calle 13, N 26A-162', 'San Francisco, Maracaibo', 'Zulia, Venezuela'],
-  },
-]
+const initial = {
+  name: '',
+  company: '',
+  phone: '',
+  email: '',
+  service: '',
+  location: '',
+  urgency: '',
+  message: '',
+}
 
 export default function Contacto() {
-  const reduce = useReducedMotion()
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => { setMounted(true) }, [])
-
-  const [form, setForm] = useState({ name: '', email: '', company: '', message: '' })
+  const [form, setForm] = useState(initial)
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
 
   const validate = () => {
-    const e = {}
-    if (!form.name.trim()) e.name = 'El nombre es requerido.'
-    if (!form.email.trim()) e.email = 'El correo es requerido.'
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Ingresa un correo valido.'
-    if (!form.message.trim()) e.message = 'El mensaje es requerido.'
-    return e
+    const next = {}
+    if (!form.name.trim()) next.name = 'Indica tu nombre.'
+    if (!form.phone.trim() && !form.email.trim()) next.phone = 'Indica al menos un telefono o correo.'
+    if (!form.message.trim()) next.message = 'Describe brevemente el trabajo.'
+    return next
   }
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
-    if (errors[e.target.name]) setErrors({ ...errors, [e.target.name]: '' })
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const next = validate()
+    setErrors(next)
+    if (Object.keys(next).length === 0) setSubmitted(true)
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const errs = validate()
-    if (Object.keys(errs).length > 0) { setErrors(errs); return }
-    setLoading(true)
-    setTimeout(() => { setLoading(false); setSubmitted(true) }, 1200)
+  const handleChange = (event) => {
+    setForm({ ...form, [event.target.name]: event.target.value })
+    if (errors[event.target.name]) setErrors({ ...errors, [event.target.name]: '' })
   }
 
-  const inputBase =
-    'w-full rounded-xl border px-4 py-3 text-sm text-ink-900 placeholder:text-steel-400 transition-all duration-200 focus:outline-none focus:ring-2'
-  const ok = 'border-steel-200 bg-white focus:ring-brand-blue hover:border-steel-300'
-  const bad = 'border-brand-red/40 bg-brand-red/5 focus:ring-brand-red'
-
-  const showForm = !submitted
+  const inputClass = 'w-full rounded-2xl border border-steel-200 bg-white px-4 py-3 text-sm text-ink-900 outline-none transition placeholder:text-steel-400 focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20'
 
   return (
     <>
       <PageHero
-        kicker="Estamos para ayudarte"
-        title="Hablemos de tu"
-        accent="proyecto."
-        subtitle="Escribenos sobre tu proyecto petrolero o industrial. Nuestro equipo te respondera a la brevedad."
+        kicker="Contacto"
+        title="Cuéntanos que necesita"
+        accent="tu operacion."
+        subtitle="Mientras mas clara sea la informacion de campo, mas rapida puede ser la respuesta tecnica."
+        image={media.heroContact}
       />
 
-      <section className="bg-steel-50 py-24 lg:py-28" aria-labelledby="contacto-h">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-5 gap-10 lg:gap-12">
-            {/* Info */}
-            <Reveal className="lg:col-span-2">
-              <h2 id="contacto-h" className="h-section mb-3">Informacion de contacto</h2>
-              <p className="mb-8 max-w-sm text-steel-500 leading-relaxed">
-                Estamos ubicados en Maracaibo, Venezuela. Contactanos por cualquiera de nuestros canales.
-              </p>
+      <section className="bg-white py-20 text-ink-900 lg:py-28">
+        <div className="mx-auto grid max-w-[1400px] gap-10 px-4 sm:px-6 lg:grid-cols-[.85fr_1.15fr] lg:px-8">
+          <Reveal>
+            <h2 className="mb-6 font-display text-2xl font-bold leading-tight text-ink-900 sm:text-3xl">Canales directos</h2>
+            <div className="space-y-4">
+              <div className="rounded-[1.5rem] border border-steel-200 bg-steel-50 p-6">
+                <MapPin size={28} className="mb-4 text-brand-red" />
+                <h3 className="font-display text-xl font-bold text-ink-900">San Francisco, Maracaibo</h3>
+                <p className="mt-2 text-sm leading-relaxed text-steel-600">
+                  Av. 5, Calle 13, N 26A-162<br />
+                  Zulia, Venezuela
+                </p>
+              </div>
+              <div className="rounded-[1.5rem] border border-steel-200 bg-steel-50 p-6">
+                <Phone size={28} className="mb-4 text-brand-blueLight" />
+                <h3 className="font-display text-xl font-bold text-ink-900">Telefonos</h3>
+                <a href="tel:+582613226494" className="mt-2 block text-sm font-semibold text-steel-700 hover:text-brand-blue">
+                  0261 322 6494
+                </a>
+                <a href="tel:+584146361373" className="block text-sm font-semibold text-steel-700 hover:text-brand-blue">
+                  +58 414 636 1373
+                </a>
+              </div>
+              <div className="rounded-[1.5rem] border border-steel-200 bg-steel-50 p-6">
+                <Clock size={28} className="mb-4 text-brand-blueLight" />
+                <h3 className="font-display text-xl font-bold text-ink-900">Respuesta tecnica</h3>
+                <p className="mt-2 text-sm leading-relaxed text-steel-600">
+                  Para servicios de vapor, saneamiento, tanques, mantenimiento, telemetria o automatizacion.
+                </p>
+              </div>
+            </div>
+          </Reveal>
 
-              <div className="space-y-3 mb-8">
-                {infoCards.map(({ icon: Icon, title, lines }) => (
-                  <div key={title} className="flex items-start gap-4 rounded-2xl border border-steel-200 bg-white p-5">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue">
-                      <Icon size={18} />
-                    </span>
-                    <div>
-                      <p className="text-sm font-semibold text-ink-900">{title}</p>
-                      <address className="mt-1 not-italic text-sm leading-relaxed text-steel-500">
-                        {lines.map((l) => <span key={l} className="block">{l}</span>)}
-                      </address>
-                    </div>
-                  </div>
-                ))}
-
-                <div className="flex items-start gap-4 rounded-2xl border border-steel-200 bg-white p-5">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue">
-                    <Phone size={18} />
-                  </span>
-                  <div>
-                    <p className="text-sm font-semibold text-ink-900">Telefonos</p>
-                    <a href="tel:+582613226494" className="mt-1 block text-sm text-steel-500 transition-colors hover:text-brand-blue">Oficina: 0261 322 6494</a>
-                    <a href="tel:+584146361373" className="block text-sm text-steel-500 transition-colors hover:text-brand-blue">Movil: +58 414 636 1373</a>
-                  </div>
+          <Reveal delay={0.1}>
+            <div className="rounded-[2rem] border border-steel-200 bg-steel-50 p-6 shadow-lift sm:p-8 lg:p-10">
+              {submitted ? (
+                <div className="py-16 text-center">
+                  <CheckCircle size={64} weight="fill" className="mx-auto text-emerald-600" />
+                  <h3 className="mt-6 font-display text-2xl font-bold text-ink-900">Solicitud registrada</h3>
+                  <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-steel-600">
+                    Ya tenemos la informacion base. Puedes usar los telefonos de contacto para seguimiento inmediato.
+                  </p>
                 </div>
-
-                <div className="flex items-start gap-4 rounded-2xl border border-steel-200 bg-white p-5">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue">
-                    <Clock size={18} />
-                  </span>
+              ) : (
+                <form onSubmit={handleSubmit} noValidate className="space-y-5">
                   <div>
-                    <p className="text-sm font-semibold text-ink-900">Soporte tecnico</p>
-                    <p className="mt-1 text-sm text-steel-500">Respuesta ante emergencias 24/7</p>
+                    <h2 className="font-display text-2xl font-bold text-ink-900">Datos del servicio</h2>
+                    <p className="mt-2 text-sm text-steel-500">Campos clave para orientar la respuesta de SPS.</p>
                   </div>
-                </div>
-              </div>
 
-              <div className="h-48 overflow-hidden rounded-2xl border border-steel-200 shadow-sm">
-                <iframe
-                  title="Mapa de ubicacion SPS Maracaibo"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3891.9327657204856!2d-72.2131!3d10.6290!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e8999000000001%3A0x0!2sCalle+13+%26+Avenida+5%2C+Maracaibo+4004%2C+Zulia!5e0!3m2!1ses!2sve!4v1620000000000!5m2!1ses!2sve"
-                  width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
-            </Reveal>
-
-            {/* Form */}
-            <Reveal delay={0.1} className="lg:col-span-3">
-              <div className="rounded-2xl border border-steel-200 bg-white p-8 shadow-lift md:p-10">
-                {submitted ? (
-                  <div
-                    className="py-12 text-center"
-                    style={{
-                      opacity: mounted ? 1 : 0,
-                      transform: mounted ? 'scale(1)' : 'scale(0.96)',
-                      transition: `opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)`,
-                    }}
-                  >
-                    <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100">
-                      <CheckCircle size={32} className="text-emerald-600" weight="fill" />
-                    </div>
-                    <h3 className="font-display text-2xl font-bold text-ink-900 mb-2">Mensaje enviado</h3>
-                    <p className="text-sm text-steel-500">
-                      Gracias por contactarnos. Nuestro equipo te respondera a la brevedad.
-                    </p>
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <Field label="Nombre" name="name" value={form.name} onChange={handleChange} error={errors.name} className={inputClass} />
+                    <Field label="Empresa" name="company" value={form.company} onChange={handleChange} className={inputClass} />
+                    <Field label="Telefono" name="phone" value={form.phone} onChange={handleChange} error={errors.phone} className={inputClass} />
+                    <Field label="Correo" name="email" type="email" value={form.email} onChange={handleChange} className={inputClass} />
                   </div>
-                ) : (
-                  <div
-                    style={{
-                      opacity: showForm ? 1 : 0,
-                      transform: showForm ? 'translateY(0)' : 'translateY(-8px)',
-                      transition: `opacity 0.3s ease, transform 0.3s ease`,
-                    }}
-                  >
-                    <div className="mb-8">
-                      <h3 className="font-display text-xl font-bold text-ink-900">Envianos un mensaje</h3>
-                      <p className="mt-1 text-sm text-steel-400">
-                        Campos con <span className="text-brand-red">*</span> son obligatorios
-                      </p>
-                    </div>
 
-                    <form onSubmit={handleSubmit} noValidate className="space-y-5">
-                      <div className="grid gap-5 sm:grid-cols-2">
-                        <div>
-                          <label htmlFor="name" className="mb-1.5 block text-sm font-semibold text-ink-900">
-                            Nombre completo <span className="text-brand-red">*</span>
-                          </label>
-                          <input id="name" name="name" type="text" autoComplete="name" value={form.name}
-                            onChange={handleChange} placeholder="Maria Gutierrez" aria-invalid={!!errors.name}
-                            className={`${inputBase} ${errors.name ? bad : ok}`} />
-                          {errors.name && <p className="mt-1 flex items-center gap-1 text-xs text-brand-red"><WarningCircle size={12} /> {errors.name}</p>}
-                        </div>
-                        <div>
-                          <label htmlFor="email" className="mb-1.5 block text-sm font-semibold text-ink-900">
-                            Correo electronico <span className="text-brand-red">*</span>
-                          </label>
-                          <input id="email" name="email" type="email" autoComplete="email" value={form.email}
-                            onChange={handleChange} placeholder="maria@empresa.com" aria-invalid={!!errors.email}
-                            className={`${inputBase} ${errors.email ? bad : ok}`} />
-                          {errors.email && <p className="mt-1 flex items-center gap-1 text-xs text-brand-red"><WarningCircle size={12} /> {errors.email}</p>}
-                        </div>
-                      </div>
-
-                      <div>
-                        <label htmlFor="company" className="mb-1.5 block text-sm font-semibold text-ink-900">
-                          Empresa <span className="font-normal text-steel-400">(opcional)</span>
-                        </label>
-                        <input id="company" name="company" type="text" autoComplete="organization" value={form.company}
-                          onChange={handleChange} placeholder="Mi Empresa C.A." className={`${inputBase} ${ok}`} />
-                      </div>
-
-                      <div>
-                        <label htmlFor="message" className="mb-1.5 block text-sm font-semibold text-ink-900">
-                          Mensaje <span className="text-brand-red">*</span>
-                        </label>
-                        <textarea id="message" name="message" rows={5} value={form.message} onChange={handleChange}
-                          placeholder="Cuentanos sobre tu proyecto o consulta..." aria-invalid={!!errors.message}
-                          className={`${inputBase} resize-none ${errors.message ? bad : ok}`} />
-                        {errors.message && <p className="mt-1 flex items-center gap-1 text-xs text-brand-red"><WarningCircle size={12} /> {errors.message}</p>}
-                      </div>
-
-                      <button type="submit" disabled={loading}
-                        className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60">
-                        {loading ? (
-                          <>
-                            <svg className="h-5 w-5 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
-                            </svg>
-                            Enviando...
-                          </>
-                        ) : (
-                          <>Enviar mensaje <PaperPlaneTilt size={18} weight="fill" /></>
-                        )}
-                      </button>
-                    </form>
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <label className="block">
+                      <span className="mb-2 block text-sm font-bold text-ink-900">Servicio requerido</span>
+                      <select name="service" value={form.service} onChange={handleChange} className={inputClass}>
+                        <option value="">Seleccionar</option>
+                        {serviceGroups.map((group) => (
+                          <option key={group.id} value={group.title}>{group.title}</option>
+                        ))}
+                      </select>
+                    </label>
+                    <Field label="Ubicacion del trabajo" name="location" value={form.location} onChange={handleChange} className={inputClass} />
                   </div>
-                )}
-              </div>
-            </Reveal>
-          </div>
+
+                  <label className="block">
+                    <span className="mb-2 block text-sm font-bold text-ink-900">Urgencia</span>
+                    <select name="urgency" value={form.urgency} onChange={handleChange} className={inputClass}>
+                      <option value="">Seleccionar</option>
+                      <option>Atencion inmediata</option>
+                      <option>Programar visita tecnica</option>
+                      <option>Solicitar cotizacion</option>
+                      <option>Consulta general</option>
+                    </select>
+                  </label>
+
+                  <label className="block">
+                    <span className="mb-2 block text-sm font-bold text-ink-900">Descripcion del trabajo</span>
+                    <textarea
+                      name="message"
+                      rows={6}
+                      value={form.message}
+                      onChange={handleChange}
+                      className={`${inputClass} resize-none`}
+                      placeholder="Ejemplo: calentamiento de crudo en patio de tanques, recuperacion en fosa, inyeccion de vapor, telemetria..."
+                    />
+                    {errors.message && <ErrorText>{errors.message}</ErrorText>}
+                  </label>
+
+                  <button type="submit" className="btn-primary w-full rounded-none text-sm">
+                    Enviar solicitud <PaperPlaneTilt size={20} weight="fill" />
+                  </button>
+                </form>
+              )}
+            </div>
+          </Reveal>
         </div>
       </section>
     </>
+  )
+}
+
+function Field({ label, name, value, onChange, error, className, type = 'text' }) {
+  return (
+    <label className="block">
+      <span className="mb-2 block text-sm font-bold text-ink-900">{label}</span>
+      <input name={name} type={type} value={value} onChange={onChange} className={className} />
+      {error && <ErrorText>{error}</ErrorText>}
+    </label>
+  )
+}
+
+function ErrorText({ children }) {
+  return (
+    <p className="mt-2 flex items-center gap-1 text-sm font-semibold text-brand-red">
+      <WarningCircle size={15} /> {children}
+    </p>
   )
 }

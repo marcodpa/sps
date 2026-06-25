@@ -1,351 +1,316 @@
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import {
-  ArrowRight,
-  Cpu,
-  WifiHigh,
-  Broadcast,
-  Flame,
-  GearSix,
-  Headphones,
-  ShieldCheck,
-  Gauge,
-} from '@phosphor-icons/react'
+import { motion, useInView, useScroll, useTransform } from 'framer-motion'
+import { ArrowRight, Check } from '@phosphor-icons/react'
+import { clients, featuredServices, media, projectCases, serviceGroups } from '../data/spsContent'
+import FieldImage from '../components/FieldImage'
 
-/* ── High-quality industrial / oil & gas images ── */
-const IMG = {
-  hero: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80',
-  about: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&w=1000&q=80',
-  service1: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80',
-  service2: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80',
-  service3: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=800&q=80',
-  service4: 'https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&w=800&q=80',
-  project1: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=80',
-  project2: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=900&q=80',
-  project3: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80',
+const ease = [0.16, 1, 0.3, 1]
+
+function WordsPullUp({ text, className = '', showAsterisk = false }) {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-10% 0px' })
+  const words = text.split(' ')
+
+  return (
+    <span ref={ref} className={`inline-flex flex-wrap overflow-hidden ${className}`}>
+      {words.map((word, index) => {
+        const final = showAsterisk && index === words.length - 1
+
+        return (
+          <span key={`${word}-${index}`} className="overflow-hidden pr-[0.08em]">
+            <motion.span
+              className="relative inline-block"
+              initial={{ y: 36, opacity: 0 }}
+              animate={inView ? { y: 0, opacity: 1 } : {}}
+              transition={{ duration: 0.9, delay: index * 0.08, ease }}
+            >
+              {word}
+              {final && (
+                <span className="absolute -right-[0.28em] top-[0.62em] text-[0.28em] leading-none">*</span>
+              )}
+            </motion.span>
+          </span>
+        )
+      })}
+    </span>
+  )
 }
 
-/* ── Data ── */
-const clients = [
-  'Petroboscan', 'Chevron', 'PDVSA GIV', 'Produsal',
-  'Petroquiriquire', 'Cargill', 'HPI LLC',
-]
+function MultiStyleHeading({ segments, className = '' }) {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-10% 0px' })
+  const words = segments.flatMap((segment) =>
+    segment.text.split(' ').map((word) => ({ word, className: segment.className || '' })),
+  )
 
-const services = [
-  {
-    icon: Flame, title: 'Servicios petroleros',
-    desc: 'Inyeccion de vapor para recuperacion mejorada de crudo en pozos y fosas. Mas de 7 anos de experiencia en Campo Boscan.',
-    img: IMG.service1, to: '/servicios#petroleros',
-  },
-  {
-    icon: Cpu, title: 'Automatizacion industrial',
-    desc: 'PLC, SCADA, HMI, RTU e instrumentacion. Programacion Allen Bradley, Wonderware y diseno de tableros de control.',
-    img: IMG.service2, to: '/servicios#automatizacion',
-  },
-  {
-    icon: WifiHigh, title: 'Conectividad y redes',
-    desc: 'Redes LAN/WAN, fibra optica, voz sobre IP y videovigilancia para empresas y plantas industriales.',
-    img: IMG.service3, to: '/servicios#conectividad',
-  },
-  {
-    icon: Broadcast, title: 'Telecomunicaciones',
-    desc: 'Radio enlaces digitales, canalizaciones telefonicas y monitoreo remoto de instalaciones a nivel nacional.',
-    img: IMG.service4, to: '/servicios#telecomunicaciones',
-  },
-]
+  return (
+    <span ref={ref} className={`inline-flex flex-wrap justify-center overflow-hidden ${className}`}>
+      {words.map(({ word, className: wordClass }, index) => (
+        <span key={`${word}-${index}`} className="overflow-hidden pr-[0.12em]">
+          <motion.span
+            className={`inline-block ${wordClass}`}
+            initial={{ y: 24, opacity: 0 }}
+            animate={inView ? { y: 0, opacity: 1 } : {}}
+            transition={{ duration: 0.8, delay: index * 0.045, ease }}
+          >
+            {word}
+          </motion.span>
+        </span>
+      ))}
+    </span>
+  )
+}
 
-const projects = [
-  { n: '01', client: 'Petroboscan / Chevron', tag: 'Petrolero', img: IMG.project1,
-    result: 'Inyeccion de vapor en Campo Boscan con capacidad de 1.500 barriles diarios.' },
-  { n: '02', client: 'Cargill de Venezuela', tag: 'Automatizacion', img: IMG.project2,
-    result: 'Automatizacion de lineas de produccion con PLC Allen Bradley y robot paletizador.' },
-  { n: '03', client: 'HPI LLC, Houston', tag: 'Internacional', img: IMG.project3,
-    result: 'Programacion PLC/HMI y fibra optica en plantas ubicadas en 5 paises.' },
-]
+function ScrollText({ text }) {
+  const ref = useRef(null)
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.82', 'end 0.22'] })
+  const chars = text.split('')
 
-const stats = [
-  { value: '1.500+', label: 'Barriles diarios' },
-  { value: '100%', label: 'Ejecucion de contratos' },
-  { value: '5', label: 'Paises operando' },
-  { value: '7+', label: 'Anos de trayectoria' },
-]
+  return (
+    <p ref={ref} className="mx-auto mt-8 max-w-3xl text-sm leading-relaxed text-primary md:text-sm">
+      {chars.map((char, index) => {
+        return (
+          <AnimatedChar
+            key={`${char}-${index}`}
+            char={char}
+            index={index}
+            total={chars.length}
+            progress={scrollYProgress}
+          />
+        )
+      })}
+    </p>
+  )
+}
+
+function AnimatedChar({ char, index, total, progress }) {
+  const start = Math.max(0, index / total - 0.08)
+  const end = Math.min(1, index / total + 0.04)
+  const opacity = useTransform(progress, [start, end], [0.24, 1])
+
+  return <motion.span style={{ opacity }}>{char}</motion.span>
+}
 
 export default function Home() {
+  const mainCases = projectCases.slice(0, 3)
+  const heroImage = '/assets/sps-field/hero-home-field.jpg'
+
   return (
     <>
-      {/* ═══════════════ HERO ─────────────────── */}
-      <section className="relative min-h-[90dvh] flex items-center overflow-hidden bg-ink-950" aria-label="Portada">
-        {/* Imagen de fondo con overlay */}
-        <div className="absolute inset-0">
-          <img src={IMG.hero} alt="" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-ink-950/90 via-ink-950/60 to-ink-950/70" />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 via-transparent to-transparent" />
-        </div>
-
-        <div className="relative w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-4 py-1.5 mb-6">
-              <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.5)]" />
-              <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-steel-300">
-                Ingenieria petrolera e industrial
-              </span>
-            </div>
-
-            <h1 className="font-display font-bold text-white leading-[1.05] mb-6"
-              style={{ fontSize: 'clamp(2.5rem, 1.5rem + 4.5vw, 5rem)' }}>
-              Servicios petroleros{' '}
-              <span className="text-brand-blueLight">e industriales</span>
-              <br />de precision.
+      <section className="min-h-screen bg-white px-3 pb-8 pt-28 text-white md:px-5 lg:pt-36">
+        <div className="relative mx-auto min-h-[calc(100dvh-9rem)] max-w-[1400px] overflow-hidden rounded-[2rem] border border-steel-200 bg-ink-950 shadow-lift">
+          <img
+            src={heroImage}
+            alt="Patio operativo SPS con equipos, tanques y caldera en campo"
+            className="absolute inset-0 h-full w-full object-cover"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,13,24,.92)_0%,rgba(7,13,24,.78)_34%,rgba(7,13,24,.35)_62%,rgba(7,13,24,.04)_100%)]" />
+          <div className="relative flex min-h-[calc(100dvh-9rem)] max-w-3xl flex-col justify-end p-6 sm:p-8 lg:p-12">
+            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-redLight">
+              Service Petroleum and Supply C.A.
+            </p>
+            <h1 className="mt-8">
+                <WordsPullUp
+                  text="SPS"
+                  showAsterisk
+                  className="font-display text-[18vw] font-black leading-[0.86] tracking-[-0.035em] text-white sm:text-[13vw] lg:text-[6.4vw] 2xl:text-[5.8vw]"
+                />
             </h1>
-
-            <p className="text-steel-300 text-base sm:text-lg leading-relaxed max-w-xl mb-10">
-              Inyeccion de vapor, automatizacion, SCADA y telecomunicaciones
-              para la industria petrolera y manufacturera en Venezuela y el exterior.
-            </p>
-
-            <div className="flex flex-wrap gap-3">
-              <Link to="/servicios" className="inline-flex items-center gap-2 rounded-xl bg-brand-blue px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-blue/90 hover:-translate-y-0.5">
-                Explorar servicios <ArrowRight size={18} weight="bold" />
-              </Link>
-              <Link to="/contacto" className="inline-flex items-center gap-2 rounded-xl border border-white/20 px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white/10 hover:-translate-y-0.5">
-                Contactar ahora
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        {/* Indicador inferior */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-          <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/30">Desplazar</span>
-          <div className="h-10 w-[1px] bg-gradient-to-b from-white/30 to-transparent" />
-        </div>
-      </section>
-
-      {/* ═══════════════ CLIENTS ─────────────── */}
-      <section className="bg-white border-b border-steel-100" aria-label="Clientes">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-12">
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-steel-400 shrink-0">
-              Empresas que confian en SPS
-            </p>
-            <div className="h-px w-12 bg-steel-200 hidden lg:block" />
-            <div className="flex flex-wrap items-center gap-x-10 gap-y-3">
-              {clients.map((c) => (
-                <span key={c} className="font-display text-base font-semibold text-steel-400 transition-colors duration-200 hover:text-ink-900">
-                  {c}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════ ABOUT ───────────────── */}
-      <section className="bg-white py-24 lg:py-28" aria-labelledby="about-h">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
-            {/* Imagen */}
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden">
-                <img src={IMG.about} alt="Tecnicos especialistas de SPS en planta"
-                  className="h-[32rem] w-full object-cover" loading="lazy" />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink-950/40 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                    <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-emerald-400/70">PERSONAL TÉCNICO</span>
-                  </div>
-                  <p className="font-mono text-[11px] text-white/60">SPS — Operaciones de campo</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Texto */}
-            <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-blue mb-4">
-                &lt; Sobre nosotros /&gt;
-              </p>
-              <h2 id="about-h" className="font-display font-bold text-ink-900 leading-[1.05] tracking-tightest mb-6"
-                style={{ fontSize: 'clamp(1.75rem, 1.1rem + 2.4vw, 2.9rem)' }}>
-                Ingenieria petrolera e industrial, ejecutada en campo.
+            <motion.div
+              className="mt-8 max-w-xl"
+              initial={{ y: 24, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.45, ease }}
+            >
+              <h2 className="font-display text-2xl font-extrabold leading-tight text-white sm:text-3xl">
+                Operaciones petroleras con equipos reales en campo.
               </h2>
-              <div className="space-y-4 text-steel-600 leading-relaxed max-w-xl">
-                <p>
-                  <strong className="text-ink-900">Service Petroleum and Supply C.A.</strong> es
-                  una empresa venezolana especializada en inyeccion de vapor para recuperacion
-                  de crudo, automatizacion, control de procesos, instrumentacion, SCADA y PLC.
-                </p>
-                <p>
-                  Nuestros tecnicos especialistas se desplazan con rapidez al terreno para
-                  atender emergencias, trabajando en coordinacion con empresas aliadas en
-                  cada uno de los proyectos que ejecutamos.
-                </p>
+              <p className="mt-5 text-sm leading-relaxed text-steel-100 sm:text-sm">
+                Vapor, recuperacion de crudo, saneamiento, automatizacion y soporte industrial
+                para frentes que necesitan respuesta tecnica clara.
+              </p>
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  to="/servicios"
+                  className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand-blue px-5 py-2 text-sm font-extrabold text-white shadow-lift-blue transition-all duration-300 hover:gap-4 hover:bg-brand-blueLight sm:text-sm"
+                >
+                  Ver servicios
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-brand-blue transition-transform duration-300 group-hover:scale-110">
+                    <ArrowRight size={18} weight="bold" />
+                  </span>
+                </Link>
+                <Link
+                  to="/proyectos"
+                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/25 px-5 py-2 text-sm font-bold text-white transition-colors hover:border-brand-redLight hover:bg-brand-red/20 sm:text-sm"
+                >
+                  Ver proyectos
+                </Link>
               </div>
-
-              {/* Stats inline */}
-              <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-6">
-                {stats.map((s) => (
-                  <div key={s.label}>
-                    <p className="font-display text-2xl sm:text-3xl font-bold text-brand-blue">{s.value}</p>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.1em] text-steel-400 mt-1">{s.label}</p>
-                  </div>
-                ))}
-              </div>
-
-              <Link to="/nosotros"
-                className="group mt-8 inline-flex items-center gap-2 font-semibold text-sm text-brand-blue transition-all duration-200 hover:gap-3">
-                Conocer mas <ArrowRight size={15} weight="bold" />
-              </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ═══════════════ SERVICES ────────────── */}
-      <section className="bg-steel-50 py-24 lg:py-28" aria-labelledby="services-h">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-14">
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-blue mb-3">
-              &lt; Nuestros servicios /&gt;
-            </p>
-            <h2 id="services-h"
-              className="font-display font-bold text-ink-900 leading-[1.05] tracking-tightest mb-4"
-              style={{ fontSize: 'clamp(1.75rem, 1.1rem + 2.4vw, 2.9rem)' }}>
-              Cuatro lineas de servicio para la industria.
+      <section className="bg-white px-4 py-6 text-ink-900 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-[1400px] flex-wrap justify-center gap-x-8 gap-y-3 border-y border-steel-200 py-6">
+          {clients.map((client) => (
+            <span key={client} className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-steel-500">
+              {client}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-white px-4 py-16 text-ink-900 sm:px-6 lg:px-8 lg:py-24">
+        <div className="mx-auto max-w-6xl rounded-[2rem] border border-steel-200 bg-steel-50 px-5 py-16 text-center sm:px-8 lg:px-12">
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-red">Quienes somos</p>
+          <h2 className="mx-auto mt-7 max-w-4xl text-2xl font-normal leading-tight text-ink-900 sm:text-3xl md:text-4xl">
+            <MultiStyleHeading
+              segments={[
+                { text: 'Una empresa de campo,' },
+                { text: 'no de escritorio.', className: 'font-serif italic' },
+                { text: 'Preparada para operaciones exigentes.' },
+              ]}
+            />
+          </h2>
+          <ScrollText text="SPS combina personal tecnico, equipos moviles y criterio operativo para atender pozos, estaciones, patios de tanques, fosas y plantas industriales. Su valor esta en entrar al sitio, resolver con seguridad y dejar evidencia del trabajo realizado." />
+        </div>
+      </section>
+
+      <section className="relative min-h-screen overflow-hidden bg-ink-950 px-4 py-20 text-white sm:px-6 lg:px-8">
+        <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.15]" />
+        <div className="relative mx-auto max-w-[1400px]">
+          <div className="mb-10 max-w-4xl">
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-redLight">Servicios principales</p>
+            <h2 className="mt-5 text-xl font-normal leading-tight text-white sm:text-2xl lg:text-3xl">
+              <MultiStyleHeading
+                className="justify-start"
+                segments={[
+                  { text: 'Capacidades industriales para campo petrolero.' },
+                  { text: 'Vapor, fluidos y control en una sola operacion.', className: 'text-brand-blueLight' },
+                ]}
+              />
             </h2>
-            <p className="text-steel-500 leading-relaxed max-w-xl">
-              Del pozo a la sala de control: cubrimos recuperacion de crudo, automatizacion,
-              redes y telecomunicaciones bajo un solo equipo de ingenieria.
-            </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {services.map((s) => (
-              <Link key={s.title} to={s.to}
-                className="group relative flex flex-col rounded-2xl overflow-hidden bg-white border border-steel-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-                {/* Imagen */}
-                <div className="relative h-44 overflow-hidden">
-                  <img src={s.img} alt=""
-                    className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/50 via-transparent to-transparent" />
-                  <div className="absolute top-3 left-3 flex h-10 w-10 items-center justify-center rounded-xl bg-white/90 backdrop-blur-sm shadow-sm">
-                    <s.icon size={20} className="text-brand-blue" />
+          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4 lg:min-h-[500px]">
+            <motion.article
+              className="relative min-h-[26rem] overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.04] shadow-sm lg:col-span-1"
+              initial={{ scale: 0.96, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true, margin: '-100px' }}
+              transition={{ duration: 0.7, ease }}
+            >
+              <FieldImage src={media.bajoGrandeCaldera} className="h-full min-h-[26rem] w-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
+              <p className="absolute bottom-5 left-5 right-5 text-xl font-extrabold leading-tight text-white">
+                Equipos reales para operaciones reales.
+              </p>
+            </motion.article>
+
+            {featuredServices.slice(0, 3).map(({ title, copy, image }, index) => (
+              <motion.article
+                key={title}
+                className="group flex min-h-[26rem] flex-col justify-between rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-5 shadow-sm transition-colors duration-300 hover:bg-white/[0.08]"
+                initial={{ scale: 0.96, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true, margin: '-100px' }}
+                transition={{ duration: 0.7, delay: 0.12 * (index + 1), ease }}
+              >
+                <div>
+                  <img src={image} alt="" className="h-16 w-16 rounded-2xl object-cover" loading="lazy" />
+                  <div className="mt-8 flex items-start justify-between gap-4">
+                    <h3 className="text-xl font-extrabold leading-tight text-white">{title}</h3>
+                    <span className="font-mono text-xs text-brand-redLight">0{index + 1}</span>
                   </div>
+                  <p className="mt-5 text-sm leading-relaxed text-steel-300">{copy}</p>
                 </div>
-                {/* Contenido */}
-                <div className="flex flex-col flex-1 p-5">
-                  <h3 className="font-display text-lg font-bold text-ink-900 mb-2">{s.title}</h3>
-                  <p className="text-sm text-steel-500 leading-relaxed flex-1">{s.desc}</p>
-                  <div className="mt-4 flex items-center gap-1.5 text-sm font-semibold text-brand-blue group-hover:gap-2 transition-all duration-200">
-                    Ver mas <ArrowRight size={14} weight="bold" />
-                  </div>
-                </div>
-              </Link>
+                <Link to="/servicios" className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-brand-blueLight">
+                  Ver detalle <ArrowRight size={18} weight="bold" className="-rotate-45 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </motion.article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ═══════════════ PROJECTS ────────────── */}
-      <section className="bg-ink-950 py-24 lg:py-28" aria-labelledby="projects-h">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+      <section className="bg-steel-50 px-4 py-20 text-ink-900 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="mb-10 max-w-4xl">
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-red">Frentes de trabajo</p>
+            <h2 className="mt-4 font-display text-2xl font-extrabold leading-tight text-ink-900 sm:text-3xl">
+              Tres lineas operativas que explican que hace SPS en campo.
+            </h2>
+            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-steel-600">
+              Cada bloque resume un area principal de servicio: vapor y recuperacion,
+              manejo de hidrocarburos, y automatizacion industrial.
+            </p>
+          </div>
+        </div>
+        <div className="mx-auto grid max-w-[1400px] gap-4 lg:grid-cols-3">
+          {serviceGroups.map(({ id, title, intro, image }, index) => (
+            <Link
+              key={id}
+              to={`/servicios#${id}`}
+              className="group relative min-h-[28rem] overflow-hidden rounded-[1.5rem] border border-steel-200 bg-white shadow-sm"
+            >
+              <FieldImage src={image} className="absolute inset-0 h-full w-full object-cover opacity-55 transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/10" />
+              <div className="absolute inset-x-0 bottom-0 p-6">
+                <p className="font-mono text-xs text-brand-redLight">0{index + 1}</p>
+                <h3 className="mt-3 text-xl font-extrabold leading-tight text-white">{title}</h3>
+                <p className="mt-4 text-sm leading-relaxed text-gray-400">{intro}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-white px-4 pb-20 text-ink-900 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1400px] rounded-[2rem] border border-white/10 bg-ink-950 p-5 text-white sm:p-8 lg:p-10">
+          <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-blueLight mb-3">
-                &lt; Proyectos ejecutados /&gt;
-              </p>
-              <h2 id="projects-h"
-                className="font-display font-bold text-white leading-[1.05] tracking-tightest"
-                style={{ fontSize: 'clamp(1.75rem, 1.1rem + 2.4vw, 2.9rem)' }}>
-                Proyectos destacados.
-              </h2>
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-redLight">Evidencia de campo</p>
+              <h2 className="mt-4 text-2xl font-extrabold leading-tight text-white md:text-3xl">Proyectos visibles.</h2>
             </div>
-            <Link to="/proyectos"
-              className="group inline-flex items-center gap-2 text-sm font-medium text-steel-300 hover:text-white transition-colors shrink-0 font-mono text-[11px] tracking-wide">
-              Ver todos los proyectos
-              <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" weight="bold" />
+            <Link to="/proyectos" className="group inline-flex min-h-12 w-fit items-center gap-2 rounded-full bg-brand-red px-5 py-2 text-sm font-extrabold text-white transition-all hover:gap-4 hover:bg-brand-redLight">
+              Ver informe
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-brand-red transition-transform group-hover:scale-110">
+                <ArrowRight size={18} weight="bold" />
+              </span>
             </Link>
           </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {projects.map((p) => (
-              <Link key={p.n} to="/proyectos"
-                className="group relative rounded-2xl overflow-hidden border border-white/10 bg-ink-900 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-                <div className="relative h-64 overflow-hidden">
-                  <img src={p.img} alt=""
-                    className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-ink-950/10 to-transparent" />
-                  <div className="absolute top-3 left-3">
-                    <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-white/70 border border-white/20 rounded-full px-3 py-1 bg-ink-950/40 backdrop-blur-sm">
-                      {p.tag}
-                    </span>
-                  </div>
-                </div>
+          <div className="grid gap-3 lg:grid-cols-3">
+            {mainCases.map((item) => (
+              <article key={item.title} className="overflow-hidden rounded-[1.25rem] border border-white/10 bg-white/[0.04] shadow-sm">
+                <FieldImage src={item.image} className="h-64 w-full object-cover" />
                 <div className="p-5">
-                  <p className="font-mono text-xs text-steel-500 mb-1">{p.n}</p>
-                  <h3 className="font-display text-lg font-bold text-white transition-colors group-hover:text-brand-blueLight">{p.client}</h3>
-                  <p className="mt-2 text-sm text-steel-400 leading-relaxed">{p.result}</p>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-brand-blueLight">{item.category}</p>
+                  <h3 className="mt-3 text-xl font-extrabold leading-tight text-white">{item.title}</h3>
+                  <p className="mt-4 flex items-start gap-2 text-sm text-steel-300">
+                    <Check size={18} weight="bold" className="mt-0.5 shrink-0 text-brand-blueLight" />
+                    {item.location}
+                  </p>
                 </div>
-              </Link>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ═══════════════ BRANDS ──────────────── */}
-      <section className="bg-white py-20" aria-label="Marcas aliadas">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 text-center mb-10">
-          <h2 className="font-display font-bold text-ink-900 leading-[1.05] tracking-tightest mb-4"
-            style={{ fontSize: 'clamp(1.5rem, 1rem + 2vw, 2.5rem)' }}>
-            Tecnologia de marcas lideres.
+      <section className="bg-white px-4 pb-24 text-ink-900 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-start justify-between gap-8 border-t border-steel-200 pt-12 md:flex-row md:items-center">
+          <h2 className="max-w-4xl text-2xl font-extrabold leading-tight text-ink-900 md:text-3xl">
+            Hablemos de tu proxima operacion.
           </h2>
-          <p className="text-steel-500 max-w-lg mx-auto">
-            Trabajamos con equipos y software de los fabricantes mas reconocidos de la industria.
-          </p>
-        </div>
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-6">
-            {['Cisco', 'Siemens', 'Rockwell', 'Fanuc', 'Modicon', 'Omron', 'Wonderware'].map((b) => (
-              <span key={b} className="font-display text-lg sm:text-xl font-bold text-steel-300 transition-colors duration-200 hover:text-ink-900">
-                {b}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════ CTA ─────────────────── */}
-      <section className="relative overflow-hidden bg-ink-950 py-24 lg:py-28" aria-labelledby="cta-h">
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/5 via-transparent to-transparent" />
-        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[30rem] w-[30rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-blue/8 blur-[140px]" />
-        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="relative rounded-2xl border border-white/10 bg-ink-900/50 backdrop-blur-sm p-8 sm:p-12 lg:p-14">
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-blueLight mb-4">
-              &lt; Contactanos /&gt;
-            </p>
-            <h2 id="cta-h"
-              className="font-display text-3xl md:text-5xl font-bold text-white tracking-tightest leading-[1.05] mb-5">
-              Listo para tu proximo proyecto?
-            </h2>
-            <p className="text-steel-400 leading-relaxed mb-9 max-w-xl mx-auto">
-              Nuestro equipo de ingenieros analiza tu proyecto y te propone la solucion mas
-              adecuada para tu industria.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              <Link to="/contacto"
-                className="inline-flex items-center gap-2 rounded-xl bg-brand-red px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-red/90 hover:-translate-y-0.5">
-                Solicitar cotizacion <ArrowRight size={18} weight="bold" />
-              </Link>
-              <Link to="/servicios"
-                className="inline-flex items-center gap-2 rounded-xl border border-white/20 px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white/10 hover:-translate-y-0.5">
-                Ver servicios
-              </Link>
-            </div>
-            <div className="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-steel-500 font-mono text-[11px]">
-              <span className="inline-flex items-center gap-2"><ShieldCheck size={15} className="text-brand-blueLight" /> Seguridad industrial</span>
-              <span className="inline-flex items-center gap-2"><Gauge size={15} className="text-brand-blueLight" /> Excelencia operacional</span>
-              <span className="inline-flex items-center gap-2"><Headphones size={15} className="text-brand-blueLight" /> Respuesta 24/7</span>
-            </div>
-          </div>
+          <Link to="/contacto" className="group inline-flex min-h-12 items-center gap-2 rounded-full bg-brand-blue px-5 py-2 text-sm font-extrabold text-white transition-all hover:gap-4 hover:bg-brand-blueLight">
+            Solicitar atencion
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-brand-blue transition-transform group-hover:scale-110">
+              <ArrowRight size={18} weight="bold" />
+            </span>
+          </Link>
         </div>
       </section>
     </>

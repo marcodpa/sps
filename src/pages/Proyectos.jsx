@@ -1,135 +1,202 @@
+import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Medal, ArrowRight, CheckCircle, Globe, Factory, Cpu } from '@phosphor-icons/react'
-import { Reveal, Stagger, StaggerItem } from '../lib/motion'
+import { ArrowRight, CheckCircle, FunnelSimple, Images, MapPin } from '@phosphor-icons/react'
 import PageHero from '../components/PageHero'
-import AnimatedCounter from '../components/AnimatedCounter'
-import SpotlightCard from '../components/SpotlightCard'
-import MagneticButton from '../components/MagneticButton'
+import { Reveal, Stagger, StaggerItem } from '../lib/motion'
+import { clients, media, projectCases } from '../data/spsContent'
+import FieldImage from '../components/FieldImage'
 
-// Brand-locked category accents: petrolero = red, automatizacion = blue, internacional = steel
-const CAT = {
-  Petrolero: { dot: 'bg-brand-red', text: 'text-brand-red', badge: 'bg-brand-red/10 text-brand-red border-brand-red/20' },
-  Automatizacion: { dot: 'bg-brand-blue', text: 'text-brand-blue', badge: 'bg-brand-blue/10 text-brand-blue border-brand-blue/20' },
-  Internacional: { dot: 'bg-steel-500', text: 'text-steel-600', badge: 'bg-steel-100 text-steel-600 border-steel-200' },
-}
-
-const projects = [
-  { client: 'Petroboscan', category: 'Petrolero', icon: Factory,
-    img: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=700&q=80',
-    works: ['Inyeccion de vapor en Campo Boscan (contrato 3M-043-004-D-16-S-102).', 'Capacidad de recuperacion de 1.500 barriles diarios.', 'Multiples extensiones de contrato con ejecucion del 100%.'] },
-  { client: 'Chevron', category: 'Petrolero', icon: Factory,
-    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&q=80',
-    works: ['Inyeccion de vapor en Campo Boscan (contratos CW1402520 y CW1299675).', 'Ejecucion del 100% en ambos contratos.'] },
-  { client: 'PDVSA GIV', category: 'Petrolero', icon: Factory,
-    img: 'https://images.unsplash.com/photo-1623227413711-25ee4388dae3?auto=format&fit=crop&w=700&q=80',
-    works: ['Suministro, operacion y mantenimiento de generadores de vapor portatiles.', 'Ejecucion del 100%.'] },
-  { client: 'Produsal', category: 'Automatizacion', icon: Cpu,
-    img: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&w=700&q=80',
-    works: ['Suministro e instalacion de CCM inteligente para manejo de motores.', 'Programacion de PLC y HMI Wonderware.'] },
-  { client: 'Petroquiriquire', category: 'Automatizacion', icon: Cpu,
-    img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=700&q=80',
-    works: ['Automatizacion de estacion de flujo EF-H4 con Allen Bradley.', 'Red de comunicacion, tanques de medida y produccion.', 'Control de bombas, HMI y CCM inteligente.'] },
-  { client: 'Cargill de Venezuela', category: 'Automatizacion', icon: Cpu,
-    img: 'https://images.unsplash.com/photo-1564069114553-7215e1ff1890?auto=format&fit=crop&w=700&q=80',
-    works: ['Automatizacion de lineas de produccion: pasta, lasana, pasticho.', 'Sistemas RTD, cosedora, robot paletizador.', 'Soporte Wonderware InTouch y PLC/PanelView Allen Bradley.', 'Redes de fibra optica y sistema OEE.'] },
-  { client: 'HPI LLC, Houston', category: 'Internacional', icon: Globe,
-    img: 'https://images.unsplash.com/photo-1449247709967-d4461a6a6103?auto=format&fit=crop&w=700&q=80',
-    works: ['Programacion de PLC y HMI en plantas de generacion electrica.', 'Networking y fibra optica en EE.UU., Arabia Saudita, Abu Dabi, Venezuela y Ghana.', 'Arranque de turbinas de generacion electrica.'] },
-]
-
-const stats = [
-  { value: '7', suffix: '+', label: 'Clientes atendidos' },
-  { value: '100', suffix: '%', label: 'Tasa de ejecucion' },
-  { value: '5', suffix: '', label: 'Paises' },
-  { value: '10', suffix: '+', label: 'Contratos completados' },
+const galleryImages = [
+  { src: media.fracModern01, label: 'Frac tanks' },
+  { src: media.fracModern02, label: 'Equipos moviles' },
+  { src: media.bajoGrandePatio, label: 'Patio de tanques' },
+  { src: media.bajoGrandeEquipos, label: 'Control de campo' },
+  { src: media.boscanFosa, label: 'Fosas petrolizadas' },
+  { src: media.boscanCosta, label: 'Saneamiento' },
+  { src: media.tiaJuana01, label: 'Estacion B5' },
+  { src: media.patioVapor03, label: 'Patio de vapor' },
 ]
 
 export default function Proyectos() {
+  const [activeCategory, setActiveCategory] = useState('Todos')
+  const categories = useMemo(
+    () => ['Todos', ...Array.from(new Set(projectCases.map((item) => item.category)))],
+    [],
+  )
+  const visibleCases = useMemo(
+    () =>
+      activeCategory === 'Todos'
+        ? projectCases
+        : projectCases.filter((item) => item.category === activeCategory),
+    [activeCategory],
+  )
+  const featuredCase = visibleCases[0]
+
   return (
     <>
       <PageHero
-        kicker="Trayectoria comprobada"
-        title="Nuestros"
-        accent="proyectos."
-        subtitle="Proyectos completados al 100% para los principales actores de la industria petrolera, manufacturera y energetica."
-      />
+        kicker="Informe visual"
+        title="Proyectos reales,"
+        accent="imagenes reales."
+        subtitle="Trabajos petroleros e industriales documentados en Boscan, Tia Juana, Bajo Grande, costas, patios y estaciones."
+        image={media.heroProjects}
+      >
+        <div className="mt-10 grid max-w-4xl border border-white/20 bg-ink-950/75 text-left backdrop-blur sm:grid-cols-3">
+          {[
+            ['Registro', 'Antes / despues'],
+            ['Frentes', 'Vapor, saneamiento, control'],
+            ['Soporte', 'Fotos reales de campo'],
+          ].map(([label, value]) => (
+            <div key={label} className="border-b border-white/15 p-5 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0">
+              <span className="block font-mono text-[11px] uppercase tracking-[0.18em] text-brand-blueLight">{label}</span>
+              <strong className="mt-3 block font-display text-xl font-bold leading-tight text-white">{value}</strong>
+            </div>
+          ))}
+        </div>
+      </PageHero>
 
-      {/* Stats band */}
-      <section className="bg-ink-950 border-t border-white/10" aria-label="Metricas">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <Stagger className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-white/10">
-            {stats.map(({ value, suffix, label }) => (
-              <StaggerItem key={label} className="px-6 py-10 text-center">
-                <div className="font-display text-4xl lg:text-5xl font-bold text-white tabular-nums">
-                  <AnimatedCounter value={value} suffix={suffix} />
+      <section className="bg-white py-20 text-ink-900 lg:py-28">
+        <div className="mx-auto grid max-w-[1400px] gap-10 px-4 sm:px-6 lg:grid-cols-[18rem_1fr] lg:px-8">
+          <Reveal>
+            <div className="sticky top-28 rounded-[1.5rem] border border-steel-200 bg-steel-50 p-5">
+              <div className="mb-5 flex items-center gap-3">
+                <span className="flex h-11 w-11 items-center justify-center bg-brand-blue text-white">
+                  <FunnelSimple size={22} weight="bold" />
+                </span>
+                <div>
+                  <p className="mono-label text-brand-red">Portafolio SPS</p>
+                  <h2 className="font-display text-xl font-bold leading-tight text-ink-900">Filtrar por frente</h2>
                 </div>
-                <div className="mt-2 font-mono text-[11px] uppercase tracking-[0.18em] text-steel-400">{label}</div>
+              </div>
+              <div className="grid gap-2">
+                {categories.map((category) => {
+                  const selected = activeCategory === category
+
+                  return (
+                    <button
+                      key={category}
+                      type="button"
+                      onClick={() => setActiveCategory(category)}
+                      className={`min-h-12 cursor-pointer border px-4 py-3 text-left text-sm font-bold uppercase tracking-wide transition-colors duration-200 ${
+                        selected
+                          ? 'border-brand-blue bg-brand-blue text-white'
+                          : 'border-steel-200 bg-white text-ink-900/72 hover:border-brand-red hover:text-ink-900'
+                      }`}
+                    >
+                      {category}
+                    </button>
+                  )
+                })}
+              </div>
+              <div className="mt-6 border-t border-steel-200 pt-5">
+                <p className="text-sm font-semibold leading-relaxed text-steel-600">
+                  {visibleCases.length} proyectos visibles con ubicacion, categoria y doble imagen de evidencia.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+
+          <div>
+            {featuredCase && (
+              <Reveal>
+                <article className="mb-6 grid overflow-hidden rounded-[1.5rem] border border-steel-200 bg-ink-950 text-white shadow-lift lg:grid-cols-[1.15fr_.85fr]">
+                  <div className="grid min-h-[34rem] sm:grid-cols-2">
+                    <FieldImage src={featuredCase.image} className="h-full min-h-[18rem] w-full object-cover" />
+                    <FieldImage src={featuredCase.secondImage} className="h-full min-h-[18rem] w-full object-cover" />
+                  </div>
+                  <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12">
+                    <p className="mono-label mb-4 text-brand-blueLight">{featuredCase.category}</p>
+                    <h2 className="font-display text-2xl font-bold leading-tight text-white sm:text-3xl">{featuredCase.title}</h2>
+                    <p className="mt-5 flex items-center gap-2 text-sm font-bold text-steel-200">
+                      <MapPin size={18} className="text-brand-redLight" /> {featuredCase.location}
+                    </p>
+                    <p className="mt-6 text-sm leading-relaxed text-steel-200">{featuredCase.description}</p>
+                  </div>
+                </article>
+              </Reveal>
+            )}
+
+            <Stagger className="grid gap-5 md:grid-cols-2">
+              {visibleCases.slice(1).map((item) => (
+                <StaggerItem key={item.title}>
+                  <article className="group flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-steel-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue hover:shadow-lift">
+                    <div className="grid h-72 grid-cols-2 overflow-hidden border-b border-steel-200">
+                      <FieldImage src={item.image} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                      <FieldImage src={item.secondImage} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    </div>
+                    <div className="flex flex-1 flex-col p-6">
+                      <p className="mono-label mb-3 text-brand-blue">{item.category}</p>
+                      <h3 className="font-display text-xl font-bold leading-tight text-ink-900">{item.title}</h3>
+                      <p className="mt-4 flex items-center gap-2 text-sm font-bold text-steel-600">
+                        <MapPin size={17} className="shrink-0 text-brand-red" /> {item.location}
+                      </p>
+                      <p className="mt-5 text-sm leading-relaxed text-steel-600">{item.description}</p>
+                    </div>
+                  </article>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-steel-200 bg-steel-50 text-ink-900">
+        <div className="mx-auto grid max-w-[1400px] gap-5 px-4 py-8 sm:px-6 lg:grid-cols-[15rem_1fr] lg:px-8">
+          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-steel-500">
+            Operaciones asociadas
+          </p>
+          <div className="flex flex-wrap gap-x-8 gap-y-3">
+            {clients.map((client) => (
+              <span key={client} className="text-sm font-bold uppercase text-ink-900">
+                {client}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-20 text-ink-900 lg:py-28">
+        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
+          <Reveal className="mb-12 grid gap-8 lg:grid-cols-[.85fr_1.15fr] lg:items-end">
+            <div>
+              <p className="mono-label mb-4 text-brand-blueLight">Galeria operativa</p>
+              <h2 className="font-display text-2xl font-bold leading-tight text-ink-900 sm:text-3xl">
+                Equipos, fosas, tanques y patios de trabajo.
+              </h2>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {['Imagenes grandes para inspeccion visual.', 'Categorias visibles sin saturar la foto.'].map((item) => (
+                <p key={item} className="flex items-start gap-3 rounded-2xl border border-steel-200 bg-steel-50 p-4 text-sm font-semibold text-steel-700">
+                  <CheckCircle size={20} weight="fill" className="mt-0.5 shrink-0 text-brand-blueLight" />
+                  {item}
+                </p>
+              ))}
+            </div>
+          </Reveal>
+          <Stagger className="grid auto-rows-[17rem] gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {galleryImages.map((image, index) => (
+              <StaggerItem key={image.src} className={index === 0 || index === 4 ? 'sm:col-span-2' : ''}>
+                <figure className="group relative h-full overflow-hidden rounded-[1.25rem] border border-steel-200 bg-white shadow-sm">
+                  <FieldImage src={image.src} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+                  <figcaption className="absolute bottom-0 left-0 right-0 flex items-center gap-2 bg-gradient-to-t from-ink-950 via-ink-950/80 to-transparent px-5 pb-5 pt-12 text-sm font-bold uppercase tracking-wide text-white">
+                    <Images size={18} weight="bold" className="text-brand-blueLight" /> {image.label}
+                  </figcaption>
+                </figure>
               </StaggerItem>
             ))}
           </Stagger>
         </div>
       </section>
 
-      {/* Projects grid */}
-      <section className="bg-steel-50 py-24 lg:py-28" aria-labelledby="grid-h">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="mb-12">
-            <h2 id="grid-h" className="h-section">Proyectos ejecutados.</h2>
-          </Reveal>
-          <Stagger className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {projects.map(({ client, category, icon: Icon, img, works }) => {
-              const c = CAT[category]
-              return (
-                <StaggerItem key={client}>
-                  <SpotlightCard
-                    as="article"
-                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-steel-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lift"
-                  >
-                    <div className="relative h-44 overflow-hidden">
-                      <img src={img} alt="" className="h-full w-full object-cover transition-transform duration-[1.1s] group-hover:scale-110" loading="lazy" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-ink-950/10 to-transparent" />
-                      <span className={`absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] backdrop-blur-sm ${c.badge}`}>
-                        <Icon size={12} /> {category}
-                      </span>
-                    </div>
-                    <div className="flex flex-1 flex-col p-6">
-                      <div className="mb-4 flex items-start justify-between gap-3">
-                        <h3 className="font-display text-lg font-bold leading-tight text-ink-900">{client}</h3>
-                        <span className="inline-flex shrink-0 items-center gap-1 rounded-md border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-700">
-                          <Medal size={10} weight="fill" /> 100%
-                        </span>
-                      </div>
-                      <ul className="space-y-2">
-                        {works.map((w) => (
-                          <li key={w} className="flex items-start gap-2 text-sm leading-relaxed text-steel-500">
-                            <CheckCircle size={14} weight="fill" className={`mt-0.5 shrink-0 ${c.text}`} />
-                            {w}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </SpotlightCard>
-                </StaggerItem>
-              )
-            })}
-          </Stagger>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="relative overflow-hidden bg-ink-950 py-24" aria-labelledby="cta-proy-h">
-        <div className="absolute inset-0 bp-grid bp-grid-fade opacity-60" />
-        <Reveal className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 id="cta-proy-h" className="font-display text-3xl md:text-4xl font-bold text-white tracking-tightest mb-4">
-            Tu proyecto podria ser el proximo.
+      <section className="bg-white py-20 text-ink-900">
+        <div className="mx-auto grid max-w-[1400px] gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-center lg:px-8">
+          <h2 className="max-w-4xl font-display text-2xl font-bold leading-tight text-ink-900 sm:text-3xl">
+            Documentamos el servicio desde el inicio para que cada cierre tenga evidencia tecnica.
           </h2>
-          <p className="text-steel-300 mb-9 max-w-xl mx-auto leading-relaxed">
-            Unete a la lista de empresas que confian en la calidad y experiencia de SPS.
-          </p>
-          <MagneticButton to="/contacto" className="btn-primary">
-            Iniciar un proyecto <ArrowRight size={18} weight="bold" />
-          </MagneticButton>
-        </Reveal>
+          <Link to="/contacto" className="btn-red rounded-none text-sm">
+            Solicitar servicio <ArrowRight size={20} weight="bold" />
+          </Link>
+        </div>
       </section>
     </>
   )
