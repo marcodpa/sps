@@ -76,7 +76,7 @@ export default function Servicios() {
               Lo que mas se ve en campo.
             </h2>
           </Reveal>
-          <Stagger className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <Stagger className="grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
             {featuredServices.map(({ title, copy, image, icon: Icon }) => (
               <StaggerItem key={title}>
                 <article className="group h-full overflow-hidden rounded-[1.5rem] border border-steel-200 bg-white shadow-sm">
