@@ -103,8 +103,9 @@ export default function Home() {
           <img
             src={heroImage}
             alt="Patio operativo SPS con equipos, tanques y caldera en campo"
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover object-center"
             loading="eager"
+            fetchPriority="high"
           />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,13,24,.92)_0%,rgba(7,13,24,.78)_34%,rgba(7,13,24,.35)_62%,rgba(7,13,24,.04)_100%)]" />
           <div className="relative flex min-h-0 flex-1 max-w-3xl flex-col justify-end p-6 sm:p-8 lg:p-12">
