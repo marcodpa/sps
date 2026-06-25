@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, CheckCircle, FunnelSimple, Images, MapPin } from '@phosphor-icons/react'
 import PageHero from '../components/PageHero'
@@ -40,20 +40,7 @@ export default function Proyectos() {
         accent="imagenes reales."
         subtitle="Trabajos petroleros e industriales documentados en Boscan, Tia Juana, Bajo Grande, costas, patios y estaciones."
         image={media.heroProjects}
-      >
-        <div className="mt-10 grid max-w-4xl border border-white/20 bg-ink-950/75 text-left backdrop-blur sm:grid-cols-3">
-          {[
-            ['Registro', 'Antes / despues'],
-            ['Frentes', 'Vapor, saneamiento, control'],
-            ['Soporte', 'Fotos reales de campo'],
-          ].map(([label, value]) => (
-            <div key={label} className="border-b border-white/15 p-5 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0">
-              <span className="block font-mono text-[11px] uppercase tracking-[0.18em] text-brand-blueLight">{label}</span>
-              <strong className="mt-3 block font-display text-xl font-bold leading-tight text-white">{value}</strong>
-            </div>
-          ))}
-        </div>
-      </PageHero>
+      />
 
       <section className="bg-white py-20 text-ink-900 lg:py-28">
         <div className="mx-auto grid max-w-[1400px] gap-10 px-4 sm:px-6 lg:grid-cols-[18rem_1fr] lg:px-8">
@@ -100,10 +87,12 @@ export default function Proyectos() {
             {featuredCase && (
               <Reveal>
                 <article className="mb-6 grid overflow-hidden rounded-[1.5rem] border border-steel-200 bg-ink-950 text-white shadow-lift lg:grid-cols-[1.15fr_.85fr]">
-                  <div className="grid min-h-[34rem] sm:grid-cols-2">
-                    <FieldImage src={featuredCase.image} className="h-full min-h-[18rem] w-full object-cover" />
-                    <FieldImage src={featuredCase.secondImage} className="h-full min-h-[18rem] w-full object-cover" />
-                  </div>
+                  <ProjectEvidenceImages
+                    image={featuredCase.image}
+                    secondImage={featuredCase.secondImage}
+                    title={featuredCase.title}
+                    featured
+                  />
                   <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12">
                     <p className="mono-label mb-4 text-brand-blueLight">{featuredCase.category}</p>
                     <h2 className="font-display text-2xl font-bold leading-tight text-white sm:text-3xl">{featuredCase.title}</h2>
@@ -119,11 +108,12 @@ export default function Proyectos() {
             <Stagger className="grid gap-5 md:grid-cols-2">
               {visibleCases.slice(1).map((item) => (
                 <StaggerItem key={item.title}>
-                  <article className="group flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-steel-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue hover:shadow-lift">
-                    <div className="grid h-72 grid-cols-2 overflow-hidden border-b border-steel-200">
-                      <FieldImage src={item.image} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                      <FieldImage src={item.secondImage} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                    </div>
+                  <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-steel-200 bg-white transition-[transform,border-color,box-shadow] duration-300 ease-field hover:-translate-y-1 hover:border-brand-blue hover:shadow-lift">
+                    <ProjectEvidenceImages
+                      image={item.image}
+                      secondImage={item.secondImage}
+                      title={item.title}
+                    />
                     <div className="flex flex-1 flex-col p-6">
                       <p className="mono-label mb-3 text-brand-blue">{item.category}</p>
                       <h3 className="font-display text-xl font-bold leading-tight text-ink-900">{item.title}</h3>
@@ -193,11 +183,59 @@ export default function Proyectos() {
           <h2 className="max-w-4xl font-display text-2xl font-bold leading-tight text-ink-900 sm:text-3xl">
             Documentamos el servicio desde el inicio para que cada cierre tenga evidencia tecnica.
           </h2>
-          <Link to="/contacto" className="btn-red rounded-none text-sm">
+          <Link to="/contacto" className="btn-red text-sm">
             Solicitar servicio <ArrowRight size={20} weight="bold" />
           </Link>
         </div>
       </section>
     </>
+  )
+}
+
+function ProjectEvidenceImages({ image, secondImage, title, featured = false }) {
+  const [activeIndex, setActiveIndex] = useState(0)
+  const images = [image, secondImage]
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveIndex((index) => (index + 1) % images.length)
+    }, 5000)
+
+    return () => window.clearInterval(interval)
+  }, [images.length])
+
+  return (
+    <div className="border-b border-steel-200 bg-ink-950">
+      <div className={`relative overflow-hidden bg-ink-950 ${featured ? 'h-[34rem]' : 'h-72'}`}>
+        {images.map((src, index) => (
+          <FieldImage
+            key={src}
+            src={src}
+            alt=""
+            className={`absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-700 ease-field group-hover:scale-[1.035] ${
+              activeIndex === index ? 'opacity-100' : 'opacity-0'
+            }`}
+            width={featured ? '1100' : '800'}
+            height={featured ? '900' : '520'}
+            sizes={featured ? '(min-width: 1024px) 55vw, 100vw' : '(min-width: 768px) 50vw, 100vw'}
+          />
+        ))}
+        <div className="absolute inset-0 bg-gradient-to-t from-ink-950/35 via-transparent to-transparent" />
+        <span className="absolute left-4 top-4 rounded-full border border-white/25 bg-ink-950/70 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-white backdrop-blur">
+          Evidencia
+        </span>
+        <div className="absolute bottom-4 right-4 flex gap-2" aria-hidden="true">
+          {images.map((src, index) => (
+            <span
+              key={src}
+              className={`h-1.5 rounded-full transition-[width,background-color] duration-300 ease-field ${
+                activeIndex === index ? 'w-8 bg-white' : 'w-3 bg-white/45'
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+      <span className="sr-only">Imagenes de evidencia rotativa del proyecto {title}</span>
+    </div>
   )
 }
