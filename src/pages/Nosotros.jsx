@@ -25,7 +25,7 @@ export default function Nosotros() {
       />
 
       <section className="bg-white py-20 text-ink-900 lg:py-28">
-        <div className="mx-auto grid max-w-[1400px] gap-12 px-4 sm:px-6 lg:grid-cols-[.95fr_1.05fr] lg:px-8">
+        <div className="grid gap-12 px-4 sm:px-6 lg:grid-cols-[.95fr_1.05fr] lg:px-8">
           <Reveal>
             <FieldImage src={media.bajoGrandeCaldera} className="h-full min-h-[30rem] w-full rounded-[1.5rem] object-cover" />
           </Reveal>
@@ -51,7 +51,7 @@ export default function Nosotros() {
       <section className="relative overflow-hidden bg-ink-950 py-20 text-white lg:py-28">
         <FieldImage src={media.fracLine01} className="absolute inset-0 h-full w-full object-cover opacity-35" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,13,24,.96),rgba(7,13,24,.7))]" />
-        <div className="relative mx-auto grid max-w-[1400px] gap-10 px-4 sm:px-6 lg:grid-cols-[.8fr_1.2fr] lg:px-8">
+        <div className="relative grid gap-10 px-4 sm:px-6 lg:grid-cols-[.8fr_1.2fr] lg:px-8">
           <Reveal>
             <p className="mono-label mb-4 text-brand-blueLight">Como trabajamos</p>
             <h2 className="font-display text-2xl font-bold leading-tight text-white sm:text-3xl">
@@ -72,7 +72,7 @@ export default function Nosotros() {
       </section>
 
       <section className="bg-white py-20 text-ink-900 lg:py-28">
-        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
+        <div className="px-4 sm:px-6 lg:px-8">
           <Reveal className="mb-12 max-w-4xl">
             <p className="mono-label mb-4 text-brand-red">Capacidades</p>
             <h2 className="font-display text-2xl font-bold leading-tight text-ink-900 sm:text-3xl">La empresa combina mecanica, vapor, fluidos, electricidad y control.</h2>
@@ -91,7 +91,7 @@ export default function Nosotros() {
       </section>
 
       <section className="bg-steel-50 py-20 text-ink-900">
-        <div className="mx-auto grid max-w-[1400px] gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+        <div className="grid gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
           <Reveal className="rounded-[1.5rem] border border-steel-200 border-l-brand-blue bg-white p-8">
             <p className="mono-label mb-4 text-brand-blue">Mision</p>
             <h2 className="font-display text-xl font-bold text-ink-900">Prestar servicios confiables en condiciones exigentes.</h2>
@@ -112,7 +112,7 @@ export default function Nosotros() {
       </section>
 
       <section className="bg-ink-950 py-20 text-white">
-        <div className="mx-auto grid max-w-[1400px] gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-center lg:px-8">
+        <div className="grid gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-center lg:px-8">
           <h2 className="max-w-4xl font-display text-2xl font-bold leading-tight text-white sm:text-3xl">
             Conoce los servicios que SPS puede llevar a tu operacion.
           </h2>

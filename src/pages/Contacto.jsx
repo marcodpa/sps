@@ -53,7 +53,7 @@ export default function Contacto() {
       />
 
       <section className="bg-white py-20 text-ink-900 lg:py-28">
-        <div className="mx-auto grid max-w-[1400px] gap-10 px-4 sm:px-6 lg:grid-cols-[.85fr_1.15fr] lg:px-8">
+        <div className="grid gap-10 px-4 sm:px-6 lg:grid-cols-[.85fr_1.15fr] lg:px-8">
           <Reveal>
             <h2 className="mb-6 font-display text-2xl font-bold leading-tight text-ink-900 sm:text-3xl">Canales directos</h2>
             <div className="space-y-4">

@@ -25,7 +25,7 @@ export default function Servicios() {
       </PageHero>
 
       <section className="bg-white py-20 text-ink-900 lg:py-28">
-        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
           <Reveal className="mb-12 max-w-4xl">
             <p className="mono-label mb-4 text-brand-red">Catalogo operativo</p>
             <h2 className="font-display text-2xl font-bold leading-tight text-ink-900 sm:text-3xl">
@@ -69,7 +69,7 @@ export default function Servicios() {
       </section>
 
       <section className="bg-steel-50 py-20 text-ink-900 lg:py-28">
-        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
           <Reveal className="mb-12 max-w-3xl">
             <p className="mono-label mb-4 text-brand-blueLight">Servicios destacados</p>
             <h2 className="font-display text-2xl font-bold leading-tight text-ink-900 sm:text-3xl">
@@ -99,7 +99,7 @@ export default function Servicios() {
       </section>
 
       <section className="bg-white py-20 text-ink-900">
-        <div className="mx-auto grid max-w-[1400px] gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-center lg:px-8">
+        <div className="grid gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-center lg:px-8">
           <div>
             <p className="mono-label mb-4 text-brand-red">Cotizacion y visita tecnica</p>
             <h2 className="max-w-4xl font-display text-2xl font-bold leading-tight text-ink-900 sm:text-3xl">

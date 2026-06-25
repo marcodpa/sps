@@ -326,7 +326,7 @@ export default function Home() {
       </section>
 
       <section className="bg-steel-50 px-4 pb-24 text-ink-900 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-[1400px] gap-8 border-t border-steel-200 pt-12 lg:grid-cols-[1fr_auto] lg:items-center">
+        <div className="grid gap-8 border-t border-steel-200 pt-12 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
             <p className="mono-label text-brand-red">Cotizacion y visita tecnica</p>
             <h2 className="mt-4 max-w-4xl font-display text-4xl font-black uppercase leading-[0.98] tracking-tight text-ink-900 md:text-6xl">

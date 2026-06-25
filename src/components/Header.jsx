@@ -15,7 +15,7 @@ export default function Header() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-5">
-      <div className="mx-auto max-w-[1400px]">
+      <div>
         <div className="flex min-h-16 items-center justify-between rounded-[1.35rem] border border-white/70 bg-white/[0.92] px-3 shadow-[0_18px_70px_-45px_rgba(11,20,38,.65)] backdrop-blur-xl sm:min-h-20 sm:px-5">
           <Link to="/" className="group flex items-center gap-3 rounded-xl" onClick={() => setMenuOpen(false)}>
             <img

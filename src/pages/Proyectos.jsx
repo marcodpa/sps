@@ -43,7 +43,7 @@ export default function Proyectos() {
       />
 
       <section className="bg-white py-20 text-ink-900 lg:py-28">
-        <div className="mx-auto grid max-w-[1400px] gap-10 px-4 sm:px-6 lg:grid-cols-[18rem_1fr] lg:px-8">
+        <div className="grid gap-10 px-4 sm:px-6 lg:grid-cols-[18rem_1fr] lg:px-8">
           <Reveal>
             <div className="sticky top-28 rounded-[1.5rem] border border-steel-200 bg-steel-50 p-5">
               <div className="mb-5 flex items-center gap-3">
@@ -131,7 +131,7 @@ export default function Proyectos() {
       </section>
 
       <section className="border-y border-steel-200 bg-steel-50 text-ink-900">
-        <div className="mx-auto grid max-w-[1400px] gap-5 px-4 py-8 sm:px-6 lg:grid-cols-[15rem_1fr] lg:px-8">
+        <div className="grid gap-5 px-4 py-8 sm:px-6 lg:grid-cols-[15rem_1fr] lg:px-8">
           <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-steel-500">
             Operaciones asociadas
           </p>
@@ -146,7 +146,7 @@ export default function Proyectos() {
       </section>
 
       <section className="bg-white py-20 text-ink-900 lg:py-28">
-        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
           <Reveal className="mb-12 grid gap-8 lg:grid-cols-[.85fr_1.15fr] lg:items-end">
             <div>
               <p className="mono-label mb-4 text-brand-blueLight">Galeria operativa</p>
@@ -179,7 +179,7 @@ export default function Proyectos() {
       </section>
 
       <section className="bg-white py-20 text-ink-900">
-        <div className="mx-auto grid max-w-[1400px] gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-center lg:px-8">
+        <div className="grid gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-center lg:px-8">
           <h2 className="max-w-4xl font-display text-2xl font-bold leading-tight text-ink-900 sm:text-3xl">
             Documentamos el servicio desde el inicio para que cada cierre tenga evidencia tecnica.
           </h2>
