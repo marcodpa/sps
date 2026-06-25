@@ -4,7 +4,7 @@ export default function PageHero({ kicker, title, accent, subtitle, image, child
   const centered = align === 'center'
 
   return (
-    <section className="relative min-h-[64dvh] overflow-hidden bg-ink-950 pt-36 pb-16 text-white lg:pt-48 lg:pb-24">
+    <section className="relative min-h-dvh overflow-hidden bg-ink-950 pt-36 pb-16 text-white lg:pt-48 lg:pb-24">
       {image && (
         <FieldImage
           src={image}

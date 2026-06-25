@@ -98,8 +98,8 @@ export default function Home() {
 
   return (
     <>
-      <section className="min-h-screen bg-white px-3 pb-8 pt-28 text-white md:px-5 lg:pt-36">
-        <div className="relative mx-auto min-h-[calc(100dvh-9rem)] max-w-[1400px] overflow-hidden rounded-[2rem] border border-steel-200 bg-ink-950 shadow-lift">
+      <section className="flex min-h-dvh flex-col bg-white px-3 pb-8 pt-28 text-white md:px-5 lg:pt-36">
+        <div className="relative mx-auto flex min-h-0 flex-1 w-full max-w-[1400px] overflow-hidden rounded-[2rem] border border-steel-200 bg-ink-950 shadow-lift">
           <img
             src={heroImage}
             alt="Patio operativo SPS con equipos, tanques y caldera en campo"
@@ -107,7 +107,7 @@ export default function Home() {
             loading="eager"
           />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,13,24,.92)_0%,rgba(7,13,24,.78)_34%,rgba(7,13,24,.35)_62%,rgba(7,13,24,.04)_100%)]" />
-          <div className="relative flex min-h-[calc(100dvh-9rem)] max-w-3xl flex-col justify-end p-6 sm:p-8 lg:p-12">
+          <div className="relative flex min-h-0 flex-1 max-w-3xl flex-col justify-end p-6 sm:p-8 lg:p-12">
             <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-redLight">
               Service Petroleum and Supply C.A.
             </p>
