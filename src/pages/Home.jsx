@@ -28,23 +28,24 @@ export default function Home() {
 
   return (
     <>
-      <section className="relative isolate overflow-hidden bg-steel-50 px-3 pb-10 pt-24 text-white sm:px-5 lg:pt-32">
-        <div className="relative mx-auto min-h-[calc(100dvh-8rem)] max-w-[1500px] overflow-hidden rounded-[2rem] bg-ink-950 shadow-[0_32px_90px_-55px_rgba(7,13,24,.9)]">
-          <FieldImage
-            src={heroImage}
-            alt="Patio operativo SPS con equipos, tanques y caldera en campo"
-            className="absolute inset-0 h-full w-full object-cover object-center"
-            loading="eager"
-            fetchPriority="high"
-            width="1920"
-            height="1080"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,13,24,.97)_0%,rgba(7,13,24,.84)_44%,rgba(7,13,24,.42)_74%,rgba(7,13,24,.12)_100%)]" />
-          <div className="bp-grid absolute inset-0 opacity-20" />
-          <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.08]" />
+      <section className="relative isolate flex min-h-screen items-end overflow-hidden bg-ink-950 pb-16 pt-36 text-white lg:pb-24 lg:pt-44">
+        <FieldImage
+          src={heroImage}
+          alt="Patio operativo SPS con equipos, tanques y caldera en campo"
+          className="absolute inset-0 h-full w-full object-cover object-center"
+          loading="eager"
+          fetchPriority="high"
+          width="1920"
+          height="1080"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,13,24,.97)_0%,rgba(7,13,24,.84)_44%,rgba(7,13,24,.42)_74%,rgba(7,13,24,.12)_100%)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/10 to-ink-950/45" />
+        <div className="bp-grid absolute inset-0 opacity-20" />
+        <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.08]" />
 
-          <div className="relative grid min-h-[calc(100dvh-8rem)] content-end gap-8 px-5 pb-8 pt-28 sm:px-8 sm:pb-10 lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-end lg:px-12 lg:pb-12">
+        <div className="section-shell relative w-full">
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-end">
             <div className="max-w-4xl">
               <motion.p
                 className="mono-label text-brand-redLight"
