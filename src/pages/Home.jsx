@@ -160,7 +160,7 @@ export default function Home() {
           </Reveal>
 
           <div className="grid gap-4 lg:grid-cols-4">
-            <Reveal className="media-frame relative min-h-[34rem] lg:col-span-2">
+            <Reveal className="media-frame relative min-h-[34rem] lg:col-span-1">
               <FieldImage
                 src={media.bajoGrandeCaldera}
                 alt="Caldera portatil SPS instalada para servicio de vapor"
