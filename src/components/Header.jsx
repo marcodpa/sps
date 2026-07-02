@@ -21,7 +21,7 @@ export default function Header() {
             <img
               src="/sps-logo.png"
               alt="SPS - Service Petroleum and Supply"
-              className="h-12 w-auto object-contain transition-transform duration-300 ease-field group-hover:scale-[1.03] sm:h-14 lg:h-16"
+              className="h-14 w-auto object-contain transition-transform duration-300 ease-field group-hover:scale-[1.03] sm:h-16 lg:h-20"
               width="180"
               height="80"
             />

@@ -45,78 +45,45 @@ export default function Home() {
         <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.08]" />
 
         <div className="section-shell relative w-full">
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-end">
-            <div className="max-w-4xl">
-              <motion.p
-                className="mono-label text-brand-redLight"
-                initial={{ y: 18, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.7, ease }}
-              >
-                Service Petroleum and Supply C.A.
-              </motion.p>
-              <motion.h1
-                className="mt-6 max-w-5xl font-display font-black uppercase leading-[0.86] tracking-tightest text-white"
-                style={{ fontSize: 'clamp(3.9rem, 9vw, 8.6rem)' }}
-                initial={{ y: 36, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.9, delay: 0.08, ease }}
-              >
-                Respuesta tecnica para operaciones criticas.
-              </motion.h1>
-              <motion.div
-                className="mt-7 max-w-2xl field-line pl-5"
-                initial={{ y: 26, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.85, delay: 0.22, ease }}
-              >
-                <p className="max-w-xl text-sm font-medium leading-relaxed text-steel-100 sm:text-base">
-                  Vapor, recuperacion de crudo, saneamiento, automatizacion y soporte industrial
-                  con equipos movilizados en campo.
-                </p>
-                <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                  <Link to="/servicios" className="btn-primary group">
-                    Ver servicios
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-brand-blue transition-transform duration-300 ease-field group-hover:translate-x-1">
-                      <ArrowRight size={17} weight="bold" />
-                    </span>
-                  </Link>
-                  <Link to="/proyectos" className="btn-ghost-light">
-                    Ver evidencia
-                  </Link>
-                </div>
-              </motion.div>
-            </div>
-
-            <motion.aside
-              className="hidden rounded-2xl border border-white/15 bg-ink-950/72 p-3 shadow-[0_24px_70px_-35px_rgba(0,0,0,.75)] backdrop-blur-md lg:block"
-              initial={{ y: 30, opacity: 0 }}
+          <div className="max-w-3xl">
+            <motion.p
+              className="mono-label text-brand-redLight"
+              initial={{ y: 18, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.85, delay: 0.38, ease }}
-              aria-label="Capacidades destacadas SPS"
+              transition={{ duration: 0.7, ease }}
             >
-              <div className="media-frame h-40 rounded-xl">
-                <FieldImage
-                  src={media.bajoGrandeCaldera}
-                  alt="Caldera portatil SPS instalada en patio operativo"
-                  className="h-full w-full object-cover"
-                  width="520"
-                  height="320"
-                  sizes="24rem"
-                />
+              Service Petroleum and Supply C.A.
+            </motion.p>
+            <motion.h1
+              className="mt-5 max-w-4xl font-display font-black uppercase leading-[0.9] tracking-tightest text-white"
+              style={{ fontSize: 'clamp(2.6rem, 5.5vw, 4.8rem)' }}
+              initial={{ y: 36, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.9, delay: 0.08, ease }}
+            >
+              Respuesta tecnica para operaciones criticas.
+            </motion.h1>
+            <motion.div
+              className="mt-6 max-w-xl field-line pl-5"
+              initial={{ y: 26, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.85, delay: 0.22, ease }}
+            >
+              <p className="text-sm font-medium leading-relaxed text-steel-100 sm:text-base">
+                Vapor, recuperacion, saneamiento, automatizacion y soporte industrial con equipos movilizados en campo.
+              </p>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <Link to="/servicios" className="btn-primary group">
+                  Ver servicios
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-brand-blue transition-transform duration-300 ease-field group-hover:translate-x-1">
+                    <ArrowRight size={17} weight="bold" />
+                  </span>
+                </Link>
+                <Link to="/proyectos" className="btn-ghost-light">
+                  Ver evidencia
+                </Link>
               </div>
-              <div className="p-3">
-                <p className="mono-label text-brand-blueLight">Dossier operativo</p>
-                <div className="mt-4 grid gap-3">
-                  {['Vapor y recuperacion', 'Saneamiento industrial', 'PLC, RTU y SCADA'].map((item) => (
-                    <div key={item} className="flex items-center justify-between border-t border-white/10 pt-3">
-                      <span className="text-sm font-extrabold text-white">{item}</span>
-                      <span className="h-2 w-2 rounded-full bg-brand-redLight" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.aside>
+            </motion.div>
           </div>
         </div>
       </section>
