@@ -14,26 +14,26 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-5">
+    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 sm:pt-6">
       <div>
-        <div className="flex min-h-16 items-center justify-between rounded-[1.35rem] border border-white/70 bg-white/[0.92] px-3 shadow-[0_18px_70px_-45px_rgba(11,20,38,.65)] backdrop-blur-xl sm:min-h-20 sm:px-5">
+        <div className="flex min-h-20 items-center justify-between rounded-[1.5rem] border border-white/70 bg-white/[0.92] px-5 shadow-[0_18px_70px_-45px_rgba(11,20,38,.65)] backdrop-blur-xl sm:min-h-24 sm:px-6">
           <Link to="/" className="group flex items-center gap-3 rounded-xl" onClick={() => setMenuOpen(false)}>
             <img
               src="/sps-logo.png"
               alt="SPS - Service Petroleum and Supply"
-              className="h-14 w-auto object-contain transition-transform duration-300 ease-field group-hover:scale-[1.03] sm:h-16 lg:h-20"
+              className="h-16 w-auto object-contain transition-transform duration-300 ease-field group-hover:scale-[1.03] sm:h-20 lg:h-24"
               width="180"
               height="80"
             />
           </Link>
 
-          <nav className="hidden items-center gap-1 md:flex" aria-label="Navegacion principal">
+          <nav className="hidden items-center gap-2 md:flex" aria-label="Navegacion principal">
             {navLinks.map(({ to, label }) => (
               <NavLink
                 key={to}
                 to={to}
                 end={to === '/'}
-                className="group relative rounded-full px-4 py-3 text-sm font-extrabold transition-colors duration-200 ease-field"
+                className="group relative rounded-full px-5 py-3 text-base font-extrabold transition-colors duration-200 ease-field"
               >
                 {({ isActive }) => (
                   <span className={isActive ? 'text-brand-blue' : 'text-ink-900/70 group-hover:text-ink-900'}>
@@ -45,23 +45,23 @@ export default function Header() {
           </nav>
 
           <div className="hidden items-center gap-3 md:flex">
-            <Link to="/contacto" className="btn-primary min-h-11 px-4 py-2">
+            <Link to="/contacto" className="btn-primary min-h-12 px-5 py-2.5">
               Cotizar
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-brand-blue">
-                <ArrowUpRight size={15} weight="bold" />
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-brand-blue">
+                <ArrowUpRight size={17} weight="bold" />
               </span>
             </Link>
           </div>
 
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-steel-200 bg-steel-50 text-ink-900 transition-[transform,background-color,border-color] duration-200 ease-field hover:bg-white active:scale-[0.97] md:hidden"
+            className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-steel-200 bg-steel-50 text-ink-900 transition-[transform,background-color,border-color] duration-200 ease-field hover:bg-white active:scale-[0.97] md:hidden"
             onClick={() => setMenuOpen((open) => !open)}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             aria-label={menuOpen ? 'Cerrar menu' : 'Abrir menu'}
           >
-            {menuOpen ? <X size={22} weight="bold" /> : <List size={22} weight="bold" />}
+            {menuOpen ? <X size={24} weight="bold" /> : <List size={24} weight="bold" />}
           </button>
         </div>
 
