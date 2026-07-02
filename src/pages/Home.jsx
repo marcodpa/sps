@@ -88,7 +88,34 @@ export default function Home() {
         </div>
       </section>
 
-      
+      <section className="bg-steel-50 py-20 text-ink-900 lg:py-28">
+        <div className="section-shell grid gap-10 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
+          <Reveal className="field-line pl-6">
+            <p className="mono-label text-brand-red">Quienes somos</p>
+            <h2 className="h-section mt-5 max-w-3xl">
+              Una empresa de campo, no de escritorio.
+            </h2>
+            <p className="mt-6 max-w-2xl text-sm font-medium leading-relaxed text-steel-600 sm:text-base">
+              SPS combina personal tecnico, equipos moviles y criterio operativo para atender pozos,
+              estaciones, patios de tanques, fosas y plantas industriales. Su valor esta en entrar al sitio,
+              resolver con seguridad y dejar evidencia del trabajo realizado.
+            </p>
+          </Reveal>
+          <Reveal delay={0.12}>
+            <div className="media-frame clip-corner aspect-[4/3]">
+              <FieldImage
+                src={media.bajoGrandePatioWide}
+                alt="Patio de tanques y equipos SPS en operacion industrial"
+                className="h-full w-full object-cover"
+                width="1280"
+                height="960"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+              />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       <section className="relative overflow-hidden bg-ink-950 py-20 text-white lg:py-28">
         <div className="bp-grid absolute inset-0 opacity-20" />
         <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.1]" />
