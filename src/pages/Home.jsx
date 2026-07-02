@@ -100,6 +100,16 @@ export default function Home() {
               estaciones, patios de tanques, fosas y plantas industriales. Su valor esta en entrar al sitio,
               resolver con seguridad y dejar evidencia del trabajo realizado.
             </p>
+            <p className="mt-4 max-w-2xl text-sm font-medium leading-relaxed text-steel-600 sm:text-base">
+              Con mas de una decada de experiencia en la Cuenca del Lago de Maracaibo, hemos participado en
+              operaciones de inyeccion de vapor, calentamiento de crudo, saneamiento de fosas, mantenimiento
+              de tanques, instalacion de telemetria y automatizacion de estaciones para clientes como PDVSA,
+              Petroboscan y Chevron.
+            </p>
+            <p className="mt-4 max-w-2xl text-sm font-medium leading-relaxed text-steel-600 sm:text-base">
+              Nuestro equipo esta conformado por ingenieros, supervisores, operadores y tecnicos especializados
+              que trabajan bajo protocolos de seguridad industrial y proteccion ambiental, con equipos propios
+              movilizados directamente al sitio de operacion.
           </Reveal>
           <Reveal delay={0.12}>
             <div className="media-frame clip-corner aspect-[4/3]">
