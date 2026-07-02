@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, CheckCircle } from '@phosphor-icons/react'
+import { ArrowRight, CheckCircle, Clock, Wrench, Truck, ShieldCheck, Camera } from '@phosphor-icons/react'
 import PageHero from '../components/PageHero'
 import { Reveal, Stagger, StaggerItem } from '../lib/motion'
 import { capabilityIcons, media } from '../data/spsContent'
@@ -67,6 +67,74 @@ export default function Nosotros() {
                 </div>
               </Reveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-steel-50 py-20 text-ink-900 lg:py-28">
+        <div className="px-4 sm:px-6 lg:px-8">
+          <Reveal className="mb-12 max-w-4xl">
+            <p className="mono-label mb-4 text-brand-red">Por que elegirnos</p>
+            <h2 className="font-display text-2xl font-bold leading-tight text-ink-900 sm:text-3xl">
+              SPS lleva la respuesta donde otros no llegan.
+            </h2>
+          </Reveal>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            <Reveal>
+              <div className="h-full rounded-2xl border border-steel-200 bg-white p-6 transition-[transform,border-color,box-shadow] duration-300 ease-field hover:-translate-y-1 hover:border-brand-blue hover:shadow-lift">
+                <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue">
+                  <Clock size={28} weight="bold" />
+                </span>
+                <h3 className="mt-5 font-display text-lg font-bold text-ink-900">Respuesta rapida</h3>
+                <p className="mt-3 text-sm leading-relaxed text-steel-600">
+                  Movilizacion de equipos y personal en tiempo reducido para operaciones criticas.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <div className="h-full rounded-2xl border border-steel-200 bg-white p-6 transition-[transform,border-color,box-shadow] duration-300 ease-field hover:-translate-y-1 hover:border-brand-blue hover:shadow-lift">
+                <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue">
+                  <Wrench size={28} weight="bold" />
+                </span>
+                <h3 className="mt-5 font-display text-lg font-bold text-ink-900">Personal tecnico</h3>
+                <p className="mt-3 text-sm leading-relaxed text-steel-600">
+                  Experiencia comprobada en vapor, instrumentacion, automatizacion y manejo de hidrocarburos.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <div className="h-full rounded-2xl border border-steel-200 bg-white p-6 transition-[transform,border-color,box-shadow] duration-300 ease-field hover:-translate-y-1 hover:border-brand-blue hover:shadow-lift">
+                <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue">
+                  <Truck size={28} weight="bold" />
+                </span>
+                <h3 className="mt-5 font-display text-lg font-bold text-ink-900">Equipos propios</h3>
+                <p className="mt-3 text-sm leading-relaxed text-steel-600">
+                  Calderas, tanques, unidades moviles y herramientas para resolver en sitio sin depender de terceros.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <div className="h-full rounded-2xl border border-steel-200 bg-white p-6 transition-[transform,border-color,box-shadow] duration-300 ease-field hover:-translate-y-1 hover:border-brand-blue hover:shadow-lift">
+                <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue">
+                  <ShieldCheck size={28} weight="bold" />
+                </span>
+                <h3 className="mt-5 font-display text-lg font-bold text-ink-900">Seguridad industrial</h3>
+                <p className="mt-3 text-sm leading-relaxed text-steel-600">
+                  Cada intervencion sigue protocolos de seguridad industrial y proteccion ambiental.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <div className="h-full rounded-2xl border border-steel-200 bg-white p-6 transition-[transform,border-color,box-shadow] duration-300 ease-field hover:-translate-y-1 hover:border-brand-blue hover:shadow-lift">
+                <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue">
+                  <Camera size={28} weight="bold" />
+                </span>
+                <h3 className="mt-5 font-display text-lg font-bold text-ink-900">Evidencia visual</h3>
+                <p className="mt-3 text-sm leading-relaxed text-steel-600">
+                  Registro fotografico y documentacion tecnica de todas las operaciones realizadas en campo.
+                </p>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
