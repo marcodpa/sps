@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, CheckCircle, Clock, Wrench, Truck, ShieldCheck, Camera } from '@phosphor-icons/react'
+import { ArrowRight, CheckCircle, Clock, Wrench, Truck, ShieldCheck, Camera, Lightning, Target, Users, GearSix } from '@phosphor-icons/react'
 import PageHero from '../components/PageHero'
 import { Reveal, Stagger, StaggerItem } from '../lib/motion'
 import { capabilityIcons, media } from '../data/spsContent'
@@ -71,66 +71,73 @@ export default function Nosotros() {
         </div>
       </section>
 
-      <section className="bg-steel-50 py-20 text-ink-900 lg:py-28">
+      <section className="relative overflow-hidden bg-ink-950 py-20 text-white lg:py-28">
+        <div className="bp-grid absolute inset-0 opacity-15" />
+        <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.08]" />
         <div className="px-4 sm:px-6 lg:px-8">
-          <Reveal className="mb-12 max-w-4xl">
-            <p className="mono-label mb-4 text-brand-red">Por que elegirnos</p>
-            <h2 className="font-display text-2xl font-bold leading-tight text-ink-900 sm:text-3xl">
+          <Reveal className="mb-14 max-w-4xl">
+            <p className="mono-label mb-4 text-brand-blueLight">Por que elegirnos</p>
+            <h2 className="font-display text-4xl font-black uppercase leading-[0.96] tracking-tight text-white md:text-6xl">
               SPS lleva la respuesta donde otros no llegan.
             </h2>
           </Reveal>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          <div className="grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-5">
             <Reveal>
-              <div className="h-full rounded-2xl border border-steel-200 bg-white p-6 transition-[transform,border-color,box-shadow] duration-300 ease-field hover:-translate-y-1 hover:border-brand-blue hover:shadow-lift">
-                <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue">
+              <div className="group relative h-full bg-ink-950 p-7 transition-colors duration-300 hover:bg-white/[0.06]">
+                <span className="pointer-events-none absolute -right-3 -top-3 select-none font-display text-[7rem] font-black leading-none text-white/[0.03]">01</span>
+                <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-blue/20 text-brand-blueLight">
                   <Clock size={28} weight="bold" />
                 </span>
-                <h3 className="mt-5 font-display text-lg font-bold text-ink-900">Respuesta rapida</h3>
-                <p className="mt-3 text-sm leading-relaxed text-steel-600">
+                <h3 className="mt-6 font-display text-xl font-bold text-white">Respuesta rapida</h3>
+                <p className="mt-3 text-sm leading-relaxed text-steel-400">
                   Movilizacion de equipos y personal en tiempo reducido para operaciones criticas.
                 </p>
               </div>
             </Reveal>
             <Reveal delay={0.05}>
-              <div className="h-full rounded-2xl border border-steel-200 bg-white p-6 transition-[transform,border-color,box-shadow] duration-300 ease-field hover:-translate-y-1 hover:border-brand-blue hover:shadow-lift">
-                <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue">
-                  <Wrench size={28} weight="bold" />
+              <div className="group relative h-full bg-ink-950 p-7 transition-colors duration-300 hover:bg-white/[0.06]">
+                <span className="pointer-events-none absolute -right-3 -top-3 select-none font-display text-[7rem] font-black leading-none text-white/[0.03]">02</span>
+                <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-red/20 text-brand-redLight">
+                  <Users size={28} weight="bold" />
                 </span>
-                <h3 className="mt-5 font-display text-lg font-bold text-ink-900">Personal tecnico</h3>
-                <p className="mt-3 text-sm leading-relaxed text-steel-600">
+                <h3 className="mt-6 font-display text-xl font-bold text-white">Personal tecnico</h3>
+                <p className="mt-3 text-sm leading-relaxed text-steel-400">
                   Experiencia comprobada en vapor, instrumentacion, automatizacion y manejo de hidrocarburos.
                 </p>
               </div>
             </Reveal>
             <Reveal delay={0.1}>
-              <div className="h-full rounded-2xl border border-steel-200 bg-white p-6 transition-[transform,border-color,box-shadow] duration-300 ease-field hover:-translate-y-1 hover:border-brand-blue hover:shadow-lift">
-                <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue">
-                  <Truck size={28} weight="bold" />
+              <div className="group relative h-full bg-ink-950 p-7 transition-colors duration-300 hover:bg-white/[0.06]">
+                <span className="pointer-events-none absolute -right-3 -top-3 select-none font-display text-[7rem] font-black leading-none text-white/[0.03]">03</span>
+                <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-500/20 text-emerald-400">
+                  <GearSix size={28} weight="bold" />
                 </span>
-                <h3 className="mt-5 font-display text-lg font-bold text-ink-900">Equipos propios</h3>
-                <p className="mt-3 text-sm leading-relaxed text-steel-600">
+                <h3 className="mt-6 font-display text-xl font-bold text-white">Equipos propios</h3>
+                <p className="mt-3 text-sm leading-relaxed text-steel-400">
                   Calderas, tanques, unidades moviles y herramientas para resolver en sitio sin depender de terceros.
                 </p>
               </div>
             </Reveal>
             <Reveal delay={0.15}>
-              <div className="h-full rounded-2xl border border-steel-200 bg-white p-6 transition-[transform,border-color,box-shadow] duration-300 ease-field hover:-translate-y-1 hover:border-brand-blue hover:shadow-lift">
-                <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue">
+              <div className="group relative h-full bg-ink-950 p-7 transition-colors duration-300 hover:bg-white/[0.06]">
+                <span className="pointer-events-none absolute -right-3 -top-3 select-none font-display text-[7rem] font-black leading-none text-white/[0.03]">04</span>
+                <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-500/20 text-amber-400">
                   <ShieldCheck size={28} weight="bold" />
                 </span>
-                <h3 className="mt-5 font-display text-lg font-bold text-ink-900">Seguridad industrial</h3>
-                <p className="mt-3 text-sm leading-relaxed text-steel-600">
+                <h3 className="mt-6 font-display text-xl font-bold text-white">Seguridad industrial</h3>
+                <p className="mt-3 text-sm leading-relaxed text-steel-400">
                   Cada intervencion sigue protocolos de seguridad industrial y proteccion ambiental.
                 </p>
               </div>
             </Reveal>
             <Reveal delay={0.2}>
-              <div className="h-full rounded-2xl border border-steel-200 bg-white p-6 transition-[transform,border-color,box-shadow] duration-300 ease-field hover:-translate-y-1 hover:border-brand-blue hover:shadow-lift">
-                <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue">
+              <div className="group relative h-full bg-ink-950 p-7 transition-colors duration-300 hover:bg-white/[0.06]">
+                <span className="pointer-events-none absolute -right-3 -top-3 select-none font-display text-[7rem] font-black leading-none text-white/[0.03]">05</span>
+                <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-violet-500/20 text-violet-400">
                   <Camera size={28} weight="bold" />
                 </span>
-                <h3 className="mt-5 font-display text-lg font-bold text-ink-900">Evidencia visual</h3>
-                <p className="mt-3 text-sm leading-relaxed text-steel-600">
+                <h3 className="mt-6 font-display text-xl font-bold text-white">Evidencia visual</h3>
+                <p className="mt-3 text-sm leading-relaxed text-steel-400">
                   Registro fotografico y documentacion tecnica de todas las operaciones realizadas en campo.
                 </p>
               </div>
@@ -143,14 +150,25 @@ export default function Nosotros() {
         <div className="px-4 sm:px-6 lg:px-8">
           <Reveal className="mb-12 max-w-4xl">
             <p className="mono-label mb-4 text-brand-red">Capacidades</p>
-            <h2 className="font-display text-2xl font-bold leading-tight text-ink-900 sm:text-3xl">La empresa combina mecanica, vapor, fluidos, electricidad y control.</h2>
+            <h2 className="font-display text-3xl font-black uppercase leading-[0.96] tracking-tight text-ink-900 md:text-5xl">
+              La empresa combina mecanica, vapor, fluidos, electricidad y control.
+            </h2>
+            <p className="mt-6 max-w-3xl text-sm leading-relaxed text-steel-600">
+              Diez disciplinas operativas que SPS integra para dar respuesta completa en cada intervencion de campo.
+            </p>
           </Reveal>
-          <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {capabilityIcons.map(({ label, icon: Icon }) => (
+          <Stagger className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+            {capabilityIcons.map(({ label, icon: Icon }, i) => (
               <StaggerItem key={label}>
-                <div className="h-full rounded-2xl border border-steel-200 bg-steel-50 p-5 transition-[transform,border-color,box-shadow,background-color] duration-300 ease-field hover:-translate-y-1 hover:border-brand-blue hover:bg-white hover:shadow-lift">
-                  <Icon size={30} weight="bold" className="text-brand-blue" />
-                  <p className="mt-4 text-sm font-bold leading-tight text-ink-900">{label}</p>
+                <div className="group relative h-full overflow-hidden rounded-2xl border border-steel-200 bg-white p-6 shadow-sm transition-all duration-300 ease-field hover:-translate-y-1 hover:border-brand-blue hover:shadow-lift">
+                  <span className="pointer-events-none absolute -right-2 -top-2 select-none font-mono text-[0.65rem] font-bold text-steel-200">
+                    {(i + 1).toString().padStart(2, '0')}
+                  </span>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-blue to-brand-blueLight text-white shadow-sm">
+                    <Icon size={24} weight="bold" />
+                  </div>
+                  <p className="mt-5 text-sm font-extrabold leading-snug text-ink-900">{label}</p>
+                  <div className="mt-4 h-0.5 w-8 rounded-full bg-brand-blue/30 transition-all duration-300 group-hover:w-12 group-hover:bg-brand-blue" />
                 </div>
               </StaggerItem>
             ))}

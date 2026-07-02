@@ -110,6 +110,7 @@ export default function Home() {
               Nuestro equipo esta conformado por ingenieros, supervisores, operadores y tecnicos especializados
               que trabajan bajo protocolos de seguridad industrial y proteccion ambiental, con equipos propios
               movilizados directamente al sitio de operacion.
+            </p>
           </Reveal>
           <Reveal delay={0.12}>
             <div className="media-frame clip-corner aspect-[4/3]">
