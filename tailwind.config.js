@@ -35,8 +35,8 @@ export default {
         },
       },
       fontFamily: {
-        display: ['"Barlow Condensed"', 'Montserrat', 'system-ui', 'sans-serif'],
-        body: ['Montserrat', 'system-ui', 'sans-serif'],
+        display: ['Inter', 'system-ui', 'sans-serif'],
+        body: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
       },
       transitionTimingFunction: {
