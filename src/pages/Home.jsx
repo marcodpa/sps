@@ -88,42 +88,62 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-steel-50 py-20 text-ink-900 lg:py-28">
-        <div className="section-shell grid gap-10 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
-          <Reveal className="field-line pl-6">
-            <p className="mono-label text-brand-red">Quienes somos</p>
-            <h2 className="h-section mt-5 max-w-3xl">
-              Una empresa de campo, no de escritorio.
-            </h2>
-            <p className="mt-6 max-w-2xl text-sm font-medium leading-relaxed text-steel-600 sm:text-base">
-              SPS combina personal tecnico, equipos moviles y criterio operativo para atender pozos,
-              estaciones, patios de tanques, fosas y plantas industriales. Su valor esta en entrar al sitio,
-              resolver con seguridad y dejar evidencia del trabajo realizado.
-            </p>
-            <p className="mt-4 max-w-2xl text-sm font-medium leading-relaxed text-steel-600 sm:text-base">
-              Con mas de una decada de experiencia en la Cuenca del Lago de Maracaibo, hemos participado en
-              operaciones de inyeccion de vapor, calentamiento de crudo, saneamiento de fosas, mantenimiento
-              de tanques, instalacion de telemetria y automatizacion de estaciones para clientes como PDVSA,
-              Petroboscan y Chevron.
-            </p>
-            <p className="mt-4 max-w-2xl text-sm font-medium leading-relaxed text-steel-600 sm:text-base">
-              Nuestro equipo esta conformado por ingenieros, supervisores, operadores y tecnicos especializados
-              que trabajan bajo protocolos de seguridad industrial y proteccion ambiental, con equipos propios
-              movilizados directamente al sitio de operacion.
-            </p>
-          </Reveal>
-          <Reveal delay={0.12}>
-            <div className="media-frame clip-corner aspect-[4/3]">
-              <FieldImage
-                src={media.bajoGrandePatioWide}
-                alt="Patio de tanques y equipos SPS en operacion industrial"
-                className="h-full w-full object-cover"
-                width="1280"
-                height="960"
-                sizes="(min-width: 1024px) 50vw, 100vw"
-              />
-            </div>
-          </Reveal>
+      <section className="relative overflow-hidden bg-ink-950 py-24 text-white lg:py-32">
+        <FieldImage
+          src={media.bajoGrandePatioWide}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover opacity-25"
+          width="1920"
+          height="1080"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,13,24,.96)_0%,rgba(7,13,24,.88)_50%,rgba(7,13,24,.7)_100%)]" />
+        <div className="bp-grid absolute inset-0 opacity-15" />
+        <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.08]" />
+
+        <div className="section-shell relative">
+          <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
+            <Reveal>
+              <p className="mono-label text-brand-blueLight">Quienes somos</p>
+              <h2 className="mt-5 max-w-3xl font-display text-4xl font-black uppercase leading-[0.96] tracking-tight text-white md:text-6xl">
+                Una empresa de campo,<br />
+                <span className="text-brand-blueLight">no de escritorio.</span>
+              </h2>
+              <div className="mt-8 space-y-4 text-sm leading-relaxed text-steel-300">
+                <p>
+                  SPS combina personal tecnico, equipos moviles y criterio operativo para atender pozos,
+                  estaciones, patios de tanques, fosas y plantas industriales con mas de una decada de
+                  experiencia en la Cuenca del Lago de Maracaibo.
+                </p>
+                <p>
+                  Hemos participado en operaciones de inyeccion de vapor, calentamiento de crudo,
+                  saneamiento de fosas, telemetria y automatizacion para clientes como PDVSA,
+                  Petroboscan y Chevron.
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-6 backdrop-blur">
+                  <p className="font-display text-4xl font-black text-brand-blueLight">10+</p>
+                  <p className="mt-2 text-sm font-semibold text-steel-400">Anos en operacion</p>
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-6 backdrop-blur">
+                  <p className="font-display text-4xl font-black text-brand-redLight">3</p>
+                  <p className="mt-2 text-sm font-semibold text-steel-400">Clientes activos</p>
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-6 backdrop-blur">
+                  <p className="font-display text-4xl font-black text-brand-blueLight">10</p>
+                  <p className="mt-2 text-sm font-semibold text-steel-400">Disciplinas operativas</p>
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-6 backdrop-blur">
+                  <p className="font-display text-4xl font-black text-brand-redLight">24/7</p>
+                  <p className="mt-2 text-sm font-semibold text-steel-400">Respuesta en campo</p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
