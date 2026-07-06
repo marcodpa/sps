@@ -55,8 +55,8 @@ export default function Home() {
               Service Petroleum and Supply C.A.
             </motion.p>
             <motion.h1
-              className="mt-5 max-w-4xl font-display font-black uppercase leading-[0.9] tracking-tightest text-white"
-              style={{ fontSize: 'clamp(2.6rem, 5.5vw, 4.8rem)' }}
+              className="max-w-2xl font-display font-black uppercase leading-[0.95] tracking-tight text-white"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3.6rem)' }}
               initial={{ y: 36, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.9, delay: 0.08, ease }}

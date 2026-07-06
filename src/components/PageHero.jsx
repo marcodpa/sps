@@ -30,8 +30,8 @@ export default function PageHero({ kicker, title, accent, subtitle, image, child
             </p>
           )}
           <h1
-            className="max-w-[22rem] font-display font-black uppercase leading-[0.9] tracking-tightest text-white sm:max-w-5xl"
-            style={{ fontSize: 'clamp(3rem, 8.4vw, 7.8rem)' }}
+            className="max-w-xl font-display font-black uppercase leading-[0.95] tracking-tight text-white"
+            style={{ fontSize: 'clamp(2.2rem, 4.5vw, 4rem)' }}
           >
             {title} {accent && <span className="text-brand-blueLight">{accent}</span>}
           </h1>
