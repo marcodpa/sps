@@ -90,7 +90,7 @@ export default function Home() {
 
       <section className="bg-white py-24 text-ink-900 lg:py-32">
         <div className="section-shell">
-          <div className="mx-auto max-w-4xl">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <Reveal>
               <p className="mono-label text-brand-red">Quienes somos</p>
               <h2 className="mt-5 font-display text-4xl font-black uppercase leading-[0.96] tracking-tight text-ink-900 md:text-6xl">
@@ -108,6 +108,42 @@ export default function Home() {
                   saneamiento de fosas, telemetria y automatizacion para clientes como PDVSA,
                   Petroboscan y Chevron.
                 </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="media-frame aspect-[4/5]">
+                  <FieldImage
+                    src={media.bajoGrandePatio}
+                    alt=""
+                    className="h-full w-full object-cover"
+                    width="600"
+                    height="750"
+                    sizes="(min-width: 1024px) 25vw, 50vw"
+                  />
+                </div>
+                <div className="mt-8 grid gap-4">
+                  <div className="media-frame aspect-[4/3]">
+                    <FieldImage
+                      src={media.boscanAntes}
+                      alt=""
+                      className="h-full w-full object-cover"
+                      width="600"
+                      height="450"
+                      sizes="(min-width: 1024px) 25vw, 50vw"
+                    />
+                  </div>
+                  <div className="media-frame aspect-[4/3]">
+                    <FieldImage
+                      src={media.fracModern01}
+                      alt=""
+                      className="h-full w-full object-cover"
+                      width="600"
+                      height="450"
+                      sizes="(min-width: 1024px) 25vw, 50vw"
+                    />
+                  </div>
+                </div>
               </div>
             </Reveal>
           </div>
