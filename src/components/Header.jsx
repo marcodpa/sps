@@ -16,12 +16,12 @@ export default function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div>
-        <div className="flex min-h-20 items-center justify-between border-b border-white/70 bg-white/[0.92] px-5 shadow-[0_18px_70px_-45px_rgba(11,20,38,.65)] backdrop-blur-xl sm:min-h-24 sm:px-6">
+        <div className="flex min-h-24 items-center justify-between border-b border-steel-200 bg-white px-6 shadow-[0_18px_70px_-45px_rgba(11,20,38,.65)] sm:min-h-28 sm:px-8">
           <Link to="/" className="group flex items-center gap-3 rounded-xl" onClick={() => setMenuOpen(false)}>
             <img
               src="/sps-logo.png"
               alt="SPS - Service Petroleum and Supply"
-              className="h-16 w-auto object-contain transition-transform duration-300 ease-field group-hover:scale-[1.03] sm:h-20 lg:h-24"
+              className="h-20 w-auto object-contain transition-transform duration-300 ease-field group-hover:scale-[1.03] sm:h-24 lg:h-28"
               width="180"
               height="80"
             />
