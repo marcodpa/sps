@@ -14,9 +14,9 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 sm:pt-6">
+    <header className="fixed inset-x-0 top-0 z-50">
       <div>
-        <div className="flex min-h-20 items-center justify-between rounded-[1.5rem] border border-white/70 bg-white/[0.92] px-5 shadow-[0_18px_70px_-45px_rgba(11,20,38,.65)] backdrop-blur-xl sm:min-h-24 sm:px-6">
+        <div className="flex min-h-20 items-center justify-between border-b border-white/70 bg-white/[0.92] px-5 shadow-[0_18px_70px_-45px_rgba(11,20,38,.65)] backdrop-blur-xl sm:min-h-24 sm:px-6">
           <Link to="/" className="group flex items-center gap-3 rounded-xl" onClick={() => setMenuOpen(false)}>
             <img
               src="/sps-logo.png"
@@ -67,7 +67,7 @@ export default function Header() {
 
         <div
           id="mobile-menu"
-          className={`mt-2 overflow-hidden rounded-[1.35rem] border border-steel-200 bg-white shadow-lift transition-[max-height,opacity,transform] duration-300 ease-field md:hidden ${
+          className={`overflow-hidden border-b border-steel-200 bg-white shadow-lift transition-[max-height,opacity,transform] duration-300 ease-field md:hidden ${
             menuOpen ? 'max-h-[520px] translate-y-0 opacity-100' : 'max-h-0 -translate-y-2 opacity-0'
           }`}
         >
