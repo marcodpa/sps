@@ -146,33 +146,46 @@ export default function Nosotros() {
         </div>
       </section>
 
-      <section className="bg-white py-20 text-ink-900 lg:py-28">
+      <section className="relative overflow-hidden bg-ink-950 py-20 text-white lg:py-28">
+        <div className="bp-grid absolute inset-0 opacity-15" />
+        <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.08]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-blue/5 to-transparent" />
         <div className="px-4 sm:px-6 lg:px-8">
           <Reveal className="mb-12 max-w-4xl">
-            <p className="mono-label mb-4 text-brand-red">Capacidades</p>
-            <h2 className="font-display text-3xl font-black uppercase leading-[0.96] tracking-tight text-ink-900 md:text-5xl">
+            <p className="mono-label mb-4 text-brand-blueLight">Capacidades</p>
+            <h2 className="font-display text-4xl font-black uppercase leading-[0.96] tracking-tight text-white md:text-6xl">
               La empresa combina mecanica, vapor, fluidos, electricidad y control.
             </h2>
-            <p className="mt-6 max-w-3xl text-sm leading-relaxed text-steel-600">
+            <p className="mt-6 max-w-3xl text-sm leading-relaxed text-steel-400">
               Diez disciplinas operativas que SPS integra para dar respuesta completa en cada intervencion de campo.
             </p>
           </Reveal>
-          <Stagger className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
-            {capabilityIcons.map(({ label, icon: Icon }, i) => (
-              <StaggerItem key={label}>
-                <div className="group relative h-full overflow-hidden rounded-2xl border border-steel-200 bg-white p-6 shadow-sm transition-all duration-300 ease-field hover:-translate-y-1 hover:border-brand-blue hover:shadow-lift">
-                  <span className="pointer-events-none absolute -right-2 -top-2 select-none font-mono text-[0.65rem] font-bold text-steel-200">
-                    {(i + 1).toString().padStart(2, '0')}
-                  </span>
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-blue to-brand-blueLight text-white shadow-sm">
-                    <Icon size={24} weight="bold" />
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {capabilityIcons.map(({ label, icon: Icon }, i) => {
+              const colors = [
+                'from-brand-blue to-brand-blueLight',
+                'from-brand-red to-brand-redLight',
+                'from-emerald-500 to-emerald-400',
+                'from-amber-500 to-amber-400',
+                'from-violet-500 to-violet-400',
+              ]
+              const grad = colors[i % colors.length]
+              return (
+                <Reveal key={label} delay={i * 0.04}>
+                  <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.08] hover:shadow-lg">
+                    <span className="pointer-events-none absolute -right-1 -top-1 select-none font-display text-[5rem] font-black leading-none text-white/[0.03]">
+                      {(i + 1).toString().padStart(2, '0')}
+                    </span>
+                    <div className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${grad} shadow-lg`}>
+                      <Icon size={26} weight="bold" />
+                    </div>
+                    <p className="mt-6 text-base font-bold leading-snug text-white">{label}</p>
+                    <div className="mt-4 h-0.5 w-6 rounded-full bg-white/20 transition-all duration-300 group-hover:w-10 group-hover:bg-brand-blueLight" />
                   </div>
-                  <p className="mt-5 text-sm font-extrabold leading-snug text-ink-900">{label}</p>
-                  <div className="mt-4 h-0.5 w-8 rounded-full bg-brand-blue/30 transition-all duration-300 group-hover:w-12 group-hover:bg-brand-blue" />
-                </div>
-              </StaggerItem>
-            ))}
-          </Stagger>
+                </Reveal>
+              )
+            })}
+          </div>
         </div>
       </section>
 

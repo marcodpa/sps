@@ -36,8 +36,8 @@ export default function Proyectos() {
     <>
       <PageHero
         kicker="Informe visual"
-        title="Proyectos reales,"
-        accent="imagenes reales."
+        title="Algunos de nuestros"
+        accent="proyectos."
         subtitle="Trabajos petroleros e industriales documentados en Boscan, Tia Juana, Bajo Grande, costas, patios y estaciones."
         image={media.heroProjects}
       />
