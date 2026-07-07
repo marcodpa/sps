@@ -146,6 +146,27 @@ export default function Nosotros() {
         </div>
       </section>
 
+      <section className="bg-steel-50 py-20 text-ink-900">
+        <div className="grid gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+          <Reveal className="rounded-[1.5rem] border border-steel-200 border-l-brand-blue bg-white p-8">
+            <p className="mono-label mb-4 text-brand-blue">Mision</p>
+            <h2 className="font-display text-xl font-bold text-ink-900">Prestar servicios confiables en condiciones exigentes.</h2>
+            <p className="mt-5 text-sm leading-relaxed text-steel-600">
+              Garantizar calidad, seguridad y continuidad operativa en servicios petroleros e
+              industriales, con personal tecnico preparado y mejora permanente del proceso.
+            </p>
+          </Reveal>
+          <Reveal delay={0.1} className="rounded-[1.5rem] border border-steel-200 border-l-brand-red bg-white p-8">
+            <p className="mono-label mb-4 text-brand-red">Vision</p>
+            <h2 className="font-display text-xl font-bold text-ink-900">Ser reconocidos por respuesta y excelencia operacional.</h2>
+            <p className="mt-5 text-sm leading-relaxed text-steel-600">
+              Consolidarse como aliado tecnico para operaciones petroleras, manufactureras e
+              industriales por capacidad, responsabilidad y calidad de servicio.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       <section className="relative overflow-hidden bg-ink-950 py-20 text-white lg:py-28">
         <div className="bp-grid absolute inset-0 opacity-15" />
         <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.08]" />
@@ -186,27 +207,6 @@ export default function Nosotros() {
               )
             })}
           </div>
-        </div>
-      </section>
-
-      <section className="bg-steel-50 py-20 text-ink-900">
-        <div className="grid gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-          <Reveal className="rounded-[1.5rem] border border-steel-200 border-l-brand-blue bg-white p-8">
-            <p className="mono-label mb-4 text-brand-blue">Mision</p>
-            <h2 className="font-display text-xl font-bold text-ink-900">Prestar servicios confiables en condiciones exigentes.</h2>
-            <p className="mt-5 text-sm leading-relaxed text-steel-600">
-              Garantizar calidad, seguridad y continuidad operativa en servicios petroleros e
-              industriales, con personal tecnico preparado y mejora permanente del proceso.
-            </p>
-          </Reveal>
-          <Reveal delay={0.1} className="rounded-[1.5rem] border border-steel-200 border-l-brand-red bg-white p-8">
-            <p className="mono-label mb-4 text-brand-red">Vision</p>
-            <h2 className="font-display text-xl font-bold text-ink-900">Ser reconocidos por respuesta y excelencia operacional.</h2>
-            <p className="mt-5 text-sm leading-relaxed text-steel-600">
-              Consolidarse como aliado tecnico para operaciones petroleras, manufactureras e
-              industriales por capacidad, responsabilidad y calidad de servicio.
-            </p>
-          </Reveal>
         </div>
       </section>
 

@@ -216,6 +216,6 @@ export const capabilityIcons = [
   { label: 'Telemetria remota', icon: Radio },
   { label: 'Equipos moviles', icon: Truck },
   { label: 'Mantenimiento', icon: Wrench },
-  { label: 'Paneles solares', icon: SolarRoof },
+  { label: 'Saneamiento industrial', icon: Drop },
   { label: 'Operacion industrial', icon: Factory },
 ]
