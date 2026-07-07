@@ -48,7 +48,7 @@ export const clients = [
   'Petroboscan',
   'Chevron',
   'Bajo Grande',
-  'Tia Juana',
+  'Gobernacion del Zulia',
   'Cargill',
   'HPI LLC',
 ]

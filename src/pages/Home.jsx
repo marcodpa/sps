@@ -20,6 +20,10 @@ const clientLogoMap = {
     src: '/assets/client-logos/chevron.png',
     alt: 'Chevron',
   },
+  'Gobernacion del Zulia': {
+    src: '/assets/client-logos/gobernacion-zulia.png',
+    alt: 'Gobernacion del Zulia',
+  },
 }
 
 export default function Home() {
