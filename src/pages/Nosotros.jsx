@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, CheckCircle, Clock, Wrench, Truck, ShieldCheck, Camera, Lightning, Target, Users, GearSix } from '@phosphor-icons/react'
+import { ArrowRight, CheckCircle, Clock, Wrench, Truck, ShieldCheck, Camera, Lightning, Target, Users, GearSix, ThermometerSimple, Cpu, Radio, Factory, Gauge, Drop } from '@phosphor-icons/react'
 import PageHero from '../components/PageHero'
 import { Reveal, Stagger, StaggerItem } from '../lib/motion'
 import { capabilityIcons, media } from '../data/spsContent'
@@ -167,46 +167,134 @@ export default function Nosotros() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-ink-950 py-20 text-white lg:py-28">
-        <div className="bp-grid absolute inset-0 opacity-15" />
-        <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.08]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-blue/5 to-transparent" />
+      <section className="bg-white py-20 text-ink-900 lg:py-28">
         <div className="px-4 sm:px-6 lg:px-8">
-          <Reveal className="mb-12 max-w-4xl">
-            <p className="mono-label mb-4 text-brand-blueLight">Capacidades</p>
-            <h2 className="font-display text-4xl font-black uppercase leading-[0.96] tracking-tight text-white md:text-6xl">
+          <Reveal className="mb-14 max-w-4xl">
+            <p className="mono-label mb-4 text-brand-blue">Capacidades</p>
+            <h2 className="font-display text-4xl font-black uppercase leading-[0.96] tracking-tight text-ink-900 md:text-6xl">
               La empresa combina mecanica, vapor, fluidos, electricidad y control.
             </h2>
-            <p className="mt-6 max-w-3xl text-sm leading-relaxed text-steel-400">
-              Diez disciplinas operativas que SPS integra para dar respuesta completa en cada intervencion de campo.
+            <p className="mt-6 max-w-3xl text-sm leading-relaxed text-steel-500">
+              Diez disciplinas operativas que SPS integra para dar respuesta completa en cada intervencion de campo, respaldadas por equipos propios y personal tecnico calificado.
             </p>
           </Reveal>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-            {capabilityIcons.map(({ label, icon: Icon }, i) => {
-              const colors = [
-                'from-brand-blue to-brand-blueLight',
-                'from-brand-red to-brand-redLight',
-                'from-emerald-500 to-emerald-400',
-                'from-amber-500 to-amber-400',
-                'from-violet-500 to-violet-400',
-              ]
-              const grad = colors[i % colors.length]
-              return (
-                <Reveal key={label} delay={i * 0.04}>
-                  <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.08] hover:shadow-lg">
-                    <span className="pointer-events-none absolute -right-1 -top-1 select-none font-display text-[5rem] font-black leading-none text-white/[0.03]">
-                      {(i + 1).toString().padStart(2, '0')}
-                    </span>
-                    <div className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${grad} shadow-lg`}>
-                      <Icon size={26} weight="bold" />
-                    </div>
-                    <p className="mt-6 text-base font-bold leading-snug text-white">{label}</p>
-                    <div className="mt-4 h-0.5 w-6 rounded-full bg-white/20 transition-all duration-300 group-hover:w-10 group-hover:bg-brand-blueLight" />
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <Reveal>
+              <div className="group overflow-hidden rounded-2xl border border-steel-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
+                <div className="media-frame relative h-56 rounded-none">
+                  <FieldImage src={media.bajoGrandeCaldera} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 to-transparent" />
+                  <span className="absolute bottom-4 left-5 font-display text-5xl font-black leading-none text-white/20">01</span>
+                </div>
+                <div className="p-5">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-blue/10 text-brand-blue"><ThermometerSimple size={18} weight="bold" /></span>
+                    <h3 className="font-display text-lg font-bold text-ink-900">Vapor y temperatura</h3>
                   </div>
-                </Reveal>
-              )
-            })}
+                  <p className="mt-3 text-sm leading-relaxed text-steel-600">Calderas portatiles, inyeccion de vapor, calentamiento de crudo en patios de tanques y fosas para operaciones de recuperacion.</p>
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.05}>
+              <div className="group overflow-hidden rounded-2xl border border-steel-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
+                <div className="media-frame relative h-56 rounded-none">
+                  <FieldImage src={media.boscanCosta} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 to-transparent" />
+                  <span className="absolute bottom-4 left-5 font-display text-5xl font-black leading-none text-white/20">02</span>
+                </div>
+                <div className="p-5">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-red/10 text-brand-red"><Gauge size={18} weight="bold" /></span>
+                    <h3 className="font-display text-lg font-bold text-ink-900">Instrumentacion</h3>
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-steel-600">Medicion de presion, temperatura, nivel y flujo en estaciones, patios y pozos. Calibracion y puesta a punto de equipos de campo.</p>
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <div className="group overflow-hidden rounded-2xl border border-steel-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
+                <div className="media-frame relative h-56 rounded-none">
+                  <FieldImage src={media.fracLine01} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 to-transparent" />
+                  <span className="absolute bottom-4 left-5 font-display text-5xl font-black leading-none text-white/20">03</span>
+                </div>
+                <div className="p-5">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-500"><Cpu size={18} weight="bold" /></span>
+                    <h3 className="font-display text-lg font-bold text-ink-900">Control de procesos</h3>
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-steel-600">Automatizacion de estaciones con PLC, RTU y SCADA. Tableros de control, logicas de seguridad y monitoreo remoto de variables.</p>
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.15}>
+              <div className="group overflow-hidden rounded-2xl border border-steel-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
+                <div className="media-frame relative h-56 rounded-none">
+                  <FieldImage src={media.bajoGrandePatio} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 to-transparent" />
+                  <span className="absolute bottom-4 left-5 font-display text-5xl font-black leading-none text-white/20">04</span>
+                </div>
+                <div className="p-5">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-500/10 text-amber-500"><Truck size={18} weight="bold" /></span>
+                    <h3 className="font-display text-lg font-bold text-ink-900">Equipos moviles</h3>
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-steel-600">Calderas, tanques, grupos electrogenos, bombas y unidades de servicio movilizadas directamente al sitio de operacion.</p>
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.2}>
+              <div className="group overflow-hidden rounded-2xl border border-steel-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
+                <div className="media-frame relative h-56 rounded-none">
+                  <FieldImage src={media.bajoGrandeEquipos} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 to-transparent" />
+                  <span className="absolute bottom-4 left-5 font-display text-5xl font-black leading-none text-white/20">05</span>
+                </div>
+                <div className="p-5">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-violet-500/10 text-violet-500"><Wrench size={18} weight="bold" /></span>
+                    <h3 className="font-display text-lg font-bold text-ink-900">Mantenimiento</h3>
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-steel-600">Reparacion de calderas, tanques, lineas de vapor, sistemas de bombeo y equipos de campo. Mantenimiento preventivo y correctivo.</p>
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.25}>
+              <div className="group overflow-hidden rounded-2xl border border-steel-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
+                <div className="media-frame relative h-56 rounded-none">
+                  <FieldImage src={media.boscanFosa} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 to-transparent" />
+                  <span className="absolute bottom-4 left-5 font-display text-5xl font-black leading-none text-white/20">06</span>
+                </div>
+                <div className="p-5">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-500"><Drop size={18} weight="bold" /></span>
+                    <h3 className="font-display text-lg font-bold text-ink-900">Saneamiento industrial</h3>
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-steel-600">Limpieza y saneamiento de fosas, tanques, patios y areas de operacion. Manejo de residuos y control de derrames en sitio.</p>
+                </div>
+              </div>
+            </Reveal>
           </div>
+
+          <Stagger className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {capabilityIcons.slice(6).map(({ label, icon: Icon }, i) => (
+              <StaggerItem key={label}>
+                <div className="flex items-center gap-4 rounded-2xl border border-steel-200 bg-steel-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-blue hover:bg-white hover:shadow-sm">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-blue/10 text-brand-blue">
+                    <Icon size={20} weight="bold" />
+                  </span>
+                  <p className="text-sm font-bold text-ink-800">{label}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </Stagger>
         </div>
       </section>
 
