@@ -179,112 +179,56 @@ export default function Nosotros() {
             </p>
           </Reveal>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <Reveal>
-              <div className="group overflow-hidden rounded-2xl border border-steel-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
-                <div className="media-frame relative h-56 rounded-none">
-                  <FieldImage src={media.bajoGrandeCaldera} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 to-transparent" />
-                  <span className="absolute bottom-4 left-5 font-display text-5xl font-black leading-none text-white/20">01</span>
-                </div>
-                <div className="p-5">
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-blue/10 text-brand-blue"><ThermometerSimple size={18} weight="bold" /></span>
-                    <h3 className="font-display text-lg font-bold text-ink-900">Vapor y temperatura</h3>
-                  </div>
-                  <p className="mt-3 text-sm leading-relaxed text-steel-600">Calderas portatiles, inyeccion de vapor, calentamiento de crudo en patios de tanques y fosas para operaciones de recuperacion.</p>
-                </div>
-              </div>
-            </Reveal>
+          <div className="relative mx-auto max-w-5xl">
+            {/* Linea vertical */}
+            <div className="absolute left-8 top-0 hidden h-full w-px bg-steel-200 md:block" />
 
-            <Reveal delay={0.05}>
-              <div className="group overflow-hidden rounded-2xl border border-steel-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
-                <div className="media-frame relative h-56 rounded-none">
-                  <FieldImage src={media.boscanCosta} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 to-transparent" />
-                  <span className="absolute bottom-4 left-5 font-display text-5xl font-black leading-none text-white/20">02</span>
-                </div>
-                <div className="p-5">
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-red/10 text-brand-red"><Gauge size={18} weight="bold" /></span>
-                    <h3 className="font-display text-lg font-bold text-ink-900">Instrumentacion</h3>
-                  </div>
-                  <p className="mt-3 text-sm leading-relaxed text-steel-600">Medicion de presion, temperatura, nivel y flujo en estaciones, patios y pozos. Calibracion y puesta a punto de equipos de campo.</p>
-                </div>
-              </div>
-            </Reveal>
+            {[
+              { num: '01', img: media.bajoGrandeCaldera, icon: ThermometerSimple, title: 'Vapor y temperatura', desc: 'Calderas portatiles, inyeccion de vapor, calentamiento de crudo en patios de tanques y fosas para operaciones de recuperacion.', circleCls: 'text-brand-blue border-brand-blue/30', iconCls: 'bg-brand-blue/10 text-brand-blue' },
+              { num: '02', img: media.boscanCosta, icon: Gauge, title: 'Instrumentacion', desc: 'Medicion de presion, temperatura, nivel y flujo en estaciones, patios y pozos. Calibracion y puesta a punto de equipos de campo.', circleCls: 'text-brand-red border-brand-red/30', iconCls: 'bg-brand-red/10 text-brand-red' },
+              { num: '03', img: media.fracLine01, icon: Cpu, title: 'Control de procesos', desc: 'Automatizacion de estaciones con PLC, RTU y SCADA. Tableros de control, logicas de seguridad y monitoreo remoto de variables.', circleCls: 'text-emerald-500 border-emerald-500/30', iconCls: 'bg-emerald-500/10 text-emerald-500' },
+              { num: '04', img: media.bajoGrandePatio, icon: Truck, title: 'Equipos moviles', desc: 'Calderas, tanques, grupos electrogenos, bombas y unidades de servicio movilizadas directamente al sitio de operacion.', circleCls: 'text-amber-500 border-amber-500/30', iconCls: 'bg-amber-500/10 text-amber-500' },
+              { num: '05', img: media.bajoGrandeEquipos, icon: Wrench, title: 'Mantenimiento', desc: 'Reparacion de calderas, tanques, lineas de vapor, sistemas de bombeo y equipos de campo. Mantenimiento preventivo y correctivo.', circleCls: 'text-violet-500 border-violet-500/30', iconCls: 'bg-violet-500/10 text-violet-500' },
+              { num: '06', img: media.boscanFosa, icon: Drop, title: 'Saneamiento industrial', desc: 'Limpieza y saneamiento de fosas, tanques, patios y areas de operacion. Manejo de residuos y control de derrames en sitio.', circleCls: 'text-cyan-500 border-cyan-500/30', iconCls: 'bg-cyan-500/10 text-cyan-500' },
+            ].map((item, i) => (
+              <Reveal key={item.num} delay={i * 0.05}>
+                <div className="group relative mb-8 md:mb-12">
+                  <div className="md:flex md:items-stretch md:gap-8 lg:gap-12">
+                    {/* Indicador numerico + linea */}
+                    <div className="hidden shrink-0 md:flex md:w-16 md:flex-col md:items-center">
+                      <span className={`relative z-10 flex h-16 w-16 items-center justify-center rounded-full border-2 bg-white font-display text-xl font-black ${item.circleCls}`}>
+                        {item.num}
+                      </span>
+                    </div>
 
-            <Reveal delay={0.1}>
-              <div className="group overflow-hidden rounded-2xl border border-steel-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
-                <div className="media-frame relative h-56 rounded-none">
-                  <FieldImage src={media.fracLine01} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 to-transparent" />
-                  <span className="absolute bottom-4 left-5 font-display text-5xl font-black leading-none text-white/20">03</span>
-                </div>
-                <div className="p-5">
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-500"><Cpu size={18} weight="bold" /></span>
-                    <h3 className="font-display text-lg font-bold text-ink-900">Control de procesos</h3>
-                  </div>
-                  <p className="mt-3 text-sm leading-relaxed text-steel-600">Automatizacion de estaciones con PLC, RTU y SCADA. Tableros de control, logicas de seguridad y monitoreo remoto de variables.</p>
-                </div>
-              </div>
-            </Reveal>
+                    {/* Imagen */}
+                    <div className="overflow-hidden rounded-2xl border border-steel-200 bg-white shadow-sm transition-all duration-300 group-hover:shadow-lift md:w-[360px] lg:w-[400px]">
+                      <div className="relative h-56 md:h-full md:min-h-[220px]">
+                        <FieldImage src={item.img} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-ink-950/40 to-transparent" />
+                        <span className="absolute bottom-4 left-5 font-display text-5xl font-black leading-none text-white/15 md:hidden">{item.num}</span>
+                      </div>
+                    </div>
 
-            <Reveal delay={0.15}>
-              <div className="group overflow-hidden rounded-2xl border border-steel-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
-                <div className="media-frame relative h-56 rounded-none">
-                  <FieldImage src={media.bajoGrandePatio} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 to-transparent" />
-                  <span className="absolute bottom-4 left-5 font-display text-5xl font-black leading-none text-white/20">04</span>
-                </div>
-                <div className="p-5">
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-500/10 text-amber-500"><Truck size={18} weight="bold" /></span>
-                    <h3 className="font-display text-lg font-bold text-ink-900">Equipos moviles</h3>
+                    {/* Contenido */}
+                    <div className="mt-4 flex flex-1 flex-col justify-center md:mt-0 md:py-4">
+                      <div className="flex items-center gap-3">
+                        <span className={`flex h-10 w-10 items-center justify-center rounded-lg ${item.iconCls}`}>
+                          <item.icon size={20} weight="bold" />
+                        </span>
+                        <h3 className="font-display text-xl font-bold text-ink-900">{item.title}</h3>
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-steel-600">{item.desc}</p>
+                    </div>
                   </div>
-                  <p className="mt-3 text-sm leading-relaxed text-steel-600">Calderas, tanques, grupos electrogenos, bombas y unidades de servicio movilizadas directamente al sitio de operacion.</p>
                 </div>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.2}>
-              <div className="group overflow-hidden rounded-2xl border border-steel-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
-                <div className="media-frame relative h-56 rounded-none">
-                  <FieldImage src={media.bajoGrandeEquipos} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 to-transparent" />
-                  <span className="absolute bottom-4 left-5 font-display text-5xl font-black leading-none text-white/20">05</span>
-                </div>
-                <div className="p-5">
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-violet-500/10 text-violet-500"><Wrench size={18} weight="bold" /></span>
-                    <h3 className="font-display text-lg font-bold text-ink-900">Mantenimiento</h3>
-                  </div>
-                  <p className="mt-3 text-sm leading-relaxed text-steel-600">Reparacion de calderas, tanques, lineas de vapor, sistemas de bombeo y equipos de campo. Mantenimiento preventivo y correctivo.</p>
-                </div>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.25}>
-              <div className="group overflow-hidden rounded-2xl border border-steel-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
-                <div className="media-frame relative h-56 rounded-none">
-                  <FieldImage src={media.boscanFosa} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 to-transparent" />
-                  <span className="absolute bottom-4 left-5 font-display text-5xl font-black leading-none text-white/20">06</span>
-                </div>
-                <div className="p-5">
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-500"><Drop size={18} weight="bold" /></span>
-                    <h3 className="font-display text-lg font-bold text-ink-900">Saneamiento industrial</h3>
-                  </div>
-                  <p className="mt-3 text-sm leading-relaxed text-steel-600">Limpieza y saneamiento de fosas, tanques, patios y areas de operacion. Manejo de residuos y control de derrames en sitio.</p>
-                </div>
-              </div>
-            </Reveal>
+              </Reveal>
+            ))}
           </div>
 
-          <Stagger className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {capabilityIcons.slice(6).map(({ label, icon: Icon }, i) => (
+          {/* Resto de capacidades - 4 iconos */}
+          <Stagger className="mt-14 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {capabilityIcons.slice(6).map(({ label, icon: Icon }) => (
               <StaggerItem key={label}>
                 <div className="flex items-center gap-4 rounded-2xl border border-steel-200 bg-steel-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-blue hover:bg-white hover:shadow-sm">
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-blue/10 text-brand-blue">
