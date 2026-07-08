@@ -1,21 +1,10 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, CheckCircle, FunnelSimple, Images, MapPin } from '@phosphor-icons/react'
+import { ArrowRight, FunnelSimple, MapPin } from '@phosphor-icons/react'
 import PageHero from '../components/PageHero'
 import { Reveal, Stagger, StaggerItem } from '../lib/motion'
 import { clients, media, projectCases } from '../data/spsContent'
 import FieldImage from '../components/FieldImage'
-
-const galleryImages = [
-  { src: media.fracModern01, label: 'Frac tanks' },
-  { src: media.fracModern02, label: 'Equipos moviles' },
-  { src: media.bajoGrandePatio, label: 'Patio de tanques' },
-  { src: media.bajoGrandeEquipos, label: 'Control de campo' },
-  { src: media.boscanFosa, label: 'Fosas petrolizadas' },
-  { src: media.boscanCosta, label: 'Saneamiento' },
-  { src: media.tiaJuana01, label: 'Estacion B5' },
-  { src: media.patioVapor03, label: 'Patio de vapor' },
-]
 
 export default function Proyectos() {
   const [activeCategory, setActiveCategory] = useState('Todos')
@@ -142,39 +131,6 @@ export default function Proyectos() {
               </span>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="bg-white py-20 text-ink-900 lg:py-28">
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <Reveal className="mb-12 grid gap-8 lg:grid-cols-[.85fr_1.15fr] lg:items-end">
-            <div>
-              <p className="mono-label mb-4 text-brand-blueLight">Galeria operativa</p>
-              <h2 className="font-display text-2xl font-bold leading-tight text-ink-900 sm:text-3xl">
-                Equipos, fosas, tanques y patios de trabajo.
-              </h2>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {['Imagenes grandes para inspeccion visual.', 'Categorias visibles sin saturar la foto.'].map((item) => (
-                <p key={item} className="flex items-start gap-3 rounded-2xl border border-steel-200 bg-steel-50 p-4 text-sm font-semibold text-steel-700">
-                  <CheckCircle size={20} weight="fill" className="mt-0.5 shrink-0 text-brand-blueLight" />
-                  {item}
-                </p>
-              ))}
-            </div>
-          </Reveal>
-          <Stagger className="grid auto-rows-[17rem] gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {galleryImages.map((image, index) => (
-              <StaggerItem key={image.src} className={index === 0 || index === 4 ? 'sm:col-span-2' : ''}>
-                <figure className="group relative h-full overflow-hidden rounded-[1.25rem] border border-steel-200 bg-white shadow-sm">
-                  <FieldImage src={image.src} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
-                  <figcaption className="absolute bottom-0 left-0 right-0 flex items-center gap-2 bg-gradient-to-t from-ink-950 via-ink-950/80 to-transparent px-5 pb-5 pt-12 text-sm font-bold uppercase tracking-wide text-white">
-                    <Images size={18} weight="bold" className="text-brand-blueLight" /> {image.label}
-                  </figcaption>
-                </figure>
-              </StaggerItem>
-            ))}
-          </Stagger>
         </div>
       </section>
 
