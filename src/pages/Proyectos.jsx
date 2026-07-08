@@ -119,21 +119,6 @@ export default function Proyectos() {
         </div>
       </section>
 
-      <section className="border-y border-steel-200 bg-steel-50 text-ink-900">
-        <div className="grid gap-5 px-4 py-8 sm:px-6 lg:grid-cols-[15rem_1fr] lg:px-8">
-          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-steel-500">
-            Operaciones asociadas
-          </p>
-          <div className="flex flex-wrap gap-x-8 gap-y-3">
-            {clients.map((client) => (
-              <span key={client} className="text-sm font-bold uppercase text-ink-900">
-                {client}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="bg-white py-20 text-ink-900">
         <div className="grid gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-center lg:px-8">
           <h2 className="max-w-4xl font-display text-2xl font-bold leading-tight text-ink-900 sm:text-3xl">
