@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, CheckCircle, Clock, Wrench, Truck, ShieldCheck, Camera, Lightning, Target, Users, GearSix, ThermometerSimple, Cpu, Radio, Factory, Gauge, Drop } from '@phosphor-icons/react'
+import { ArrowRight, Camera, CheckCircle, Clock, Cpu, Drop, Flask, Gauge, GearSix, Rocket, ShieldCheck, ThermometerSimple, Truck, Users, Wrench } from '@phosphor-icons/react'
 import PageHero from '../components/PageHero'
 import { Reveal, Stagger, StaggerItem } from '../lib/motion'
-import { capabilityIcons, media } from '../data/spsContent'
+import { media } from '../data/spsContent'
 import FieldImage from '../components/FieldImage'
 
 const principles = [
@@ -170,43 +170,67 @@ export default function Nosotros() {
       <section className="bg-white py-20 text-ink-900 lg:py-28">
         <div className="px-4 sm:px-6 lg:px-8">
           <Reveal className="mb-14 max-w-4xl">
-            <p className="mono-label mb-4 text-brand-blue">Capacidades</p>
+            <p className="mono-label mb-4 text-brand-blue">Trayectoria</p>
             <h2 className="font-display text-4xl font-black uppercase leading-[0.96] tracking-tight text-ink-900 md:text-6xl">
-              La empresa combina mecanica, vapor, fluidos, electricidad y control.
+              Treinta anos de operacion continua en la industria petrolera.
             </h2>
             <p className="mt-6 max-w-3xl text-sm leading-relaxed text-steel-500">
-              Diez disciplinas operativas que SPS integra para dar respuesta completa en cada intervencion de campo, respaldadas por equipos propios y personal tecnico calificado.
+              Desde 1990, SPS ha construido una experiencia solida en servicios de vapor, instrumentacion, automatizacion y saneamiento industrial en los principales campos de Venezuela.
             </p>
           </Reveal>
 
           <div className="relative mx-auto max-w-5xl">
             {/* Linea vertical */}
-            <div className="absolute left-8 top-0 hidden h-full w-px bg-steel-200 md:block" />
+            <div className="absolute left-8 top-0 hidden h-full w-px bg-brand-blue/20 md:block" />
 
             {[
-              { num: '01', img: media.bajoGrandeCaldera, icon: ThermometerSimple, title: 'Vapor y temperatura', desc: 'Calderas portatiles, inyeccion de vapor, calentamiento de crudo en patios de tanques y fosas para operaciones de recuperacion.', circleCls: 'text-brand-blue border-brand-blue/30', iconCls: 'bg-brand-blue/10 text-brand-blue' },
-              { num: '02', img: media.boscanCosta, icon: Gauge, title: 'Instrumentacion', desc: 'Medicion de presion, temperatura, nivel y flujo en estaciones, patios y pozos. Calibracion y puesta a punto de equipos de campo.', circleCls: 'text-brand-red border-brand-red/30', iconCls: 'bg-brand-red/10 text-brand-red' },
-              { num: '03', img: media.fracLine01, icon: Cpu, title: 'Control de procesos', desc: 'Automatizacion de estaciones con PLC, RTU y SCADA. Tableros de control, logicas de seguridad y monitoreo remoto de variables.', circleCls: 'text-emerald-500 border-emerald-500/30', iconCls: 'bg-emerald-500/10 text-emerald-500' },
-              { num: '04', img: media.bajoGrandePatio, icon: Truck, title: 'Equipos moviles', desc: 'Calderas, tanques, grupos electrogenos, bombas y unidades de servicio movilizadas directamente al sitio de operacion.', circleCls: 'text-amber-500 border-amber-500/30', iconCls: 'bg-amber-500/10 text-amber-500' },
-              { num: '05', img: media.bajoGrandeEquipos, icon: Wrench, title: 'Mantenimiento', desc: 'Reparacion de calderas, tanques, lineas de vapor, sistemas de bombeo y equipos de campo. Mantenimiento preventivo y correctivo.', circleCls: 'text-violet-500 border-violet-500/30', iconCls: 'bg-violet-500/10 text-violet-500' },
-              { num: '06', img: media.boscanFosa, icon: Drop, title: 'Saneamiento industrial', desc: 'Limpieza y saneamiento de fosas, tanques, patios y areas de operacion. Manejo de residuos y control de derrames en sitio.', circleCls: 'text-cyan-500 border-cyan-500/30', iconCls: 'bg-cyan-500/10 text-cyan-500' },
+              {
+                year: '1990', icon: Rocket, title: 'Fundacion de la empresa',
+                img: media.boscanCosta,
+                desc: 'SPS nace en Maracaibo, estado Zulia, para prestar servicios de vapor, calderas y mantenimiento mecanico a la industria petrolera en los campos de la costa occidental.',
+                circleCls: 'text-brand-blue border-brand-blue/30', iconCls: 'bg-brand-blue/10 text-brand-blue',
+              },
+              {
+                year: '2000', icon: Gauge, title: 'Instrumentacion y automatizacion',
+                img: media.fracLine01,
+                desc: 'La empresa incorpora servicios de instrumentacion, medicion y control de procesos. Primeros contratos en los campos Boscan y Tia Juana con PDVSA y empresas aliadas.',
+                circleCls: 'text-brand-red border-brand-red/30', iconCls: 'bg-brand-red/10 text-brand-red',
+              },
+              {
+                year: '2010', icon: Truck, title: 'Crecimiento y equipos propios',
+                img: media.bajoGrandePatio,
+                desc: 'Adquisicion de calderas portatiles, tanques, grupos electrogenos y unidades de servicio movil. Expansion a patios de tanques, estaciones de flujo y pozos de recuperacion.',
+                circleCls: 'text-emerald-500 border-emerald-500/30', iconCls: 'bg-emerald-500/10 text-emerald-500',
+              },
+              {
+                year: '2020', icon: Cpu, title: 'Control de procesos y saneamiento',
+                img: media.boscanFosa,
+                desc: 'Integracion de SCADA, PLC, RTU y tableros de control. Se consolida la linea de saneamiento industrial: limpieza de fosas, tanques y control de derrames en sitio.',
+                circleCls: 'text-amber-500 border-amber-500/30', iconCls: 'bg-amber-500/10 text-amber-500',
+              },
+              {
+                year: 'Hoy', icon: Flask, title: 'Presente operacional',
+                img: media.bajoGrandeEquipos,
+                desc: 'SPS opera en multiples frentes de la industria con equipos propios, personal tecnico calificado y mas de tres decadas de experiencia en cada intervencion de campo.',
+                circleCls: 'text-violet-500 border-violet-500/30', iconCls: 'bg-violet-500/10 text-violet-500',
+              },
             ].map((item, i) => (
-              <Reveal key={item.num} delay={i * 0.05}>
-                <div className="group relative mb-8 md:mb-12">
+              <Reveal key={item.year} delay={i * 0.08}>
+                <div className="group relative mb-8 md:mb-14">
                   <div className="md:flex md:items-stretch md:gap-8 lg:gap-12">
-                    {/* Indicador numerico + linea */}
+                    {/* Indicador de año */}
                     <div className="hidden shrink-0 md:flex md:w-16 md:flex-col md:items-center">
-                      <span className={`relative z-10 flex h-16 w-16 items-center justify-center rounded-full border-2 bg-white font-display text-xl font-black ${item.circleCls}`}>
-                        {item.num}
+                      <span className={`relative z-10 flex h-16 w-16 items-center justify-center rounded-full border-2 bg-white font-display text-lg font-black ${item.circleCls}`}>
+                        {item.year}
                       </span>
                     </div>
 
                     {/* Imagen */}
                     <div className="overflow-hidden rounded-2xl border border-steel-200 bg-white shadow-sm transition-all duration-300 group-hover:shadow-lift md:w-[360px] lg:w-[400px]">
-                      <div className="relative h-56 md:h-full md:min-h-[220px]">
+                      <div className="relative h-52 md:h-full md:min-h-[200px]">
                         <FieldImage src={item.img} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-ink-950/40 to-transparent" />
-                        <span className="absolute bottom-4 left-5 font-display text-5xl font-black leading-none text-white/15 md:hidden">{item.num}</span>
+                        <div className="absolute inset-0 bg-gradient-to-t from-ink-950/50 to-transparent" />
+                        <span className="absolute bottom-4 left-5 font-display text-5xl font-black leading-none text-white/20 md:hidden">{item.year}</span>
                       </div>
                     </div>
 
@@ -225,20 +249,6 @@ export default function Nosotros() {
               </Reveal>
             ))}
           </div>
-
-          {/* Resto de capacidades - 4 iconos */}
-          <Stagger className="mt-14 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {capabilityIcons.slice(6).map(({ label, icon: Icon }) => (
-              <StaggerItem key={label}>
-                <div className="flex items-center gap-4 rounded-2xl border border-steel-200 bg-steel-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-blue hover:bg-white hover:shadow-sm">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-blue/10 text-brand-blue">
-                    <Icon size={20} weight="bold" />
-                  </span>
-                  <p className="text-sm font-bold text-ink-800">{label}</p>
-                </div>
-              </StaggerItem>
-            ))}
-          </Stagger>
         </div>
       </section>
 
