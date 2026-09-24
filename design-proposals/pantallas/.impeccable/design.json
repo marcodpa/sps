@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-24T00:00:00Z",
+  "title": "Design System: SPS · Propuesta por pantallas",
+  "extensions": {
+    "shadows": [],
+    "motion": [{"name":"button-background","value":"background .18s","purpose":"Transición de fondo del botón principal."}],
+    "breakpoints": [
+      {"name":"wide-min","value":"1600px"},
+      {"name":"compact-nav-max","value":"1050px"},
+      {"name":"mobile-max","value":"760px"},
+      {"name":"short-desktop","value":"(max-height:780px) and (min-width:1000px)"}
+    ],
+    "focus": {"outline":"3px solid var(--blue)","outlineOffset":"5px"},
+    "scope": "Solo design-proposals/pantallas: doce mockups de escritorio a 1440 × 900. Sin implementación ni despliegue de la aplicación principal."
+  },
+  "components": [
+    {
+      "name":"Botón principal","kind":"button","refersTo":"button-primary",
+      "description":"Acción principal con flecha.",
+      "html":"<button class=\"ds-primary\">Consultar este servicio <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><path d=\"M5 12h14m-6-6 6 6-6 6\"/></svg></button>",
+      "css":".ds-primary{display:inline-flex;align-items:center;justify-content:center;gap:28px;background:var(--blue,#006ca8);color:white;border:1px solid var(--blue,#006ca8);padding:17px 23px;font:650 14px Manrope,sans-serif;border-radius:3px;min-height:48px;transition:background .18s}.ds-primary svg{width:23px;height:23px}.ds-primary:hover{background:#005786}.ds-primary:focus-visible{outline:3px solid var(--blue,#006ca8);outline-offset:5px}"
+    },
+    {
+      "name":"Botón secundario","kind":"button","refersTo":"button-secondary",
+      "description":"Variante secundaria definida en CSS.",
+      "html":"<button class=\"ds-secondary\">Consultar servicio</button>",
+      "css":".ds-secondary{background:white;color:var(--ink,#142d40);border:1px solid var(--line,#dbe1e5);padding:17px 23px;font:650 14px Manrope,sans-serif;border-radius:3px;min-height:48px;transition:background .18s}.ds-secondary:hover{background:white}.ds-secondary:focus-visible{outline:3px solid var(--blue,#006ca8);outline-offset:5px}"
+    },
+    {
+      "name":"Campo de texto","kind":"input","refersTo":"input",
+      "description":"Etiqueta visible y control compacto.",
+      "html":"<label class=\"ds-field\">Empresa<input placeholder=\"Nombre de la empresa\"></label>",
+      "css":".ds-field{display:flex;flex-direction:column;gap:7px;font:650 12px Manrope,sans-serif;color:var(--ink,#142d40)}.ds-field input{border:1px solid #cbd5dc;background:#fff;color:var(--ink,#142d40);border-radius:2px;padding:12px;min-width:0;font:400 13px Manrope,sans-serif;box-sizing:border-box;height:44px;caret-color:var(--blue,#006ca8)}.ds-field input::placeholder{color:#667782}.ds-field input:focus-visible{outline:3px solid var(--blue,#006ca8);outline-offset:5px}"
+    },
+    {
+      "name":"Navegación","kind":"nav","description":"Selección por texto azul y subrayado.",
+      "html":"<nav class=\"ds-nav\" aria-label=\"Ejemplo de navegación\"><a href=\"?vista=inicio\">Inicio</a><a href=\"?vista=servicios\" aria-current=\"page\">Servicios</a></nav>",
+      "css":".ds-nav{display:flex;gap:27px;font:600 13px Manrope,sans-serif}.ds-nav a{padding:14px 0;border-bottom:2px solid transparent;color:var(--ink,#142d40);text-decoration:none}.ds-nav a[aria-current]{color:var(--blue,#006ca8);border-color:var(--blue,#006ca8)}.ds-nav a:hover{color:var(--blue,#006ca8)}.ds-nav a:focus-visible{outline:3px solid var(--blue,#006ca8);outline-offset:5px}"
+    },
+    {
+      "name":"Lista de servicios","kind":"custom","description":"Prestación abierta con separador y flecha.",
+      "html":"<div class=\"ds-service\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><path d=\"M5 12h14m-6-6 6 6-6 6\"/></svg><span>Alquiler de calderas portátiles</span></div>",
+      "css":".ds-service{display:flex;align-items:start;gap:12px;border-top:1px solid var(--line,#dbe1e5);padding:14px 0;font:400 14px/1.55 Manrope,sans-serif;color:var(--ink,#142d40)}.ds-service svg{width:16px;height:16px;flex-shrink:0;margin-top:3px;color:var(--blue,#006ca8)}"
+    }
+  ],
+  "narrative": {
+    "northStar":"Experiencia de campo, espacio para leer",
+    "overview":"Sistema extraído de index.html, style.css y screens.js de esta carpeta. Documenta únicamente la propuesta: doce pantallas de revisión a 1440 × 900, con las 22 prestaciones y seis proyectos del contenido SPS. No implementa ni despliega cambios en la aplicación principal.",
+    "keyCharacteristics":["Fondo blanco, texto azul petróleo y acciones azules.","Fotografía de campo grande, listas abiertas y separadores finos.","Logotipo SPS original y contenido en español."],
+    "rules":[],
+    "dos":["Do conservar las fotografías y datos SPS como base del diseño.","Do identificar los retoques generativos: inicio y empresa usan panorama-mejorada.png y caldera-mejorada.png de ../v3-fotos-reales; los originales en public/assets/sps-field son la evidencia documental.","Do preservar las 22 prestaciones y seis proyectos al ajustar composición."],
+    "donts":["Don't presentar la propuesta como publicación o cambio de producción.","Don't inventar certificaciones, métricas o confirmaciones de envío."]
+  }
+}

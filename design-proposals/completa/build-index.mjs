@@ -1,0 +1,3 @@
+import {pages} from './views.js';
+import fs from 'node:fs';
+fs.writeFileSync('design-proposals/completa/CONTENIDO.md','# SPS · Propuesta completa\n\n28 pantallas, 1440 × 900. Galería: galeria.html. Vista navegable: index.html.\n\n'+pages.map(p=>'## '+p.name+'\n\n'+p.sections.map((s,i)=>'- '+s.name+' — capturas/'+p.id+'-'+String(i+1).padStart(2,'0')+'.png').join('\n')).join('\n\n')+'\n\nAlcance: propuesta visual, no web publicada. El formulario descarga un resumen local; no envía datos. Contenido tomado del proyecto SPS; fechas y capacidades deben validarse por la empresa antes de publicar. Portada con retoque visual generado a partir de fotografía original; portafolio con fotos originales.\n');

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-24T18:00:00Z",
+  "title": "Design System: SPS — propuesta completa",
+  "extensions": {
+    "shadows": [
+      {"name":"service-panel","value":"0 22px 60px -40px #123d7c66","purpose":"Elevación ambiental del panel de servicios."},
+      {"name":"form-panel","value":"0 20px 60px -45px #174c9c66","purpose":"Elevación ambiental del formulario."}
+    ],
+    "motion": [
+      {"name":"button","value":"background .2s, transform .2s","purpose":"Cambio de estado y desplazamiento vertical de -2px en hover."},
+      {"name":"pointer-light","value":"left 1.2s ease-out, top 1.2s ease-out","purpose":"Resplandor solicitado; sólo puntero preciso sin preferencia de movimiento reducido."},
+      {"name":"pipe-flow","value":"18s linear infinite","purpose":"Recorrido sutil del trazo de tuberías."},
+      {"name":"reduced-motion","value":"animation: none !important; transition: none !important; scroll-behavior: auto !important","purpose":"Desactiva movimiento y oculta el resplandor."}
+    ],
+    "breakpoints": [
+      {"name":"tablet","value":"1100px"},
+      {"name":"mobile","value":"760px"},
+      {"name":"short-desktop","value":"(max-height:780px) and (min-width:1000px)"}
+    ]
+  },
+  "components": [
+    {"name":"Botón primario","kind":"button","refersTo":"button-primary","description":"Acción principal de consulta.","html":"<button class=\"ds-button\">Preparar solicitud →</button>","css":".ds-button{background:var(--blue,#0055f5);color:white;border:1px solid var(--blue,#0055f5);border-radius:4px;padding:15px 21px;min-height:48px;font:700 13px Manrope,sans-serif;cursor:pointer;transition:background .2s,transform .2s}.ds-button:hover{background:#0044ce;transform:translateY(-2px)}.ds-button:focus-visible{outline:3px solid var(--blue,#0055f5);outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-button{transition:none}}"},
+    {"name":"Botón contorno","kind":"button","refersTo":"button-outline","description":"Acción secundaria sobre blanco.","html":"<button class=\"ds-outline\">Consultar servicio →</button>","css":".ds-outline{background:white;color:var(--blue,#0055f5);border:1px solid var(--blue,#0055f5);border-radius:4px;padding:15px 21px;min-height:48px;font:700 13px Manrope,sans-serif;cursor:pointer;transition:transform .2s}.ds-outline:hover{transform:translateY(-2px)}.ds-outline:focus-visible{outline:3px solid var(--blue,#0055f5);outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-outline{transition:none}}"},
+    {"name":"Campo","kind":"input","refersTo":"input","description":"Etiqueta visible y campo de consulta.","html":"<label class=\"ds-field\">Empresa<input placeholder=\"Nombre de la empresa\" autocomplete=\"organization\"></label>","css":".ds-field{display:flex;flex-direction:column;gap:6px;font:650 12px Manrope,sans-serif;color:var(--ink,#0b2046)}.ds-field input{border:1px solid #c5d4e8;padding:10px 11px;min-height:40px;border-radius:3px;color:var(--ink,#0b2046);font:12px Manrope,sans-serif;background:white;caret-color:var(--blue,#0055f5)}.ds-field input::placeholder{color:#59677c}.ds-field input:focus-visible{outline:3px solid var(--blue,#0055f5);outline-offset:5px}"},
+    {"name":"Navegación","kind":"nav","description":"Página activa marcada con línea azul.","html":"<nav class=\"ds-nav\"><a href=\"#inicio\" aria-current=\"page\">Inicio</a><a href=\"#servicios\">Servicios</a></nav>","css":".ds-nav{display:flex;gap:33px;font:600 13px Manrope,sans-serif}.ds-nav a{color:var(--ink,#0b2046);text-decoration:none;padding:17px 0;border-bottom:2px solid transparent}.ds-nav a[aria-current]{color:var(--blue,#0055f5);border-color:var(--blue,#0055f5)}.ds-nav a:focus-visible{outline:3px solid var(--blue,#0055f5);outline-offset:5px}"},
+    {"name":"Selección de evidencia","kind":"button","description":"Selector de fotografías originales del proyecto.","html":"<button class=\"ds-evidence\" aria-pressed=\"true\">Fotografía principal</button>","css":".ds-evidence{background:white;color:var(--muted,#4c5d74);border:1px solid var(--line,#d4e0f0);padding:10px 16px;font:12px Manrope,sans-serif;border-radius:3px;min-height:40px;cursor:pointer}.ds-evidence[aria-pressed=true]{color:var(--blue,#0055f5);border-color:var(--blue,#0055f5)}.ds-evidence:focus-visible{outline:3px solid var(--blue,#0055f5);outline-offset:5px}"}
+  ],
+  "narrative": {
+    "northStar":"Claridad industrial",
+    "overview":"Dirección aprobada: blanco elegante, azul marino y cobalto, fotografías reales y logotipo SPS. La presentación persuade mediante alcance técnico legible y evidencia de campo. Las tuberías suaves y el resplandor del puntero son recursos expresamente solicitados.",
+    "keyCharacteristics":["Composición editorial luminosa con fotografías amplias.","Texto descriptivo suficiente para explicar servicios y trabajos.","Tipografía firme, divisores finos y acentos azules."],
+    "rules":[],
+    "dos":["Do conservar identidad SPS, español, fotografías reales y alcance técnico del contenido fuente.","Do mantener texto suficiente para explicar cada servicio, con jerarquía visible y aire entre bloques.","Do respetar movimiento reducido y navegación por teclado."],
+    "donts":["Don't inventar certificaciones, cifras, clientes, resultados ni hechos empresariales; las fechas existentes son afirmaciones del repositorio.","Don't presentar el formulario como envío recibido ni la propuesta como sitio publicado en producción.","Don't sustituir la evidencia original de proyectos por imágenes retocadas sin identificar el cambio."]
+  }
+}
