@@ -1,0 +1,44 @@
+[
+  {
+    "created_at": "2026-09-28T13:04:21.362409Z",
+    "display_name": "Nano Banana Pro",
+    "id": "b62468c5-e2f4-453b-83c2-345d1da78295",
+    "job_type": "nano_banana_pro",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JBR4eJz60kQrjMYk4BK4uAm0fn/hf_20260928_130421_b62468c5-e2f4-453b-83c2-345d1da78295_min.webp",
+    "params": {
+      "application": null,
+      "aspect_ratio": "3:4",
+      "batch_size": 1,
+      "height": 2400,
+      "input_image": null,
+      "input_images": [
+        {
+          "id": "fbb17d45-a674-4d9e-812c-18f15bac1f2d",
+          "type": "media_input",
+          "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3JBR4eJz60kQrjMYk4BK4uAm0fn/fbb17d45-a674-4d9e-812c-18f15bac1f2d_resize.jpg"
+        },
+        {
+          "id": "2c8cb5ec-0dbb-4678-9152-3c000364a8cc",
+          "type": "media_input",
+          "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3JBR4eJz60kQrjMYk4BK4uAm0fn/2c8cb5ec-0dbb-4678-9152-3c000364a8cc.png"
+        },
+        {
+          "id": "b2a0ef9c-b0e4-4d79-850f-2c758f0f384c",
+          "type": "media_input",
+          "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3JBR4eJz60kQrjMYk4BK4uAm0fn/b2a0ef9c-b0e4-4d79-850f-2c758f0f384c.jpg"
+        },
+        {
+          "id": "8e774d78-3721-415a-ad3f-44ec13201f5f",
+          "type": "media_input",
+          "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3JBR4eJz60kQrjMYk4BK4uAm0fn/8e774d78-3721-415a-ad3f-44ec13201f5f.jpg"
+        }
+      ],
+      "prompt": "Design a polished presentation of an innovative SPS corporate WEBSITE experience, not an industrial infographic. Render THREE large desktop browser viewport mockups arranged vertically in one clean 3:4 portrait board. Each viewport is landscape and readable; thin light dividers, small labels OUTSIDE the screens: 'Entrada', 'El recorrido gira', 'Seguimos hacia abajo'. All three show successive moments of ONE continuous engineered steel pipe journey on a bright white canvas. The user scrolls down; the camera follows a large pipe elbow and moves RIGHT through the services chapter, then resumes down. Make the change of direction immediately visually clear by pipe entry and exit positions and composition. This is a bespoke sophisticated website, NOT three repeated split layouts.\nUse the supplied industrial illustration as exact material reference: metallic silver pipework, realistic flanges, navy valve wheels, grey mobile boiler blue chassis yellow stairs, grey frac tanks yellow stairs. Use actual supplied SPS photographs as equipment identity reference. Preserve the original SPS logo in a restrained pinned top navigation on every viewport: Inicio Nosotros Servicios Proyectos Contacto. White / deep navy / cobalt, subtle red logo detail only, realistic soft contact shadows, clean expensive editorial typography, ample space for readable text. No purple, no dark panels, no dashboard metrics, no fictional certifications.\nSCREEN 1 ENTRY: a carefully composed open white industrial stage. Left headline 'La experiencia conecta cada operación.' Navy with blue last phrase, and paragraph 'Vapor, recuperación de crudo, saneamiento y automatización para operaciones petroleras e industriales.' CTA 'Explorar servicios'. Actual boiler large upper right, grounded on white, a silver pipe emerges from boiler travels left across lower scene then bends DOWN through bottom edge. Small unobtrusive scroll cue 'Sigue el recorrido'. NOT a rectangular photograph pasted beside text; equipment is photographically isolated.\nSCREEN 2 TURN RIGHT: intentionally very different layout. Incoming silver pipe enters from TOP LEFT, drops along left third, makes a big sculptural 90-degree elbow and travels HORIZONTALLY RIGHT across lower-middle viewport. Large clear title upper left 'Vapor que pone el trabajo en marcha.' Explanatory paragraph upper right 'Calderas portátiles, inyección de vapor y calentamiento de crudo en pozos, fosas y patios de tanques.' At far right a portion of the next grey frac tank and its yellow ladder is entering the viewport, making sideways journey obvious. A discreet cobalt directional line alongside pipe and 'Continúa hacia manejo de fluidos →' indicate movement. Actual pipe has depth, not flat SVG noodle; keep text above with abundant whitespace and no overlap.\nSCREEN 3 RESUMING DOWN: tanks occupy left half, two short open editorial columns right: title 'Fluidos bajo control.' Paragraph 'Bombeo, trasegado con vacuum de 160 barriles y almacenamiento temporal con frac tanks de 500 barriles.' Link 'Conocer esta línea'. Pipe enters from LEFT, connects tanks, winds toward lower RIGHT and bends DOWN out of screen towards the next chapter. Small photographic evidence strip using supplied real yard image, carefully integrated near bottom, caption 'Equipos SPS en campo'.\nThe continuous pipe path is the main identity and choreography, not a faint wallpaper. Keep it metallic, intentional and easy to trace. Text is real Spanish web content, carefully typeset, not a poster or industrial schematic. Distinctive high-end website art direction with functional navigation, content, CTAs and spatial storytelling. This is a visual concept only, do not draw code or technical implementation notes inside the screens.",
+      "resolution": "2k",
+      "surface": null,
+      "width": 1792
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JBR4eJz60kQrjMYk4BK4uAm0fn/hf_20260928_130421_b62468c5-e2f4-453b-83c2-345d1da78295.png",
+    "status": "completed"
+  }
+]

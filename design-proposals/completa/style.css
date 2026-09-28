@@ -12,3 +12,8 @@ html{scrollbar-color:#92b8ef #edf5ff} .arrow-icon{width:16px;height:16px;flex-sh
 
 
 .history-numerals{background:transparent;overflow:visible;display:flex;align-items:center}.history-numerals svg{display:block;width:100%;height:100%;overflow:visible}.history-numerals text{font-family:Archivo,sans-serif;font-size:420px;font-weight:900;letter-spacing:-.04em}@media(max-width:760px){.history-numerals{height:auto;aspect-ratio:1332/310}}
+
+html{scroll-behavior:smooth;scroll-padding-top:88px}.scroll-site .header{position:sticky;top:0;z-index:30;background:#fff}.scroll-site .screen{min-height:calc(100svh - 88px);border-bottom:1px solid var(--line);padding-top:48px;padding-bottom:48px}.section-title{font-size:58px;line-height:1.035;letter-spacing:-.035em;font-weight:690}.catalog-head .section-title{font-size:44px}.scroll-site .header nav a:hover{color:var(--blue)}
+@media(max-height:780px) and (min-width:1000px){.section-title{font-size:48px}.scroll-site .screen{padding-top:28px;padding-bottom:28px}}
+@media(max-width:760px){html{scroll-padding-top:132px}.scroll-site .screen{min-height:calc(100svh - 132px);padding-top:32px;padding-bottom:32px}.section-title{font-size:39px}.catalog-head .section-title{font-size:36px}.scroll-site .header nav{padding-bottom:3px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

@@ -1,29 +1,31 @@
 ---
-name: SPS — propuesta completa
-description: Presentación editorial de servicios y evidencia de campo.
+name: SPS — recorrido industrial conectado
+description: Sitio editorial blanco con tubería continua, planos decorativos y evidencia de campo.
 colors:
-  ink: "#0b2046"
-  blue: "#0055f5"
+  ink: "#091c45"
+  blue: "#075ac7"
   red: "#c72036"
   muted: "#4c5d74"
   line: "#d4e0f0"
   ice: "#edf5ff"
   white: "#ffffff"
-  canvas: "#f9fcff"
   blue-hover: "#0044ce"
+  blueprint: "#aac3dd"
+  steel: "#737f87"
+  steel-light: "#e6ebee"
 typography:
   display:
     fontFamily: "Archivo, sans-serif"
-    fontSize: "70px"
-    fontWeight: 690
-    lineHeight: 1
-    letterSpacing: "-.035em"
+    fontSize: "clamp(48px,5.3vw,82px)"
+    fontWeight: 800
+    lineHeight: 1.02
+    letterSpacing: "-.04em"
   headline:
     fontFamily: "Archivo, sans-serif"
-    fontSize: "46px"
-    fontWeight: 670
-    lineHeight: 1.06
-    letterSpacing: "-.03em"
+    fontSize: "clamp(36px,4vw,60px)"
+    fontWeight: 690
+    lineHeight: 1.035
+    letterSpacing: "-.035em"
   title:
     fontFamily: "Archivo, sans-serif"
     fontSize: "23px"
@@ -41,12 +43,13 @@ typography:
 rounded:
   field: "3px"
   button: "4px"
-  panel: "8px"
+  panel: "0px"
 spacing:
-  desktop-gutter: "54px"
-  tablet-gutter: "30px"
-  mobile-gutter: "22px"
-  section-gap: "28px"
+  desktop-gutter: "clamp(64px,6.5vw,120px)"
+  mobile-gutter: "38px"
+  section-top: "100px"
+  section-bottom: "150px"
+  section-gap: "38px"
 components:
   button-primary:
     backgroundColor: "{colors.blue}"
@@ -68,72 +71,70 @@ components:
     padding: "10px 11px"
 ---
 
-# Design System: SPS — propuesta completa
+# Design System: SPS — recorrido industrial conectado
 
 ## Overview
 
-**Creative North Star: "Claridad industrial"**
+**Creative North Star: "Recorrido industrial conectado"**
 
-Dirección aprobada: blanco elegante, azul marino y cobalto, fotografías reales y logotipo SPS. La presentación persuade mediante alcance técnico legible y evidencia de campo. Las tuberías suaves y el resplandor del puntero son recursos expresamente solicitados.
+Una tubería de acero conecta la lectura de cada página sobre un fondo blanco con geometría de planos tenues. Titulares amplios, azul de acción y fotografías de campo expresan la capacidad industrial de SPS. La tubería aporta continuidad; la evidencia y el texto conservan su espacio propio.
+
+La referencia conceptual aprobada es `../inicio-tuberias/recorrido-fondo-planos-v3.png`. La implementación anterior fue rechazada. Esta reconstrucción representa una mejora material preparada para revisión del usuario; no se documenta como fidelidad exacta ni como aprobación final del resultado.
 
 **Key Characteristics:**
-- Composición editorial luminosa con fotografías amplias.
-- Texto descriptivo suficiente para explicar servicios y trabajos.
-- Tipografía firme, divisores finos y acentos azules.
+- Blanco abierto, planos SVG discretos y un recorrido continuo medido sobre el contenido.
+- Portada con visualización ilustrativa de una caldera y titulares editoriales.
+- Fotografías originales en proyectos, identidad SPS y contenido en español.
 
-Documento extraído de `style.css`, `views.js` y `app.js`. Aplica solamente a esta propuesta autónoma, en modo Persuade; no a una implementación de producción ni al código React original. Referencia conceptual aprobada: `../nueva-direccion/vista-general.png`.
+Extracción de `style.css`, `industrial.css`, `editorial.css`, `app.js`, `industrial.js` y `home.js`, con precedencia de las capas industrial y editorial. El `index.html` de la raíz inicia este sitio vanilla JavaScript. El código React original de `src` permanece preservado e inactivo. Este documento describe la implementación local; no acredita publicación en producción.
 
 ## Colors
 
-El cobalto dirige acciones y énfasis; el marino sostiene la lectura sobre blancos fríos.
+El azul de acción dirige enlaces y énfasis; marino tinta y gris azulado sostienen titulares y párrafos sobre blanco. El rojo conserva un papel puntual de identidad. Líneas claras e hielo separan información cuando hace falta, sin convertir cada sección en una tarjeta.
 
-- **Primary — Cobalto:** enlaces, botones, selección de pestañas y cifras destacadas.
-- **Neutral — Marino tinta:** titulares y texto de navegación. Gris azulado para párrafos; línea pálida para separar contenidos; blanco y hielo para superficies.
-- **Acento de identidad — Rojo:** puntuación puntual asociada a la marca, sin competir con las acciones.
+Los planos utilizan el token blueprint con opacidad variable. La tubería combina acero, luces blancas y grises mediante trazos superpuestos; las uniones incorporan degradados metálicos. El metal es decorativo y no cambia la semántica de las acciones azules.
 
 ## Typography
 
-Archivo variable para titulares; Manrope variable para lectura y controles. Ambas fuentes se cargan localmente desde `node_modules/@fontsource-variable` con `font-display: swap`; el respaldo es sans-serif.
+Archivo variable para titulares y Manrope variable para lectura y controles, cargadas localmente desde `node_modules/@fontsource-variable` con `font-display: swap` y respaldo sans-serif. El display corresponde al hero actual. El headline documenta títulos de sección convertidos desde h1; otros h2 conservan su jerarquía o una escala contextual.
 
-El hero utiliza display. Los títulos de página ordinarios usan 58px, los de sección headline y los subtítulos title. Los párrafos conservan hasta 70ch; descripciones y fichas compactas usan 12–14px. En móvil el hero baja a 44px, h1 a 39px y h2 a 35px; los campos pasan a 16px. Misión y visión son encabezados principales de sus columnas, con la frase explicativa subordinada.
+El hero usa tres líneas deliberadas y baja a 46px en móvil. Historia utiliza una escala propia de 42–72px y 40px en móvil; el capítulo de servicios usa 35–54px y 34px en móvil. Los párrafos mantienen un máximo de 70ch. Campos móviles usan 16px para lectura y entrada cómodas. Las cifras 1990 son texto SVG Archivo de peso 900, recortado con fotografía.
 
 ## Layout
 
-Cinco páginas, 28 secciones: Inicio 7, Nosotros 5, Servicios 6, Proyectos 7 y Contacto 3. A 1440 × 900 cada pantalla presenta una sección, con cabecera de 88px y navegación de revisión de 52px. El cuerpo tiene altura mínima `calc(100svh - 140px)`, márgenes laterales del token desktop y separación vertical de sección.
+Cinco páginas independientes por `?pagina=inicio|nosotros|servicios|proyectos|contacto`, con todas sus secciones: Inicio 7, Nosotros 5, Servicios 6, Proyectos 7 y Contacto 3. Cada página tiene scroll vertical y anclas internas. Hay una cabecera sticky de 88px en escritorio y navegación móvil en fila desplazable. El antiguo control de revisión Anterior/Siguiente está eliminado.
 
-Se alternan divisiones editoriales asimétricas, fotografía con detalle superpuesto, carril de categorías y fichas técnicas. El texto tiene espacio propio; las fotos funcionan como prueba. En 1100px se reduce el margen; en 760px las composiciones principales se apilan y el contenido fluye sin altura mínima. Hay ajustes de altura para escritorios de menos de 780px. La galería de revisión usa dos columnas y una en móvil.
+Las secciones alternan proporciones editoriales; no se fuerzan a ocupar una pantalla. El hero mantiene altura mínima de viewport menos cabecera. Los márgenes y espacios generales están en frontmatter; a partir de 1700px las secciones usan `max(140px,calc((100vw - 1420px)/2))`. Hasta 760px los bloques principales se apilan y el espaciado general pasa a 55px arriba y 100px abajo, con excepciones del hero y servicios.
+
+Sólo el capítulo de servicios de Inicio cambia a recorrido horizontal con scroll vertical en escritorio de 1000px o más y sin preferencia de movimiento reducido. Ocupa 240vh y fija su contenido bajo la cabecera; tres paneles se desplazan con el avance de lectura. En móvil, tablet y movimiento reducido quedan en flujo vertical. Los botones y el foco de teclado llevan al panel correspondiente.
 
 ## Elevation & Depth
 
-Profundidad principalmente tonal: fondos fríos, líneas claras y fotos de campo. Dos sombras ambientales levantan el panel de servicios y el formulario; sus valores están en el sidecar. Las tuberías permanecen detrás del contenido, sin capturar eventos. Su trazo animado recorre 18s; el resplandor acompaña únicamente punteros precisos con preferencia de movimiento habilitada. `prefers-reduced-motion: reduce` desactiva animaciones y transiciones y oculta el resplandor.
+Los paneles de servicios, formulario y ubicación son planos: las capas activas anulan sus sombras y redondeados anteriores. La profundidad se concentra en fotografía y tubería. El riel horizontal utiliza una sombra ambiental pequeña; el SVG continuo incluye un trazo oscuro desplazado y luces metálicas. No hay resplandor que siga al puntero: el montaje elimina el antiguo ambiente.
+
+El recorrido se recalcula mediante ResizeObserver y tras cargar fuentes, usando dimensiones reales del contenido. Es visible completo, sin animación de flujo de 18 segundos. Una línea de progreso de lectura aparece bajo la cabecera y se oculta con movimiento reducido. Las transiciones y scroll suave también respetan esa preferencia.
 
 ## Shapes
 
-Fotografías rectangulares, esquinas discretas en paneles y controles. El hero y la imagen del cierre tienen cortes diagonales que desaparecen en móvil. La foto insertada tiene borde blanco de 8px y su imagen ocupa íntegramente el recuadro, sin heredar el tamaño de la fotografía principal.
+Fotografías rectangulares, controles con esquinas discretas y paneles abiertos. La tubería SVG mantiene codos redondeados, uniones y válvulas; el trazo principal mide 23px en escritorio y 9px en móvil. En móvil se simplifica y se omiten accesorios. El recorrido pasa por márgenes y espacios entre secciones; la conexión a la ilustración del hero es compositiva, no un esquema de instalación.
+
+Los planos nativos de tanque, válvula y control son geometría SVG decorativa, oculta a tecnologías de asistencia. No son planos de ingeniería ni documentación técnica validada.
 
 ## Components
 
-- **Botones:** cobalto y blanco; variante de contorno sobre blanco. Altura mínima 48px; hover desplaza 2px hacia arriba. Enlaces de texto subrayan al pasar el puntero.
-- **Navegación:** enlaces de 13px, estado actual cobalto con línea inferior; en móvil ocupa una fila desplazable. La navegación inferior recorre secciones y páginas de la propuesta.
-- **Pestañas de servicio:** palabras grandes en Archivo; categoría activa azul. Admiten flechas, Inicio y Fin. Las pestañas de evidencia alternan fotografías y expresan selección con `aria-pressed`.
-- **Campos:** etiqueta visible, fondo blanco y borde claro. El formulario descarga un resumen de texto local y declara explícitamente que no lo envía a SPS.
-- **Foco:** contorno cobalto de 3px separado 5px, también en controles y resúmenes de preguntas frecuentes.
-- **Evidencia:** fotografías originales de `public/assets/sps-field` en fichas. El hero utiliza la versión retocada `../v3-fotos-reales/panorama-mejorada.png`; no debe confundirse con una fotografía original sin edición. Mantener el logotipo SPS suministrado.
+- **Botones:** azul con texto blanco, variante de contorno y altura mínima de 48px. Hover eleva 2px; foco visible con contorno azul de 3px y separación de 5px. Los enlaces de texto se subrayan al pasar el puntero.
+- **Navegación:** página actual azul con línea inferior; enlaces a páginas independientes y anclas locales. Se incluyen salto al contenido y navegación al pie.
+- **Servicios:** capítulo horizontal de Inicio con contador, botones de 44px y fotografías originales; el explorador de otras secciones mantiene pestañas accesibles con flechas, Inicio y Fin.
+- **Evidencia:** las galerías funcionan por proyecto y expresan la selección con `aria-pressed`. Las fotos originales proceden de `public/assets/sps-field`.
+- **Hero:** `public/assets/sps-boiler-studio.png` es una visualización generada e ilustrativa del equipo, identificada en texto alternativo y pie. No sustituye evidencia fotográfica de proyectos.
+- **Historia:** Inicio recorta la fotografía original `bajo-grande-caldera.jpg` en 1990 y una franja inferior continua. La página Nosotros conserva su tratamiento fotográfico existente; no debe asumirse que todos sus recursos retocados son originales sin edición.
+- **Formulario:** etiquetas visibles, borde claro, campos blancos y distribución apilada en móvil. Descarga `solicitud-sps.txt` localmente. No existe envío externo: el estado confirma que todavía no se ha enviado a SPS.
 
 ## Do's and Don'ts
 
-- **Do** conservar identidad SPS, español, fotografías reales y alcance técnico del contenido fuente.
-- **Do** mantener texto suficiente para explicar cada servicio, con jerarquía visible y aire entre bloques.
-- **Do** respetar movimiento reducido y navegación por teclado.
-- **Don't** inventar certificaciones, cifras, clientes, resultados ni hechos empresariales; las fechas existentes son afirmaciones del repositorio.
-- **Don't** presentar el formulario como envío recibido ni la propuesta como sitio publicado en producción.
-- **Don't** sustituir la evidencia original de proyectos por imágenes retocadas sin identificar el cambio.
-
-Revisión visual: 28 capturas inspeccionadas por el revisor. Se corrigieron el alcance de estilos de la foto insertada y la jerarquía de los encabezados de misión y visión.
-
-## Ajuste solicitado: 1990
-En La empresa, la fotografía panorámica original se recorta dentro de los números 1990 mediante un clipPath SVG tipográfico Archivo 900. Sustituye exclusivamente la franja fotográfica con año blanco superpuesto; conserva textos y composición restantes.
-
-
-Corrección de referencia: 1990 se une a una franja inferior continua de la fotografía. Usa panorama-mejorada.png (retoque visual), conservando los huecos de los números en la parte superior.
-
+- **Do** conservar identidad SPS, español, alcance del contenido y fotografías originales como evidencia.
+- **Do** mantener la tubería continua, medida sobre el contenido y sin capturar eventos.
+- **Do** conservar espacio legible entre texto, imágenes y decoración, con teclado y movimiento reducido funcionales.
+- **Don't** presentar una visualización generada como fotografía original, ni los planos decorativos como documentación de ingeniería.
+- **Don't** inventar certificaciones, clientes, cifras o resultados empresariales.
+- **Don't** afirmar envío de formularios, despliegue o aprobación visual final sin evidencia.

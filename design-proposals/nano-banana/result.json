@@ -1,0 +1,39 @@
+[
+  {
+    "created_at": "2026-09-28T12:56:42.593923Z",
+    "display_name": "Nano Banana Pro",
+    "id": "979e0347-e49c-4326-a547-977cfe806eec",
+    "job_type": "nano_banana_pro",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JBR4eJz60kQrjMYk4BK4uAm0fn/hf_20260928_125642_979e0347-e49c-4326-a547-977cfe806eec_min.webp",
+    "params": {
+      "application": null,
+      "aspect_ratio": "16:9",
+      "batch_size": 1,
+      "height": 1536,
+      "input_image": null,
+      "input_images": [
+        {
+          "id": "8e3108b7-085e-4110-9cac-63dbd6189b6a",
+          "type": "media_input",
+          "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3JBR4eJz60kQrjMYk4BK4uAm0fn/8e3108b7-085e-4110-9cac-63dbd6189b6a.png"
+        },
+        {
+          "id": "0d746c25-5c30-4111-bdaa-583020e59cac",
+          "type": "media_input",
+          "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3JBR4eJz60kQrjMYk4BK4uAm0fn/0d746c25-5c30-4111-bdaa-583020e59cac.jpg"
+        },
+        {
+          "id": "fcc128f5-4168-4e67-96db-80617af4b476",
+          "type": "media_input",
+          "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3JBR4eJz60kQrjMYk4BK4uAm0fn/fcc128f5-4168-4e67-96db-80617af4b476.jpg"
+        }
+      ],
+      "prompt": "Create a finished high-end desktop website art direction for SPS, Service Petroleum and Supply C.A. Use the supplied REAL photos and logo faithfully as the source of machinery, do not invent a generic oil refinery. Output ONE polished website screenshot, 16:9, first viewport at desktop, not a collage, not a moodboard. White luminous background, deep navy editorial typography, vivid cobalt accent, tiny original red logo accent. This must look like a bespoke international design studio website, elegant and surprisingly composed, not a generic AI corporate template.\nTop slim navigation: original SPS logo left, Inicio Nosotros Servicios Proyectos Contacto, right small cobalt button Hablemos de tu operación. Main composition: large precisely typeset Spanish headline at left reading 'Experiencia que mueve la operación.' with 'la operación.' cobalt. Under it a meaningful readable paragraph: 'Vapor, recuperación de crudo, saneamiento y automatización. Equipos y experiencia de campo para pozos, estaciones y plantas industriales.' One restrained CTA 'Explorar servicios'. Right two thirds: actual grey portable boiler from the reference photograph, blue chassis, yellow stair railings, extracted photographically from the yard and grounded on a luminous white surface with realistic subtle contact shadows. Preserve all recognizable physical equipment identity. One beautifully rendered steel pipe flows naturally from the equipment towards the lower edge and leads into the next section; it is an intentional signature composition, not random floating tubes. The boiler should dominate visually and cross the layout boundary slightly without obscuring letters. At lower edge begin the next section with a large photographic '1990' whose lower portion merges into one continuous strip of the real equipment yard photograph, and a small aligned title 'Una historia hecha en campo'. Strong whitespace, visual craft, tactile materials, real photographic equipment, exact supplied logo. No dashboard, no metric cards, no stats row, no kicker labels, no certification badges, no 24/7, no fictitious pressures or performance claims, no generic three card layout, no gradients on letters, no purple. The outcome is a striking useful web design with balanced readable text, not a poster and not an industrial catalog.",
+      "resolution": "2k",
+      "surface": null,
+      "width": 2752
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JBR4eJz60kQrjMYk4BK4uAm0fn/hf_20260928_125642_979e0347-e49c-4326-a547-977cfe806eec.png",
+    "status": "completed"
+  }
+]

@@ -10,6 +10,10 @@ export default defineConfig({
   build: {
     sourcemap: false,
     rolldownOptions: {
+      input: {
+        main: 'index.html',
+        sps: 'design-proposals/completa/index.html',
+      },
       treeshake: false,
     },
   },

@@ -1,0 +1,45 @@
+/* Approved direction: one connected steel route above quiet engineering plans. */
+.industrial-site{background:#fff;--blue:#075ac7;--ink:#091c45;--pad:clamp(82px,7.5vw,140px)}
+.industrial-site #content{position:relative;isolation:isolate;overflow:clip}
+.continuous-pipe{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:visible}
+.industrial-site .screen{border:0;background:transparent;padding-top:72px;padding-bottom:160px;gap:38px;min-height:max(780px,calc(100svh - 88px));isolation:isolate}
+.industrial-site .screen> :not(.engineering-plan){position:relative;z-index:1}
+.engineering-plan{position:absolute;z-index:-1;pointer-events:none;color:#aac3dd;width:560px;max-width:58%;right:8%;top:0;opacity:.38;mask-image:linear-gradient(90deg,transparent,#000 35%,#000 75%,transparent)}
+.engineering-plan svg{width:100%;height:auto}
+.plan-1{top:16%;right:3%;width:620px;opacity:.3}
+.plan-2{top:auto;bottom:85px;right:15%;opacity:.25}
+.industrial-site h1,.industrial-site h2{letter-spacing:-.035em;text-wrap:balance}
+.industrial-site p{max-width:70ch}
+.industrial-site .section-top{gap:36px;align-items:start}
+.industrial-site .section-top h1,.industrial-site .section-title{font-size:clamp(36px,4vw,60px);max-width:760px}
+.industrial-site .section-top>p{padding-top:8px;max-width:350px;font-size:15px}
+.industrial-site .header{padding-inline:clamp(25px,4vw,65px);border-bottom:1px solid #edf0f4}
+.reading-progress{position:absolute;left:0;bottom:0;width:100%;height:2px;background:var(--blue);transform-origin:left;transform:scaleX(0)}
+.industrial-site .photo{background:#f3f6f8}
+.industrial-site .service-visual,.industrial-site .form,.industrial-site .location-panel{box-shadow:none;border-radius:0}
+.industrial-site .service-visual{background:#ffffffed}
+.industrial-site .contact-banner .photo{clip-path:none}
+.industrial-site .location-panel{background:#f2f6fac9}
+.industrial-site .catalog-list,.industrial-site .project-copy{background:#ffffffdb}
+.industrial-site .pipeline-hero{display:grid;grid-template-columns:.95fr 1.2fr;align-items:center;gap:0;padding-right:60px}
+.pipeline-hero .hero-copy{position:relative;z-index:2}
+.pipeline-hero h1{font-size:clamp(46px,5.2vw,78px);line-height:1.01;font-weight:760;margin-bottom:30px}
+.pipeline-hero p{font-size:17px;line-height:1.8;max-width:480px}
+.pipeline-hero .hero-art{margin:0;overflow:visible;background:transparent;align-self:center}
+.pipeline-hero .hero-art img{width:100%;height:auto;object-fit:contain;mix-blend-mode:multiply}
+.pipeline-hero .hero-art figcaption{position:static;background:none;text-align:right;color:var(--muted);font-size:12px;max-width:none}
+.pipeline-hero .scroll-hint{grid-column:1/-1;margin-top:20px;font-size:12px;display:inline-flex;align-items:center;gap:12px;color:var(--muted);width:max-content}
+.scroll-hint svg{width:18px;height:24px}
+.industrial-site .home-history{display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:55px}
+.home-history h2{font-size:clamp(35px,3.8vw,56px);margin-bottom:25px}
+.home-history .history-numerals{height:auto;aspect-ratio:1332/500}
+.home-history .history-numerals svg{overflow:visible}
+.industrial-site .footer-info{background:#ffffffd9}
+.site-footer{position:relative;z-index:3;background:white;border-top:1px solid var(--line);padding:34px var(--pad);display:flex;align-items:center;justify-content:space-between;gap:25px;font-size:12px}
+.site-footer nav{display:flex;flex-wrap:wrap;gap:20px}
+.skip-link{position:fixed;top:8px;left:16px;z-index:100;background:#fff;padding:12px;color:var(--blue);transform:translateY(-150%)}
+.skip-link:focus{transform:none}
+@media(min-width:1700px){.industrial-site .screen{padding-inline:max(140px,calc((100vw - 1420px)/2))}}
+@media(max-width:1100px){.industrial-site{--pad:80px}.industrial-site .section-top{flex-direction:column;gap:16px}.industrial-site .section-top>p{max-width:65ch}.industrial-site .pipeline-hero{grid-template-columns:1fr 1fr}.pipeline-hero h1{font-size:52px}.pipeline-hero .actions{gap:12px}.industrial-site .home-history{gap:30px}.industrial-site .service-explorer{grid-template-columns:230px 1fr}.service-tabs button{font-size:40px}}
+@media(max-width:760px){.industrial-site{--pad:38px}.industrial-site .header{padding-inline:22px}.industrial-site .screen{padding-top:44px;padding-bottom:94px;gap:28px;min-height:calc(100svh - 132px)}.industrial-site .pipeline-hero{display:flex;padding-right:38px;gap:22px}.pipeline-hero h1{font-size:clamp(36px,9.5vw,52px);margin-bottom:22px}.pipeline-hero p{font-size:15px}.pipeline-hero .hero-art{width:100%;margin:0}.pipeline-hero .hero-art figcaption{font-size:10px}.pipeline-hero .scroll-hint{margin-top:0}.industrial-site .home-history{grid-template-columns:1fr;gap:30px}.industrial-site .service-explorer{grid-template-columns:1fr}.industrial-site .section-title,.industrial-site .section-top h1{font-size:36px}.industrial-site .section-top>p{font-size:14px}.engineering-plan{max-width:none;width:95%;right:0;opacity:.25}.industrial-site .catalog-list,.industrial-site .project-copy{background:transparent}.industrial-site .service-tabs{gap:15px}.industrial-site .service-tabs button{font-size:28px}.industrial-site .phone-link{font-size:clamp(22px,6vw,30px)}.industrial-site .button,.industrial-site .text-link{max-width:100%;white-space:normal}.site-footer{flex-direction:column;align-items:start;padding:28px 38px}.site-footer nav{gap:14px}.industrial-site .form{padding:14px}.industrial-site .brand{height:66px}.industrial-site .header nav{gap:20px}.industrial-site .form-bottom p{max-width:none}}
+@media(prefers-reduced-motion:reduce){.reading-progress{display:none}}

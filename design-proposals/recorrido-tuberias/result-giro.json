@@ -1,0 +1,39 @@
+[
+  {
+    "created_at": "2026-09-28T13:05:46.042055Z",
+    "display_name": "Nano Banana Pro",
+    "id": "402dd9c1-3334-42d1-978b-c7033aa2bdbb",
+    "job_type": "nano_banana_pro",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JBR4eJz60kQrjMYk4BK4uAm0fn/hf_20260928_130546_402dd9c1-3334-42d1-978b-c7033aa2bdbb_min.webp",
+    "params": {
+      "application": null,
+      "aspect_ratio": "16:9",
+      "batch_size": 1,
+      "height": 1536,
+      "input_image": null,
+      "input_images": [
+        {
+          "id": "82eeedef-11a2-4610-a09c-6354ba33e58b",
+          "type": "media_input",
+          "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3JBR4eJz60kQrjMYk4BK4uAm0fn/82eeedef-11a2-4610-a09c-6354ba33e58b_resize.jpg"
+        },
+        {
+          "id": "6b486770-5c11-4df0-b524-458a6a6b38f7",
+          "type": "media_input",
+          "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3JBR4eJz60kQrjMYk4BK4uAm0fn/6b486770-5c11-4df0-b524-458a6a6b38f7.png"
+        },
+        {
+          "id": "104476c5-977e-45d2-8316-69aa309f3cee",
+          "type": "media_input",
+          "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3JBR4eJz60kQrjMYk4BK4uAm0fn/104476c5-977e-45d2-8316-69aa309f3cee.jpg"
+        }
+      ],
+      "prompt": "Generate ONE stunning full desktop WEBSITE viewport mockup 16:9 for SPS Service Petroleum and Supply C.A., showing the exact moment in an immersive scroll journey when a vertical industrial pipe bends and the view moves HORIZONTALLY RIGHT. Use attached pipe/boiler/tank reference for visual material, and original SPS equipment photos faithfully. This is a real professional corporate website visual concept, not a technical diagram, not an illustration alone, not a poster.\nWhite luminous environment with refined metallic realistic pipes, matte navy valve wheels, yellow equipment stairs, original SPS logo, navy editorial typography and cobalt CTA. Restrained fixed top header with original logo left, Inicio Nosotros Servicios Proyectos Contacto, small button 'Hablemos de tu operación'.\nMain composition: on left edge a glimpse of the previous boiler chapter, cropped deliberately. Thick beautiful steel pipe descends from the upper LEFT, forms a large smooth elbow with flange connectors near the lower left, runs horizontally RIGHT across the bottom third, and visibly connects to the actual grey frac tank with yellow staircase dominating right third. The tank extends partly beyond the right edge to suggest onward sideways travel. Sculptural soft shadows on white, convincing scale. A short cobalt flow-light segment at the elbow suggests a scroll-linked active path. The pipe path is readable and doesn't cross text.\nAcross spacious top-middle: headline 'Del vapor al manejo de fluidos.' in 2 confident lines, navy with 'manejo de fluidos.' cobalt, type 64px relative to1440 width. Below readable real paragraph: 'Cada operación tiene una necesidad. Conectamos servicios de vapor, bombeo, trasegado y almacenamiento temporal con equipos para trabajar en campo.' A subtle outlined CTA 'Ver servicios de manejo'. Bottom small progress control 'Vapor — Manejo de fluidos — Control' with Manejo de fluidos selected in blue and understated cue 'Sigue desplazándote'. No numeric stats, no certification badges, no rounded feature cards, no dashboard, no stock oil rigs, no blueprint grid. The scene must feel spatially connected, elegant and genuinely bespoke. Use generous white space and articulate the horizontal transition clearly. This is the second chapter of a multi-page site with scroll experiences per page, NOT one giant landing page.",
+      "resolution": "2k",
+      "surface": null,
+      "width": 2752
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JBR4eJz60kQrjMYk4BK4uAm0fn/hf_20260928_130546_402dd9c1-3334-42d1-978b-c7033aa2bdbb.png",
+    "status": "completed"
+  }
+]
