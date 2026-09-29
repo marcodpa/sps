@@ -1,0 +1,507 @@
+{
+  "tool": "comp-diff",
+  "version": 1,
+  "createdAt": "2026-09-29T15:37:58.306Z",
+  "label": "fix1-desktop-inicio",
+  "comp": "design-proposals/web-completa-conectada/01-inicio.png",
+  "build": "design-proposals/web-completa-conectada/review/fix1-desktop-inicio.jpg",
+  "spec": null,
+  "compSize": "727x2164",
+  "buildSize": "1425x4862",
+  "align": "stretch",
+  "overall": 0.6511,
+  "verdict": "contradicted",
+  "scores": {
+    "overall": 0.6511,
+    "structure": 0.2973,
+    "color": 0.9077,
+    "colorIntersection": 0.8354,
+    "paletteMatch": 0.9466,
+    "detail": 0.6898,
+    "detailRaw": 0.6898,
+    "detailAdded": 0,
+    "bands": 0.9846
+  },
+  "palette": {
+    "comp": [
+      {
+        "hex": "#f4f6f7",
+        "coverage": 0.767
+      },
+      {
+        "hex": "#646665",
+        "coverage": 0.0639
+      },
+      {
+        "hex": "#111112",
+        "coverage": 0.0579
+      },
+      {
+        "hex": "#c3d9ef",
+        "coverage": 0.0469
+      },
+      {
+        "hex": "#bdc3c6",
+        "coverage": 0.0331
+      },
+      {
+        "hex": "#959896",
+        "coverage": 0.0313
+      }
+    ],
+    "build": [
+      {
+        "hex": "#f4f6f7",
+        "coverage": 0.8237
+      },
+      {
+        "hex": "#c7d1e0",
+        "coverage": 0.046
+      },
+      {
+        "hex": "#737274",
+        "coverage": 0.0385
+      },
+      {
+        "hex": "#a2a5aa",
+        "coverage": 0.0362
+      },
+      {
+        "hex": "#0a0a0d",
+        "coverage": 0.0315
+      },
+      {
+        "hex": "#3d3b39",
+        "coverage": 0.0242
+      }
+    ]
+  },
+  "regions": [
+    {
+      "id": "band-1",
+      "x": 0,
+      "y": 0,
+      "w": 1,
+      "h": 0.08661417322834646,
+      "kind": "band",
+      "score": {
+        "overall": 0.5635,
+        "structure": 0.4095,
+        "color": 0.8259,
+        "colorIntersection": 0.7212,
+        "paletteMatch": 0.8822,
+        "detail": 0.5306,
+        "detailRaw": 0.5515,
+        "detailAdded": 0.0417,
+        "bands": 0.54
+      },
+      "verdict": "contradicted",
+      "inkBox": {
+        "comp": {
+          "x": 37,
+          "y": 10,
+          "w": 673,
+          "h": 177
+        },
+        "build": {
+          "x": 45,
+          "y": 28,
+          "w": 682,
+          "h": 159
+        }
+      }
+    },
+    {
+      "id": "band-2",
+      "x": 0,
+      "y": 0.08661417322834646,
+      "w": 1,
+      "h": 0.09186351706036745,
+      "kind": "band",
+      "score": {
+        "overall": 0.4942,
+        "structure": 0.2396,
+        "color": 0.7539,
+        "colorIntersection": 0.7008,
+        "paletteMatch": 0.7826,
+        "detail": 0.5549,
+        "detailRaw": 0.5965,
+        "detailAdded": 0.0833,
+        "bands": 0.5545
+      },
+      "verdict": "contradicted",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 0,
+          "w": 727,
+          "h": 199
+        },
+        "build": {
+          "x": 0,
+          "y": 0,
+          "w": 727,
+          "h": 199
+        }
+      }
+    },
+    {
+      "id": "band-3",
+      "x": 0,
+      "y": 0.1784776902887139,
+      "w": 1,
+      "h": 0.08398950131233596,
+      "kind": "band",
+      "score": {
+        "overall": 0.6312,
+        "structure": 0.522,
+        "color": 0.7797,
+        "colorIntersection": 0.66,
+        "paletteMatch": 0.8442,
+        "detail": 0.5049,
+        "detailRaw": 0.5413,
+        "detailAdded": 0.0729,
+        "bands": 0.8492
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 40,
+          "y": 0,
+          "w": 687,
+          "h": 182
+        },
+        "build": {
+          "x": 0,
+          "y": 0,
+          "w": 727,
+          "h": 182
+        }
+      }
+    },
+    {
+      "id": "band-4",
+      "x": 0,
+      "y": 0.26246719160104987,
+      "w": 1,
+      "h": 0.08923884514435698,
+      "kind": "band",
+      "score": {
+        "overall": 0.5402,
+        "structure": 0.4038,
+        "color": 0.7288,
+        "colorIntersection": 0.5893,
+        "paletteMatch": 0.8038,
+        "detail": 0.4524,
+        "detailRaw": 0.5201,
+        "detailAdded": 0.1354,
+        "bands": 0.6902
+      },
+      "verdict": "contradicted",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 0,
+          "w": 727,
+          "h": 193
+        },
+        "build": {
+          "x": 0,
+          "y": 0,
+          "w": 727,
+          "h": 193
+        }
+      }
+    },
+    {
+      "id": "band-5",
+      "x": 0,
+      "y": 0.35170603674540685,
+      "w": 1,
+      "h": 0.08923884514435693,
+      "kind": "band",
+      "score": {
+        "overall": 0.4835,
+        "structure": 0.3478,
+        "color": 0.9188,
+        "colorIntersection": 0.8867,
+        "paletteMatch": 0.9362,
+        "detail": 0.1466,
+        "detailRaw": 0.2924,
+        "detailAdded": 0.2917,
+        "bands": 0.6358
+      },
+      "verdict": "contradicted",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 0,
+          "w": 696,
+          "h": 193
+        },
+        "build": {
+          "x": 0,
+          "y": 0,
+          "w": 727,
+          "h": 193
+        }
+      }
+    },
+    {
+      "id": "band-6",
+      "x": 0,
+      "y": 0.4409448818897638,
+      "w": 1,
+      "h": 0.07611548556430447,
+      "kind": "band",
+      "score": {
+        "overall": 0.4832,
+        "structure": 0.4784,
+        "color": 0.8701,
+        "colorIntersection": 0.7912,
+        "paletteMatch": 0.9125,
+        "detail": 0.2687,
+        "detailRaw": 0.3833,
+        "detailAdded": 0.2292,
+        "bands": 0.2071
+      },
+      "verdict": "contradicted",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 0,
+          "w": 727,
+          "h": 165
+        },
+        "build": {
+          "x": 44,
+          "y": 0,
+          "w": 642,
+          "h": 165
+        }
+      }
+    },
+    {
+      "id": "band-7",
+      "x": 0,
+      "y": 0.5170603674540682,
+      "w": 1,
+      "h": 0.08661417322834641,
+      "kind": "band",
+      "score": {
+        "overall": 0.5118,
+        "structure": 0.3122,
+        "color": 0.685,
+        "colorIntersection": 0.6369,
+        "paletteMatch": 0.711,
+        "detail": 0.4391,
+        "detailRaw": 0.512,
+        "detailAdded": 0.1458,
+        "bands": 0.8103
+      },
+      "verdict": "contradicted",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 0,
+          "w": 727,
+          "h": 187
+        },
+        "build": {
+          "x": 0,
+          "y": 0,
+          "w": 691,
+          "h": 187
+        }
+      }
+    },
+    {
+      "id": "band-8",
+      "x": 0,
+      "y": 0.6036745406824147,
+      "w": 1,
+      "h": 0.09711286089238846,
+      "kind": "band",
+      "score": {
+        "overall": 0.5328,
+        "structure": 0.3776,
+        "color": 0.7715,
+        "colorIntersection": 0.7131,
+        "paletteMatch": 0.803,
+        "detail": 0.4812,
+        "detailRaw": 0.5593,
+        "detailAdded": 0.1563,
+        "bands": 0.5829
+      },
+      "verdict": "contradicted",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 0,
+          "w": 689,
+          "h": 211
+        },
+        "build": {
+          "x": 0,
+          "y": 0,
+          "w": 689,
+          "h": 193
+        }
+      }
+    },
+    {
+      "id": "band-9",
+      "x": 0,
+      "y": 0.7007874015748031,
+      "w": 1,
+      "h": 0.07874015748031493,
+      "kind": "band",
+      "score": {
+        "overall": 0.5158,
+        "structure": 0.3796,
+        "color": 0.7172,
+        "colorIntersection": 0.6436,
+        "paletteMatch": 0.7569,
+        "detail": 0.43,
+        "detailRaw": 0.4768,
+        "detailAdded": 0.0938,
+        "bands": 0.6409
+      },
+      "verdict": "contradicted",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 0,
+          "w": 727,
+          "h": 170
+        },
+        "build": {
+          "x": 44,
+          "y": 41,
+          "w": 647,
+          "h": 129
+        }
+      }
+    },
+    {
+      "id": "band-10",
+      "x": 0,
+      "y": 0.7795275590551181,
+      "w": 1,
+      "h": 0.07874015748031504,
+      "kind": "band",
+      "score": {
+        "overall": 0.4957,
+        "structure": 0.4224,
+        "color": 0.7921,
+        "colorIntersection": 0.7277,
+        "paletteMatch": 0.8268,
+        "detail": 0.1991,
+        "detailRaw": 0.371,
+        "detailAdded": 0.3438,
+        "bands": 0.6667
+      },
+      "verdict": "contradicted",
+      "inkBox": {
+        "comp": {
+          "x": 39,
+          "y": 21,
+          "w": 662,
+          "h": 149
+        },
+        "build": {
+          "x": 45,
+          "y": 0,
+          "w": 646,
+          "h": 170
+        }
+      }
+    },
+    {
+      "id": "band-11",
+      "x": 0,
+      "y": 0.8582677165354331,
+      "w": 1,
+      "h": 0.06299212598425197,
+      "kind": "band",
+      "score": {
+        "overall": 0.5303,
+        "structure": 0.5299,
+        "color": 0.8965,
+        "colorIntersection": 0.7968,
+        "paletteMatch": 0.9502,
+        "detail": 0.219,
+        "detailRaw": 0.2815,
+        "detailAdded": 0.125,
+        "bands": 0.44
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 39,
+          "y": 0,
+          "w": 646,
+          "h": 137
+        },
+        "build": {
+          "x": 45,
+          "y": 0,
+          "w": 623,
+          "h": 137
+        }
+      }
+    },
+    {
+      "id": "band-12",
+      "x": 0,
+      "y": 0.9212598425196851,
+      "w": 1,
+      "h": 0.07874015748031493,
+      "kind": "band",
+      "score": {
+        "overall": 0.5801,
+        "structure": 0.4043,
+        "color": 0.9183,
+        "colorIntersection": 0.8645,
+        "paletteMatch": 0.9473,
+        "detail": 0.3344,
+        "detailRaw": 0.4698,
+        "detailAdded": 0.2708,
+        "bands": 0.8361
+      },
+      "verdict": "contradicted",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 0,
+          "w": 691,
+          "h": 147
+        },
+        "build": {
+          "x": 0,
+          "y": 0,
+          "w": 690,
+          "h": 160
+        }
+      }
+    }
+  ],
+  "files": {
+    "sideBySide": "C:/Users/home/Downloads/SPS/.impeccable/review/diff/fix1/side-by-side.png",
+    "heatmap": "C:/Users/home/Downloads/SPS/.impeccable/review/diff/fix1/heatmap.png",
+    "regionFiles": [
+      "C:/Users/home/Downloads/SPS/.impeccable/review/diff/fix1/regions/band-1.png",
+      "C:/Users/home/Downloads/SPS/.impeccable/review/diff/fix1/regions/band-2.png",
+      "C:/Users/home/Downloads/SPS/.impeccable/review/diff/fix1/regions/band-3.png",
+      "C:/Users/home/Downloads/SPS/.impeccable/review/diff/fix1/regions/band-4.png",
+      "C:/Users/home/Downloads/SPS/.impeccable/review/diff/fix1/regions/band-5.png",
+      "C:/Users/home/Downloads/SPS/.impeccable/review/diff/fix1/regions/band-6.png",
+      "C:/Users/home/Downloads/SPS/.impeccable/review/diff/fix1/regions/band-7.png",
+      "C:/Users/home/Downloads/SPS/.impeccable/review/diff/fix1/regions/band-8.png",
+      "C:/Users/home/Downloads/SPS/.impeccable/review/diff/fix1/regions/band-9.png",
+      "C:/Users/home/Downloads/SPS/.impeccable/review/diff/fix1/regions/band-10.png",
+      "C:/Users/home/Downloads/SPS/.impeccable/review/diff/fix1/regions/band-11.png",
+      "C:/Users/home/Downloads/SPS/.impeccable/review/diff/fix1/regions/band-12.png"
+    ]
+  }
+}

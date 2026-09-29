@@ -1,0 +1,128 @@
+[
+  {
+    "name": "inicio",
+    "size": "desktop",
+    "broken": [],
+    "h1": 1,
+    "overflow": false
+  },
+  {
+    "name": "nosotros",
+    "size": "desktop",
+    "broken": [],
+    "h1": 1,
+    "overflow": false
+  },
+  {
+    "name": "servicios",
+    "size": "desktop",
+    "broken": [],
+    "h1": 1,
+    "overflow": false
+  },
+  {
+    "name": "proyectos",
+    "size": "desktop",
+    "broken": [],
+    "h1": 1,
+    "overflow": false
+  },
+  {
+    "name": "articulos",
+    "size": "desktop",
+    "broken": [],
+    "h1": 1,
+    "overflow": false
+  },
+  {
+    "name": "contacto",
+    "size": "desktop",
+    "broken": [],
+    "h1": 1,
+    "overflow": false
+  },
+  {
+    "name": "servicio",
+    "size": "desktop",
+    "broken": [],
+    "h1": 1,
+    "overflow": false
+  },
+  {
+    "name": "proyecto",
+    "size": "desktop",
+    "broken": [],
+    "h1": 1,
+    "overflow": false
+  },
+  {
+    "name": "articulo",
+    "size": "desktop",
+    "broken": [],
+    "h1": 1,
+    "overflow": false
+  },
+  {
+    "name": "inicio",
+    "size": "mobile",
+    "broken": [],
+    "h1": 1,
+    "overflow": false
+  },
+  {
+    "name": "nosotros",
+    "size": "mobile",
+    "broken": [],
+    "h1": 1,
+    "overflow": false
+  },
+  {
+    "name": "servicios",
+    "size": "mobile",
+    "broken": [],
+    "h1": 1,
+    "overflow": false
+  },
+  {
+    "name": "proyectos",
+    "size": "mobile",
+    "broken": [],
+    "h1": 1,
+    "overflow": false
+  },
+  {
+    "name": "articulos",
+    "size": "mobile",
+    "broken": [],
+    "h1": 1,
+    "overflow": false
+  },
+  {
+    "name": "contacto",
+    "size": "mobile",
+    "broken": [],
+    "h1": 1,
+    "overflow": false
+  },
+  {
+    "name": "servicio",
+    "size": "mobile",
+    "broken": [],
+    "h1": 1,
+    "overflow": false
+  },
+  {
+    "name": "proyecto",
+    "size": "mobile",
+    "broken": [],
+    "h1": 1,
+    "overflow": false
+  },
+  {
+    "name": "articulo",
+    "size": "mobile",
+    "broken": [],
+    "h1": 1,
+    "overflow": false
+  }
+]

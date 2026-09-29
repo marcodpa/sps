@@ -1,0 +1,351 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-29T14:56:21.428Z",
+  "title": "Design System: SPS — Operación conectada",
+  "extensions": {
+    "colorMeta": {
+      "blue": {
+        "role": "primary",
+        "displayName": "Azul de acción",
+        "tonalRamp": [
+          "oklch(15% 0.24 260)",
+          "oklch(26% 0.24 260)",
+          "oklch(38% 0.24 260)",
+          "oklch(50% 0.24 260)",
+          "oklch(62% 0.24 260)",
+          "oklch(74% 0.24 260)",
+          "oklch(86% 0.24 260)",
+          "oklch(95% 0.24 260)"
+        ],
+        "note": "Synthesized panel ramp; not an implemented palette scale."
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Tinta industrial",
+        "tonalRamp": [
+          "oklch(15% 0.08 260)",
+          "oklch(26% 0.08 260)",
+          "oklch(38% 0.08 260)",
+          "oklch(50% 0.08 260)",
+          "oklch(62% 0.08 260)",
+          "oklch(74% 0.08 260)",
+          "oklch(86% 0.08 260)",
+          "oklch(95% 0.08 260)"
+        ],
+        "note": "Synthesized panel ramp; not an implemented palette scale."
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Texto pizarra",
+        "tonalRamp": [
+          "oklch(15% 0.065 255)",
+          "oklch(26% 0.065 255)",
+          "oklch(38% 0.065 255)",
+          "oklch(50% 0.065 255)",
+          "oklch(62% 0.065 255)",
+          "oklch(74% 0.065 255)",
+          "oklch(86% 0.065 255)",
+          "oklch(95% 0.065 255)"
+        ],
+        "note": "Synthesized panel ramp; not an implemented palette scale."
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Línea pálida",
+        "tonalRamp": [
+          "oklch(15% 0.025 245)",
+          "oklch(26% 0.025 245)",
+          "oklch(38% 0.025 245)",
+          "oklch(50% 0.025 245)",
+          "oklch(62% 0.025 245)",
+          "oklch(74% 0.025 245)",
+          "oklch(86% 0.025 245)",
+          "oklch(95% 0.025 245)"
+        ],
+        "note": "Synthesized panel ramp; not an implemented palette scale."
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Blanco",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(62% 0 0)",
+          "oklch(74% 0 0)",
+          "oklch(86% 0 0)",
+          "oklch(95% 0 0)"
+        ],
+        "note": "Synthesized panel ramp; not an implemented palette scale."
+      },
+      "primary-hover": {
+        "role": "primary",
+        "displayName": "Azul profundo",
+        "tonalRamp": [
+          "oklch(15% 0.2 260)",
+          "oklch(26% 0.2 260)",
+          "oklch(38% 0.2 260)",
+          "oklch(50% 0.2 260)",
+          "oklch(62% 0.2 260)",
+          "oklch(74% 0.2 260)",
+          "oklch(86% 0.2 260)",
+          "oklch(95% 0.2 260)"
+        ],
+        "note": "Synthesized panel ramp; not an implemented palette scale."
+      },
+      "secondary-surface": {
+        "role": "neutral",
+        "displayName": "Blanco translúcido",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(62% 0 0)",
+          "oklch(74% 0 0)",
+          "oklch(86% 0 0)",
+          "oklch(95% 0 0)"
+        ],
+        "note": "Synthesized panel ramp; not an implemented palette scale."
+      },
+      "secondary-border": {
+        "role": "neutral",
+        "displayName": "Borde azul claro",
+        "tonalRamp": [
+          "oklch(15% 0.075 260)",
+          "oklch(26% 0.075 260)",
+          "oklch(38% 0.075 260)",
+          "oklch(50% 0.075 260)",
+          "oklch(62% 0.075 260)",
+          "oklch(74% 0.075 260)",
+          "oklch(86% 0.075 260)",
+          "oklch(95% 0.075 260)"
+        ],
+        "note": "Synthesized panel ramp; not an implemented palette scale."
+      },
+      "secondary-hover": {
+        "role": "neutral",
+        "displayName": "Azul tenue",
+        "tonalRamp": [
+          "oklch(15% 0.025 255)",
+          "oklch(26% 0.025 255)",
+          "oklch(38% 0.025 255)",
+          "oklch(50% 0.025 255)",
+          "oklch(62% 0.025 255)",
+          "oklch(74% 0.025 255)",
+          "oklch(86% 0.025 255)",
+          "oklch(95% 0.025 255)"
+        ],
+        "note": "Synthesized panel ramp; not an implemented palette scale."
+      },
+      "secondary-hover-text": {
+        "role": "primary",
+        "displayName": "Azul de lectura",
+        "tonalRamp": [
+          "oklch(15% 0.16 260)",
+          "oklch(26% 0.16 260)",
+          "oklch(38% 0.16 260)",
+          "oklch(50% 0.16 260)",
+          "oklch(62% 0.16 260)",
+          "oklch(74% 0.16 260)",
+          "oklch(86% 0.16 260)",
+          "oklch(95% 0.16 260)"
+        ],
+        "note": "Synthesized panel ramp; not an implemented palette scale."
+      },
+      "input-surface": {
+        "role": "neutral",
+        "displayName": "Superficie de campo",
+        "tonalRamp": [
+          "oklch(15% 0.01 250)",
+          "oklch(26% 0.01 250)",
+          "oklch(38% 0.01 250)",
+          "oklch(50% 0.01 250)",
+          "oklch(62% 0.01 250)",
+          "oklch(74% 0.01 250)",
+          "oklch(86% 0.01 250)",
+          "oklch(95% 0.01 250)"
+        ],
+        "note": "Synthesized panel ramp; not an implemented palette scale."
+      },
+      "input-border": {
+        "role": "neutral",
+        "displayName": "Borde de campo",
+        "tonalRamp": [
+          "oklch(15% 0.04 250)",
+          "oklch(26% 0.04 250)",
+          "oklch(38% 0.04 250)",
+          "oklch(50% 0.04 250)",
+          "oklch(62% 0.04 250)",
+          "oklch(74% 0.04 250)",
+          "oklch(86% 0.04 250)",
+          "oklch(95% 0.04 250)"
+        ],
+        "note": "Synthesized panel ramp; not an implemented palette scale."
+      },
+      "footer-surface": {
+        "role": "neutral",
+        "displayName": "Superficie de pie",
+        "tonalRamp": [
+          "oklch(15% 0.015 255)",
+          "oklch(26% 0.015 255)",
+          "oklch(38% 0.015 255)",
+          "oklch(50% 0.015 255)",
+          "oklch(62% 0.015 255)",
+          "oklch(74% 0.015 255)",
+          "oklch(86% 0.015 255)",
+          "oklch(95% 0.015 255)"
+        ],
+        "note": "Synthesized panel ramp; not an implemented palette scale."
+      },
+      "function-surface": {
+        "role": "neutral",
+        "displayName": "Superficie de función",
+        "tonalRamp": [
+          "oklch(15% 0.035 255)",
+          "oklch(26% 0.035 255)",
+          "oklch(38% 0.035 255)",
+          "oklch(50% 0.035 255)",
+          "oklch(62% 0.035 255)",
+          "oklch(74% 0.035 255)",
+          "oklch(86% 0.035 255)",
+          "oklch(95% 0.035 255)"
+        ],
+        "note": "Synthesized panel ramp; not an implemented palette scale."
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Source Serif 4",
+        "purpose": "Base hero headings; template-specific overrides are documented in DESIGN.md."
+      },
+      "body": {
+        "displayName": "Manrope",
+        "purpose": "Descriptions, navigation and controls."
+      }
+    },
+    "shadows": [
+      {
+        "name": "panel",
+        "value": "0 18px 40px -20px #254c7570",
+        "purpose": "White panels over architectural scenery."
+      },
+      {
+        "name": "button-hover",
+        "value": "0 8px 24px -12px #17468570",
+        "purpose": "Primary action hover."
+      }
+    ],
+    "motion": [
+      {
+        "name": "button",
+        "value": "background .2s,box-shadow .2s",
+        "purpose": "Action hover feedback."
+      },
+      {
+        "name": "category",
+        "value": "transform .25s",
+        "purpose": "Category panel hover lift."
+      },
+      {
+        "name": "project-photo",
+        "value": "transform .45s",
+        "purpose": "Project image hover scale."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact",
+        "value": "1100px"
+      },
+      {
+        "name": "mobile",
+        "value": "760px"
+      }
+    ],
+    "focus": {
+      "outline": "3px solid #0068f5",
+      "outlineOffset": "5px"
+    },
+    "sourceFiles": [
+      "src/site/site.css",
+      "src/site/app.js",
+      "src/site/content.js",
+      "src/site/pipes.js",
+      "index.html"
+    ],
+    "reviewStatus": "Implementation inventory; exact fidelity to approved compositions remains under visual review."
+  },
+  "components": [
+    {
+      "name": "Primary action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Filled service and contact action.",
+      "html": "<a class=\"ds-btn\" href=\"#preview\">Consultar servicio <svg width=\"20\" height=\"24\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\"><path d=\"M4 12h15M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-btn{display:inline-flex;gap:22px;align-items:center;justify-content:center;border:1px solid var(--blue,#0068f5);background:var(--blue,#0068f5);color:white;border-radius:30px;padding:15px 25px;font-size:14px;font-weight:650;line-height:1.4;transition:background .2s,box-shadow .2s;text-align:center;text-decoration:none;font-family:var(--body,'Manrope Variable',Arial,sans-serif);}.ds-btn:hover{background:#0052c2;border-color:#0052c2;box-shadow:0 8px 24px -12px #17468570}.ds-btn:focus-visible{outline:3px solid #0068f5;outline-offset:5px}"
+    },
+    {
+      "name": "Secondary action",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Outlined alternate action.",
+      "html": "<a class=\"ds-btn ds-secondary\" href=\"#preview\">Ver servicios</a>",
+      "css": ".ds-btn{display:inline-flex;gap:22px;align-items:center;justify-content:center;border:1px solid var(--blue,#0068f5);background:var(--blue,#0068f5);color:white;border-radius:30px;padding:15px 25px;font-size:14px;font-weight:650;line-height:1.4;transition:background .2s,box-shadow .2s;text-align:center;text-decoration:none;font-family:var(--body,'Manrope Variable',Arial,sans-serif);}.ds-btn:hover{background:#0052c2;border-color:#0052c2;box-shadow:0 8px 24px -12px #17468570}.ds-btn:focus-visible{outline:3px solid #0068f5;outline-offset:5px}.ds-secondary{background:#fffffff0;color:var(--blue,#0068f5);border-color:#9fc4fd}.ds-secondary:hover{background:#edf5ff;color:#004da9}"
+    },
+    {
+      "name": "Request field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Labeled service-request field.",
+      "html": "<label class=\"ds-label\">Nombre<input class=\"ds-field\" autocomplete=\"name\" required></label>",
+      "css": ".ds-label{display:flex;flex-direction:column;gap:9px;font-size:13px;font-weight:650;color:var(--ink,#071c3e);font-family:var(--body,'Manrope Variable',Arial,sans-serif);}.ds-field{border:1px solid #b5cbe0;border-radius:7px;padding:13px;background:#fbfdff;color:var(--ink,#071c3e);font-size:15px;font-family:var(--body,'Manrope Variable',Arial,sans-serif);}.ds-field:focus-visible{outline:3px solid #0068f5;outline-offset:5px}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "description": "Desktop route navigation with active underline.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#inicio\" aria-current=\"page\">Inicio</a><a href=\"#servicios\">Servicios</a><a href=\"#contacto\">Contacto</a></nav>",
+      "css": ".ds-nav{display:flex;gap:28px;font-family:var(--body,'Manrope Variable',Arial,sans-serif);}.ds-nav a{color:var(--ink,#071c3e);font-size:15px;font-weight:650;padding:16px 0;position:relative;text-decoration:none}.ds-nav a[aria-current]{color:var(--blue,#0068f5)}.ds-nav a[aria-current]:after{content:\"\";height:2px;background:var(--blue,#0068f5);position:absolute;left:0;right:0;bottom:4px}.ds-nav a:focus-visible{outline:3px solid #0068f5;outline-offset:5px}"
+    },
+    {
+      "name": "Category filter",
+      "kind": "chip",
+      "refersTo": "filter",
+      "description": "Pressed state reflects the selected listing category.",
+      "html": "<div class=\"ds-filters\"><button aria-pressed=\"true\">Todos</button><button aria-pressed=\"false\">Vapor</button></div>",
+      "css": ".ds-filters{display:flex;gap:10px}.ds-filters button{background:white;border:1px solid #9cc1ea;border-radius:22px;padding:10px 22px;color:#0755a9;font-size:13px;font-family:var(--body,'Manrope Variable',Arial,sans-serif);}.ds-filters button[aria-pressed=true]{color:white;background:var(--blue,#0068f5);border-color:var(--blue,#0068f5)}.ds-filters button:focus-visible{outline:3px solid #0068f5;outline-offset:5px}"
+    },
+    {
+      "name": "Project card content",
+      "kind": "card",
+      "refersTo": "project-card",
+      "description": "Text portion of a project card; production cards also contain supplied field photography.",
+      "html": "<a class=\"ds-card\" href=\"#proyecto\"><div><small>Vapor · Registro de campo</small><h3>Bajo Grande</h3><p>Conoce el equipo y el entorno de la intervención.</p></div></a>",
+      "css": ".ds-card{display:block;color:var(--ink,#071c3e);background:white;border-radius:12px;box-shadow:var(--shadow,0 18px 40px -20px #254c7570);overflow:hidden;text-decoration:none;font-family:var(--body,'Manrope Variable',Arial,sans-serif);}.ds-card>div{padding:25px 30px}.ds-card small{color:var(--text,#405778);font-size:13px;line-height:1.5}.ds-card h3{font-family:var(--display,\"Source Serif 4 Variable\",Georgia,serif);font-size:34px;font-weight:750;letter-spacing:-.035em;line-height:1.04;margin:8px 0}.ds-card p{color:var(--text,#405778);font-size:15px;line-height:1.75;margin-bottom:8px}.ds-card:focus-visible{outline:3px solid #0068f5;outline-offset:5px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Operación conectada",
+    "overview": "A white and pale-blue architectural canvas connects petroleum equipment, field photographs and editorial Spanish typography. Source Serif 4 carries the large statements; Manrope carries navigation, explanations and controls. Blue highlights connect section titles to service actions.\n\nThis is a scan of the replacement implementation in `src/site/app.js`, `src/site/site.css`, `src/site/content.js` and `src/site/pipes.js`, booted by root `index.html`. The nine approved references are `design-proposals/web-completa-conectada/01-inicio.png` through `09-detalle-articulo.png`. Those references remain the visual authority. This document records the implementation, which is still under visual review; it does not certify exact fidelity to the compositions.",
+    "keyCharacteristics": [
+      "White surfaces with pale-blue architectural plates and industrial connections.",
+      "Large serif headings, restrained sans-serif controls and blue emphasis.",
+      "Supplied field photography distinguished from conceptual generated illustrations.",
+      "Rounded white panels with soft shadows and generous section spacing."
+    ],
+    "rules": [],
+    "dos": [
+      "Do preserve the nine approved compositions as the visual authority during review.",
+      "Do use supplied field photographs as operational evidence and label conceptual illustrations.",
+      "Do keep interface text and controls live and keyboard accessible over the decorative plates.",
+      "Do keep the contact download behavior and its unsent status explicit."
+    ],
+    "donts": [
+      "Don't interpret this implementation inventory as certification of visual fidelity.",
+      "Don't present generated equipment scenes as photographs of completed SPS work.",
+      "Don't claim that downloading a contact summary sends a request to SPS.\r"
+    ]
+  }
+}

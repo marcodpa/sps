@@ -1,0 +1,134 @@
+[
+  {
+    "h1": "Alquiler de calderas portátiles",
+    "hasContact": true,
+    "overflow": false,
+    "url": "http://127.0.0.1:5175/?pagina=servicio&id=calderas-portatiles"
+  },
+  {
+    "h1": "Inyección de vapor a pozos",
+    "hasContact": true,
+    "overflow": false,
+    "url": "http://127.0.0.1:5175/?pagina=servicio&id=vapor-a-pozos"
+  },
+  {
+    "h1": "Inyección de vapor para patio de tanques",
+    "hasContact": true,
+    "overflow": false,
+    "url": "http://127.0.0.1:5175/?pagina=servicio&id=vapor-patios-tanques"
+  },
+  {
+    "h1": "Calentamiento de crudo en Pit",
+    "hasContact": true,
+    "overflow": false,
+    "url": "http://127.0.0.1:5175/?pagina=servicio&id=calentamiento-crudo-pit"
+  },
+  {
+    "h1": "Recuperación de crudo en fosas de pasivos ambientales",
+    "hasContact": true,
+    "overflow": false,
+    "url": "http://127.0.0.1:5175/?pagina=servicio&id=recuperacion-fosas"
+  },
+  {
+    "h1": "Calentamiento de sellos de bomba para carga de buques",
+    "hasContact": true,
+    "overflow": false,
+    "url": "http://127.0.0.1:5175/?pagina=servicio&id=sellos-bomba"
+  },
+  {
+    "h1": "Reparación y mantenimiento de calentadores",
+    "hasContact": true,
+    "overflow": false,
+    "url": "http://127.0.0.1:5175/?pagina=servicio&id=mantenimiento-calentadores"
+  },
+  {
+    "h1": "Reparación y mantenimiento de calderas",
+    "hasContact": true,
+    "overflow": false,
+    "url": "http://127.0.0.1:5175/?pagina=servicio&id=mantenimiento-calderas"
+  },
+  {
+    "h1": "Saneamiento mediante hidrojet en áreas contaminadas con petróleo",
+    "hasContact": true,
+    "overflow": false,
+    "url": "http://127.0.0.1:5175/?pagina=servicio&id=saneamiento-hidrojet"
+  },
+  {
+    "h1": "Bombeo de crudo",
+    "hasContact": true,
+    "overflow": false,
+    "url": "http://127.0.0.1:5175/?pagina=servicio&id=bombeo-crudo"
+  },
+  {
+    "h1": "Trasegado con vacuum de 160 barriles",
+    "hasContact": true,
+    "overflow": false,
+    "url": "http://127.0.0.1:5175/?pagina=servicio&id=vacuum"
+  },
+  {
+    "h1": "Alquiler de Frac Tank con capacidad de 500 barriles",
+    "hasContact": true,
+    "overflow": false,
+    "url": "http://127.0.0.1:5175/?pagina=servicio&id=frac-tanks"
+  },
+  {
+    "h1": "Camiones con equipos de soldadura",
+    "hasContact": true,
+    "overflow": false,
+    "url": "http://127.0.0.1:5175/?pagina=servicio&id=soldadura"
+  },
+  {
+    "h1": "Disposición temporal de desechos provenientes de derrames",
+    "hasContact": true,
+    "overflow": false,
+    "url": "http://127.0.0.1:5175/?pagina=servicio&id=desechos-derrames"
+  },
+  {
+    "h1": "Rehabilitación de telemetría de pozos y estaciones",
+    "hasContact": true,
+    "overflow": false,
+    "url": "http://127.0.0.1:5175/?pagina=servicio&id=telemetria"
+  },
+  {
+    "h1": "Programación de PLC en estaciones",
+    "hasContact": true,
+    "overflow": false,
+    "url": "http://127.0.0.1:5175/?pagina=servicio&id=plc"
+  },
+  {
+    "h1": "Programación de RTU para pozos de producción e inyección de agua",
+    "hasContact": true,
+    "overflow": false,
+    "url": "http://127.0.0.1:5175/?pagina=servicio&id=rtu"
+  },
+  {
+    "h1": "Servicio SCADA Wonderware CIBO",
+    "hasContact": true,
+    "overflow": false,
+    "url": "http://127.0.0.1:5175/?pagina=servicio&id=scada"
+  },
+  {
+    "h1": "Variadores de pozos con bombas BCP y sus RTU",
+    "hasContact": true,
+    "overflow": false,
+    "url": "http://127.0.0.1:5175/?pagina=servicio&id=variadores-bcp"
+  },
+  {
+    "h1": "Instrumentación de pozos y estaciones",
+    "hasContact": true,
+    "overflow": false,
+    "url": "http://127.0.0.1:5175/?pagina=servicio&id=instrumentacion"
+  },
+  {
+    "h1": "Sistemas de puesta a tierra y protección de pararrayos",
+    "hasContact": true,
+    "overflow": false,
+    "url": "http://127.0.0.1:5175/?pagina=servicio&id=puesta-tierra"
+  },
+  {
+    "h1": "Paneles solares para telemetría en pozos sin electricidad",
+    "hasContact": true,
+    "overflow": false,
+    "url": "http://127.0.0.1:5175/?pagina=servicio&id=solar-telemetria"
+  }
+]
