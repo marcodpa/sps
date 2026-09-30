@@ -1,0 +1,80 @@
+{
+  "date": "2026-09-30",
+  "scope": "Comparación visual de las páginas restantes; no modifica Inicio ni Quiénes somos, aprobadas por el usuario.",
+  "reference": "design-proposals/web-completa-conectada/index.html",
+  "method": "Comparación de siete composiciones originales con capturas actuales de sus secciones a 1672px. Detalles: muestra calderas-portatiles, bajo-grande e instrumento-scada. No implica revisar visualmente todos los 34 detalles ni aprobar fidelidad.",
+  "findings": [
+    {
+      "page": "Servicios",
+      "reference": "03-servicios.png",
+      "differences": [
+        "Tuberías repetidas en U en lugar de cambios de altura y conexiones con equipos.",
+        "Listas sin columna de iconos y con espaciado diferente.",
+        "Faltan tramo de fluido visible, instrumentación integrada y cierre fotográfico al atardecer."
+      ]
+    },
+    {
+      "page": "Proyectos",
+      "reference": "04-proyectos.png",
+      "differences": [
+        "Filtros demasiado próximos a la tubería de portada.",
+        "Faltan ilustraciones técnicas de Tía Juana y saneamiento; automatización usa foto general.",
+        "Tuberías enmarcan filas de la misma forma; faltan variaciones e instrumentos del diseño."
+      ]
+    },
+    {
+      "page": "Artículos",
+      "reference": "05-articulos.png",
+      "differences": [
+        "Filtros dentro de portada, en lugar de una franja separada.",
+        "Faltan imágenes específicas del transmisor, telemetría y preparación de consulta.",
+        "Tarjetas y tuberías todavía repiten el esquema de filas; cierre distinto."
+      ]
+    },
+    {
+      "page": "Contacto",
+      "reference": "06-contacto.png",
+      "differences": [
+        "Conexiones no llegan al formulario lateralmente como en la referencia.",
+        "Ubicación muestra una fotografía en vez del plano con ubicación.",
+        "Cierre utiliza otro encuadre; preparación de consulta tiene otra composición."
+      ],
+      "preserve": "Formulario descarga un resumen: no prometer envío sin backend."
+    },
+    {
+      "page": "Detalle de servicio",
+      "reference": "07-detalle-servicio.png",
+      "differences": [
+        "Corte de caldera sin rótulos de entrada de agua, salida de vapor y gases.",
+        "Tres aplicaciones y tres datos de planificación frente a cuatro en la propuesta.",
+        "Galería, consulta final y recorrido de tubería difieren."
+      ],
+      "preserve": "No atribuir foto de Boscán a Bajo Grande aunque la composición generada lo haga."
+    },
+    {
+      "page": "Detalle de proyecto",
+      "reference": "08-detalle-proyecto.png",
+      "differences": [
+        "Esquema de operación necesita rótulos y dirección del vapor.",
+        "Más trabajos usa dos tarjetas en lugar del bloque de proyecto relacionado.",
+        "Jerarquía de datos, galería, cierre y trazado necesitan adaptación específica."
+      ]
+    },
+    {
+      "page": "Detalle de artículo",
+      "reference": "09-detalle-articulo.png",
+      "differences": [
+        "Portada usa ensamblaje vertical en lugar del transmisor sobre tubería horizontal.",
+        "Diagrama necesita conexión visual completa y etiquetas Instrumento, PLC/RTU y SCADA.",
+        "Falta imagen junto al tercer apartado y miniaturas de recursos; recorrido demasiado simple."
+      ]
+    }
+  ],
+  "priority": [
+    "Rutas de tuberías propias y sin superposiciones",
+    "Imágenes específicas por tema",
+    "Composición y jerarquía de cada sección",
+    "Etiquetas de proceso y conexiones de datos",
+    "Revisión escritorio/móvil manteniendo las dos páginas aprobadas"
+  ]
+}
