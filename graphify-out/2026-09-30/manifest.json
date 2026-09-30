@@ -1,0 +1,32 @@
+{
+  "app.js": {
+    "mtime": 1790790430.556062,
+    "ast_hash": "d66ca5b8679178390218f4a112ba0106",
+    "semantic_hash": "d66ca5b8679178390218f4a112ba0106"
+  },
+  "catalogue.js": {
+    "mtime": 1790770077.4178114,
+    "ast_hash": "ca09c63f12da2cf28942f67bfab92ae0",
+    "semantic_hash": "ca09c63f12da2cf28942f67bfab92ae0"
+  },
+  "content.js": {
+    "mtime": 1790772022.3173473,
+    "ast_hash": "c9f7abb26c18c7ad2257880342c8ef54",
+    "semantic_hash": "c9f7abb26c18c7ad2257880342c8ef54"
+  },
+  "gallery.js": {
+    "mtime": 1790790852.530425,
+    "ast_hash": "cb892450ec0e528b3eeefd4b1bdcdee0",
+    "semantic_hash": "cb892450ec0e528b3eeefd4b1bdcdee0"
+  },
+  "icons.js": {
+    "mtime": 1790705695.7192,
+    "ast_hash": "5503c18b586bb631b74460ce96fc9866",
+    "semantic_hash": "5503c18b586bb631b74460ce96fc9866"
+  },
+  "network.js": {
+    "mtime": 1790789655.4379716,
+    "ast_hash": "173637f943a1905c084a25358008c47e",
+    "semantic_hash": "173637f943a1905c084a25358008c47e"
+  }
+}

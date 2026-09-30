@@ -1,91 +1,96 @@
 ---
 name: SPS — Operación conectada
-description: Sistema editorial industrial sobre láminas arquitectónicas blancas y azul pálido.
+description: Editorial industrial blanco y azul con fotografía de campo y una red de tuberías conectadas.
 colors:
   blue: "#0068f5"
   ink: "#071c3e"
   text: "#405778"
   line: "#d2e1ee"
-  white: "white"
+  paper: "#fff"
   primary-hover: "#0052c2"
-  secondary-surface: "#fffffff0"
-  secondary-border: "#9fc4fd"
-  secondary-hover: "#edf5ff"
-  secondary-hover-text: "#004da9"
+  outline-surface: "#ffffffed"
+  outline-border: "#8cb6f8"
+  outline-hover: "#eaf3ff"
+  outline-hover-text: "#004ebc"
   input-surface: "#fbfdff"
-  input-border: "#b5cbe0"
+  input-border: "#b8cfe4"
+  filter-text: "#174c8f"
+  filter-border: "#a4c2e4"
+  filter-hover: "#e4f0ff"
+  filter-hover-text: "#084c9e"
+  gallery-surface: "#fafdff"
   footer-surface: "#f8fbff"
-  function-surface: "#e9f3ff"
 typography:
   display:
-    fontFamily: "'Source Serif 4 Variable', Georgia, serif"
-    fontSize: "clamp(48px,6.5vw,96px)"
-    fontWeight: 750
+    fontFamily: "'Source Serif 4 Variable',Georgia,serif"
+    fontSize: "clamp(48px,6.6vw,96px)"
+    fontWeight: 760
     lineHeight: 1.04
     letterSpacing: "-.035em"
   headline:
-    fontFamily: "'Source Serif 4 Variable', Georgia, serif"
-    fontSize: "clamp(38px,4.5vw,66px)"
-    fontWeight: 750
+    fontFamily: "'Source Serif 4 Variable',Georgia,serif"
+    fontSize: "clamp(38px,4.25vw,68px)"
+    fontWeight: 760
     lineHeight: 1.04
     letterSpacing: "-.035em"
   title:
-    fontFamily: "'Source Serif 4 Variable', Georgia, serif"
-    fontSize: "clamp(25px,2.4vw,36px)"
-    fontWeight: 750
-    lineHeight: 1.04
+    fontFamily: "'Source Serif 4 Variable',Georgia,serif"
+    fontSize: "clamp(23px,2.1vw,31px)"
+    fontWeight: 760
+    lineHeight: 1.16
     letterSpacing: "-.035em"
   body:
-    fontFamily: "'Manrope Variable', Arial, sans-serif"
-    lineHeight: 1.75
-  label:
-    fontFamily: "'Manrope Variable', Arial, sans-serif"
-    fontSize: "13px"
-    fontWeight: 650
+    fontFamily: "'Manrope Variable',Arial,sans-serif"
+    fontSize: "18px"
+    lineHeight: 1.7
   button:
-    fontFamily: "'Manrope Variable', Arial, sans-serif"
-    fontSize: "14px"
+    fontFamily: "'Manrope Variable',Arial,sans-serif"
+    fontSize: "15px"
+    fontWeight: 750
+  navigation:
+    fontFamily: "'Manrope Variable',Arial,sans-serif"
+    fontSize: "15px"
     fontWeight: 650
-    lineHeight: 1.4
 rounded:
-  photo: "5px"
   field: "7px"
   card: "12px"
   panel: "14px"
-  filter: "22px"
-  button: "30px"
+  filter: "24px"
+  button: "32px"
 spacing:
-  action-gap: "14px"
-  grid-gap: "25px"
-  panel-padding: "40px"
+  action-gap: "16px"
+  scene-gap: "36px"
+  field-padding: "13px"
+  gallery-card-padding: "25px 22px"
 components:
   button-primary:
     backgroundColor: "{colors.blue}"
-    textColor: "{colors.white}"
+    textColor: "{colors.paper}"
     typography: "{typography.button}"
     rounded: "{rounded.button}"
-    padding: "15px 25px"
+    padding: "17px 27px"
   button-primary-hover:
     backgroundColor: "{colors.primary-hover}"
-    textColor: "{colors.white}"
-  button-secondary:
-    backgroundColor: "{colors.secondary-surface}"
+  button-outline:
+    backgroundColor: "{colors.outline-surface}"
     textColor: "{colors.blue}"
+    typography: "{typography.button}"
     rounded: "{rounded.button}"
-    padding: "15px 25px"
+    padding: "17px 27px"
   input:
     backgroundColor: "{colors.input-surface}"
     textColor: "{colors.ink}"
     rounded: "{rounded.field}"
-    padding: "13px"
+    padding: "{spacing.field-padding}"
   filter:
-    backgroundColor: "{colors.white}"
-    textColor: "#0755a9"
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.filter-text}"
     rounded: "{rounded.filter}"
-    padding: "10px 22px"
-  project-card:
-    backgroundColor: "{colors.white}"
-    rounded: "{rounded.card}"
+    padding: "11px 19px"
+  gallery-service-card:
+    backgroundColor: "{colors.gallery-surface}"
+    rounded: "{rounded.panel}"
+    padding: "{spacing.gallery-card-padding}"
 ---
 
 # Design System: SPS — Operación conectada
@@ -94,67 +99,72 @@ components:
 
 **Creative North Star: "Operación conectada"**
 
-A white and pale-blue architectural canvas connects petroleum equipment, field photographs and editorial Spanish typography. Source Serif 4 carries the large statements; Manrope carries navigation, explanations and controls. Blue highlights connect section titles to service actions.
+White space, pale industrial plans, navy editorial headings and electric-blue actions frame SPS's Spanish content. Photographic steel connections lead between scenes, branch toward service panels and connect a process instrument to a control console. Field photography supplies operational evidence; generated equipment supplies conceptual scenery.
 
-This is a scan of the replacement implementation in `src/site/app.js`, `src/site/site.css`, `src/site/content.js` and `src/site/pipes.js`, booted by root `index.html`. The nine approved references are `design-proposals/web-completa-conectada/01-inicio.png` through `09-detalle-articulo.png`. Those references remain the visual authority. This document records the implementation, which is still under visual review; it does not certify exact fidelity to the compositions.
+This scan documents the active independent implementation in `src/experience`, booted by root `index.html` through `app.js`. `gallery.js` now owns page-specific compositions for five main routes and all detail types; contact stays in `app.js`. `gallery.css` loads after the shared `style.css`. The user explicitly identifies the NINE original full-page compositions in `design-proposals/web-completa-conectada` as primary visual authority: 01-inicio.png through 09-detalle-articulo.png. The 62 derived section images do not supersede those originals. The user rejected visual fidelity; this revision is not visually approved, and documentation does not certify exact equivalence or close the material-review gate. Older `src/site` and `src/web` are archival.
 
 **Key Characteristics:**
-- White surfaces with pale-blue architectural plates and industrial connections.
-- Large serif headings, restrained sans-serif controls and blue emphasis.
-- Supplied field photography distinguished from conceptual generated illustrations.
-- Rounded white panels with soft shadows and generous section spacing.
+- White and pale-blue industrial scenery with photographic steel connections.
+- Source Serif 4 statements and Manrope explanations and controls.
+- Live text and controls above noninteractive decorative imagery.
+- Supplied field evidence distinguished from generated conceptual images.
 
 ## Colors
 
 ### Primary
 
-The blue accent marks emphasized heading words, filled actions, selected filters and active navigation. Hover treatment deepens the action color. Secondary actions use translucent white with a blue outline.
+Electric blue marks emphasized heading words, actions, active navigation and selected filters. Filled actions deepen on hover; outlined actions retain a light translucent surface. The frontmatter owns exact interface values extracted from `style.css`.
 
 ### Neutral
 
-Ink anchors headings and controls; slate text supports descriptions. Pale lines divide lists and form fields. White and translucent white surfaces keep content readable over the plates. The footer and functional explanation strips use pale-blue surfaces. Machine-readable values above are extracted from the effective CSS, not sampled from generated artwork.
+Navy ink anchors headings, slate supports paragraphs, and pale borders define controls. White content surfaces and pale gallery service panels separate content from the blueprint texture. The footer uses its own pale surface. Photographic material colors and yellow equipment details belong to images rather than the interface token palette.
+
+**The Evidence Rule.** Keep supplied field evidence distinct from generated conceptual equipment.
 
 ## Typography
 
-The effective display family is Source Serif 4 Variable with Georgia fallback. Manrope Variable with Arial fallback supports body and interface text. Both are locally bundled through Fontsource imports. An earlier Bodoni declaration remains in the stylesheet but is superseded by the later display-family override.
+Source Serif 4 Variable and Manrope Variable are imported locally through Fontsource in `app.js`. The frontmatter records the shared heading and control hierarchy with the effective gallery section-heading override, not every template override. Paragraph measure is capped at (65ch).
 
-The frontmatter describes the base heading hierarchy. Templates override it: desktop project listing title (120px), photo-led detail title (68px), article hero title (65px), and category bar titles (25px). At the mobile breakpoint the photo-led detail, company and article hero titles become (43px); project listing becomes (62px). Paragraphs vary by context, with a base line height (1.75) and maximum measure (68ch). Headings use blue emphasis without italic styling.
+The home hero is an explicit composition override: display weight (820), size `clamp(68px,6.9vw,116px)`, and line height (.80), with different large-desktop and mobile rules. These values describe that surface and are not a universal heading rule. Base mobile paragraphs use (16px / 1.75); gallery mobile section headings use (37px), with more specific page overrides. Article reading text receives a larger, looser treatment. Captions identify real images and context; their incidental styling is not promoted into a decorative eyebrow primitive.
 
 ## Layout
 
-Root `index.html` boots a vanilla JavaScript application through Vite. Query parameters choose six main routes (`inicio`, `nosotros`, `servicios`, `proyectos`, `articulos`, `contacto`) plus 22 service, six project and six article details: 40 content routes. `quienes-somos` is an alias for `nosotros`, not an additional page.
+The six main pages plus 22 service, six project and six article details produce 40 content routes. Query parameters select page and record. `quienes-somos` aliases `nosotros`.
 
-The sticky desktop header is (104px) high; the mobile header is (82px). Main sections have a maximum width (1600px) and horizontal padding `max(6vw,24px)`. The effective shared desktop vertical padding is (65px / 90px), with template overrides. Two-column photographs and copy, alternating project entries, a three-column category strip, and a two-column application grid support the long pages. Article listings are alternating image-and-copy rows. Article details combine a sticky contents rail with illustrated reading sections.
+The desktop header is in normal flow at (100px), reducing to (82px) on mobile. Content is capped at (1920px). The effective shared gallery scene removes the old viewport minimum, retaining a (36px) gap and (8%) horizontal padding while setting vertical padding to (80px / 110px). Each page composition supplies its own section density, heights and columns. Breakpoints at (1700px), (1100px), and (760px) adjust column density, hero layouts and controls. At mobile widths scenes stack and the gallery base padding becomes `55px 38px 100px`; the more-specific inherited nonhero selector still reserves (40px) left and (32px) right gutters. Project/article rows explicitly use (38px) horizontal padding. Gallery service panels, alternating image-and-text project/article rows, equipment scenery and a sticky article contents rail define different compositions. The home hero has its own mobile (870px) minimum and equipment crop.
 
-Responsive rules at (1100px) compact navigation and columns. At (760px), navigation becomes a toggle-controlled panel, grids largely stack, and shared section padding becomes (55px / 70px). Some template-specific values override the defaults; the stylesheet remains the source for exact layout.
-
-Generated `public/assets/connected/plate-*.png` images supply the architectural background for each of the nine template types. `app.js` assigns a page plate and section crop variables, with explicit cuts for main pages and proportional cuts for details. Each section renders its crop in a noninteractive pseudo-element. Mobile plates are reduced to opacity (.35) and cropped horizontally. The previous whole-content background, SVG pipe overlay and photo manifold are hidden by the final CSS.
+A single noninteractive SVG network per page measures scene boundaries and live content ports. Raster straight steel, ring-derived elbows, flanges and valves are placed inside its geometry. Desktop pipes use a width scaled and clamped from viewport width; mobile uses an (18px) pipe and (17px) side rail. Source asset crop regions are measured, but photographic continuity must be judged on the rendered modular network, not on an isolated plate. No full-page generated image replaces live page content.
 
 ## Elevation & Depth
 
-Panels use the shared soft shadow `0 18px 40px -20px #254c7570`. Primary action hover uses `0 8px 24px -12px #17468570`. White layers, soft photographic masks and generated architectural scenery provide depth without obscuring content. Project photographs scale slightly on hover; category panels rise slightly. Reduced-motion rules remove transitions and animations, disable smooth scrolling and simplify the recovery scene. Pipe scroll logic remains mounted but its SVG overlay is currently hidden.
+White layers, translucent captions, blueprint opacity and photographic material create depth. Gallery service cards use `0 15px 24px #1435541c`; the category strip uses `0 15px 30px #133e581a`; the article contents rail uses `0 12px 24px #17354b14`; the request form uses `0 20px 50px #183b6414`. Primary action hover uses `0 8px 22px #0052c22b`. The pipe shadow is a low-opacity offset SVG stroke rather than a panel shadow.
+
+GSAP ScrollTrigger maps scroll progress to flow and signal dash offsets. ResizeObserver, image load and font readiness rebuild the measured network. Reduced-motion disables transitions and animation, removes smooth scrolling, and hides moving flow/highlight paths while retaining static connections.
 
 ## Shapes
 
-Buttons and filter chips use pill-like rounding. Cards and panels use the card/panel radii in the frontmatter; inputs use the field radius. Field photographs generally retain rectangular proportions with modest corner rounding. Hero photography uses transparent gradient masks to blend into the plate. Do not treat the illustrated pipe fittings as interactive controls.
+Pill actions and filters contrast with softly rounded rectangular panels and fields. Gallery service cards and linked work photographs crop their rectangular imagery within rounded boundaries. Most field evidence retains simple rectangular framing with a readable caption plate. Hero photography may use a fading mask, while the composed boiler hero uses its own full composition and mobile crop. Photographic elbows, flanges and valve wheels are decorative material, not interface controls.
 
 ## Components
 
-Primary and secondary links share the same pill geometry and arrow. A global visible-focus outline (3px blue, 5px offset) also applies to links, buttons and form fields. Navigation marks the current main route with blue text and an underline; mobile navigation exposes its expanded state and closes on Escape.
+Primary and outline actions share arrow icons, pill geometry and minimum desktop height (56px). Mobile base buttons use (50px) minimum height and smaller padding; the home hero overrides desktop button size. A global visible-focus outline (3px electric blue, 5px offset) serves links, buttons and fields. Text links underline on hover.
 
-Category panels link to service groups; service lists link to individual details. Project and article cards link to their detail routes. Project/article filters toggle item visibility and expose their pressed state. Gallery buttons open a native dialog with a labeled close control and caption. The contact form uses native required fields and a service selector; its submission downloads `solicitud-sps.txt` and announces that the request has not been sent. There is no delivery backend.
+Navigation marks the current route with blue text and a thin underline. Below the mobile breakpoint, a toggle exposes a two-column menu with `aria-expanded`; Escape and menu-link activation close it. Filters expose `aria-pressed`, hide irrelevant entries, and rebuild pipe geometry after filtering.
 
-The supplied logo and field photographs remain identity and evidence assets. Generated process images are conceptual illustrations. The location graphic is an indicative schematic, not an interactive map. Section plates are decorative artwork behind live text, links and forms.
+Gallery category panels are fed by collector branches; project rows and linked work photographs expose supplied field evidence. The gallery service cards use a pale surface, rounded (14px) corners and body padding (25px / 22px), with mobile padding (28px). The article contents rail is sticky on desktop and placed in normal flow on mobile. Gallery buttons open a native modal dialog with a labeled close button. Fields use native validation, labels and autocomplete where appropriate. The contact action downloads `solicitud-sps.txt` and announces that it has not been sent; there is no delivery backend.
+
+**The Live Content Rule.** Keep text, links and form controls live above decorative artwork.
 
 ## Do's and Don'ts
 
-- Do preserve the nine approved compositions as the visual authority during review.
-- Do use supplied field photographs as operational evidence and label conceptual illustrations.
-- Do keep interface text and controls live and keyboard accessible over the decorative plates.
-- Do keep the contact download behavior and its unsent status explicit.
-- Don't interpret this implementation inventory as certification of visual fidelity.
-- Don't present generated equipment scenes as photographs of completed SPS work.
-- Don't claim that downloading a contact summary sends a request to SPS.
+- Do use the nine original full-page compositions in design-proposals/web-completa-conectada as primary visual authority.
+- Do keep interface text and controls live and keyboard accessible.
+- Do distinguish supplied field evidence from generated conceptual imagery.
+- Do keep the contact summary's unsent status explicit.
+- Don't treat geometry checks as proof of photographic material fidelity.
+- Don't present generated equipment as evidence of completed SPS work.
+- Don't claim that a downloaded summary sends a request to SPS.
 
-### Movimiento de Inicio — 29 septiembre 2026
-Inicio usa `src/site/home.js`, seis escenas independientes y `home.css`. `home-motion.js` sincroniza con GSAP/ScrollTrigger el colector que alimenta servicios y las dos conexiones transmisor → PLC → SCADA. Los recorridos se revierten al retroceder y no interceptan el scroll ni los enlaces. La preferencia de movimiento reducido omite los overlays; el colector se omite en tarjetas móviles apiladas. Capturas de verificación: `review/home-motion-desktop.jpg` y `review/home-motion-mobile.jpg` dentro de `design-proposals/web-completa-conectada`. Build y revisión de movimiento aprobados; esto no certifica fidelidad visual completa. Siguen pendientes las escenas de vapor/válvulas/vacuum y la revisión individual de las demás páginas.
+La corrección posterior del usuario para Quiénes somos fija como referencia específica design-proposals/secciones-2026-09-29/inicio/02-quienes-somos.png. Su fondo se extrajo con imagegen a public/assets/experience/history-faithful.png, conservando patio, equipos, cielo y planos; el texto y la red permanecen nativos. Esta excepción local no sustituye las nueve composiciones como autoridad general.
+
+Aprobación del usuario (2026-09-30): Inicio y Quiénes somos están bien. Preservar estas dos páginas al comparar y corregir las restantes contra design-proposals/web-completa-conectada/index.html.

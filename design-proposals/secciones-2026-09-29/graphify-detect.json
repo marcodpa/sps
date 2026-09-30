@@ -1,0 +1,29 @@
+{
+  "files": {
+    "code": [
+      "C:\\Users\\home\\Downloads\\SPS\\src\\site\\app.js",
+      "C:\\Users\\home\\Downloads\\SPS\\src\\site\\content.js",
+      "C:\\Users\\home\\Downloads\\SPS\\src\\site\\home-motion.js",
+      "C:\\Users\\home\\Downloads\\SPS\\src\\site\\home.js",
+      "C:\\Users\\home\\Downloads\\SPS\\src\\site\\pipes.js"
+    ],
+    "document": [],
+    "paper": [],
+    "image": [],
+    "video": []
+  },
+  "total_files": 5,
+  "total_words": 4804,
+  "needs_graph": false,
+  "warning": "Corpus is ~4,804 words - fits in a single context window. You may not need a graph.",
+  "skipped_sensitive": [],
+  "unclassified": [
+    "C:\\Users\\home\\Downloads\\SPS\\src\\site\\home.css",
+    "C:\\Users\\home\\Downloads\\SPS\\src\\site\\site.css"
+  ],
+  "walk_errors": [],
+  "ignored": [],
+  "pruned_noise_dirs": [],
+  "graphifyignore_patterns": 22,
+  "scan_root": "C:\\Users\\home\\Downloads\\SPS\\src\\site"
+}

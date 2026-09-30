@@ -1,0 +1,429 @@
+[
+  {
+    "route": "inicio",
+    "index": 1,
+    "path": ".impeccable/review/sections/inicio-01.png",
+    "title": "Experienciaque muevetu operación.",
+    "className": "scene hero composed-hero home-hero"
+  },
+  {
+    "route": "inicio",
+    "index": 2,
+    "path": ".impeccable/review/sections/inicio-02.png",
+    "title": "Quiénes somos",
+    "className": "scene gallery-history"
+  },
+  {
+    "route": "inicio",
+    "index": 3,
+    "path": ".impeccable/review/sections/inicio-03.png",
+    "title": "Serviciosque se conectan.",
+    "className": "scene gallery-categories category-home"
+  },
+  {
+    "route": "inicio",
+    "index": 4,
+    "path": ".impeccable/review/sections/inicio-04.png",
+    "title": "Equiposen acción.",
+    "className": "scene gallery-equipment"
+  },
+  {
+    "route": "inicio",
+    "index": 5,
+    "path": ".impeccable/review/sections/inicio-05.png",
+    "title": "Del procesoal dato.",
+    "className": "scene control"
+  },
+  {
+    "route": "inicio",
+    "index": 6,
+    "path": ".impeccable/review/sections/inicio-06.png",
+    "title": "Trabajosen campo.",
+    "className": "scene gallery-work"
+  },
+  {
+    "route": "inicio",
+    "index": 7,
+    "path": ".impeccable/review/sections/inicio-07.png",
+    "title": "Áreasde trabajo.",
+    "className": "scene gallery-areas"
+  },
+  {
+    "route": "inicio",
+    "index": 8,
+    "path": ".impeccable/review/sections/inicio-08.png",
+    "title": "Conectemostu próxima operación.",
+    "className": "scene gallery-close"
+  },
+  {
+    "route": "nosotros",
+    "index": 1,
+    "path": ".impeccable/review/sections/nosotros-01.png",
+    "title": "1990Una historiahecha en campo.",
+    "className": "scene hero composed-hero about-gallery-hero"
+  },
+  {
+    "route": "nosotros",
+    "index": 2,
+    "path": ".impeccable/review/sections/nosotros-02.png",
+    "title": "Somos Service Petroleumand Supply C.A.",
+    "className": "scene gallery-company split"
+  },
+  {
+    "route": "nosotros",
+    "index": 3,
+    "path": ".impeccable/review/sections/nosotros-03.png",
+    "title": "Nuestra experienciase conecta.",
+    "className": "scene gallery-categories category-photo"
+  },
+  {
+    "route": "nosotros",
+    "index": 4,
+    "path": ".impeccable/review/sections/nosotros-04.png",
+    "title": "Equipos y conocimientode la operación.",
+    "className": "scene gallery-fleet"
+  },
+  {
+    "route": "nosotros",
+    "index": 5,
+    "path": ".impeccable/review/sections/nosotros-05.png",
+    "title": "Áreasde trabajo.",
+    "className": "scene gallery-areas"
+  },
+  {
+    "route": "nosotros",
+    "index": 6,
+    "path": ".impeccable/review/sections/nosotros-06.png",
+    "title": "Soluciones realesen campo.",
+    "className": "scene gallery-work"
+  },
+  {
+    "route": "nosotros",
+    "index": 7,
+    "path": ".impeccable/review/sections/nosotros-07.png",
+    "title": "Hablemosde tu operación.",
+    "className": "scene gallery-close"
+  },
+  {
+    "route": "servicios",
+    "index": 1,
+    "path": ".impeccable/review/sections/servicios-01.png",
+    "title": "Capacidad técnica.Servicios conectados.",
+    "className": "scene hero composed-hero catalogue-hero"
+  },
+  {
+    "route": "servicios",
+    "index": 2,
+    "path": ".impeccable/review/sections/servicios-02.png",
+    "title": "",
+    "className": "scene gallery-categories category-strip"
+  },
+  {
+    "route": "servicios",
+    "index": 3,
+    "path": ".impeccable/review/sections/servicios-03.png",
+    "title": "Vapor y recuperación de crudo.",
+    "className": "scene gallery-service-chapter "
+  },
+  {
+    "route": "servicios",
+    "index": 4,
+    "path": ".impeccable/review/sections/servicios-04.png",
+    "title": "Manejo y saneamiento de hidrocarburos.",
+    "className": "scene gallery-service-chapter photo-left"
+  },
+  {
+    "route": "servicios",
+    "index": 5,
+    "path": ".impeccable/review/sections/servicios-05.png",
+    "title": "Automatización, control y telemetría.",
+    "className": "scene gallery-service-chapter "
+  },
+  {
+    "route": "servicios",
+    "index": 6,
+    "path": ".impeccable/review/sections/servicios-06.png",
+    "title": "¿Qué necesitatu operación?",
+    "className": "scene gallery-close"
+  },
+  {
+    "route": "proyectos",
+    "index": 1,
+    "path": ".impeccable/review/sections/proyectos-01.png",
+    "title": "Proyectos",
+    "className": "scene portfolio-heading"
+  },
+  {
+    "route": "proyectos",
+    "index": 2,
+    "path": ".impeccable/review/sections/proyectos-02.png",
+    "title": "Campo Boscán",
+    "className": "scene gallery-project-row photo-first"
+  },
+  {
+    "route": "proyectos",
+    "index": 3,
+    "path": ".impeccable/review/sections/proyectos-03.png",
+    "title": "Tía Juana",
+    "className": "scene gallery-project-row text-first"
+  },
+  {
+    "route": "proyectos",
+    "index": 4,
+    "path": ".impeccable/review/sections/proyectos-04.png",
+    "title": "Bajo Grande",
+    "className": "scene gallery-project-row photo-first"
+  },
+  {
+    "route": "proyectos",
+    "index": 5,
+    "path": ".impeccable/review/sections/proyectos-05.png",
+    "title": "San Francisco–La Cañada",
+    "className": "scene gallery-project-row text-first"
+  },
+  {
+    "route": "proyectos",
+    "index": 6,
+    "path": ".impeccable/review/sections/proyectos-06.png",
+    "title": "Patio SPS",
+    "className": "scene gallery-project-row photo-first"
+  },
+  {
+    "route": "proyectos",
+    "index": 7,
+    "path": ".impeccable/review/sections/proyectos-07.png",
+    "title": "Automatización e instrumentación",
+    "className": "scene gallery-project-row text-first"
+  },
+  {
+    "route": "proyectos",
+    "index": 8,
+    "path": ".impeccable/review/sections/proyectos-08.png",
+    "title": "Hablemos de tupróximo trabajo.",
+    "className": "scene gallery-close"
+  },
+  {
+    "route": "articulos",
+    "index": 1,
+    "path": ".impeccable/review/sections/articulos-01.png",
+    "title": "Conocimientoque conectacon el campo.",
+    "className": "scene hero composed-hero editorial-hero"
+  },
+  {
+    "route": "articulos",
+    "index": 2,
+    "path": ".impeccable/review/sections/articulos-02.png",
+    "title": "Cómo interviene el vapor en la recuperación de crudo",
+    "className": "scene gallery-article-row text-first"
+  },
+  {
+    "route": "articulos",
+    "index": 3,
+    "path": ".impeccable/review/sections/articulos-03.png",
+    "title": "Qué considerar al consultar un Frac Tank",
+    "className": "scene gallery-article-row photo-first"
+  },
+  {
+    "route": "articulos",
+    "index": 4,
+    "path": ".impeccable/review/sections/articulos-04.png",
+    "title": "Del instrumento al SCADA: el recorrido de un dato",
+    "className": "scene gallery-article-row text-first"
+  },
+  {
+    "route": "articulos",
+    "index": 5,
+    "path": ".impeccable/review/sections/articulos-05.png",
+    "title": "Vacuum y bombeo en el manejo de fluidos",
+    "className": "scene gallery-article-row photo-first"
+  },
+  {
+    "route": "articulos",
+    "index": 6,
+    "path": ".impeccable/review/sections/articulos-06.png",
+    "title": "Telemetría en pozos y estaciones: qué informar al consultar",
+    "className": "scene gallery-article-row text-first"
+  },
+  {
+    "route": "articulos",
+    "index": 7,
+    "path": ".impeccable/review/sections/articulos-07.png",
+    "title": "Preparar una consulta técnica sobre tu operación",
+    "className": "scene gallery-article-row photo-first"
+  },
+  {
+    "route": "articulos",
+    "index": 8,
+    "path": ".impeccable/review/sections/articulos-08.png",
+    "title": "Hablemosde tu operación.",
+    "className": "scene gallery-close"
+  },
+  {
+    "route": "contacto",
+    "index": 1,
+    "path": ".impeccable/review/sections/contacto-01.png",
+    "title": "Conectemostu operación.",
+    "className": "scene hero composed-hero contact-hero"
+  },
+  {
+    "route": "contacto",
+    "index": 2,
+    "path": ".impeccable/review/sections/contacto-02.png",
+    "title": "Hablemosdirectamente.",
+    "className": "scene contact-methods"
+  },
+  {
+    "route": "contacto",
+    "index": 3,
+    "path": ".impeccable/review/sections/contacto-03.png",
+    "title": "Cuéntanos quénecesita tu operación.",
+    "className": "scene contact-form split"
+  },
+  {
+    "route": "contacto",
+    "index": 4,
+    "path": ".impeccable/review/sections/contacto-04.png",
+    "title": "Una consulta claraempieza en campo.",
+    "className": "scene planning"
+  },
+  {
+    "route": "contacto",
+    "index": 5,
+    "path": ".impeccable/review/sections/contacto-05.png",
+    "title": "Nuestra baseestá en Zulia.",
+    "className": "scene location split"
+  },
+  {
+    "route": "contacto",
+    "index": 6,
+    "path": ".impeccable/review/sections/contacto-06.png",
+    "title": "Seguimos impulsandotu operación.",
+    "className": "scene contact-ending"
+  },
+  {
+    "route": "servicio&id=calderas-portatiles",
+    "index": 1,
+    "path": ".impeccable/review/sections/servicio-01.png",
+    "title": "Alquiler de calderas portátiles",
+    "className": "scene hero  detail-hero"
+  },
+  {
+    "route": "servicio&id=calderas-portatiles",
+    "index": 2,
+    "path": ".impeccable/review/sections/servicio-02.png",
+    "title": "El equipo y su función",
+    "className": "scene gallery-service-function split"
+  },
+  {
+    "route": "servicio&id=calderas-portatiles",
+    "index": 3,
+    "path": ".impeccable/review/sections/servicio-03.png",
+    "title": "Aplicaciones en campo",
+    "className": "scene gallery-applications"
+  },
+  {
+    "route": "servicio&id=calderas-portatiles",
+    "index": 4,
+    "path": ".impeccable/review/sections/servicio-04.png",
+    "title": "Planificar el servicio",
+    "className": "scene gallery-planning"
+  },
+  {
+    "route": "servicio&id=calderas-portatiles",
+    "index": 5,
+    "path": ".impeccable/review/sections/servicio-05.png",
+    "title": "Equipos en operación",
+    "className": "scene project-gallery gallery-service-photos"
+  },
+  {
+    "route": "servicio&id=calderas-portatiles",
+    "index": 6,
+    "path": ".impeccable/review/sections/servicio-06.png",
+    "title": "Proyecto relacionado",
+    "className": "scene gallery-related-project"
+  },
+  {
+    "route": "servicio&id=calderas-portatiles",
+    "index": 7,
+    "path": ".impeccable/review/sections/servicio-07.png",
+    "title": "¿Necesitas este servicioen tu operación?",
+    "className": "scene gallery-close"
+  },
+  {
+    "route": "servicio&id=calderas-portatiles",
+    "index": 8,
+    "path": ".impeccable/review/sections/servicio-08.png",
+    "title": "Otros servicios relacionados",
+    "className": "scene gallery-related-services"
+  },
+  {
+    "route": "proyecto&id=bajo-grande",
+    "index": 1,
+    "path": ".impeccable/review/sections/proyecto-01.png",
+    "title": "Bajo GrandeCalentamiento de crudo en Pit",
+    "className": "scene hero  detail-hero project-gallery-hero"
+  },
+  {
+    "route": "proyecto&id=bajo-grande",
+    "index": 2,
+    "path": ".impeccable/review/sections/proyecto-02.png",
+    "title": "El trabajo",
+    "className": "scene gallery-project-story split"
+  },
+  {
+    "route": "proyecto&id=bajo-grande",
+    "index": 3,
+    "path": ".impeccable/review/sections/proyecto-03.png",
+    "title": "La operación, conectada",
+    "className": "scene gallery-operation"
+  },
+  {
+    "route": "proyecto&id=bajo-grande",
+    "index": 4,
+    "path": ".impeccable/review/sections/proyecto-04.png",
+    "title": "Registro fotográfico",
+    "className": "scene project-gallery"
+  },
+  {
+    "route": "proyecto&id=bajo-grande",
+    "index": 5,
+    "path": ".impeccable/review/sections/proyecto-05.png",
+    "title": "Equipos y servicios relacionados",
+    "className": "scene gallery-related-services"
+  },
+  {
+    "route": "proyecto&id=bajo-grande",
+    "index": 6,
+    "path": ".impeccable/review/sections/proyecto-06.png",
+    "title": "Más trabajosen campo.",
+    "className": "scene gallery-work"
+  },
+  {
+    "route": "proyecto&id=bajo-grande",
+    "index": 7,
+    "path": ".impeccable/review/sections/proyecto-07.png",
+    "title": "¿Tu operación necesitaun servicio similar?",
+    "className": "scene gallery-close"
+  },
+  {
+    "route": "articulo&id=instrumento-scada",
+    "index": 1,
+    "path": ".impeccable/review/sections/articulo-01.png",
+    "title": "Del instrumento al SCADA: el recorrido de un dato",
+    "className": "scene hero  article-hero gallery-reading-hero"
+  },
+  {
+    "route": "articulo&id=instrumento-scada",
+    "index": 2,
+    "path": ".impeccable/review/sections/articulo-02.png",
+    "title": "1. Medir en campo",
+    "className": "scene gallery-reading"
+  },
+  {
+    "route": "articulo&id=instrumento-scada",
+    "index": 3,
+    "path": ".impeccable/review/sections/articulo-03.png",
+    "title": "Servicios relacionados",
+    "className": "scene article-resources"
+  }
+]

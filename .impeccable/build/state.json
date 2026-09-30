@@ -1,1 +1,95 @@
-{"status":"rebuild-under-review","contract":"Implement approved nine image comps as functional HTML with real content and per-template photoreal pipe plates","templates":9,"routes":40,"evidence":"design-proposals/web-completa-conectada/review/rebuild-matrix.json","knownAdaptations":["Mobile reflow","Factual copy supersedes unverified mockup claims","Generated imagery labeled conceptual"]}
+{
+  "tool": "build-phase",
+  "version": 2,
+  "startedAt": "2026-09-30T12:05:17.328Z",
+  "comp": "design-proposals/secciones-2026-09-29/inicio/01-hero.png",
+  "direction": null,
+  "breakpoint": "1672x941",
+  "artifact": null,
+  "phase": "plates",
+  "phases": {
+    "comps": {
+      "status": "skipped",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [
+        {
+          "at": "2026-09-30T12:05:17.328Z",
+          "text": "started with an approved comp; the comp round happened before this state (surface round or manual)"
+        }
+      ],
+      "gate": null,
+      "forced": null
+    },
+    "spec": {
+      "status": "closed",
+      "openedAt": "2026-09-30T12:05:17.327Z",
+      "closedAt": "2026-09-30T13:23:16.184Z",
+      "attempts": 4,
+      "notes": [],
+      "gate": {
+        "ok": true,
+        "reasons": [],
+        "summary": "6 regions, 2 plates, 2 text regions measured",
+        "at": "2026-09-30T13:23:16.184Z"
+      },
+      "forced": null
+    },
+    "plates": {
+      "status": "open",
+      "openedAt": "2026-09-30T13:23:16.184Z",
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "hero": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "sections": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "motion": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "responsive": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "review": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    }
+  },
+  "finish": null
+}

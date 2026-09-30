@@ -1,752 +1,464 @@
-[
-  {
-    "mode": "desktop",
-    "label": "inicio",
-    "broken": [],
-    "height": 5304,
-    "overflow": false,
-    "regions": [
-      {
-        "class": "section hero home-hero plate-section",
-        "height": 710,
-        "y": 104
-      },
-      {
-        "class": "section history plate-section",
-        "height": 669.390625,
-        "y": 814
-      },
-      {
-        "class": "section category-overview plate-section",
-        "height": 494.09375,
-        "y": 1483.390625
-      },
-      {
-        "class": "section equipment-scene plate-section",
-        "height": 766.1875,
-        "y": 1977.484375
-      },
-      {
-        "class": "section control-scene plate-section",
-        "height": 805.25,
-        "y": 2743.671875
-      },
-      {
-        "class": "section featured-projects plate-section",
-        "height": 767,
-        "y": 3548.921875
-      },
-      {
-        "class": "section areas plate-section",
-        "height": 403,
-        "y": 4315.921875
-      },
-      {
-        "class": "section contact-ending plate-section",
-        "height": 436.296875,
-        "y": 4718.921875
-      }
-    ],
-    "width": 1440
+{
+  "tool": "comp-spec",
+  "version": 1,
+  "createdAt": "2026-09-30T13:22:02.366Z",
+  "comp": "design-proposals/secciones-2026-09-29/inicio/01-hero.png",
+  "warnings": [
+    "region boiler: \"bleed\": true set in the regions file (the clipped-artwork refusal is overridden: the page crops it there)"
+  ],
+  "uncoveredInkCells": [
+    "A7",
+    "B7",
+    "D7"
+  ],
+  "compSize": {
+    "width": 1672,
+    "height": 941
   },
-  {
-    "mode": "desktop",
-    "label": "nosotros",
-    "broken": [],
-    "height": 5696,
-    "overflow": false,
-    "regions": [
-      {
-        "class": "section about-hero photo-led-hero plate-section",
-        "height": 650,
-        "y": 104
+  "aspect": 1.7768,
+  "orientation": "landscape",
+  "palette": [
+    {
+      "hex": "#f4f6f7",
+      "coverage": 0.732
+    },
+    {
+      "hex": "#0b0b0b",
+      "coverage": 0.0936
+    },
+    {
+      "hex": "#636b75",
+      "coverage": 0.083
+    },
+    {
+      "hex": "#9b9b9d",
+      "coverage": 0.0504
+    },
+    {
+      "hex": "#bc8e64",
+      "coverage": 0.041
+    }
+  ],
+  "bands": [
+    {
+      "y": 0.0556,
+      "strength": 0.3491
+    },
+    {
+      "y": 0.1111,
+      "strength": 0.2056
+    },
+    {
+      "y": 0.2222,
+      "strength": 0.4933
+    },
+    {
+      "y": 0.2778,
+      "strength": 0.2319
+    },
+    {
+      "y": 0.3194,
+      "strength": 0.4128
+    },
+    {
+      "y": 0.375,
+      "strength": 0.3322
+    },
+    {
+      "y": 0.4028,
+      "strength": 0.2536
+    },
+    {
+      "y": 0.4722,
+      "strength": 0.3666
+    },
+    {
+      "y": 0.5556,
+      "strength": 0.3726
+    },
+    {
+      "y": 0.7083,
+      "strength": 0.365
+    },
+    {
+      "y": 0.8333,
+      "strength": 0.4109
+    },
+    {
+      "y": 0.8611,
+      "strength": 0.4393
+    },
+    {
+      "y": 0.8889,
+      "strength": 0.2831
+    },
+    {
+      "y": 0.9167,
+      "strength": 0.6446
+    },
+    {
+      "y": 0.9444,
+      "strength": 0.5303
+    }
+  ],
+  "regions": [
+    {
+      "id": "navigation",
+      "kind": "chrome",
+      "note": "White logo and navigation header",
+      "grid": "A0:J0",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 0.1
       },
-      {
-        "class": "section company-intro split plate-section",
-        "height": 771.71875,
-        "y": 754
+      "px": {
+        "x": 0,
+        "y": 0,
+        "w": 1672,
+        "h": 94
       },
-      {
-        "class": "section category-overview plate-section",
-        "height": 906.71875,
-        "y": 1525.71875
+      "aspect": 17.7872,
+      "palette": [
+        {
+          "hex": "#f8f8f8",
+          "coverage": 0.9744
+        },
+        {
+          "hex": "#0c5ff8",
+          "coverage": 0.0087
+        },
+        {
+          "hex": "#c7daf2",
+          "coverage": 0.006
+        },
+        {
+          "hex": "#0b0b0b",
+          "coverage": 0.0058
+        },
+        {
+          "hex": "#77a9f8",
+          "coverage": 0.0051
+        }
+      ],
+      "detail": {
+        "energy": 20.9941
       },
-      {
-        "class": "section company-evidence plate-section",
-        "height": 866.15625,
-        "y": 2432.4375
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "headline",
+      "kind": "text",
+      "note": "Experiencia que mueve tu operación; navy serif and blue final line",
+      "grid": "A2:E4",
+      "coverBox": {
+        "x": 0,
+        "y": 0.2,
+        "w": 0.5,
+        "h": 0.3
       },
-      {
-        "class": "section areas plate-section",
-        "height": 876.75,
-        "y": 3298.59375
+      "box": {
+        "x": 0.0425,
+        "y": 0.1998,
+        "w": 0.3379,
+        "h": 0.2997
       },
-      {
-        "class": "section featured-projects plate-section",
-        "height": 920.78125,
-        "y": 4175.34375
+      "px": {
+        "x": 71,
+        "y": 188,
+        "w": 565,
+        "h": 282
       },
-      {
-        "class": "section contact-ending plate-section",
-        "height": 451.296875,
-        "y": 5096.125
+      "aspect": 2.0035,
+      "palette": [
+        {
+          "hex": "#f7f8f8",
+          "coverage": 0.6752
+        },
+        {
+          "hex": "#081453",
+          "coverage": 0.1934
+        },
+        {
+          "hex": "#085ff8",
+          "coverage": 0.1027
+        },
+        {
+          "hex": "#c2cfe5",
+          "coverage": 0.0169
+        },
+        {
+          "hex": "#4f5a8b",
+          "coverage": 0.0118
+        }
+      ],
+      "detail": {
+        "energy": 62.3925
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 3,
+          "glyphs": 13,
+          "capHeightPx": 69.1,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 1.1708,
+          "advTall": 0.976,
+          "advX": 1.5704,
+          "gap": 0.1065,
+          "xRatio": 0.7276,
+          "stemW": 0.2023,
+          "contrast": 2.0919,
+          "serif": 1.4103,
+          "densTall": 0.5935,
+          "densX": 0.4707,
+          "weight": 0.5935
+        },
+        "widthClass": "wide",
+        "weightClass": "bold",
+        "chosen": {
+          "family": "El Messiri",
+          "weight": 700,
+          "fontSizePx": 99,
+          "source": "catalog",
+          "estimatedSize": true,
+          "stamp": "e6f8c731c04b"
+        }
       }
-    ],
-    "width": 1440
-  },
-  {
-    "mode": "desktop",
-    "label": "servicios",
-    "broken": [],
-    "height": 3896,
-    "overflow": false,
-    "regions": [
-      {
-        "class": "section hero catalogue-hero plate-section",
-        "height": 650,
-        "y": 104
+    },
+    {
+      "id": "description",
+      "kind": "text",
+      "note": "Short service description",
+      "grid": "A5:D5",
+      "coverBox": {
+        "x": 0,
+        "y": 0.5,
+        "w": 0.4,
+        "h": 0.1
       },
-      {
-        "class": "section service-chapter chapter-0 plate-section",
-        "height": 825.65625,
-        "y": 893
+      "box": {
+        "x": 0.0467,
+        "y": 0.5069,
+        "w": 0.2656,
+        "h": 0.0935
       },
-      {
-        "class": "section service-chapter chapter-1 plate-section",
-        "height": 733.65625,
-        "y": 1718.65625
+      "px": {
+        "x": 78,
+        "y": 477,
+        "w": 444,
+        "h": 88
       },
-      {
-        "class": "section service-chapter chapter-2 plate-section",
-        "height": 843.65625,
-        "y": 2452.3125
+      "aspect": 5.0455,
+      "palette": [
+        {
+          "hex": "#f7f7f8",
+          "coverage": 0.8307
+        },
+        {
+          "hex": "#425e9a",
+          "coverage": 0.0527
+        },
+        {
+          "hex": "#c8d3e5",
+          "coverage": 0.0457
+        },
+        {
+          "hex": "#99abc9",
+          "coverage": 0.038
+        },
+        {
+          "hex": "#6c84b2",
+          "coverage": 0.033
+        }
+      ],
+      "detail": {
+        "energy": 48.6708
       },
-      {
-        "class": "section contact-ending plate-section",
-        "height": 451.296875,
-        "y": 3295.96875
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "type": {
+        "comp": {
+          "lines": 2,
+          "glyphs": 55,
+          "capHeightPx": 19.6,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.5993,
+          "advTall": 0.5374,
+          "advX": 0.5993,
+          "gap": 0.1041,
+          "xRatio": 0.7199,
+          "stemW": 0.149,
+          "contrast": 1.142,
+          "serif": 1.0281,
+          "densTall": 0.4606,
+          "densX": 0.524,
+          "weight": 0.4606
+        },
+        "widthClass": "normal",
+        "weightClass": "regular"
       }
-    ],
-    "width": 1440
-  },
-  {
-    "mode": "desktop",
-    "label": "proyectos",
-    "broken": [],
-    "height": 4569,
-    "overflow": false,
-    "regions": [
-      {
-        "class": "section listing-header plate-section",
-        "height": 442.296875,
-        "y": 104
-      },
-      {
-        "class": "section portfolio-entry plate-section",
-        "height": 570.40625,
-        "y": 546.296875
-      },
-      {
-        "class": "section portfolio-entry reverse plate-section",
-        "height": 570.421875,
-        "y": 1116.703125
-      },
-      {
-        "class": "section portfolio-entry plate-section",
-        "height": 570.40625,
-        "y": 1687.125
-      },
-      {
-        "class": "section portfolio-entry reverse plate-section",
-        "height": 570.421875,
-        "y": 2257.53125
-      },
-      {
-        "class": "section portfolio-entry plate-section",
-        "height": 570.40625,
-        "y": 2827.953125
-      },
-      {
-        "class": "section portfolio-entry reverse plate-section",
-        "height": 570.421875,
-        "y": 3398.359375
-      },
-      {
-        "class": "section contact-ending plate-section",
-        "height": 451.296875,
-        "y": 3968.78125
-      }
-    ],
-    "width": 1440
-  },
-  {
-    "mode": "desktop",
-    "label": "articulos",
-    "broken": [],
-    "height": 4579,
-    "overflow": false,
-    "regions": [
-      {
-        "class": "section listing-header photo-led-hero plate-section",
-        "height": 756.25,
-        "y": 104
-      },
-      {
-        "class": "section article-directory plate-section",
-        "height": 3118.3125,
-        "y": 860.25
-      },
-      {
-        "class": "section contact-ending plate-section",
-        "height": 451.296875,
-        "y": 3978.5625
-      }
-    ],
-    "width": 1440
-  },
-  {
-    "mode": "desktop",
-    "label": "contacto",
-    "broken": [],
-    "height": 3701,
-    "overflow": false,
-    "regions": [
-      {
-        "class": "section contact-hero photo-led-hero plate-section",
-        "height": 700,
-        "y": 104
-      },
-      {
-        "class": "contact-methods section plate-section",
-        "height": 201,
-        "y": 764
-      },
-      {
-        "class": "section contact-form-section split plate-section",
-        "height": 1049,
-        "y": 1010
-      },
-      {
-        "class": "section planning plate-section",
-        "height": 440.046875,
-        "y": 2059
-      },
-      {
-        "class": "section address-section plate-section",
-        "height": 485,
-        "y": 2499.046875
-      },
-      {
-        "class": "section contact-close split plate-section",
-        "height": 568.046875,
-        "y": 2984.046875
-      }
-    ],
-    "width": 1440
-  },
-  {
-    "mode": "desktop",
-    "label": "servicio",
-    "broken": [],
-    "height": 5312,
-    "overflow": false,
-    "regions": [
-      {
-        "class": "section detail-hero photo-led-hero plate-section",
-        "height": 650,
-        "y": 104
-      },
-      {
-        "class": "section detail-overview split plate-section",
-        "height": 675.765625,
-        "y": 754
-      },
-      {
-        "class": "section application-cards-section plate-section",
-        "height": 700.15625,
-        "y": 1429.765625
-      },
-      {
-        "class": "section planning plate-section",
-        "height": 612.53125,
-        "y": 2129.921875
-      },
-      {
-        "class": "section service-evidence plate-section",
-        "height": 840.28125,
-        "y": 2742.453125
-      },
-      {
-        "class": "section related-project plate-section",
-        "height": 604.375,
-        "y": 3582.734375
-      },
-      {
-        "class": "section related-services plate-section",
-        "height": 524.375,
-        "y": 4187.109375
-      },
-      {
-        "class": "section contact-ending plate-section",
-        "height": 451.296875,
-        "y": 4711.484375
-      }
-    ],
-    "width": 1440
-  },
-  {
-    "mode": "desktop",
-    "label": "proyecto",
-    "broken": [],
-    "height": 5276,
-    "overflow": false,
-    "regions": [
-      {
-        "class": "section detail-hero project-detail-hero photo-led-hero plate-section",
-        "height": 650,
-        "y": 104
-      },
-      {
-        "class": "section project-story split plate-section",
-        "height": 593.046875,
-        "y": 754
-      },
-      {
-        "class": "section project-process plate-section",
-        "height": 923.78125,
-        "y": 1347.046875
-      },
-      {
-        "class": "section project-gallery plate-section",
-        "height": 907.03125,
-        "y": 2270.828125
-      },
-      {
-        "class": "section related-services plate-section",
-        "height": 501.75,
-        "y": 3177.859375
-      },
-      {
-        "class": "section featured-projects plate-section",
-        "height": 920.78125,
-        "y": 3679.609375
-      },
-      {
-        "class": "section contact-ending plate-section",
-        "height": 526.171875,
-        "y": 4600.390625
-      }
-    ],
-    "width": 1440
-  },
-  {
-    "mode": "desktop",
-    "label": "articulo",
-    "broken": [],
-    "height": 5956,
-    "overflow": false,
-    "regions": [
-      {
-        "class": "section article-hero plate-section",
-        "height": 749.78125,
-        "y": 104
-      },
-      {
-        "class": "section reading-layout plate-section",
-        "height": 3097.03125,
-        "y": 853.78125
-      },
-      {
-        "class": "section related-services plate-section",
-        "height": 493.375,
-        "y": 3950.8125
-      },
-      {
-        "class": "section related-articles plate-section",
-        "height": 911.890625,
-        "y": 4444.1875
-      },
-      {
-        "class": "section contact-ending plate-section",
-        "height": 451.296875,
-        "y": 5356.078125
-      }
-    ],
-    "width": 1440
-  },
-  {
-    "mode": "mobile",
-    "label": "inicio",
-    "broken": [],
-    "height": 7827,
-    "overflow": false,
-    "regions": [
-      {
-        "class": "section hero home-hero plate-section",
-        "height": 567.875,
-        "y": 82
-      },
-      {
-        "class": "section history plate-section",
-        "height": 895.78125,
-        "y": 649.875
-      },
-      {
-        "class": "section category-overview plate-section",
-        "height": 1054.6875,
-        "y": 1545.65625
-      },
-      {
-        "class": "section equipment-scene plate-section",
-        "height": 1406.6875,
-        "y": 2600.34375
-      },
-      {
-        "class": "section control-scene plate-section",
-        "height": 659,
-        "y": 4007.03125
-      },
-      {
-        "class": "section featured-projects plate-section",
-        "height": 1484.5,
-        "y": 4666.03125
-      },
-      {
-        "class": "section areas plate-section",
-        "height": 861.78125,
-        "y": 6150.53125
-      },
-      {
-        "class": "section contact-ending plate-section",
-        "height": 617.515625,
-        "y": 7012.3125
-      }
-    ],
-    "width": 390
-  },
-  {
-    "mode": "mobile",
-    "label": "nosotros",
-    "broken": [],
-    "height": 6938,
-    "overflow": false,
-    "regions": [
-      {
-        "class": "section about-hero photo-led-hero plate-section",
-        "height": 722.65625,
-        "y": 82
-      },
-      {
-        "class": "section company-intro split plate-section",
-        "height": 1021.390625,
-        "y": 804.65625
-      },
-      {
-        "class": "section category-overview plate-section",
-        "height": 1212.796875,
-        "y": 1826.046875
-      },
-      {
-        "class": "section company-evidence plate-section",
-        "height": 917.96875,
-        "y": 3038.84375
-      },
-      {
-        "class": "section areas plate-section",
-        "height": 1027.78125,
-        "y": 3956.8125
-      },
-      {
-        "class": "section featured-projects plate-section",
-        "height": 1138.90625,
-        "y": 4984.59375
-      },
-      {
-        "class": "section contact-ending plate-section",
-        "height": 617.515625,
-        "y": 6123.5
-      }
-    ],
-    "width": 390
-  },
-  {
-    "mode": "mobile",
-    "label": "servicios",
-    "broken": [],
-    "height": 5215,
-    "overflow": false,
-    "regions": [
-      {
-        "class": "section hero catalogue-hero plate-section",
-        "height": 473,
-        "y": 82
-      },
-      {
-        "class": "section service-chapter chapter-0 plate-section",
-        "height": 1258.671875,
-        "y": 817
-      },
-      {
-        "class": "section service-chapter chapter-1 plate-section",
-        "height": 1134.671875,
-        "y": 2075.671875
-      },
-      {
-        "class": "section service-chapter chapter-2 plate-section",
-        "height": 1233.59375,
-        "y": 3210.34375
-      },
-      {
-        "class": "section contact-ending plate-section",
-        "height": 573.84375,
-        "y": 4443.9375
-      }
-    ],
-    "width": 390
-  },
-  {
-    "mode": "mobile",
-    "label": "proyectos",
-    "broken": [],
-    "height": 5297,
-    "overflow": false,
-    "regions": [
-      {
-        "class": "section listing-header plate-section",
-        "height": 447.015625,
-        "y": 82
-      },
-      {
-        "class": "section portfolio-entry plate-section",
-        "height": 698.296875,
-        "y": 529.015625
-      },
-      {
-        "class": "section portfolio-entry reverse plate-section",
-        "height": 589.234375,
-        "y": 1227.3125
-      },
-      {
-        "class": "section portfolio-entry plate-section",
-        "height": 671.265625,
-        "y": 1816.546875
-      },
-      {
-        "class": "section portfolio-entry reverse plate-section",
-        "height": 683.78125,
-        "y": 2487.8125
-      },
-      {
-        "class": "section portfolio-entry plate-section",
-        "height": 671.265625,
-        "y": 3171.59375
-      },
-      {
-        "class": "section portfolio-entry reverse plate-section",
-        "height": 683.78125,
-        "y": 3842.859375
-      },
-      {
-        "class": "section contact-ending plate-section",
-        "height": 573.84375,
-        "y": 4526.640625
-      }
-    ],
-    "width": 390
-  },
-  {
-    "mode": "mobile",
-    "label": "articulos",
-    "broken": [],
-    "height": 5502,
-    "overflow": false,
-    "regions": [
-      {
-        "class": "section listing-header photo-led-hero plate-section",
-        "height": 773.0625,
-        "y": 82
-      },
-      {
-        "class": "section article-directory plate-section",
-        "height": 3832,
-        "y": 855.0625
-      },
-      {
-        "class": "section contact-ending plate-section",
-        "height": 617.515625,
-        "y": 4687.0625
-      }
-    ],
-    "width": 390
-  },
-  {
-    "mode": "mobile",
-    "label": "contacto",
-    "broken": [],
-    "height": 5101,
-    "overflow": false,
-    "regions": [
-      {
-        "class": "section contact-hero photo-led-hero plate-section",
-        "height": 575.40625,
-        "y": 82
-      },
-      {
-        "class": "contact-methods section plate-section",
-        "height": 458.75,
-        "y": 657.40625
-      },
-      {
-        "class": "section contact-form-section split plate-section",
-        "height": 1541.65625,
-        "y": 1141.15625
-      },
-      {
-        "class": "section planning plate-section",
-        "height": 823.28125,
-        "y": 2682.8125
-      },
-      {
-        "class": "section address-section plate-section",
-        "height": 698.359375,
-        "y": 3506.09375
-      },
-      {
-        "class": "section contact-close split plate-section",
-        "height": 699.375,
-        "y": 4204.453125
-      }
-    ],
-    "width": 390
-  },
-  {
-    "mode": "mobile",
-    "label": "servicio",
-    "broken": [],
-    "height": 6919,
-    "overflow": false,
-    "regions": [
-      {
-        "class": "section detail-hero photo-led-hero plate-section",
-        "height": 701.15625,
-        "y": 82
-      },
-      {
-        "class": "section detail-overview split plate-section",
-        "height": 970.859375,
-        "y": 783.15625
-      },
-      {
-        "class": "section application-cards-section plate-section",
-        "height": 860.1875,
-        "y": 1754.015625
-      },
-      {
-        "class": "section planning plate-section",
-        "height": 1076.78125,
-        "y": 2614.203125
-      },
-      {
-        "class": "section service-evidence plate-section",
-        "height": 1237.1875,
-        "y": 3690.984375
-      },
-      {
-        "class": "section related-project plate-section",
-        "height": 667.296875,
-        "y": 4928.171875
-      },
-      {
-        "class": "section related-services plate-section",
-        "height": 552.1875,
-        "y": 5595.46875
-      },
-      {
-        "class": "section contact-ending plate-section",
-        "height": 573.84375,
-        "y": 6147.65625
-      }
-    ],
-    "width": 390
-  },
-  {
-    "mode": "mobile",
-    "label": "proyecto",
-    "broken": [],
-    "height": 6322,
-    "overflow": false,
-    "regions": [
-      {
-        "class": "section detail-hero project-detail-hero photo-led-hero plate-section",
-        "height": 621.15625,
-        "y": 82
-      },
-      {
-        "class": "section project-story split plate-section",
-        "height": 813.734375,
-        "y": 703.15625
-      },
-      {
-        "class": "section project-process plate-section",
-        "height": 599.5,
-        "y": 1516.890625
-      },
-      {
-        "class": "section project-gallery plate-section",
-        "height": 1334.6875,
-        "y": 2116.390625
-      },
-      {
-        "class": "section related-services plate-section",
-        "height": 873.59375,
-        "y": 3451.078125
-      },
-      {
-        "class": "section featured-projects plate-section",
-        "height": 1138.90625,
-        "y": 4324.671875
-      },
-      {
-        "class": "section contact-ending plate-section",
-        "height": 661.1875,
-        "y": 5463.578125
-      }
-    ],
-    "width": 390
-  },
-  {
-    "mode": "mobile",
-    "label": "articulo",
-    "broken": [],
-    "height": 6662,
-    "overflow": false,
-    "regions": [
-      {
-        "class": "section article-hero plate-section",
-        "height": 505.453125,
-        "y": 82
-      },
-      {
-        "class": "section reading-layout plate-section",
-        "height": 3385.65625,
-        "y": 587.453125
-      },
-      {
-        "class": "section related-services plate-section",
-        "height": 507.1875,
-        "y": 3973.109375
-      },
-      {
-        "class": "section related-articles plate-section",
-        "height": 1367.1875,
-        "y": 4480.296875
-      },
-      {
-        "class": "section contact-ending plate-section",
-        "height": 617.515625,
-        "y": 5847.484375
-      }
-    ],
-    "width": 390
-  }
-]
+    },
+    {
+      "id": "actions",
+      "kind": "control",
+      "note": "Two live CTA links",
+      "grid": "A6:D6",
+      "coverBox": {
+        "x": 0,
+        "y": 0.6,
+        "w": 0.4,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.0431,
+        "y": 0.6323,
+        "w": 0.183,
+        "h": 0.068
+      },
+      "px": {
+        "x": 72,
+        "y": 595,
+        "w": 306,
+        "h": 64
+      },
+      "aspect": 4.7813,
+      "palette": [
+        {
+          "hex": "#085df8",
+          "coverage": 0.7245
+        },
+        {
+          "hex": "#f2f6f8",
+          "coverage": 0.2358
+        },
+        {
+          "hex": "#4a91f8",
+          "coverage": 0.0176
+        },
+        {
+          "hex": "#95c0f8",
+          "coverage": 0.0172
+        },
+        {
+          "hex": "#bcd8f8",
+          "coverage": 0.005
+        }
+      ],
+      "detail": {
+        "energy": 25.1942
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null
+    },
+    {
+      "id": "boiler",
+      "kind": "plate",
+      "note": "Photographic mobile boiler and pale blue plans",
+      "grid": "E1:J8",
+      "bleed": true,
+      "box": {
+        "x": 0.4,
+        "y": 0.1,
+        "w": 0.6,
+        "h": 0.8
+      },
+      "px": {
+        "x": 669,
+        "y": 94,
+        "w": 1003,
+        "h": 753
+      },
+      "aspect": 1.332,
+      "palette": [
+        {
+          "hex": "#eef4f7",
+          "coverage": 0.4493
+        },
+        {
+          "hex": "#0c0b0c",
+          "coverage": 0.2105
+        },
+        {
+          "hex": "#626a75",
+          "coverage": 0.1711
+        },
+        {
+          "hex": "#ca9e75",
+          "coverage": 0.0908
+        },
+        {
+          "hex": "#8ebff7",
+          "coverage": 0.0783
+        }
+      ],
+      "detail": {
+        "energy": 46.1524
+      },
+      "medium": "raster",
+      "plate": "public/assets/experience/hero-faithful.png",
+      "text": null
+    },
+    {
+      "id": "pipeline",
+      "kind": "image",
+      "note": "Chrome foreground pipe with blue valve, rightward downward bend",
+      "grid": "A8:J9",
+      "box": {
+        "x": 0,
+        "y": 0.8,
+        "w": 1,
+        "h": 0.2
+      },
+      "px": {
+        "x": 0,
+        "y": 753,
+        "w": 1672,
+        "h": 188
+      },
+      "aspect": 8.8936,
+      "palette": [
+        {
+          "hex": "#f1f1f1",
+          "coverage": 0.5695
+        },
+        {
+          "hex": "#817870",
+          "coverage": 0.1803
+        },
+        {
+          "hex": "#afaeaf",
+          "coverage": 0.134
+        },
+        {
+          "hex": "#c79a6e",
+          "coverage": 0.0594
+        },
+        {
+          "hex": "#9a7555",
+          "coverage": 0.0567
+        }
+      ],
+      "detail": {
+        "energy": 49.584
+      },
+      "medium": "raster",
+      "plate": "public/assets/experience/steel-straight.png",
+      "text": null,
+      "componentPlates": [
+        "public/assets/experience/steel-ring.png",
+        "public/assets/experience/steel-flange.png",
+        "public/assets/experience/valve.png"
+      ]
+    }
+  ]
+}

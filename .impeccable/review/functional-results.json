@@ -1,0 +1,8 @@
+[
+  "mobile menu opens and closes with Escape",
+  "project filters and pipe continuity after filtering",
+  "project image dialog opens and closes",
+  "service-prefilled form downloads an honest unsent summary",
+  "GSAP flow follows scroll and geometry reconnects on resize",
+  "reduced-motion preference respected"
+]

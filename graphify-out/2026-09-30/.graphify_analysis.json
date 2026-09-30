@@ -1,0 +1,209 @@
+{
+  "communities": {
+    "0": [
+      "catalogue",
+      "catalogue_groups",
+      "content",
+      "content_articles",
+      "content_details",
+      "content_field",
+      "content_groups",
+      "content_projects",
+      "content_services",
+      "content_slug",
+      "gallery",
+      "gallery_gallerypages",
+      "icons",
+      "icons_icons",
+      "icons_svg"
+    ],
+    "1": [
+      "app_about",
+      "app_areas",
+      "app_catalogue",
+      "app_categories",
+      "app_control",
+      "app_equipment",
+      "app_featured",
+      "app_heading",
+      "app_history",
+      "app_home",
+      "app_scene",
+      "app_textlink"
+    ],
+    "2": [
+      "app",
+      "app_closemenu",
+      "app_gallery",
+      "app_id",
+      "app_main",
+      "app_menu",
+      "app_nav",
+      "app_navigation",
+      "app_network",
+      "app_q",
+      "app_routes"
+    ],
+    "3": [
+      "app_btn",
+      "app_contact",
+      "app_contactend",
+      "app_servicedetail",
+      "icons_icon"
+    ],
+    "4": [
+      "app_editorial",
+      "app_filters",
+      "app_hero",
+      "app_photo",
+      "app_portfolio"
+    ],
+    "5": [
+      "app_esc",
+      "app_image",
+      "app_projectcard",
+      "app_projectdetail",
+      "app_servicelist"
+    ],
+    "6": [
+      "app_articlecard",
+      "app_articledetail",
+      "app_crumb",
+      "app_link"
+    ],
+    "7": [
+      "network",
+      "network_clamp",
+      "network_mountnetwork",
+      "network_roundedroute"
+    ],
+    "8": [
+      "app_serviceimage",
+      "content_art"
+    ]
+  },
+  "cohesion": {
+    "0": 0.22857142857142856,
+    "1": 0.4696969696969697,
+    "2": 0.18181818181818182,
+    "3": 0.9,
+    "4": 0.6,
+    "5": 0.8,
+    "6": 0.8333333333333334,
+    "7": 0.8333333333333334,
+    "8": 1.0
+  },
+  "gods": [
+    {
+      "id": "app_link",
+      "label": "link()",
+      "degree": 18
+    },
+    {
+      "id": "icons_icon",
+      "label": "icon()",
+      "degree": 17
+    },
+    {
+      "id": "app_heading",
+      "label": "heading()",
+      "degree": 17
+    },
+    {
+      "id": "app_scene",
+      "label": "scene()",
+      "degree": 17
+    },
+    {
+      "id": "app_contactend",
+      "label": "contactEnd()",
+      "degree": 16
+    },
+    {
+      "id": "content_field",
+      "label": "field()",
+      "degree": 15
+    },
+    {
+      "id": "app_servicedetail",
+      "label": "serviceDetail()",
+      "degree": 15
+    },
+    {
+      "id": "app_image",
+      "label": "image()",
+      "degree": 13
+    },
+    {
+      "id": "app_hero",
+      "label": "hero()",
+      "degree": 13
+    },
+    {
+      "id": "app_projectdetail",
+      "label": "projectDetail()",
+      "degree": 13
+    }
+  ],
+  "surprises": [
+    {
+      "source": "about()",
+      "target": "field()",
+      "source_files": [
+        "app.js",
+        "content.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "areas()",
+      "target": "field()",
+      "source_files": [
+        "app.js",
+        "content.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "categories()",
+      "target": "field()",
+      "source_files": [
+        "app.js",
+        "content.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "contact()",
+      "target": "field()",
+      "source_files": [
+        "app.js",
+        "content.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "contactEnd()",
+      "target": "field()",
+      "source_files": [
+        "app.js",
+        "content.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    }
+  ],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}

@@ -1,0 +1,123 @@
+/* Quiénes somos — laid out on the 1440u canvas taken from 02-quienes-somos.png */
+.p-nosotros { background: linear-gradient(#fff 0, #f8fbff 30%, #fff 60%, #f6faff 100%); }
+
+/* faint blueprint drawings behind the copy */
+.p-nosotros .bp {
+  position: absolute; z-index: 0; pointer-events: none;
+  background: url('/assets/connected/blueprint.png') center / 100% auto no-repeat;
+  mix-blend-mode: multiply; opacity: .9; filter: contrast(1.35) saturate(1.2);
+  -webkit-mask-image: radial-gradient(closest-side, #000 55%, transparent 100%); mask-image: radial-gradient(closest-side, #000 55%, transparent 100%);
+}
+.p-nosotros .bp-a { right: -60u; top: 20u; width: 800u; height: 600u; opacity: .8; }
+.p-nosotros .bp-b { left: -60u; top: 1330u; width: 1560u; height: 820u; opacity: .85; transform: scaleX(-1); }
+.p-nosotros .bp-c { right: -160u; top: 2120u; width: 1200u; height: 780u; opacity: .8; }
+.p-nosotros .bp-d { left: -140u; top: 3560u; width: 1400u; height: 780u; opacity: .85; }
+
+/* ── Hero ─────────────────────────────────────────────── */
+.n-hero { height: 736u; }
+.n-hero-sky {
+  position: absolute; right: 0; top: 0; width: 980u; height: 700u; z-index: 0;
+  background:
+    radial-gradient(ellipse 260u 90u at 32% 30%, rgba(255,255,255,.95), transparent 70%),
+    radial-gradient(ellipse 340u 110u at 70% 16%, rgba(255,255,255,.9), transparent 70%),
+    radial-gradient(ellipse 220u 70u at 90% 34%, rgba(255,255,255,.85), transparent 70%),
+    linear-gradient(#b9d4f5 0, #d6e6f9 34%, #edf4fc 62%, rgba(255,255,255,0) 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 46%); mask-image: linear-gradient(90deg, transparent 0, #000 46%);
+}
+.n-hero-photo {
+  position: absolute; right: 0; top: 176u; width: 900u; height: 536u; z-index: 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 34%), linear-gradient(180deg, transparent 0, #000 9%, #000 86%, transparent 100%);
+  -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent 0, #000 34%), linear-gradient(180deg, transparent 0, #000 9%, #000 86%, transparent 100%); mask-composite: intersect;
+}
+.n-hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 8%; }
+.n-kicker { position: absolute; right: 86u; top: 150u; text-align: right; font: 600 13.5u/1.55 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: #1d4a8b; }
+.n-desde { position: absolute; left: 70u; top: 152u; font: 700 13.5u/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: #1d4a8b; }
+.n-year {
+  position: absolute; left: 62u; top: 170u; height: 152u; width: 500u; overflow: visible;
+  font: 900 200u/0.77 var(--display); font-stretch: 92%; letter-spacing: -.03em;
+  background: url('/assets/sps-field/hero-home-field.jpg') 50% 62% / cover; -webkit-background-clip: text; background-clip: text; color: transparent;
+  -webkit-text-stroke: 2u rgba(9, 38, 88, .8);
+  filter: saturate(1.15) drop-shadow(0 3u 0 rgba(11, 42, 94, .3));
+}
+.n-hero-copy { position: absolute; left: 70u; top: 388u; width: 700u; }
+.n-hero-copy h1 { font-size: 74u; line-height: .98; letter-spacing: -.035em; }
+.n-hero-copy p { margin-top: 8u; font-size: 19.5u; line-height: 1.55; color: #33507a; }
+
+/* ── Quiénes somos ────────────────────────────────────── */
+.n-who { display: grid; grid-template-columns: 640u 1fr; column-gap: 70u; padding: 42u var(--gutter) 0 82u; min-height: 578u; }
+.n-who-copy { padding-top: 6u; }
+.n-who-copy .eyebrow { margin-bottom: 18u; }
+.n-who-copy .h2 { font-size: 52u; margin-bottom: 26u; }
+.n-who-copy .lead { font-size: 18.5u; margin-bottom: 18u; max-width: 590u; }
+.n-place { display: flex; align-items: center; gap: 14u; margin-top: 20u; font: 500 17u/1.35 var(--sans); color: #17386b; }
+.n-place svg { width: 34u; height: 34u; color: var(--blue); }
+.n-who-photo { position: relative; margin: 0; align-self: start; margin-top: 6u; }
+.n-who-photo img { width: 100%; height: 448u; object-fit: cover; border-radius: 12u; box-shadow: var(--card-shadow); }
+.n-who-photo figcaption { position: absolute; right: 20u; bottom: -30u; width: 400u; background: #fff; border-radius: 12u; padding: 15u 20u 16u; box-shadow: var(--card-shadow); }
+.n-who-photo figcaption strong { display: block; font: 700 15.5u/1.3 var(--serif); color: var(--ink); }
+.n-who-photo figcaption span { display: block; margin-top: 3u; font-size: 13.5u; line-height: 1.4; color: var(--text); }
+
+/* ── Se conecta ───────────────────────────────────────── */
+.n-link { padding: 80u var(--gutter) 0 82u; min-height: 816u; }
+.n-link-head { max-width: 640u; }
+.n-link-head .eyebrow { margin-bottom: 16u; }
+.n-link-head p:last-child { margin-top: 14u; font-size: 18u; max-width: 470u; }
+.n-cards { list-style: none; margin: 0; padding: 0; position: absolute; left: 82u; right: 90u; top: 322u; display: grid; grid-template-columns: 420u 398u 404u; gap: 22u; align-items: start; }
+.n-card { position: relative; }
+.n-card-photo { height: 236u; border-radius: 10u; overflow: hidden; box-shadow: var(--card-shadow); }
+.n-card-photo img { width: 100%; height: 100%; object-fit: cover; }
+.n-card-body { position: relative; margin: -72u 14u 0; background: #fff; border-radius: 12u; padding: 22u 24u 76u 26u; box-shadow: var(--card-shadow); min-height: 214u; }
+.n-card-title { display: flex; align-items: center; gap: 16u; margin-bottom: 12u; }
+.n-ico { color: var(--blue); flex: none; }
+.n-ico svg { width: 42u; height: 42u; }
+.n-card-title h3 { font-size: 26u; line-height: 1.05; }
+.n-card-body p { font-size: 15.5u; line-height: 1.5; max-width: 300u; }
+.n-card-body .round-arrow { position: absolute; left: 26u; bottom: 20u; }
+.n-card:nth-child(2) .n-card-body { margin-inline: 12u 12u; }
+
+/* ── Equipos ──────────────────────────────────────────── */
+.n-team { padding: 0 var(--gutter) 0 82u; min-height: 736u; }
+.n-team-head { padding-top: 12u; max-width: 720u; }
+.n-team-head .eyebrow { margin-bottom: 18u; }
+.n-team-head .h2 { font-size: 54u; margin-bottom: 20u; }
+.n-team-head .lead { font-size: 18u; max-width: 560u; }
+.n-team-photos { position: absolute; left: 82u; right: 82u; top: 274u; display: grid; grid-template-columns: 612u 1fr; gap: 12u; }
+.n-team-photos img { width: 100%; height: 380u; object-fit: cover; border-radius: 10u; box-shadow: var(--card-shadow); }
+
+/* ── Presencia ────────────────────────────────────────── */
+.n-where { min-height: 468u; padding: 22u var(--gutter) 0 82u; }
+.n-where-copy { max-width: 700u; }
+.n-where-copy .eyebrow { margin-bottom: 18u; }
+.n-where-copy .h2 { margin-bottom: 22u; }
+.n-where-copy .lead { font-size: 18u; max-width: 470u; }
+.n-site-art { position: absolute; right: 14u; top: -16u; width: 1030u; height: auto; }
+
+/* ── Proyectos ────────────────────────────────────────── */
+.n-work { min-height: 452u; padding: 22u var(--gutter) 0 82u; }
+.n-work-copy { position: absolute; left: 82u; top: 22u; width: 460u; }
+.n-work-copy .eyebrow { margin-bottom: 18u; }
+.n-work-copy .h2 { font-size: 50u; margin-bottom: 20u; }
+.n-work-copy .lead { font-size: 17u; }
+.n-work-link { display: inline-flex; align-items: center; gap: 16u; margin-top: 26u; font: 700 19u/1 var(--serif); color: var(--blue); }
+.n-work-cards { position: absolute; left: 531u; top: 15u; display: grid; grid-template-columns: 404u 411u; gap: 22u; }
+.n-proj { position: relative; display: block; }
+.n-proj img { width: 100%; height: 300u; object-fit: cover; border-radius: 10u; box-shadow: var(--card-shadow); }
+.n-proj-cap { position: relative; display: block; margin: -46u 0 0; background: #fff; border-radius: 0 0 12u 12u; padding: 14u 64u 16u 20u; box-shadow: var(--card-shadow); }
+.n-proj-cap strong { display: block; font: 700 19u/1.2 var(--serif); }
+.n-proj-cap > span { display: block; margin-top: 4u; font-size: 13.5u; line-height: 1.4; color: var(--text); }
+.n-proj-cap .round-arrow { position: absolute; right: 14u; top: 50%; translate: 0 -50%; width: 34u; height: 34u; }
+
+/* ── Cierre ───────────────────────────────────────────── */
+.n-cta { min-height: 330u; padding: 30u var(--gutter) 0 82u; }
+.n-cta-copy { max-width: 560u; }
+.n-cta-copy .eyebrow { margin-bottom: 16u; }
+.n-cta-copy .h2 { font-size: 52u; margin-bottom: 18u; }
+.n-cta-copy .lead { font-size: 17.5u; max-width: 420u; }
+.n-cta-card { position: absolute; left: 928u; top: 68u; width: 396u; background: rgba(255, 255, 255, .96); border-radius: 14u; padding: 22u 26u 26u; box-shadow: var(--card-shadow); display: grid; gap: 14u; }
+.n-cta-card h3 { font-size: 28u; }
+.n-cta-card a { display: flex; align-items: center; gap: 16u; font: 600 21u/1 var(--sans); color: #12356b; }
+.n-cta-card a svg { width: 30u; height: 30u; color: var(--blue); }
+.n-cta-card a .round-arrow { margin-left: auto; width: 38u; height: 38u; }
+.n-cta-card a .round-arrow svg { width: 20u; height: 20u; color: inherit; }
+
+.site-footer .footer-in { min-height: 118u; }
